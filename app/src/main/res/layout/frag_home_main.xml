@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent" 
+    android:layout_height="fill_parent" 
+    xmlns:android="http://schemas.android.com/apk/res/android" 
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" >
+        <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.cardview.widget.CardView
+            android:layout_width="fill_parent"
+            app:cardElevation="4sp"
+            app:cardCornerRadius="100dp"
+            app:cardUseCompatPadding="true"
+            android:layout_height="wrap_content"
+            app:cardBackgroundColor="@color/white">
+
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tabview"
+                android:layout_width="fill_parent"
+                android:layout_height="60dp"
+                android:layout_gravity="center_vertical"
+                android:fadeScrollbars="true"
+                android:overScrollMode="always"
+                android:visibility="visible"
+                app:tabGravity="fill"
+                app:tabInlineLabel="false"
+                app:tabMaxWidth="0.0dip"
+                app:tabMode="fixed"
+                app:tabRippleColor="@color/colorAccent"
+                app:tabSelectedTextColor="@color/colorAccent"
+                app:tabTextColor="@color/blue"
+                app:tabTextAppearance="@style/TabTextStyle"
+                app:tabUnboundedRipple="true"/>
+
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+
+
+</LinearLayout>

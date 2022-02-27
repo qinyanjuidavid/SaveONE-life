@@ -27,13 +27,13 @@
                 android:indeterminateTint="@color/colorAccent"
                 android:layout_height="26dp"/>
             <TextView
+                android:id="@+id/text_status"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/blue"
                 android:layout_marginStart="4dp"
                 android:textSize="14sp"
-                android:fontFamily="@font/mont"
-                android:text="@string/loading"/>
+                android:fontFamily="@font/mont"/>
 
         </LinearLayout>
 

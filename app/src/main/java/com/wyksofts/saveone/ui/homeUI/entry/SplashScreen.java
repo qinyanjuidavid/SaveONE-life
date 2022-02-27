@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.ui.homeUI;
+package com.wyksofts.saveone.ui.homeUI.entry;
 
 import androidx.appcompat.app.AppCompatActivity;
 

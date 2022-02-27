@@ -47,14 +47,14 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CustomInputStyle"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="40dp"
             android:textColorHint="@color/gray2"
             app:boxBackgroundMode="outline"
-            app:boxCornerRadiusBottomEnd="4dp"
-            app:boxCornerRadiusBottomStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            app:boxCornerRadiusTopStart="4dp"
+            app:boxCornerRadiusBottomEnd="6dp"
+            app:boxCornerRadiusBottomStart="6dp"
+            app:boxCornerRadiusTopEnd="6dp"
+            app:boxCornerRadiusTopStart="6dp"
             app:boxStrokeWidth=".8dp"
             app:errorTextColor="@color/colorAccent"
             app:hintTextColor="@color/colorAccent"
@@ -64,20 +64,20 @@
                 android:id="@+id/organisation_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mont"
                 android:hint="@string/brief_describe_about_the_orphanage"
                 android:inputType="textMultiLine"
-                android:lines="200"
+                android:lines="100"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:maxLines="200"
                 android:minLines="100"
                 android:singleLine="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 tools:ignore="SmallSp" />
-
         </com.google.android.material.textfield.TextInputLayout>
-
 
 
         <com.google.android.material.textfield.TextInputLayout
@@ -101,15 +101,17 @@
                 android:id="@+id/organisation_number_of_children"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mont"
                 android:hint="@string/number_of_children_in_the_orphanage"
+                android:inputType="number"
                 android:singleLine="true"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="#353535"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 tools:ignore="SmallSp" />
 
         </com.google.android.material.textfield.TextInputLayout>
-
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CustomInputStyle"
@@ -118,10 +120,40 @@
             android:textColorHint="@color/gray2"
             app:boxBackgroundMode="outline"
             app:boxStrokeWidth=".8dp"
-            app:boxCornerRadiusBottomEnd="4dp"
-            app:boxCornerRadiusBottomStart="4dp"
-            app:boxCornerRadiusTopEnd="4dp"
-            app:boxCornerRadiusTopStart="4dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:passwordToggleEnabled="false"
+            app:passwordToggleTint="#FF5722">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/organisation_coordinates"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lines="1"
+                android:hint="@string/geographic_location_optional"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:singleLine="true"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/mont"
+                android:textStyle="bold"
+                android:textColorHint="@color/blue"
+                android:textSize="14sp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/CustomInputStyle"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:textColorHint="@color/gray2"
+            app:boxBackgroundMode="outline"
+            app:boxStrokeWidth=".8dp"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
             app:passwordToggleEnabled="false"
             app:passwordToggleTint="#FF5722">
 
@@ -133,7 +165,9 @@
                 android:hint="@string/town"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/blue"
+                android:fontFamily="@font/mont"
+                android:textStyle="bold"
                 android:textColorHint="@color/blue"
                 android:textSize="14sp" />
 

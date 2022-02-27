@@ -35,12 +35,12 @@
     <string name="organisation_additional_information">Organisation Additional Information</string>
     <string name="phone_number_eg_254703_xxx_xxx">Phone Number eg, +254703 XXX XXX</string>
     <string name="till_number_paybill_number_if_any">Till Number / Paybill Number (if any).</string>
-    <string name="bank_account_number">Bank Account Number (Please include bank name)</string>
+    <string name="bank_account_number">Bank Account Number</string>
     <string name="country_eg_usa">Country eg, (USA)</string>
     <string name="organisation_other_information">Organisation Other Information</string>
     <string name="brief_describe_about_the_orphanage">Brief describe more about the orphanage.</string>
     <string name="number_of_children_in_the_orphanage">Number of children in the orphanage.</string>
-    <string name="town">Town</string>
+    <string name="town">County, Sub County, Town, Village</string>
     <string name="finish">Finish</string>
     <string name="login1">Login</string>
     <string name="add_group_image">Add group image</string>
@@ -50,4 +50,16 @@
     <string name="reset_password">Reset password</string>
     <string name="close">Close</string>
     <string name="web_client_ip">882098864882-ll40esaksqrsfu2oovjk7no0lrmv96ut.apps.googleusercontent.com</string>
+    <string name="confirm_info_above">Please confirm the information above before you continue.</string>
+    <string name="bank_account_name">Bank Account Name</string>
+    <string name="upload_group_photo">Upload group photo</string>
+    <string name="geographic_location_optional">Geographic Location(Optional)</string>
+    <string name="congratulations">Congratulations</string>
+    <string name="sms">
+        for registering with us, lets fight POVERTY, HUNGER and improve the
+        <u>level of education</u> together.
+        We will contact you within the next 72 hrs to verify the information you have just provided.
+        Thanks for sharing with us. In case of any questions, please feel free to contact by clicking the button below.
+    </string>
+    <string name="contact_us">Contact Us</string>
 </resources>

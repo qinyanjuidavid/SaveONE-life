@@ -139,7 +139,7 @@ public class SignUpOrganization extends Fragment {
         else{
             new CreateUserAccount(getContext()).authUser(name, email, password, loading_bar, false);
 
-            if (!isMoveNext){
+            if (isMoveNext){
 
             }else{
                 getActivity()

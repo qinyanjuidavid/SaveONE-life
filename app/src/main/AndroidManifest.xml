@@ -11,10 +11,6 @@
         android:theme="@style/Theme.SaveONE">
         <activity
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".ui.homeUI.HomePage"
-            android:exported="true" />
-        <activity
-            android:theme="@style/AppTheme.NoActionBar"
             android:name=".ui.landingUI.LandingHomePage"
             android:exported="true" />
         <activity
@@ -23,7 +19,7 @@
             android:exported="true" />
         <activity
             android:theme="@style/AppTheme.NoActionBar"
-            android:name=".ui.homeUI.SplashScreen"
+            android:name=".ui.homeUI.entry.SplashScreen"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
