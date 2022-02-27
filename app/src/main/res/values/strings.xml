@@ -1,0 +1,53 @@
+<resources>
+    <string name="app_name">SaveONE life </string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="donate">Donate Now!</string>
+    <string name="be_the_reason">Be The Reason</string>
+    <string name="someone_smiles_today">Someone Smiles Today!</string>
+    <string name="register_new_orphanage">Hello there,
+        Do you wish to register an orphanage?
+        Please click the button below to fill the form and follow the instructions.</string>
+    <string name="register">Register</string>
+    <string name="help_make_donation">Fight poverty right now together with us by making a donation.</string>
+    <string name="continue_as_donor">Register as Donor</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="login"><u>Login</u></string>
+    <string name="powered_by_wykeesofts_2022">Powered by wykeesofts ©2022</string>
+    <string name="user_name">User Name</string>
+    <string name="email_address">Email Address</string>
+    <string name="password">Password</string>
+    <string name="i_accept_terms_and_services">I accept policy and </string>
+    <string name="sign_up">Sign UP!</string>
+    <string name="hello">Hello,</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password"><u>Forgot Password?</u></string>
+    <string name="welcome_back">Welcome Back,</string>
+    <string name="login_txt">Login!</string>
+    <string name="terms"><u>Terms</u></string>
+    <string name="reset_password_text">Reset your password with few steps, enter your email below.</string>
+    <string name="orphanage_children_s_home_name">Orphanage / Children\'s Home Name</string>
+    <string name="orphanage_children_s_home_email_address">Orphanage / Children\'s Home Email Address</string>
+    <string name="organisation_password">Organisation Password</string>
+    <string name="confirm_organisation_password">Confirm Organisation Password</string>
+    <string name="next">Next</string>
+    <string name="organisation_personal_information">Organisation Personal Information</string>
+    <string name="organisation_additional_information">Organisation Additional Information</string>
+    <string name="phone_number_eg_254703_xxx_xxx">Phone Number eg, +254703 XXX XXX</string>
+    <string name="till_number_paybill_number_if_any">Till Number / Paybill Number (if any).</string>
+    <string name="bank_account_number">Bank Account Number (Please include bank name)</string>
+    <string name="country_eg_usa">Country eg, (USA)</string>
+    <string name="organisation_other_information">Organisation Other Information</string>
+    <string name="brief_describe_about_the_orphanage">Brief describe more about the orphanage.</string>
+    <string name="number_of_children_in_the_orphanage">Number of children in the orphanage.</string>
+    <string name="town">Town</string>
+    <string name="finish">Finish</string>
+    <string name="login1">Login</string>
+    <string name="add_group_image">Add group image</string>
+    <string name="or">Or</string>
+    <string name="continue_with_google">Continue with Google</string>
+    <string name="loading">Loading...</string>
+    <string name="reset_password">Reset password</string>
+    <string name="close">Close</string>
+    <string name="web_client_ip">882098864882-ll40esaksqrsfu2oovjk7no0lrmv96ut.apps.googleusercontent.com</string>
+</resources>

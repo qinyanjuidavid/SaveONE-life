@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "882098864882",
+    "project_id": "saveone-life",
+    "storage_bucket": "saveone-life.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:882098864882:android:9fc6d5461ef52b3925066b",
+        "android_client_info": {
+          "package_name": "com.wyksofts.saveone"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "882098864882-ll40esaksqrsfu2oovjk7no0lrmv96ut.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQxe7Mee0SjAHxh2zAGerYQ1Lp3VRL3cs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "882098864882-ll40esaksqrsfu2oovjk7no0lrmv96ut.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
