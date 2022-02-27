@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/continue_with_google"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="200dp"
+    android:gravity="center"
+    android:padding="2dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/custom_white_btn"
+    android:orientation="horizontal"
+    android:layout_height="36dp">
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:src="@drawable/google_icon"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue"
+        android:textStyle="bold"
+        android:fontFamily="@font/mont"
+        android:layout_marginStart="4dp"
+        android:textSize="14sp"
+        android:text="@string/continue_with_google"/>
+</LinearLayout>

@@ -1,0 +1,5 @@
+<!-- res/transition/shared_image.xml -->
+<transitionSet>
+    <changeTransform/>
+    <changeBounds/>
+</transitionSet>
