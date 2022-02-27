@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.model.ServerEML;
+package com.wyksofts.saveone.models.login_md;
 
 import static android.content.ContentValues.TAG;
 
@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -19,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.wyksofts.saveone.App.MainActivity;
-import com.wyksofts.saveone.util.ErrorDialog;
+import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.LoadingDialog;
 import com.wyksofts.saveone.util.showAppToast;
 
@@ -79,6 +78,6 @@ public class LoginUser extends View {
     }
 
     private void showErrorDiag(String errorMessage){
-        new ErrorDialog(getContext()).show(errorMessage,"Account Error!");;
+        new AlertPopDiag(getContext()).show(errorMessage,"Account Error!");;
     }
 }

@@ -6,7 +6,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
 
 import android.text.TextUtils;
 import android.transition.Transition;
@@ -14,17 +13,13 @@ import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.ProgressBar;
-import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
 
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.model.ServerEML.LoginUser;
+import com.wyksofts.saveone.models.login_md.LoginUser;
 import com.wyksofts.saveone.ui.landingUI.authfrags.ResetPassword.ResetPasswordDialog;
 import com.wyksofts.saveone.util.PasswordChecker;
 

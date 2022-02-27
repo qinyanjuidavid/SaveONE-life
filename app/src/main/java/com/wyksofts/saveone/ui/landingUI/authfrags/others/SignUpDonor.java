@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
@@ -36,18 +35,13 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
-import com.google.firebase.firestore.auth.User;
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.model.ServerEML.CreateUserAccount;
+import com.wyksofts.saveone.models.Donors.CreateUserAccount;
 import com.wyksofts.saveone.util.AgreeWithTerms;
 import com.wyksofts.saveone.util.PasswordChecker;
-import com.wyksofts.saveone.util.VerifyFields;
 import com.wyksofts.saveone.util.showAppToast;
-
-import es.dmoral.toasty.Toasty;
 
 
 public class SignUpDonor extends Fragment {
@@ -152,7 +146,7 @@ public class SignUpDonor extends Fragment {
             new showAppToast().showFailure(getContext(), "Agree with our terms to continue.");
         }
         else{
-            new CreateUserAccount(getContext()).authUser(name,email,password, google_loading);
+            new CreateUserAccount(getContext()).authUser(name,email,password, google_loading, true);
         }
     }
 

@@ -8,11 +8,11 @@ import com.tapadoo.alerter.Alerter;
 import com.wyksofts.saveone.R;
 
 
-public class ErrorDialog extends View {
+public class AlertPopDiag extends View {
 
     Context mcontext;
 
-    public ErrorDialog(Context context) {
+    public AlertPopDiag(Context context) {
         super(context);
         this.mcontext = context;
     }
@@ -21,9 +21,9 @@ public class ErrorDialog extends View {
         Alerter.create((Activity) mcontext)
                 .setTitle(title)
                 .setText(errorMessage)
-                .setBackgroundColorRes(R.color.red)
+                .setBackgroundColorRes(R.color.colorAccent)
                 .enableVibration(true)
-                .setDuration(1500)
+                .setDuration(2000)
                 .show();
     }
 }

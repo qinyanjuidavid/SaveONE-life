@@ -43,7 +43,6 @@
             android:src="@drawable/personal_information"/>
 
 
-
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CustomInputStyle"
             android:layout_width="match_parent"
@@ -67,7 +66,9 @@
                 android:hint="@string/orphanage_children_s_home_name"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:textColor="@color/colorAccent"
+                android:fontFamily="@font/mont"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
                 android:textSize="14sp"
                 tools:ignore="SmallSp" />
@@ -97,8 +98,10 @@
                 android:layout_height="wrap_content"
                 android:hint="@string/orphanage_children_s_home_email_address"
                 android:singleLine="true"
-                android:textColor="@color/colorAccent"
-                android:textColorHint="#353535"
+                android:fontFamily="@font/mont"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue"
                 android:textSize="14sp"
                 tools:ignore="SmallSp" />
 
@@ -126,8 +129,10 @@
                 android:hint="@string/organisation_password"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:textColor="@color/colorAccent"
                 android:password="true"
+                android:fontFamily="@font/mont"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
                 android:textSize="14sp" />
 
@@ -154,10 +159,12 @@
                 android:hint="@string/confirm_organisation_password"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:textColor="@color/colorAccent"
                 android:password="true"
+                android:fontFamily="@font/mont"
+                android:textStyle="bold"
+                android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
-                android:textSize="14sp" />
+                android:textSize="14sp"/>
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -217,6 +224,16 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+                <ProgressBar
+                    android:id="@+id/loading_bar"
+                    android:layout_width="25dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center"
+                    android:visibility="gone"
+                    android:indeterminate="true"
+                    android:layout_centerInParent="true"
+                    android:indeterminateTint="@color/colorAccent"/>
 
                 <Button
                     android:id="@+id/register_new_orphanage"

@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.model.ServerEML;
+package com.wyksofts.saveone.models.Donors;
 
 import static android.content.ContentValues.TAG;
 
@@ -21,9 +21,9 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.wyksofts.saveone.App.MainActivity;
-import com.wyksofts.saveone.util.ErrorDialog;
+import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.SignUpOrganization;
+import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.LoadingDialog;
 import com.wyksofts.saveone.util.showAppToast;
 
@@ -34,7 +34,6 @@ public class CreateUserAccount extends View {
     SharedPreferences.Editor editor;
     SharedPreferences pref;
     Context mContext;
-    FirebaseFirestore db;
 
     public CreateUserAccount(Context context) {
         super(context);
@@ -45,11 +44,10 @@ public class CreateUserAccount extends View {
     }
 
 
-    //verify doner details
-    public void authUser(String name, String email, String password, ProgressBar bar){
+    //sign up user's
+    public boolean authUser(String name, String email, String password, ProgressBar bar, Boolean isDonor){
 
-        //show loading diag
-        //new LoadingDialog().show(mContext);
+        //show loading bar
         bar.setVisibility(VISIBLE);
 
         auth.createUserWithEmailAndPassword(email, password)
@@ -57,8 +55,7 @@ public class CreateUserAccount extends View {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
-                        //hide loading dialog
-                        //new LoadingDialog().dismiss(mContext);
+                        //hide loading bar
                         bar.setVisibility(GONE);
 
                         if (!task.isSuccessful()){
@@ -84,23 +81,29 @@ public class CreateUserAccount extends View {
 
                             addUserNameToDonorAc(task.getResult().getUser(), name);
 
-                            String s = "Hello\t{"+name+"} \t thanks for registering with us";
+                            String s = "Hello\t["+name+"]\t thanks for registering with us";
 
                             new showAppToast().showSuccess(getContext(),s);
 
-                            mContext.startActivity(new Intent(getContext(), MainActivity.class));
+                            if(isDonor){
+                                mContext.startActivity(new Intent(getContext(), MainActivity.class));
+                            }else{
+                                SignUpOrganization organization = new SignUpOrganization();
+                                organization.setMoveNext(true);
+                            }
                         }
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        new showAppToast().showSuccess(getContext(),"Failed to communicate with the server!");
+                        //new showAppToast().showFailure(getContext(),"Failed to communicate with the server!");
                         //hide loading dialog
                         new LoadingDialog().dismiss(mContext);
                     }
                 });
 
+        return true;
     }
 
 
@@ -123,6 +126,7 @@ public class CreateUserAccount extends View {
     }
 
     private void showErrorDiag(String errorMessage){
-        new ErrorDialog(getContext()).show(errorMessage,"Account Error!");
+        new AlertPopDiag(getContext()).show(errorMessage,"Error!");
     }
+
 }
