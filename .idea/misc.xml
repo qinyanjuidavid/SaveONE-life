@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/baseline_chat_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/baseline_gps_fixed_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/baseline_home_20.xml" value="0.146" />
@@ -11,7 +12,9 @@
         <entry key="app/src/main/res/drawable-v24/custom_btn_no_radius.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/custom_no_r_btn.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/custom_white_btn.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_send_24.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable-v24/search_icon_bg.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/text_background.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable/custom_btn.xml" value="0.2035" />
         <entry key="app/src/main/res/drawable/custom_colorless_btn.xml" value="0.1425" />
@@ -38,6 +41,10 @@
         <entry key="app/src/main/res/layout/fragment_sign_up_organisation.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/google_btn.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/loading_diag.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/loading_orphanage.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/no_result_found.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/orphanage_card.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/search_toolbar.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/upload_image.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.127" />
       </map>

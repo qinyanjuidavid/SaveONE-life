@@ -136,14 +136,13 @@ public class OtherInfo extends Fragment {
         data.put("location", location);
 
         //convert to hashmap
-        Map<String, Object> docData = new HashMap<>();
-
-        docData.put(org_name, data);
+        //Map<String, Object> docData = new HashMap<>();
+        //docData.put(org_name, data);
 
         //insert data to my db
         database.collection("Orphanage")
                 .document(email)
-                .set(docData, SetOptions.merge())
+                .set(data, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

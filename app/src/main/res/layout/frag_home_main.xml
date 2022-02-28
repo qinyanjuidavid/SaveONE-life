@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="fill_parent" 
-    android:layout_height="fill_parent" 
-    xmlns:android="http://schemas.android.com/apk/res/android" 
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:aap="http://schemas.android.com/tools">
 
 
     <LinearLayout
@@ -38,14 +38,15 @@
                 android:overScrollMode="always"
                 android:visibility="visible"
                 app:tabGravity="fill"
-                app:tabInlineLabel="false"
+                app:tabIndicatorAnimationMode="elastic"
+                app:tabInlineLabel="true"
                 app:tabMaxWidth="0.0dip"
                 app:tabMode="fixed"
                 app:tabRippleColor="@color/colorAccent"
                 app:tabSelectedTextColor="@color/colorAccent"
-                app:tabTextColor="@color/blue"
                 app:tabTextAppearance="@style/TabTextStyle"
-                app:tabUnboundedRipple="true"/>
+                app:tabTextColor="@color/blue"
+                app:tabUnboundedRipple="true" />
 
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

@@ -4,7 +4,6 @@ import static android.app.Activity.RESULT_OK;
 import static android.content.ContentValues.TAG;
 
 import android.app.Dialog;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
@@ -40,17 +39,12 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.Donors.CreateUserAccount;
-import com.wyksofts.saveone.util.AgreeWithTerms;
 import com.wyksofts.saveone.util.AlertPopDiag;
-import com.wyksofts.saveone.util.PasswordChecker;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 
 public class AdditionalInfo extends Fragment {
@@ -110,7 +104,6 @@ public class AdditionalInfo extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         uploadImageDialog = new Dialog(getContext());
@@ -143,7 +136,7 @@ public class AdditionalInfo extends Fragment {
 
         if(TextUtils.isEmpty(phone_number)){
             org_phone_number.setError("Enter Phone");
-        }else if (phone_number.length()<14){
+        }else if (phone_number.length()<13){
             org_phone_number.setError("Please Include Your Country Code (+254)");
         }else if (TextUtils.isEmpty(till_number)){
             org_till_number.setError("Enter Till / Paybill Number");
@@ -167,10 +160,12 @@ public class AdditionalInfo extends Fragment {
                                    String bank_account, String bank_name,String country) {
 
         database = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
 
         String email = user.getEmail();
-        String uid = user.getUid();
         String org_name = user.getDisplayName();
+
 
         Map<String, Object> data = new HashMap<>();
         data.put("phone_number", phone_number);
@@ -178,14 +173,16 @@ public class AdditionalInfo extends Fragment {
         data.put("bank_account", bank_account);
         data.put("bank_name", bank_name);
         data.put("country", country);
+        data.put("email", email);
+        data.put("name", org_name);
 
-        Map<String, Object> docData = new HashMap<>();
-       //docData.put(pName, Arrays.asList(data));
-        docData.put(org_name, data);
+        //Map<String, Object> docData = new HashMap<>();
+        //docData.put(pName, Arrays.asList(data));
+        //docData.put(org_name, data);
 
         database.collection("Orphanage")
                  .document(email)
-                .set(docData, SetOptions.merge())
+                .set(data, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {

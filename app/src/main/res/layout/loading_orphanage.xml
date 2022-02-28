@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ProgressBar
+                android:id="@+id/loading_products"
+                android:layout_width="24dp"
+                android:layout_marginEnd="8dp"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/colorAccent"
+                android:layout_height="24dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="font/mont"
+                android:text="@string/please_wait_as_we_search"
+                android:textColor="@color/colorAccent"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:fontFamily="font/mont"
+            android:layout_marginEnd="20dp"
+            android:layout_marginStart="20dp"
+            android:text="@string/million"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/retry_btn"
+            android:layout_width="200dp"
+            android:textStyle="bold"
+            android:fontFamily="@font/mont"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:text="@string/retry"
+            android:background="@drawable/custom_no_r_btn"
+            android:layout_marginBottom="12dp"
+            android:layout_height="32dp"/>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

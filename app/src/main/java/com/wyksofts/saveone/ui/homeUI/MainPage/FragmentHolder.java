@@ -128,7 +128,7 @@ public class FragmentHolder extends Fragment {
             }
         });
 
-        TabLayout.Tab tab = tabLayout.getTabAt(1);
+        TabLayout.Tab tab = tabLayout.getTabAt(0);
         tab.select();
     }
 

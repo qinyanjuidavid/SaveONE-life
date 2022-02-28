@@ -139,9 +139,7 @@ public class SignUpOrganization extends Fragment {
         else{
             new CreateUserAccount(getContext()).authUser(name, email, password, loading_bar, false);
 
-            if (isMoveNext){
-
-            }else{
+            if (!isMoveNext){
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -151,6 +149,8 @@ public class SignUpOrganization extends Fragment {
                         .addSharedElement(register_new_orphanage, "addInfo")
                         .replace(R.id.root_layout, new AdditionalInfo())
                         .commit();
+            }else{
+
             }
 
 

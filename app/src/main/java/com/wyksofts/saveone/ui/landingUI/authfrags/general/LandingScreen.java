@@ -1,5 +1,6 @@
 package com.wyksofts.saveone.ui.landingUI.authfrags.general;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.core.view.ViewCompat;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.SignUpOrganization;
 import com.wyksofts.saveone.ui.landingUI.authfrags.others.SignUpDonor;
@@ -19,7 +21,7 @@ import com.wyksofts.saveone.ui.landingUI.authfrags.others.SignUpDonor;
 public class LandingScreen extends Fragment {
 
     Button orphanage, donor;
-    TextView login_btn;
+    TextView login_btn,donate_btn;
 
 
     public LandingScreen() {
@@ -62,6 +64,15 @@ public class LandingScreen extends Fragment {
                 showLoginPage(new Login());
             }
         });
+
+        donate_btn = view.findViewById(R.id.donate_btn);
+        donate_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
+
 
         setTransitionName();
 

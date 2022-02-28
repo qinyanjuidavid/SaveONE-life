@@ -5,8 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.landingUI.LandingHomePage;
+import com.wyksofts.saveone.ui.landingUI.authfrags.general.LandingScreen;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -14,7 +18,6 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
-
         startActivity();
     }
 
@@ -29,10 +32,17 @@ public class SplashScreen extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 } finally {
-                    startActivity(new Intent(getApplicationContext(), LandingHomePage.class));
+                    checkUserExists();
                 }
             }
         };
         timer.start();
+    }
+
+    private void checkUserExists() {
+        Intent intent;
+        intent = new Intent(getApplicationContext(), LandingHomePage.class);
+        startActivity(intent);
+
     }
 }

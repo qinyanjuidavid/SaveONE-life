@@ -57,9 +57,18 @@
     <string name="congratulations">Congratulations</string>
     <string name="sms">
         for registering with us, lets fight POVERTY, HUNGER and improve the
-        <u>level of education</u> together.
+        <u>LEVEL OF EDUCATION</u> together.
         We will contact you within the next 72 hrs to verify the information you have just provided.
         Thanks for sharing with us. In case of any questions, please feel free to contact by clicking the button below.
     </string>
     <string name="contact_us">Contact Us</string>
+    <string name="name">Name</string>
+    <string name="learn_more">Learn more</string>
+    <string name="please_wait_as_we_search">Please wait as we search</string>
+    <string name="million">Hello, Do you know about 9.2% of the world, or 689 million people,
+        live in extreme poverty on less than $1.90 a day, according to the World Bank</string>
+    <string name="retry">Retry</string>
+    <string name="we_searched_all_over_the_world">We searched all over the world</string>
+    <string name="we_did_not_find_result_of_your_search">We did not find result of your search</string>
+    <string name="search_orphanage_around_you">Search orphanage around you</string>
 </resources>

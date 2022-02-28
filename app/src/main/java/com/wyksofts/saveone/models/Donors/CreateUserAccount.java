@@ -39,7 +39,7 @@ public class CreateUserAccount extends View {
         super(context);
         mContext = context;
         auth = FirebaseAuth.getInstance();
-        pref = getContext().getSharedPreferences("ProductData", 0);
+        pref = getContext().getSharedPreferences("userData", 0);
         editor = pref.edit();
     }
 
@@ -83,13 +83,15 @@ public class CreateUserAccount extends View {
 
                             String s = "Hello\t["+name+"]\t thanks for registering with us";
 
+                            editor.putString("name", name);
+                            editor.putString("email", email);
+
                             new showAppToast().showSuccess(getContext(),s);
 
                             if(isDonor){
                                 mContext.startActivity(new Intent(getContext(), MainActivity.class));
                             }else{
-                                SignUpOrganization organization = new SignUpOrganization();
-                                organization.setMoveNext(true);
+                                new SignUpOrganization().setMoveNext(true);
                             }
                         }
                     }
