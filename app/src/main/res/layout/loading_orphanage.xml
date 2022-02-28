@@ -30,7 +30,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="font/mont"
+                android:fontFamily="@font/mont"
                 android:text="@string/please_wait_as_we_search"
                 android:textColor="@color/colorAccent"
                 android:textSize="20sp"
@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="12dp"
-            android:fontFamily="font/mont"
+            android:fontFamily="@font/mont"
             android:layout_marginEnd="20dp"
             android:layout_marginStart="20dp"
             android:text="@string/million"

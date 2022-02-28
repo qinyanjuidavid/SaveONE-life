@@ -14,7 +14,17 @@ public class OrphanageModel {
     String bank_account;
     String bank_account_name;
     String email;
-    Uri group_image;
+    String group_image;
+    String verified;
+    String what_needed;
+
+    public String getWhat_needed() {
+        return what_needed;
+    }
+
+    public void setWhat_needed(String what_needed) {
+        this.what_needed = what_needed;
+    }
 
     public String getEmail() {
         return email;
@@ -23,12 +33,20 @@ public class OrphanageModel {
     public void setEmail(String email) {
         this.email = email;
     }
+    public String getVerified() {
+        return verified;
+    }
 
-    public Uri getGroup_image() {
+    public void setVerified(String verified) {
+        this.verified = verified;
+    }
+
+
+    public String getGroup_image() {
         return group_image;
     }
 
-    public void setGroup_image(Uri group_image) {
+    public void setGroup_image(String group_image) {
         this.group_image = group_image;
     }
 
@@ -117,7 +135,8 @@ public class OrphanageModel {
     public OrphanageModel(String name, String location, String coordinates,
                           String country, String description, String number_of_children,
                           String phone_number,
-                          String bank_account, String bank_account_name, String till_number, Uri url, String email) {
+                          String bank_account, String bank_account_name,
+                          String till_number, String url, String email, String verified, String what_needed) {
         this.name = name;
         this.location = location;
         this.coordinates = coordinates;
@@ -130,5 +149,7 @@ public class OrphanageModel {
         this.till_number = till_number;
         this.group_image = url;
         this.email = email;
+        this.verified = verified;
+        this.what_needed = what_needed;
     }
 }

@@ -14,13 +14,13 @@
         android:textSize="14sp"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        android:fontFamily="font/mont"
+        android:fontFamily="@font/mont"
         android:text="@string/we_searched_all_over_the_world"
         android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="wrap_content"
         android:textSize="12sp"
-        android:fontFamily="font/mont"
+        android:fontFamily="@font/mont"
         android:text="@string/we_did_not_find_result_of_your_search"
         android:layout_marginBottom="12dp"
         android:layout_height="wrap_content"/>

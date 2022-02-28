@@ -30,6 +30,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -45,6 +46,8 @@ import com.wyksofts.saveone.util.showAppToast;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
+import es.dmoral.toasty.Toasty;
 
 
 public class AdditionalInfo extends Fragment {
@@ -104,6 +107,9 @@ public class AdditionalInfo extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        database = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         uploadImageDialog = new Dialog(getContext());
@@ -155,17 +161,12 @@ public class AdditionalInfo extends Fragment {
     }
 
 
-    //add data to the data base
+    //add data to the data base and UploadImage method
     private void addInfoToDataBase(String phone_number, String till_number,
-                                   String bank_account, String bank_name,String country) {
-
-        database = FirebaseFirestore.getInstance();
-        user = FirebaseAuth.getInstance().getCurrentUser();
-
+                                   String bank_account, String bank_name,String country){
 
         String email = user.getEmail();
         String org_name = user.getDisplayName();
-
 
         Map<String, Object> data = new HashMap<>();
         data.put("phone_number", phone_number);
@@ -176,12 +177,9 @@ public class AdditionalInfo extends Fragment {
         data.put("email", email);
         data.put("name", org_name);
 
-        //Map<String, Object> docData = new HashMap<>();
-        //docData.put(pName, Arrays.asList(data));
-        //docData.put(org_name, data);
 
         database.collection("Orphanage")
-                 .document(email)
+                .document(email)
                 .set(data, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
@@ -199,6 +197,93 @@ public class AdditionalInfo extends Fragment {
                                 "Connection error");
                     }
                 });
+    }
+
+    //add image url to the database
+    private void addImageUrl(Uri downloadUrl) {
+        uploadImageDialog.show();
+        String email = user.getEmail();
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("url", downloadUrl.toString());
+
+        database.collection("Orphanage")
+                .document(email)
+                .set(data, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        Log.d(TAG, "Image url successfully added!");
+
+                        uploadImageDialog.dismiss();
+                        new showAppToast().showSuccess(getContext(),"All set...loading next");
+
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .addToBackStack(null)
+                                .setCustomAnimations(R.anim.fade_in,
+                                        R.anim.fade_out)
+                                .addSharedElement(btn, "otherInfo")
+                                .replace(R.id.root_layout, new OtherInfo())
+                                .commit();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                        new AlertPopDiag(getContext()).show(
+                                "Oops we have experienced an error while uploading your info.",
+                                "Connection error");
+                    }
+                });
+    }
+
+
+    private void uploadImage() {
+        if (filePath != null) {
+
+            uploadImageDialog.setContentView(R.layout.upload_image);
+            uploadImageDialog.setCancelable(false);
+            uploadImageDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            uploadImageDialog.show();
+
+            // Defining the child of storageReference using user email
+            String name = user.getEmail();
+
+            StorageReference ref = storageReference.child("images/" + name);
+
+            // adding listeners on upload
+            ref.putFile(filePath)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot){
+                                    uploadImageDialog.dismiss();
+                                    Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
+                                    while (!urlTask.isSuccessful());
+                                    Uri downloadUrl = urlTask.getResult();
+                                    addImageUrl(downloadUrl);
+
+                                }
+                            })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e){
+                            new showAppToast().showFailure(getContext(),"Oops your group image is too large in size");
+                            uploadImageDialog.dismiss();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onProgress(
+                                        UploadTask.TaskSnapshot taskSnapshot){
+                                    double progress = (100.0 * taskSnapshot.getBytesTransferred()
+                                            / taskSnapshot.getTotalByteCount());
+                                    TextView progress_text = uploadImageDialog.findViewById(R.id.text_status);
+                                    progress_text.setText("Uploaded " + (int)progress + "%");
+                                }
+                            });
+        }
     }
 
 
@@ -226,7 +311,7 @@ public class AdditionalInfo extends Fragment {
                 // Setting image on image view using Bitmap
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(
                         getActivity().getContentResolver(),
-                                filePath);
+                        filePath);
                 groupPhoto.setImageBitmap(bitmap);
             }catch (IOException e) {
                 e.printStackTrace();
@@ -234,57 +319,5 @@ public class AdditionalInfo extends Fragment {
         }
     }
 
-    // UploadImage method
-    private void uploadImage() {
-        if (filePath != null) {
 
-            uploadImageDialog.setContentView(R.layout.upload_image);
-            uploadImageDialog.setCancelable(false);
-            uploadImageDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-            uploadImageDialog.show();
-
-
-            // Defining the child of storageReference using user email
-            String name = user.getEmail();
-
-            StorageReference ref = storageReference.child("images/" + name);
-
-            // adding listeners on upload
-            ref.putFile(filePath)
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onSuccess(
-                                        UploadTask.TaskSnapshot taskSnapshot){
-                                    uploadImageDialog.dismiss();
-
-                                    //go next
-                                    getActivity().getSupportFragmentManager()
-                                            .beginTransaction()
-                                            .addToBackStack(null)
-                                            .setCustomAnimations(R.anim.fade_in,
-                                                    R.anim.fade_out)
-                                            .addSharedElement(btn, "otherInfo")
-                                            .replace(R.id.root_layout, new OtherInfo())
-                                            .commit();
-                                }
-                            })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e){
-                            new showAppToast().showFailure(getContext(),"Image is too large in size");
-                            uploadImageDialog.dismiss();
-                        }
-                    })
-                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                                @Override
-                                public void onProgress(
-                                        UploadTask.TaskSnapshot taskSnapshot){
-                                    double progress = (100.0 * taskSnapshot.getBytesTransferred()
-                                            / taskSnapshot.getTotalByteCount());
-                                    TextView progress_text = uploadImageDialog.findViewById(R.id.text_status);
-                                    progress_text.setText("Uploaded " + (int)progress + "%");
-                                }
-                            });
-        }
-    }
 }

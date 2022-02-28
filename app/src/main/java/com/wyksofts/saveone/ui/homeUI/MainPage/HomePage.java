@@ -40,6 +40,8 @@ import com.wyksofts.saveone.models.Organisation.OrphanageModel;
 import java.util.ArrayList;
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class HomePage extends Fragment {
 
     private List<OrphanageModel> listdata;
@@ -48,6 +50,7 @@ public class HomePage extends Fragment {
     private FirebaseFirestore database;
     private OrphanageListAdapter adapter;
     private EditText search;
+    StorageReference storageRef;
     private LinearLayout no_result_found,loading_products;
     private Button search_again, retry_connecting;
 
@@ -91,12 +94,15 @@ public class HomePage extends Fragment {
     }
 
     private void initUI() {
-        GridLayoutManager layout = new GridLayoutManager(getContext(),1);
+        GridLayoutManager layout = new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(layout);
 
         recyclerView.addItemDecoration(new LayoutMarginDecoration(2, 2));
         listdata = new ArrayList<OrphanageModel>();
         database = FirebaseFirestore.getInstance();
+
+        storageRef = FirebaseStorage.getInstance().getReference();
+
         getData();
     }
 
@@ -128,27 +134,14 @@ public class HomePage extends Fragment {
                                 String number_of_children = document.getString("number_of_children");
                                 String phone_number = document.getString("phone_number");
                                 String email = document.getString("email");
-
-
-                              StorageReference storageRef = FirebaseStorage.getInstance().getReference();
-                              storageRef.child("images/"+email).getDownloadUrl()
-                                        .addOnSuccessListener(new OnSuccessListener<Uri>() {
-                                            @Override
-                                            public void onSuccess(Uri uri) {
-                                                group_image = uri;
-                                            }
-                                        }).addOnFailureListener(new OnFailureListener() {
-                                    @Override
-                                    public void onFailure(@NonNull Exception e) {
-                                        //failed to find
-                                    }
-                                });
-
+                                String verified = document.getString("verified");
+                                String what_needed = document.getString("in_need_of");
+                                String url = document.getString("url");
 
                                 listdata.add(new OrphanageModel(name,location, coordinates,
                                          country,  description, number_of_children,
                                          phone_number, bank_account,bank_account_name,
-                                        till_number, group_image, email));
+                                        till_number, url, email,verified,what_needed));
 
                                 recyclerView.setAdapter(adapter);
                             }

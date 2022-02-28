@@ -47,8 +47,8 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CustomInputStyle"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            android:layout_marginBottom="40dp"
+            android:layout_height="70dp"
+            android:layout_marginBottom="8dp"
             android:textColorHint="@color/gray2"
             app:boxBackgroundMode="outline"
             app:boxCornerRadiusBottomEnd="6dp"
@@ -67,7 +67,7 @@
                 android:fontFamily="@font/mont"
                 android:hint="@string/brief_describe_about_the_orphanage"
                 android:inputType="textMultiLine"
-                android:lines="100"
+                android:lines="6"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:maxLines="200"
                 android:minLines="100"
@@ -116,6 +116,39 @@
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CustomInputStyle"
             android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginBottom="8dp"
+            android:textColorHint="@color/gray2"
+            app:boxBackgroundMode="outline"
+            app:boxCornerRadiusBottomEnd="8dp"
+            app:boxCornerRadiusBottomStart="8dp"
+            app:boxCornerRadiusTopEnd="8dp"
+            app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidth=".8dp"
+            app:errorTextColor="@color/colorAccent"
+            app:hintTextColor="@color/colorAccent"
+            app:passwordToggleEnabled="false"
+            app:passwordToggleTint="#FFFFFF">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/organisation_needed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/mont"
+                android:hint="@string/what_do_you_need_most_at_the_moment_eg_food"
+                android:inputType="text"
+                android:singleLine="true"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/blue"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                tools:ignore="SmallSp" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            style="@style/CustomInputStyle"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:textColorHint="@color/gray2"
             app:boxBackgroundMode="outline"
@@ -131,15 +164,16 @@
                 android:id="@+id/organisation_coordinates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:lines="1"
+                android:fontFamily="@font/mont"
                 android:hint="@string/geographic_location_optional"
+                android:inputType="numberDecimal"
+                android:lines="1"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
                 android:textColor="@color/blue"
-                android:fontFamily="@font/mont"
-                android:textStyle="bold"
                 android:textColorHint="@color/blue"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 

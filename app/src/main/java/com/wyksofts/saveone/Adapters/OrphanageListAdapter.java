@@ -16,6 +16,8 @@ import com.wyksofts.saveone.models.Organisation.OrphanageModel;
 
 import java.util.List;
 
+import es.dmoral.toasty.Toasty;
+
 public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdapter.ViewHolder> {
 
     List<OrphanageModel> list_array;
@@ -42,12 +44,23 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdap
                 .placeholder(R.drawable.imggg)
                 .into(holder.group_image);
 
-        String number = data.getNumber_of_children()+"\tLife's";
+        String what_needed = data.getWhat_needed();
+        String number = data.getNumber_of_children()+"\tLife's"+"\tin need of\t"+what_needed;
         String address = "Address:\t"+data.getLocation();
 
+        //feed data to the UI card
         holder.name.setText(data.getName());
         holder.location.setText(address);
         holder.number_of_c.setText(number);
+
+        //check whether home is verified or not
+        String verified_home = data.getVerified();
+
+        if (verified_home != null){
+            holder.verified.setVisibility(View.VISIBLE);
+        }else{
+            holder.verified.setVisibility(View.GONE);
+        }
 
     }
 
@@ -57,7 +70,7 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdap
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView group_image;
+        ImageView group_image, verified;
         TextView name, location, number_of_c;
 
         public ViewHolder(@NonNull View itemView) {
@@ -66,6 +79,7 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdap
             name = itemView.findViewById(R.id.org_name);
             location = itemView.findViewById(R.id.org_location);
             number_of_c = itemView.findViewById(R.id.org_number);
+            verified = itemView.findViewById(R.id.verified_home);
         }
     }
 }

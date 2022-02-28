@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/gray3"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <LinearLayout
@@ -16,6 +17,13 @@
 
         <include layout="@layout/search_toolbar" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clipToPadding="false"
+            android:layoutAnimation="@anim/layout_animation"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         <LinearLayout
             android:id="@+id/no_result_found"
@@ -36,16 +44,6 @@
 
             <include layout="@layout/loading_orphanage" />
         </LinearLayout>
-
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clipToPadding="false"
-            android:layoutAnimation="@anim/layout_animation"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,7 +21,7 @@ public class FragmentHolder extends Fragment {
 
     private String[] Headers = new String[] { "Home", "Map", "Reviews" };
     private int[] icons =  new int[]{
-            R.drawable.baseline_home_20,
+            R.drawable.baseline_home_24,
             R.drawable.baseline_map_24,
             R.drawable.baseline_chat_24,};
 
@@ -95,15 +95,12 @@ public class FragmentHolder extends Fragment {
 
     private void showHeaders() {
 
-        tabLayout.getTabAt(0).setIcon(icons[0]).setText(Headers[0]);
-        tabLayout.getTabAt(1).setText(Headers[1]).setIcon(icons[1]);
-        tabLayout.getTabAt(2).setText(Headers[2]).setIcon(icons[2]);
+        tabLayout.getTabAt(0).setIcon(icons[0]);
+        tabLayout.getTabAt(1).setIcon(icons[1]);
+        tabLayout.getTabAt(2).setIcon(icons[2]);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        tabLayout.getTabAt(0)
-                .getIcon()
-                .setColorFilter(getResources().getColor(R.color.blue),
-                        PorterDuff.Mode.SRC_IN);
+
 
         tabLayout.setTabGravity(0);
 

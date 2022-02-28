@@ -71,4 +71,6 @@
     <string name="we_searched_all_over_the_world">We searched all over the world</string>
     <string name="we_did_not_find_result_of_your_search">We did not find result of your search</string>
     <string name="search_orphanage_around_you">Search orphanage around you</string>
+    <string name="donate_here">DONATE HERE</string>
+    <string name="what_do_you_need_most_at_the_moment_eg_food">What do you need most at the moment?(eg food)</string>
 </resources>

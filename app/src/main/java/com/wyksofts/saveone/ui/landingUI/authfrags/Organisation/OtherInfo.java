@@ -46,7 +46,8 @@ public class OtherInfo extends Fragment {
     Button finish_btn;
     FirebaseUser user;
     FirebaseFirestore database;
-    EditText org_description,org_children, org_coordinates, location_address;
+    EditText org_description,org_children, org_coordinates, location_address, org_in_need;
+
     Dialog congratulationsDialog;
 
     public OtherInfo() {
@@ -74,6 +75,7 @@ public class OtherInfo extends Fragment {
         org_children =view.findViewById(R.id.organisation_number_of_children);
         org_coordinates = view.findViewById(R.id.organisation_coordinates);
         location_address = view.findViewById(R.id.organisation_location);
+        org_in_need = view.findViewById(R.id.organisation_needed);
 
         ViewCompat.setTransitionName(finish_btn, "otherInfo");
 
@@ -103,6 +105,7 @@ public class OtherInfo extends Fragment {
         String number_of_children = org_children.getText().toString();
         String coordinates = org_coordinates.getText().toString();
         String location = location_address.getText().toString();
+        String what_needed = org_in_need.getText().toString();
 
         if(TextUtils.isEmpty(description)){
             org_description.setError("Please tell us more about the orphanage");
@@ -110,19 +113,21 @@ public class OtherInfo extends Fragment {
             org_children.setError("Description is too short");
         }else if (TextUtils.isEmpty(number_of_children)){
             org_children.setError("Number is required");
+        }else if (TextUtils.isEmpty(what_needed)){
+            org_in_need.setError("What needed most is required");
         }else if (TextUtils.isEmpty(location)){
             location_address.setError("Please enter location");
         }else if (!location.contains(",")){
             location_address.setError("Please separate using a comma (,)");
         }else{
-            addInfoToDataBase(description, number_of_children, coordinates, location);
+            addInfoToDataBase(description, number_of_children, coordinates, location, what_needed);
         }
     }
 
 
     //add data to other info data base
     private void addInfoToDataBase(String description, String number_of_children,
-                                   String coordinates, String location) {
+                                   String coordinates, String location, String what_needed) {
 
         database = FirebaseFirestore.getInstance();
 
@@ -134,6 +139,7 @@ public class OtherInfo extends Fragment {
         data.put("number_of_children", number_of_children);
         data.put("coordinates", coordinates);
         data.put("location", location);
+        data.put("in_need_of",what_needed);
 
         //convert to hashmap
         //Map<String, Object> docData = new HashMap<>();
