@@ -41,8 +41,10 @@
         <entry key="app/src/main/res/layout/fragment_landing_screen.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_map_view.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/fragment_maps_view.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_other_info.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_reviews_view.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/fragment_select_location_map.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up_donor.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up_organisation.xml" value="0.25104166666666666" />
@@ -52,6 +54,7 @@
         <entry key="app/src/main/res/layout/no_result_found.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/orphanage_card.xml" value="0.2202255249023437" />
         <entry key="app/src/main/res/layout/search_toolbar.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/select_coordinates_dialog.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/upload_image.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.127" />
       </map>

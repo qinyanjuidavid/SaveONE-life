@@ -23,6 +23,19 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp">
 
+                <TextView
+                    android:id="@+id/header_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center"
+                    android:layout_centerInParent="true"
+                    android:text="@string/congratulations"
+                    android:textColor="@color/white"
+                    android:fontFamily="@font/mont"
+                    android:textSize="20.0sp"
+                    android:textStyle="bold" />
+
                 <ImageView
                     android:id="@+id/close"
                     android:layout_alignParentEnd="true"
@@ -42,18 +55,6 @@
                 android:layout_height="fill_parent">
 
                 <TextView
-                    android:id="@+id/header_title"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:text="@string/congratulations"
-                    android:textColor="@color/blue"
-                    android:fontFamily="@font/mont"
-                    android:textSize="30.0sp"
-                    android:textStyle="bold" />
-
-                <TextView
                     android:id="@+id/desc"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -61,7 +62,7 @@
                     android:gravity="center"
                     android:text="@string/sms"
                     android:fontFamily="@font/mont"
-                    android:textSize="20.0sp"
+                    android:textSize="18.0sp"
                     android:textStyle="bold"/>
 
 

@@ -40,14 +40,13 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.OtherInfo;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
-import es.dmoral.toasty.Toasty;
 
 
 public class AdditionalInfo extends Fragment {
@@ -280,7 +279,10 @@ public class AdditionalInfo extends Fragment {
                                     double progress = (100.0 * taskSnapshot.getBytesTransferred()
                                             / taskSnapshot.getTotalByteCount());
                                     TextView progress_text = uploadImageDialog.findViewById(R.id.text_status);
-                                    progress_text.setText("Uploaded " + (int)progress + "%");
+                                    progress_text.setText(
+                                            new StringBuilder().append("Uploading ")
+                                            .append((int) progress).append("%")
+                                            .toString());
                                 }
                             });
         }

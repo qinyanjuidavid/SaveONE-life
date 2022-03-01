@@ -73,4 +73,8 @@
     <string name="search_orphanage_around_you">Search orphanage around you</string>
     <string name="donate_here">DONATE HERE</string>
     <string name="what_do_you_need_most_at_the_moment_eg_food">What do you need most at the moment?(eg food)</string>
+    <string name="map">AIzaSyAL_Snuh8st6CtGVqrfTsUiIsnt1roLhMU</string>
+    <string name="please_your_location">Please your location</string>
+    <string name="exact_location_text">Please Drag the pin to show exact location of the orphanage.</string>
+    <string name="select_orphanage_location">Select Orphanage Location</string>
 </resources>

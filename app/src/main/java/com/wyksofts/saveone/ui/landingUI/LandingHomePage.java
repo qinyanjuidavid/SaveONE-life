@@ -21,4 +21,5 @@ public class LandingHomePage extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.root_layout,
                 new LandingScreen()).commit();
     }
+
 }

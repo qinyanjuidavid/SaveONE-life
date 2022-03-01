@@ -1,31 +1,54 @@
-package com.wyksofts.saveone.ui.landingUI.authfrags.Organisation;
+package com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo;
 
 import static android.content.ContentValues.TAG;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
 import android.text.TextUtils;
+import android.text.TextWatcher;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -41,19 +64,22 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class OtherInfo extends Fragment {
+public class OtherInfo extends Fragment{
 
+    //views elements
     Button finish_btn;
     FirebaseUser user;
     FirebaseFirestore database;
-    EditText org_description,org_children, org_coordinates, location_address, org_in_need;
+    EditText org_description,org_children, location_address, org_in_need;
 
     Dialog congratulationsDialog;
+
 
     public OtherInfo() {
         // Required empty public constructor
     }
 
+    @SuppressLint("MissingPermission")
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,21 +99,19 @@ public class OtherInfo extends Fragment {
 
         org_description = view.findViewById(R.id.organisation_description);
         org_children =view.findViewById(R.id.organisation_number_of_children);
-        org_coordinates = view.findViewById(R.id.organisation_coordinates);
         location_address = view.findViewById(R.id.organisation_location);
         org_in_need = view.findViewById(R.id.organisation_needed);
 
         ViewCompat.setTransitionName(finish_btn, "otherInfo");
 
-        congratulationsDialog = new Dialog(getContext());
 
         return view;
     }
 
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
 
         finish_btn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,13 +121,11 @@ public class OtherInfo extends Fragment {
         });
     }
 
-
     //get text info from fields and continue
     private void verifyFields() {
 
         String description = org_description.getText().toString();
         String number_of_children = org_children.getText().toString();
-        String coordinates = org_coordinates.getText().toString();
         String location = location_address.getText().toString();
         String what_needed = org_in_need.getText().toString();
 
@@ -120,30 +142,29 @@ public class OtherInfo extends Fragment {
         }else if (!location.contains(",")){
             location_address.setError("Please separate using a comma (,)");
         }else{
-            addInfoToDataBase(description, number_of_children, coordinates, location, what_needed);
+            //add details
+            addInfoToDataBase(description, number_of_children, location, what_needed);
         }
     }
 
 
     //add data to other info data base
-    private void addInfoToDataBase(String description, String number_of_children,
-                                   String coordinates, String location, String what_needed) {
+    private void addInfoToDataBase(String description,
+                                   String number_of_children,
+                                   String location,
+                                   String what_needed) {
 
         database = FirebaseFirestore.getInstance();
 
         String email = user.getEmail();
         String org_name = user.getDisplayName();
 
+
         Map<String, Object> data = new HashMap<>();
         data.put("description", description);
         data.put("number_of_children", number_of_children);
-        data.put("coordinates", coordinates);
         data.put("location", location);
         data.put("in_need_of",what_needed);
-
-        //convert to hashmap
-        //Map<String, Object> docData = new HashMap<>();
-        //docData.put(org_name, data);
 
         //insert data to my db
         database.collection("Orphanage")
@@ -152,8 +173,13 @@ public class OtherInfo extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        new showAppToast().showSuccess(getContext(),"Done...");
-                        showCongratulationsDialog();
+
+                        getActivity().getSupportFragmentManager()
+                                .beginTransaction()
+                                .setCustomAnimations(R.anim.fade_in,
+                                        R.anim.fade_out)
+                                .replace(R.id.root_layout, new SelectLocationMap())
+                                .commit();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -165,44 +191,4 @@ public class OtherInfo extends Fragment {
                     }
                 });
     }
-
-    @SuppressLint("SetTextI18n")
-    private void showCongratulationsDialog() {
-        congratulationsDialog.setContentView(R.layout.congratulation_diag);
-
-        TextView header_title = congratulationsDialog.findViewById(R.id.header_title);
-        TextView desc = congratulationsDialog.findViewById(R.id.desc);
-        header_title.setAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.fall_down));
-
-        String s = getResources().getString(R.string.sms);
-        desc.setText("Hello,\t"+user.getDisplayName()+"\tthanks\t"+s);
-
-        congratulationsDialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                congratulationsDialog.dismiss();
-                startActivity(new Intent(getContext(), MainActivity.class));
-            }
-        });
-
-        congratulationsDialog.findViewById(R.id.contact_us).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent("android.intent.action.SEND");
-                intent.putExtra("android.intent.extra.EMAIL", new String[] { "wycliffnjenga19@gmail.com" });
-                intent.setType("text/html");
-                intent.setPackage("com.google.android.gm");
-                startActivity(Intent.createChooser(intent, "Send mail Wycliff / N"));
-
-            }
-        });
-
-        congratulationsDialog.setCancelable(false);
-        congratulationsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        congratulationsDialog.show();
-
-    }
-
-
 }

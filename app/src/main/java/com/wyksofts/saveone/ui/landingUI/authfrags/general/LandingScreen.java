@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.SelectLocationMap;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.SignUpOrganization;
 import com.wyksofts.saveone.ui.landingUI.authfrags.others.SignUpDonor;
 
@@ -53,7 +54,7 @@ public class LandingScreen extends Fragment {
         orphanage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showOrphanagePage(new SignUpOrganization());
+                showOrphanagePage(new SelectLocationMap());//SignUpOrganization
             }
         });
 
@@ -103,7 +104,7 @@ public class LandingScreen extends Fragment {
                 .addToBackStack(null)
                 .setCustomAnimations(R.anim.fade_in,
                         R.anim.fade_out)
-                .addSharedElement(orphanage, "orphanage")
+                //.addSharedElement(orphanage, "orphanage")
                 .replace(R.id.root_layout, fragment)
                 .commit();
     }

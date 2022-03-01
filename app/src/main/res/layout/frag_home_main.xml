@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical"
+<RelativeLayout
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/gray3"
+    android:background="@android:color/transparent"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:aap="http://schemas.android.com/tools">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" >
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        tools:ignore="ObsoleteLayoutParam">
         <androidx.viewpager.widget.ViewPager
             android:id="@+id/pager"
             android:layout_width="match_parent"
@@ -20,6 +22,7 @@
     </LinearLayout>
 
     <RelativeLayout
+        android:layout_alignParentBottom="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -41,6 +44,7 @@
                 android:visibility="visible"
                 app:tabGravity="fill"
                 app:tabIndicatorAnimationMode="elastic"
+                app:tabIndicatorColor="@color/white"
                 app:tabIndicatorFullWidth="true"
                 app:tabInlineLabel="false"
                 app:tabMode="fixed"
@@ -54,4 +58,4 @@
     </RelativeLayout>
 
 
-</LinearLayout>
+</RelativeLayout>

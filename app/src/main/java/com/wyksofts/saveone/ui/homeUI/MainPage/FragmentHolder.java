@@ -88,7 +88,7 @@ public class FragmentHolder extends Fragment {
 
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         viewPagerAdapter.addFrag(new HomePage());
-        viewPagerAdapter.addFrag(new MapView());
+        viewPagerAdapter.addFrag(new MapsView());
         viewPagerAdapter.addFrag(new ReviewsView());
         pager.setAdapter(viewPagerAdapter);
     }
@@ -100,7 +100,11 @@ public class FragmentHolder extends Fragment {
         tabLayout.getTabAt(2).setIcon(icons[2]);
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-
+        tabLayout.getTabAt(0)
+                .getIcon()
+                .setColorFilter(getResources()
+                                .getColor(R.color.colorAccent),
+                        PorterDuff.Mode.SRC_IN);
 
         tabLayout.setTabGravity(0);
 
