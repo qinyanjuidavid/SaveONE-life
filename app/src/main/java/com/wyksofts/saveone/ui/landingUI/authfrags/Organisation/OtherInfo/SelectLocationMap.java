@@ -172,8 +172,10 @@ public class SelectLocationMap extends Fragment implements
         database = FirebaseFirestore.getInstance();
         String email = user.getEmail();
 
+        String coordinates = curr_position.latitude+","+curr_position.longitude;
+
         Map<String, Object> data = new HashMap<>();
-        data.put("coordinates", curr_position.toString());
+        data.put("coordinates", coordinates);
 
         database.collection("Orphanage")
                 .document(email)
@@ -249,7 +251,8 @@ public class SelectLocationMap extends Fragment implements
     public void onMarkerDragStart(Marker marker) {
         LatLng position0 = marker.getPosition();
 
-        Log.d(getClass().getSimpleName(), String.format("Drag from %f:%f",
+        Log.d(getClass().getSimpleName(),
+                String.format("Drag from %f:%f",
                 position0.latitude,
                 position0.longitude));
     }
@@ -259,7 +262,8 @@ public class SelectLocationMap extends Fragment implements
         LatLng position0 = marker.getPosition();
 
         Log.d(getClass().getSimpleName(),
-                String.format("Dragging to %f:%f", position0.latitude,
+                String.format("Dragging to %f:%f",
+                        position0.latitude,
                         position0.longitude));
 
     }
@@ -268,7 +272,8 @@ public class SelectLocationMap extends Fragment implements
     public void onMarkerDragEnd(Marker marker) {
         curr_position = marker.getPosition();
 
-        Log.d(getClass().getSimpleName(), String.format("Dragged to %f:%f",
+        Log.d(getClass().getSimpleName(),
+                String.format("Dragged to %f:%f",
                 curr_position.latitude,
                 curr_position.longitude));
     }

@@ -1,5 +1,6 @@
 package com.wyksofts.saveone.ui.landingUI.authfrags.Organisation;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -39,15 +40,8 @@ public class SignUpOrganization extends Fragment {
     ProgressBar loading_bar;
     FirebaseAuth mAuth;
 
-    public Boolean getMoveNext() {
-        return isMoveNext;
-    }
-
-    public void setMoveNext(Boolean moveNext) {
-        isMoveNext = moveNext;
-    }
-
-    public Boolean isMoveNext = false;
+    SharedPreferences.Editor editor;
+    SharedPreferences pref;
 
     public SignUpOrganization() {
         // Required empty public constructor
@@ -70,6 +64,9 @@ public class SignUpOrganization extends Fragment {
 
         register_new_orphanage = view.findViewById(R.id.register_new_orphanage);
 
+        pref = getContext().getSharedPreferences("move", 0);
+        editor = pref.edit();
+
         OrgName = view.findViewById(R.id.organisation_name);
         OrgPassword =view.findViewById(R.id.organisation_password);
         OrgPasswordConfirm = view.findViewById(R.id.confirm_organisation_password);
@@ -78,7 +75,6 @@ public class SignUpOrganization extends Fragment {
         loading_bar = view.findViewById(R.id.loading_bar);
 
         ViewCompat.setTransitionName(register_new_orphanage, "orphanage");
-
 
 
         return view;
@@ -121,25 +117,30 @@ public class SignUpOrganization extends Fragment {
         else if (TextUtils.isEmpty(password)){
             OrgPassword.setError("Enter your password");
         }
-        else if (password.length()<6 && password_confirm.length()<6){
+        else if (password.length()<6){
             OrgPassword.setError("Your password is too short, must be atleast 6 characters.");
+        }
+        else if (!new PasswordChecker().isValidPassword(isValid)){
+            OrgPassword.setError("Must have atleast one upper case and one number.");
+        }
+        else if (password_confirm.length()<6){
             OrgPasswordConfirm.setError("Your password is too short, must be atleast 6 characters.");
         }
-        else if (!new PasswordChecker().isValidPassword(isValid)
-                && !new PasswordChecker().isValidPassword(password_confirm_isInvalid)){
-            OrgPassword.setError("Must have atleast one upper case and one number.");
+        else if (!new PasswordChecker().isValidPassword(password_confirm_isInvalid)){
             OrgPasswordConfirm.setError("Must have atleast one upper case and one number.");
         }
-        else if(password == password_confirm ){
+        else if(!password.equals(password_confirm)){
             OrgPasswordConfirm.setError("Password are not matching");
         }
         else if (!new AgreeWithTerms().agreewithTerms(agree_with_terms)){
             new showAppToast().showFailure(getContext(), "Agree with our terms to continue.");
         }
         else{
-            new CreateUserAccount(getContext()).authUser(name, email, password, loading_bar, false);
+            new CreateUserAccount(getContext()).authUser(name, email, password, loading_bar,false);
 
-            if (!isMoveNext){
+            Boolean isDonor = pref.getBoolean("isDonor",false);
+
+            if (!isDonor){
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
@@ -150,9 +151,8 @@ public class SignUpOrganization extends Fragment {
                         .replace(R.id.root_layout, new AdditionalInfo())
                         .commit();
             }else{
-
+                new showAppToast().showFailure(getContext(),"Failed to Create Account");
             }
-
 
         }
     }

@@ -146,7 +146,7 @@ public class SignUpDonor extends Fragment {
             new showAppToast().showFailure(getContext(), "Agree with our terms to continue.");
         }
         else{
-            new CreateUserAccount(getContext()).authUser(name,email,password, google_loading, true);
+            new CreateUserAccount(getContext()).authUser(name,email,password, google_loading,true);
         }
     }
 

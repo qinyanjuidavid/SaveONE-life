@@ -39,7 +39,7 @@ public class CreateUserAccount extends View {
         super(context);
         mContext = context;
         auth = FirebaseAuth.getInstance();
-        pref = getContext().getSharedPreferences("userData", 0);
+        pref = getContext().getSharedPreferences("move", 0);
         editor = pref.edit();
     }
 
@@ -59,6 +59,9 @@ public class CreateUserAccount extends View {
                         bar.setVisibility(GONE);
 
                         if (!task.isSuccessful()){
+                            editor.putBoolean("isDonor", false);
+                            editor.commit();
+
                             try{
                                 throw task.getException();
                             }
@@ -91,7 +94,8 @@ public class CreateUserAccount extends View {
                             if(isDonor){
                                 mContext.startActivity(new Intent(getContext(), MainActivity.class));
                             }else{
-                                new SignUpOrganization().setMoveNext(true);
+                                editor.putBoolean("isDonor",false);
+                                editor.commit();
                             }
                         }
                     }
