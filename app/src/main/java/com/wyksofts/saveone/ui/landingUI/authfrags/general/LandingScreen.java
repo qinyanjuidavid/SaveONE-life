@@ -1,8 +1,13 @@
 package com.wyksofts.saveone.ui.landingUI.authfrags.general;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Location;
 import android.os.Bundle;
 
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
@@ -12,11 +17,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.SelectLocationMap;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.SignUpOrganization;
 import com.wyksofts.saveone.ui.landingUI.authfrags.others.SignUpDonor;
+import com.wyksofts.saveone.util.showAppToast;
 
 
 public class LandingScreen extends Fragment {
@@ -54,7 +63,7 @@ public class LandingScreen extends Fragment {
         orphanage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showOrphanagePage(new SelectLocationMap());//SignUpOrganization
+                showOrphanagePage(new SignUpOrganization());//
             }
         });
 
@@ -104,7 +113,7 @@ public class LandingScreen extends Fragment {
                 .addToBackStack(null)
                 .setCustomAnimations(R.anim.fade_in,
                         R.anim.fade_out)
-                //.addSharedElement(orphanage, "orphanage")
+                .addSharedElement(orphanage, "orphanage")
                 .replace(R.id.root_layout, fragment)
                 .commit();
     }
@@ -119,4 +128,10 @@ public class LandingScreen extends Fragment {
                 .replace(R.id.root_layout, fragment)
                 .commit();
     }
+
+
+
+
+
+
 }

@@ -178,6 +178,7 @@ public class OtherInfo extends Fragment{
                                 .beginTransaction()
                                 .setCustomAnimations(R.anim.fade_in,
                                         R.anim.fade_out)
+                                .addSharedElement(finish_btn, "addInfo")
                                 .replace(R.id.root_layout, new SelectLocationMap())
                                 .commit();
                     }

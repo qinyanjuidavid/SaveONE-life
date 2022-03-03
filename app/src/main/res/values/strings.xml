@@ -77,4 +77,7 @@
     <string name="please_your_location">Please your location</string>
     <string name="exact_location_text">Please Drag the pin to show exact location of the orphanage.</string>
     <string name="select_orphanage_location">Select Orphanage Location</string>
+    <string name="oops">Oops!</string>
+    <string name="location_should_be_allowed_to_continue">Location should be allowed to continue</string>
+    <string name="enable_location">ENABLE LOCATION</string>
 </resources>
