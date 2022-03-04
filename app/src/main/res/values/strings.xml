@@ -69,16 +69,43 @@
     <string name="million">Hello, Do you know about 9.2% of the world, or 689 million people,
         live in extreme poverty on less than $1.90 a day, according to the World Bank</string>
     <string name="retry">Retry</string>
-    <string name="we_searched_all_over_the_world">We searched all over the world</string>
+    <string name="we_searched_all_over_the_world">We searched all over the world,
+        we did not find any orphanage registered with that name</string>
     <string name="we_did_not_find_result_of_your_search">We did not find result of your search</string>
     <string name="search_orphanage_around_you">Search orphanage around you</string>
     <string name="donate_here">DONATE HERE</string>
     <string name="what_do_you_need_most_at_the_moment_eg_food">What do you need most at the moment?(eg food)</string>
     <string name="map">AIzaSyAL_Snuh8st6CtGVqrfTsUiIsnt1roLhMU</string>
     <string name="please_your_location">Please your location</string>
-    <string name="exact_location_text">Please Drag the pin to show exact location of the orphanage.</string>
+    <string name="exact_location_text">Please hold and drag the pin on the map,
+        to show exact location of the orphanage home.</string>
     <string name="select_orphanage_location">Select Orphanage Location</string>
     <string name="oops">Oops!</string>
     <string name="location_should_be_allowed_to_continue">Location should be allowed to continue</string>
     <string name="enable_location">ENABLE LOCATION</string>
+    <string name="welcome_home">Welcome Home</string>
+    <string name="rehema_homes">Rehema Homes</string>
+    <string name="search_again">SEARCH AGAIN</string>
+    <string name="general">General</string>
+    <string name="home">Home</string>
+    <string name="settings">Settings</string>
+    <string name="profile">Profile</string>
+    <string name="share">Share</string>
+    <string name="others">Others</string>
+    <string name="customize">Customize</string>
+    <string name="about_us">About Us</string>
+    <string name="location">location</string>
+    <string name="donation_mediums">Donation Medium</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="bank_bank_number">Bank / Bank number</string>
+    <string name="donate_with_mpesa">Donate na mpesa</string>
+    <string name="donate_na_mpesa">Donate na mpesa</string>
+    <string name="orphanage_verified">Please before donating using the accounts listed below. Please make sure orphanage is verified to avoid any inconveniences and the service of the app.</string>
+    <string name="orphanage_information">Orphanage Information</string>
+    <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
+    <string name="cancel">CANCEL</string>
+    <string name="yes">YES</string>
+    <string name="gtsy">Good to see you!</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
 </resources>

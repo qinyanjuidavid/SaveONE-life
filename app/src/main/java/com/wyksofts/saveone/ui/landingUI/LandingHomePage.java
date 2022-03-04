@@ -6,12 +6,16 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.location.Location;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -29,6 +33,8 @@ public class LandingHomePage extends AppCompatActivity {
 
     SharedPreferences.Editor editor;
     SharedPreferences pref;
+
+    Dialog closeDiag;
     
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +45,8 @@ public class LandingHomePage extends AppCompatActivity {
 
         pref = getApplicationContext().getSharedPreferences("location", 0);
         editor = pref.edit();
+
+        closeDiag = new Dialog(this);
 
         getLocation();
 
@@ -82,7 +90,7 @@ public class LandingHomePage extends AppCompatActivity {
 
                             // Logic to handle location object
                             Log.e("LAST LOCATION: ", location.toString());
-                            new showAppToast().showSuccess(getApplicationContext(),""+location.toString());
+                            //new showAppToast().showSuccess(getApplicationContext(),""+location.toString());
 
                             double latitude = location.getLatitude();
                             double longitude = location.getLongitude();
@@ -133,6 +141,28 @@ public class LandingHomePage extends AppCompatActivity {
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
                             Manifest.permission.ACCESS_FINE_LOCATION}, 123);
+        }
+    }
+
+    public void onBackPressed() {
+
+        if(getSupportFragmentManager().getBackStackEntryCount()>0) {
+            getSupportFragmentManager().popBackStack();
+        }else {
+            closeDiag.setContentView(R.layout.close_diag);
+            closeDiag.findViewById(R.id.yes_exit).setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    finishAffinity();
+                }
+            });
+            closeDiag.findViewById(R.id.undo).setOnClickListener(new View.OnClickListener() {
+                public void onClick(View view) {
+                    closeDiag.dismiss();
+                }
+            });
+            closeDiag.setCancelable(false);
+            closeDiag.getWindow().setBackgroundDrawable((Drawable) new ColorDrawable(0));
+            closeDiag.show();
         }
     }
 

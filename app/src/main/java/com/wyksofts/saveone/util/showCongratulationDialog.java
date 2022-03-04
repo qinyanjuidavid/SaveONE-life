@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.util.HelperClasses.ContactUs;
 
 public class showCongratulationDialog {
 
@@ -42,11 +43,7 @@ public class showCongratulationDialog {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent("android.intent.action.SEND");
-                intent.putExtra("android.intent.extra.EMAIL", new String[] { "wycliffnjenga19@gmail.com" });
-                intent.setType("text/html");
-                intent.setPackage("com.google.android.gm");
-                context.startActivity(Intent.createChooser(intent, "Send mail Wycliff / N"));
+                new ContactUs().contact_us(context);
 
             }
         });

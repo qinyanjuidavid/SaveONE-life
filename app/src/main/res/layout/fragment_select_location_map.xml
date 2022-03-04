@@ -17,6 +17,7 @@
                 android:layout_marginTop="12dp"
                 android:orientation="vertical"
                 android:padding="12dp"
+                android:gravity="center"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
@@ -35,7 +36,6 @@
                     android:textStyle="normal"
                     android:textSize="14sp"
                     android:fontFamily="@font/mont"
-                    android:textColor="@color/blue"
                     android:text="@string/exact_location_text"/>
             </LinearLayout>
 

@@ -16,6 +16,7 @@
         <item name="android:itemBackground">@color/white</item>
         <item name="android:windowActionBarOverlay">true</item>
         <!-- enable window content transitions -->
+        <item name="android:windowIsTranslucent">true</item>
         <item name="android:windowActivityTransitions">true</item>
     </style>
 
@@ -30,7 +31,20 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
-    
+
+    <style name="PopupMenuStyle">
+        <item name="android:background">@drawable/popup_bg</item>
+        <item name="android:popupBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="PopupMenuTheme">
+        <item name="android:background">@drawable/popup_bg</item>
+        <item name="android:popupBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="CircularReveal" parent="AppTheme">
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
 
     <style name="CustomInputStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
         <item name="boxStrokeWidth">2dp</item>

@@ -62,9 +62,11 @@ public class SignUpOrganization extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_sign_up_organisation, container, false);
 
+        FirebaseAuth.getInstance().signOut();
+
         register_new_orphanage = view.findViewById(R.id.register_new_orphanage);
 
-        pref = getContext().getSharedPreferences("move", 0);
+        pref = getContext().getSharedPreferences("user", 0);
         editor = pref.edit();
 
         OrgName = view.findViewById(R.id.organisation_name);
@@ -139,6 +141,10 @@ public class SignUpOrganization extends Fragment {
             new CreateUserAccount(getContext()).authUser(name, email, password, loading_bar,false);
 
             Boolean isDonor = pref.getBoolean("isDonor",false);
+
+            editor.putString("email",email);
+            editor.putString("name",email);
+            editor.commit();
 
             if (!isDonor){
                 getActivity()

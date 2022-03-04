@@ -22,6 +22,7 @@ import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.homeUI.MainPage.FragmentHolder;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.SelectLocationMap;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.SignUpOrganization;
 import com.wyksofts.saveone.ui.landingUI.authfrags.others.SignUpDonor;
@@ -33,16 +34,14 @@ public class LandingScreen extends Fragment {
     Button orphanage, donor;
     TextView login_btn,donate_btn;
 
-
     public LandingScreen() {
-        // Required empty public constructor
+        //Required empty public constructor
     }
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -125,6 +124,17 @@ public class LandingScreen extends Fragment {
                 .setCustomAnimations(R.anim.fade_in,
                         R.anim.fade_out)
                 .addSharedElement(donor, "donor")
+                .replace(R.id.root_layout, fragment)
+                .commit();
+    }
+
+    public void showHomePage(Fragment fragment){
+        getActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .addToBackStack(null)
+                .setCustomAnimations(R.anim.fade_in,
+                        R.anim.fade_out)
+                //.addSharedElement(donor, "donor")
                 .replace(R.id.root_layout, fragment)
                 .commit();
     }

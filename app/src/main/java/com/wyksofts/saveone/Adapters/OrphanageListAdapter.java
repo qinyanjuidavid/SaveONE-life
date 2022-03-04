@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -11,9 +12,11 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Organisation.OrphanageModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.dmoral.toasty.Toasty;
@@ -22,10 +25,13 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdap
 
     List<OrphanageModel> list_array;
     Context context;
+    OrphanageViewInterface viewInterface;
 
-    public OrphanageListAdapter(List<OrphanageModel> list_array, Context context) {
+    public OrphanageListAdapter(List<OrphanageModel> list_array, Context context,
+                                OrphanageViewInterface viewInterface) {
         this.list_array = list_array;
         this.context = context;
+        this.viewInterface = viewInterface;
     }
 
     @NonNull
@@ -62,6 +68,30 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdap
             holder.verified.setVisibility(View.GONE);
         }
 
+        //initialize show more about this place
+        holder.show_more.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewInterface.onOrphanageClicked(
+                        data.getName(), data.getLocation(),
+                        data.getCoordinates(), data.getCountry(),
+                        data.getDescription(), data.getNumber_of_children(),
+                        data.getPhone_number(), data.getBank_account(),
+                        data.getBank_account_name(), data.getTill_number(),
+                        data.getEmail(), data.getVerified(),
+                        data.getWhat_needed(), holder.name
+                );
+            }
+        });
+
+    }
+
+    //Update new list
+    public void upDateList(List<OrphanageModel> listData) {
+        ArrayList<OrphanageModel> arrayList = new ArrayList<>();
+        list_array = arrayList;
+        arrayList.addAll(listData);
+        notifyDataSetChanged();
     }
 
     @Override
@@ -72,6 +102,7 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdap
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView group_image, verified;
         TextView name, location, number_of_c;
+        Button show_more;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -80,6 +111,7 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageListAdap
             location = itemView.findViewById(R.id.org_location);
             number_of_c = itemView.findViewById(R.id.org_number);
             verified = itemView.findViewById(R.id.verified_home);
+            show_more = itemView.findViewById(R.id.detailed_view_btn);
         }
     }
 }

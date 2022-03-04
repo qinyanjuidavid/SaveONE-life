@@ -5,6 +5,7 @@ import static android.content.ContentValues.TAG;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
@@ -65,6 +66,10 @@ public class AdditionalInfo extends Fragment {
     FirebaseStorage storage;
     StorageReference storageReference;
 
+    SharedPreferences.Editor editor;
+    SharedPreferences pref;
+
+
     EditText org_phone_number,org_bank_name, org_till_number, org_country, org_bank_account;
 
     public AdditionalInfo() {
@@ -87,6 +92,9 @@ public class AdditionalInfo extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_additional_info, container, false);
 
+        pref = getContext().getSharedPreferences("user", 0);
+        editor = pref.edit();
+
         btn = view.findViewById(R.id.register_new_orphanage_info);
         groupPhoto = view.findViewById(R.id.select_organization_image);
 
@@ -105,9 +113,6 @@ public class AdditionalInfo extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-
-        database = FirebaseFirestore.getInstance();
-        user = FirebaseAuth.getInstance().getCurrentUser();
 
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
@@ -164,8 +169,21 @@ public class AdditionalInfo extends Fragment {
     private void addInfoToDataBase(String phone_number, String till_number,
                                    String bank_account, String bank_name,String country){
 
-        String email = user.getEmail();
-        String org_name = user.getDisplayName();
+        database = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
+        String email;
+        String org_name;
+
+        if(user != null) {
+            email = user.getEmail();
+            org_name = user.getDisplayName();
+            new showAppToast().showSuccess(getContext(),"user is found");
+        }else{
+            email = pref.getString("email","orphanage@gmail.com");
+            org_name = pref.getString("name", "Orphanage");
+            new showAppToast().showSuccess(getContext(),"user not found");
+        }
 
         Map<String, Object> data = new HashMap<>();
         data.put("phone_number", phone_number);

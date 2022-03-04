@@ -5,20 +5,18 @@
     <color name="colorPrimaryVariant">#544e50</color>
     <color name="colorAccent">#fb8100</color>
 
-
     <color name="orange">#fb8100</color>
     <color name="blue">#023047</color>
     <color name="red">#ca1c3d</color>
     <color name="pink">#ff2e66</color>
 
-
     <color name="gray2">#dad8d9</color>
-    <color name="gray">#d9c8c0</color>
+    <color name="gray">#e9ecee</color>
     <color name="white">#FFFFFF</color>
     <color name="gray3">#EFEFEF</color>
 
     <color name="blue2">#0E85E3</color>
-
-
+    <color name="transparent">#33000000</color>
+    <color name="tabMode">#66CA1C3D</color>
 
 </resources>
