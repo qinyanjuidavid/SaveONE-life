@@ -12,9 +12,9 @@
 SaveOne-Life is an android mobile application that helps solve three United Nations SGD's
 > ### No-Poverty
 
-> *_Quality Education_*
+> ### Quality Education
 
-> *_Zero-Hunger_*
+> ### Zero-Hunger
 ## Licences
 
 ## Thanks <span style="color: #fb8100;">&hearts;</span>
