@@ -8,7 +8,11 @@
 - Run the android app on Android Studio
 
 # SaveOne-Life
-SaveOne-Life is an android mobile app that is focused on solving three United Nations SGD's i.e No-Poverty, Quality Eductaion and Zero-Hunger. 
+## Impact
+SaveOne-Life is an android mobile application that helps solve three United Nations SGD's
+> No-Poverty
+> Quality Education
+> Zero-Hunger
 ## Licences
 
 ## Thanks <span style="color: #e25555;">&hearts;</span>
