@@ -1,5 +1,7 @@
-# SaveONE-life
+## Installation
 SaveOne-Life is an android mobile app that is focused on solving three United Nations SGD's i.e No-Poverty, Quality Eductaion and Zero-Hunger. 
+
+## SaveOne-Life
 
 ## Running the Project
 
