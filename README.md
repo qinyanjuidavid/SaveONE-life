@@ -17,5 +17,5 @@ SaveOne-Life is an android mobile application that helps solve three United Nati
 > *_Zero-Hunger_*
 ## Licences
 
-## Thanks <span style="color: #e25555;">&hearts;</span>
+## Thanks <span style="color: #fb8100;">&hearts;</span>
 Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
