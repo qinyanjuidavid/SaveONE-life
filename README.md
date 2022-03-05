@@ -1,2 +1,9 @@
 # SaveONE-life
-It's a charity app that any one from anywhere can donates clothings, food stuffs, educational materials and money to the orphanges homes
+SaveOne-Life is an android mobile app that is focused on solving three United Nations SGD's i.e No-Poverty, Quality Eductaion and Zero-Hunger. 
+
+## Running the Project
+
+## Licences
+
+## Thanks
+Thanks to Google for contributing towards the growth of @DSCTTU. Additionally, thanks all your contributions and efforts towards improving the GitHub documentation. We thank you being part of our ✨ community ✨
