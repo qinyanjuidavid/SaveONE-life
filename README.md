@@ -5,5 +5,5 @@ SaveOne-Life is an android mobile app that is focused on solving three United Na
 
 ## Licences
 
-## Thanks
+## Thanks <span style="color: #e25555;">&hearts;</span>
 Thanks to Google for contributing towards the growth of @DSCTTU. Additionally, 
