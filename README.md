@@ -3,8 +3,6 @@ SaveOne-Life is an android mobile app that is focused on solving three United Na
 
 # SaveOne-Life
 
-## Running the Project
-
 ## Licences
 
 ## Thanks
