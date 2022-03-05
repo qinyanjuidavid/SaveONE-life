@@ -1,6 +1,7 @@
 ## Running the project
-### Downloading the APK
-To install the android mobile application click the link [SaveOne-Life]() to dow
+### Installation by Downloading the APK
+- To download the apk click the link [SaveOne-Life]()
+- Install the apk on your android mobile phone
 ### Installation by Cloning to Android Studio
 - Download Android Studio
 - Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
