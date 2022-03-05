@@ -9,7 +9,7 @@
 
 # SaveOne-Life
 ## Impact
-SaveOne-Life is an android mobile application that helps solve three United Nations SGD's
+SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG).
 > ### No-Poverty
 
 > ### Quality Education
