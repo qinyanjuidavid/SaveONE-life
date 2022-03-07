@@ -100,7 +100,7 @@
     <string name="bank_bank_number">Bank / Bank number</string>
     <string name="donate_with_mpesa">Donate na mpesa</string>
     <string name="donate_na_mpesa">Donate na mpesa</string>
-    <string name="orphanage_verified">Please before donating using the accounts listed below. Please make sure orphanage is verified to avoid any inconveniences and the service of the app.</string>
+    <string name="orphanage_verified">*Please before donating using the accounts listed below. Please make sure orphanage is verified to avoid any inconveniences and the service of the app.</string>
     <string name="orphanage_information">Orphanage Information</string>
     <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
     <string name="cancel">CANCEL</string>
@@ -108,4 +108,26 @@
     <string name="gtsy">Good to see you!</string>
     <string name="sign_out">Sign Out</string>
     <string name="are_you_sure_you_want_to_log_out">Are you sure you want to log out?</string>
+    <string name="orphanage_name">Orphanage Name</string>
+    <string name="account_name">Account Name</string>
+    <string name="orphanage_gmail_com">orphanage@gmail.com</string>
+    <string name="leave_a_message">Leave a message/review from your last orphanage visit.</string>
+    <string name="please_use_a_respective_language">Please use a respective language!!!</string>
+    <string name="warning">
+        "Please mind the language you are using on this forum.
+        We are determined to ensure no POVERTY, improve LEVEL OF EDUCATION,
+        and ZERO HUNGER among the young generation and all in general.
+        Offensive and Abusive language may lead to account loss.
+        Please read our terms and conditions by clicking the button below"</string>
+    <string name="terms_tmc">TERMS</string>
+    <string name="close_tms">CLOSE</string>
+    <string name="delete_message">Delete Message</string>
+    <string name="reply">Reply</string>
+    <string name="forward">Forward</string>
+    <string name="no_account">No account found</string>
+    <string name="no_account_found">
+        You need to login / sign up an account to access some stunnig feature.
+        But still you can be someone smiles without an account.</string>
+    <string name="sign_up_acc">Sign Up?</string>
+    <string name="no">No</string>
 </resources>

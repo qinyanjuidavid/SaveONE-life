@@ -15,35 +15,26 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
-import android.transition.Transition;
-import android.transition.TransitionInflater;
 import android.util.Log;
-import android.view.ContextThemeWrapper;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewAnimationUtils;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.PopupMenu;
 import android.widget.PopupWindow;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -53,15 +44,12 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
-import com.wyksofts.saveone.Adapters.OrphanageListAdapter;
-import com.wyksofts.saveone.App.MainActivity;
+import com.wyksofts.saveone.Adapters.Orphanages.OrphanageListAdapter;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Organisation.OrphanageModel;
 import com.wyksofts.saveone.ui.Others.AboutApp;
 import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedActivity;
-import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedInfo;
-import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.SelectLocationMap;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
 import com.wyksofts.saveone.util.HelperClasses.ContactUs;
 import com.wyksofts.saveone.util.HelperClasses.ShareApp;
@@ -69,8 +57,6 @@ import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import es.dmoral.toasty.Toasty;
 
 public class HomePage extends Fragment implements OrphanageViewInterface {
 
@@ -81,7 +67,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     private OrphanageListAdapter adapter;
     private EditText search;
     StorageReference storageRef;
-    private LinearLayout no_result_found,loading_products;
+    private LinearLayout no_result_found,loading_orphanages;
     private Button search_again, retry_connecting;
 
     Uri group_image;
@@ -129,18 +115,11 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         orphanage_name = view.findViewById(R.id.welcome_text);
         menu = view.findViewById(R.id.menu);
 
+        //init UI
         initUI();
 
         //adapter
         adapter = new OrphanageListAdapter(listdata,getContext(),this);
-
-        if (user != null) {
-            //show username i=on the dashboard
-            String username = user.getDisplayName();
-            orphanage_name.setText(username);
-        }else{
-            orphanage_name.setText(R.string.gtsy);
-        }
 
         return view;
     }
@@ -152,6 +131,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        initSearch();//init search
 
         menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -162,9 +142,94 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
             }
         });
 
-
-
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+    }
+
+    //init UI
+    private void initUI(){
+
+        if (user != null) {
+            //show username i=on the dashboard
+            String username = user.getDisplayName();
+            orphanage_name.setText(username);
+        }else{
+            orphanage_name.setText(R.string.gtsy);
+        }
+
+        GridLayoutManager layout = new GridLayoutManager(getContext(),2);
+        recyclerView.setLayoutManager(layout);
+
+        recyclerView.addItemDecoration(new LayoutMarginDecoration(2, 2));
+        listdata = new ArrayList<OrphanageModel>();
+        database = FirebaseFirestore.getInstance();
+
+        storageRef = FirebaseStorage.getInstance().getReference();
+
+        getData();//getdata method from firebase
+    }
+
+
+    private void initSearch() {
+        search.setEnabled(true);
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+    }
+
+    public void filter(String orphanage) {
+        ArrayList<OrphanageModel> arrayList = new ArrayList<>();
+        for (OrphanageModel model : listdata) {
+            if (model.getName().toLowerCase().contains(orphanage)) {
+                recyclerView.setVisibility(View.VISIBLE);
+                no_result_found.setVisibility(View.GONE);
+                arrayList.add(model);
+            } else {
+                if (arrayList.isEmpty()) {
+                    no_result_found.setVisibility(View.VISIBLE);
+                    recyclerView.setVisibility(View.GONE);
+                } else {
+                    recyclerView.setVisibility(View.VISIBLE);
+                    no_result_found.setVisibility(View.GONE);
+                }
+            }
+            if (orphanage.isEmpty()) {
+                recyclerView.setVisibility(View.VISIBLE);
+                no_result_found.setVisibility(View.GONE);
+            }
+
+            adapter.upDateList(arrayList);
+        }
+
+        search_again.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                search.setText("");
+            }
+        });
+    }
+
 
     //PopupWindow display method
     public void showMenuLayout(View view) {
@@ -319,76 +384,8 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         }
     }
 
-    //init UI
-    private void initUI() {
-        GridLayoutManager layout = new GridLayoutManager(getContext(),2);
-        recyclerView.setLayoutManager(layout);
 
-        recyclerView.addItemDecoration(new LayoutMarginDecoration(2, 2));
-        listdata = new ArrayList<OrphanageModel>();
-        database = FirebaseFirestore.getInstance();
-
-        storageRef = FirebaseStorage.getInstance().getReference();
-
-        getData();//getdata from firebase
-
-        initSearch();//init search
-    }
-
-
-    //init search filter method
-    private void initSearch() {
-        search.setEnabled(true);
-        search.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                filter(s.toString());
-            }
-        });
-    }
-
-    public void filter(String product) {
-        ArrayList<OrphanageModel> arrayList = new ArrayList<>();
-        for (OrphanageModel model : listdata) {
-            if (model.getName().toLowerCase().contains(product)) {
-                recyclerView.setVisibility(View.VISIBLE);
-                no_result_found.setVisibility(View.GONE);
-                arrayList.add(model);
-            } else {
-                if (arrayList.isEmpty()) {
-                    no_result_found.setVisibility(View.VISIBLE);
-                    recyclerView.setVisibility(View.GONE);
-                } else {
-                    recyclerView.setVisibility(View.VISIBLE);
-                    no_result_found.setVisibility(View.GONE);
-                }
-            }
-            if (product.isEmpty()) {
-                recyclerView.setVisibility(View.VISIBLE);
-                no_result_found.setVisibility(View.GONE);
-            }
-        }
-        adapter.upDateList(arrayList);
-
-        search_again.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                search.setText("");
-            }
-        });
-    }
-
-
+    //get orphanage data
     public void getData(){
 
         loading_orphanage.setVisibility(View.VISIBLE);

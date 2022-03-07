@@ -13,7 +13,7 @@
         android:id="@+id/layout_one"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -28,7 +28,7 @@
             android:fontFamily="@font/mont"
             android:text="@string/be_the_reason"
             android:textColor="@color/orange"
-            android:textSize="36sp"
+            android:textSize="24sp"
             android:textStyle="bold" />
 
         <TextView
@@ -37,7 +37,7 @@
             android:fontFamily="@font/mont"
             android:text="@string/someone_smiles_today"
             android:textColor="@color/blue"
-            android:textSize="28sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
@@ -75,82 +75,86 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:orientation="vertical"
-            android:padding="40dp">
+            android:padding="12dp">
 
-            <LinearLayout
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:gravity="center"
-                    android:fontFamily="@font/mont"
-                    android:text="@string/register_new_orphanage"
-                    android:textColor="@color/blue"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/register_new_orphanage_btn"
-                    android:layout_width="200dp"
-                    android:layout_height="34dp"
-                    android:background="@drawable/custom_ring_btn"
-                    android:fontFamily="@font/mont"
-                    android:text="@string/register"
-                    android:textColor="@color/blue"
-                    android:textSize="12sp"
-                    android:layout_marginBottom="8dp"
-                    android:textStyle="bold" />
-
-                <Button
-                    android:id="@+id/register_as_donor_btn"
-                    android:layout_width="200dp"
-                    android:layout_height="34dp"
-                    android:background="@drawable/custom_btn_no_radius"
-                    android:fontFamily="@font/mont"
-                    android:text="@string/continue_as_donor"
-                    android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
+                android:layout_height="wrap_content">
                 <LinearLayout
-                    android:orientation="horizontal"
-                    android:padding="2dp"
-                    android:layout_marginTop="8dp"
-                    android:gravity="center"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="8dp"
+                        android:gravity="center"
                         android:fontFamily="@font/mont"
+                        android:text="@string/register_new_orphanage"
                         android:textColor="@color/blue"
-                        android:text="@string/already_have_an_account"
-                        android:textSize="16sp"/>
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
 
-                    <TextView
-                        android:id="@+id/login_btn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="2dp"
-                        android:layout_marginBottom="8dp"
+                    <Button
+                        android:id="@+id/register_new_orphanage_btn"
+                        android:layout_width="200dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/custom_ring_btn"
                         android:fontFamily="@font/mont"
-                        android:background="@drawable/custom_colorless_btn"
-                        android:textColor="@color/colorAccent"
-                        android:text="@string/login"
-                        android:textSize="18sp"
-                        android:textStyle="bold"/>
+                        android:text="@string/register"
+                        android:textColor="@color/blue"
+                        android:textSize="12sp"
+                        android:layout_marginBottom="8dp"
+                        android:textStyle="bold" />
+
+                    <Button
+                        android:id="@+id/register_as_donor_btn"
+                        android:layout_width="200dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/custom_btn_no_radius"
+                        android:fontFamily="@font/mont"
+                        android:text="@string/continue_as_donor"
+                        android:textColor="@color/white"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:padding="2dp"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/mont"
+                            android:textColor="@color/blue"
+                            android:text="@string/already_have_an_account"
+                            android:textSize="16sp"/>
+
+                        <TextView
+                            android:id="@+id/login_btn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="2dp"
+                            android:layout_marginBottom="8dp"
+                            android:fontFamily="@font/mont"
+                            android:background="@drawable/custom_colorless_btn"
+                            android:textColor="@color/colorAccent"
+                            android:text="@string/login"
+                            android:textSize="18sp"
+                            android:textStyle="bold"/>
+
+                    </LinearLayout>
 
                 </LinearLayout>
-
-            </LinearLayout>
+            </ScrollView>
 
         </LinearLayout>
 

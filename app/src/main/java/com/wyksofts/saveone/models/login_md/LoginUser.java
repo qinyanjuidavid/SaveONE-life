@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -35,10 +36,10 @@ public class LoginUser extends View {
         mcontext = context;
     }
 
-    public void authUser(String email, String password) {
+    public void authUser(String email, String password, ProgressBar bar) {
 
         //show loading diag
-        new LoadingDialog().show(mcontext);
+        bar.setVisibility(VISIBLE);
 
         auth.signInWithEmailAndPassword(email, password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -46,7 +47,7 @@ public class LoginUser extends View {
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         //dismiss loading diag on success
-                        new LoadingDialog().dismiss(mcontext);
+                        bar.setVisibility(GONE);
 
                         if (!task.isSuccessful()){
                             try{
@@ -72,6 +73,7 @@ public class LoginUser extends View {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
+                        bar.setVisibility(GONE);
                         Toasty.error(getContext(),"Loading failed!" , Toast.LENGTH_SHORT, true).show();
                     }
                 });

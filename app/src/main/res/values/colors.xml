@@ -7,16 +7,22 @@
 
     <color name="orange">#fb8100</color>
     <color name="blue">#023047</color>
-    <color name="red">#ca1c3d</color>
+    <color name="red">#FF0000</color>
     <color name="pink">#ff2e66</color>
 
     <color name="gray2">#dad8d9</color>
     <color name="gray">#e9ecee</color>
     <color name="white">#FFFFFF</color>
     <color name="gray3">#EFEFEF</color>
+    <color name="black">#000000</color>
 
     <color name="blue2">#0E85E3</color>
     <color name="transparent">#33000000</color>
     <color name="tabMode">#66CA1C3D</color>
+    <color name="user_color_bg">#B3FB8100</color>
+    <color name="user_color">#B3333333</color>
+    <color name="user_color_others_bg">#B3FFFFFF</color>
+    <color name="placeholder">#818181</color>
+    <color name="other_users_color">#70CACACA</color>
 
 </resources>

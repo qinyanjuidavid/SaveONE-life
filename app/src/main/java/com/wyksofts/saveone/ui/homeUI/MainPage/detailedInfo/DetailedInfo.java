@@ -39,6 +39,7 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.Arrays;
@@ -139,8 +140,8 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
        phone_number.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               if(isPermissionGranted()){
-                   call_action();
+               if(isCallPermissionGranted()){
+                   callAction();
                }
            }
        });
@@ -174,7 +175,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
 
     //call action
-    private void call_action() {
+    private void callAction() {
         Intent intent = new Intent(Intent.ACTION_CALL,
                 Uri.parse("tel:" +pphone_number ));
         startActivity(intent);
@@ -193,8 +194,9 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         googleMap.addMarker(new MarkerOptions()
                 .position(curr_location)
                 .title(pname)
-                .icon(BitmapDescriptorFactory.fromBitmap(getBitmap(String.valueOf(R.drawable.custom_maker),
-                        120,120)))
+                .icon(BitmapDescriptorFactory.fromBitmap(new getBitmap()
+                        .getBitmap(String.valueOf(R.drawable.custom_maker),
+                                120,120,getContext())))
                 //.icon(BitmapDescriptorFactory.fromResource(R.drawable.custom_maker))
         );
 
@@ -235,18 +237,12 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     }
 
 
-    //convert image to bitmap
-    public Bitmap getBitmap(String drawableName, int width, int height){
-        Bitmap imageBitmap = BitmapFactory.decodeResource(getResources(),
-                getResources().getIdentifier(drawableName, "drawable",
-                        getActivity().getPackageName()));
-        return Bitmap.createScaledBitmap(imageBitmap, width, height, false);
-    }
 
 
 
     //check call permission
-    public  boolean isPermissionGranted() {
+    @SuppressLint("ObsoleteSdkInt")
+    public  boolean isCallPermissionGranted() {
         if (Build.VERSION.SDK_INT >= 23) {
             if (getActivity().checkSelfPermission(android.Manifest.permission.CALL_PHONE)
                     == PackageManager.PERMISSION_GRANTED) {
@@ -274,7 +270,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                     new showAppToast().showSuccess(getContext(), "Permission granted");
-                    call_action();
+                    callAction();
                 } else {
                     new showAppToast().showSuccess(getContext(), "Permission denied");
                 }

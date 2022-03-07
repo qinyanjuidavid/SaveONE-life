@@ -47,9 +47,9 @@ public class MainActivity extends AppCompatActivity {
 //                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.pink, this.getTheme()));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccent, this.getTheme()));
         }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.pink));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccent));
         }
 
         setContentView(R.layout.activity_main);
@@ -74,28 +74,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(getSupportFragmentManager().getBackStackEntryCount()>0) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .setCustomAnimations(R.anim.fade_in,
-                            R.anim.fade_out)
-                    .replace(R.id.home_layout, new FragmentHolder())
-                    .commit();
-        }else {
-            closeDiag.setContentView(R.layout.close_diag);
-            closeDiag.findViewById(R.id.yes_exit).setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    finishAffinity();
-                }
-            });
-            closeDiag.findViewById(R.id.undo).setOnClickListener(new View.OnClickListener() {
-                public void onClick(View view) {
-                    closeDiag.dismiss();
-                }
-            });
-            closeDiag.setCancelable(false);
-            closeDiag.getWindow().setBackgroundDrawable((Drawable) new ColorDrawable(0));
-            closeDiag.show();
-        }
+        super.onBackPressed();
     }
 }

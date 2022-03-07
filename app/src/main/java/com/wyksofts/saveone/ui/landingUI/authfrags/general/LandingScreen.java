@@ -1,11 +1,15 @@
 package com.wyksofts.saveone.ui.landingUI.authfrags.general;
 
 import android.Manifest;
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
@@ -20,6 +24,8 @@ import android.widget.TextView;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.homeUI.MainPage.FragmentHolder;
@@ -34,6 +40,12 @@ public class LandingScreen extends Fragment {
     Button orphanage, donor;
     TextView login_btn,donate_btn;
 
+    //sign in dialog
+    Dialog yes_create;
+
+    //get user
+    FirebaseUser user;
+
     public LandingScreen() {
         //Required empty public constructor
     }
@@ -42,6 +54,7 @@ public class LandingScreen extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        yes_create = new Dialog(getContext());
     }
 
     @Override
@@ -49,6 +62,8 @@ public class LandingScreen extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_landing_screen, container, false);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         donor = view.findViewById(R.id.register_as_donor_btn);
         donor.setOnClickListener(new View.OnClickListener() {
@@ -78,7 +93,7 @@ public class LandingScreen extends Fragment {
         donate_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), MainActivity.class));
+                checkUser();
             }
         });
 
@@ -86,6 +101,46 @@ public class LandingScreen extends Fragment {
         setTransitionName();
 
         return view;
+    }
+
+    public void checkUser(){
+
+        if (user != null){
+            //yes user exists continue
+            startActivity(new Intent(getContext(), MainActivity.class));
+
+        }else{
+            //no user found
+            yes_create.setContentView(R.layout.not_logged_in);
+
+            yes_create.findViewById(R.id.yes_create)
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            yes_create.dismiss();
+                        }
+                    });
+
+            yes_create.findViewById(R.id.no)
+                    .setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            startActivity(new Intent(getContext(), MainActivity.class));
+                        }
+                    });
+
+            yes_create.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+            yes_create.setCancelable(true);
+            yes_create.show();
+        }
+
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+
     }
 
     //transition names

@@ -10,13 +10,9 @@
             <solid
                 android:color="@color/white" />
 
-            <size
-                android:height="40.0dip"
-                android:width="240.0dip" />
-
             <padding
-                android:top="2.0dip"
-                android:bottom="2.0dip"/>
+                android:top="4.0dip"
+                android:bottom="4.0dip"/>
 
             <stroke />
         </shape>

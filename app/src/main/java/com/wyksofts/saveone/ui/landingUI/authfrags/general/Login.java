@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
@@ -29,6 +30,7 @@ public class Login extends Fragment {
     private EditText UserEmail,UserPassword;
     private TextView forgotPassword;
     private Switch RememberMe;
+    private ProgressBar loading_bar;
 
     public Login() {
         //Required empty public constructor
@@ -52,6 +54,8 @@ public class Login extends Fragment {
 
         ViewCompat.setTransitionName(login_btn, "login");
 
+        loading_bar = view.findViewById(R.id.loading_bar);
+        loading_bar.setVisibility(View.GONE);
 
 
         UserEmail = view.findViewById(R.id.login_name);
@@ -100,7 +104,7 @@ public class Login extends Fragment {
             UserPassword.setError("Must have atleast one upper case and one number.");
         }
         else{
-            new LoginUser(getContext()).authUser(email,password);
+            new LoginUser(getContext()).authUser(email,password,loading_bar);
         }
     }
 }

@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/motivation_card"
-        android:layout_width="280dp"
+        android:layout_width="240dp"
         android:layout_height="wrap_content"
         app:cardUseCompatPadding="true"
         android:layout_alignParentEnd="true"
@@ -27,7 +27,7 @@
                 <ImageView
                     android:id="@+id/account_image"
                     android:layout_width="match_parent"
-                    android:layout_height="140dp"
+                    android:layout_height="100dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/imggg"/>
 
@@ -35,7 +35,7 @@
 
             <LinearLayout
                 android:orientation="vertical"
-                android:padding="12dp"
+                android:padding="4dp"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
@@ -44,7 +44,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/general"
                     android:textColor="@color/blue"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:fontFamily="serif"
                     android:layout_marginBottom="8dp"
                     android:textStyle="bold"/>
@@ -65,22 +65,21 @@
 
                         <ImageView
                             android:src="@drawable/baseline_home_24"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"/>
+                            android:layout_width="24dp"
+                            android:layout_gravity="center"
+                            android:layout_height="24dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/mont"
                             android:textStyle="bold"
                             android:layout_gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:text="@string/home"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_marginTop="8dp"
                         android:layout_width="200dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/colorAccent"
                         android:layout_height="0.4dp"/>
                 </LinearLayout>
@@ -90,7 +89,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/customize"
                     android:textColor="@color/blue"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:fontFamily="serif"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="8dp"
@@ -112,22 +111,21 @@
 
                         <ImageView
                             android:src="@drawable/ic_baseline_settings_applications_24"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"/>
+                            android:layout_width="24dp"
+                            android:layout_gravity="center"
+                            android:layout_height="24dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/mont"
                             android:textStyle="bold"
                             android:layout_gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:text="@string/settings"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_marginTop="8dp"
                         android:layout_width="200dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/colorAccent"
                         android:layout_height="0.4dp"/>
                 </LinearLayout>
@@ -148,22 +146,21 @@
 
                         <ImageView
                             android:src="@drawable/ic_baseline_account_box_24"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"/>
+                            android:layout_width="24dp"
+                            android:layout_gravity="center"
+                            android:layout_height="24dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/mont"
                             android:textStyle="bold"
                             android:layout_gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:text="@string/profile"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_marginTop="8dp"
                         android:layout_width="200dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/colorAccent"
                         android:layout_height="0.4dp"/>
                 </LinearLayout>
@@ -174,7 +171,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/others"
                     android:textColor="@color/blue"
-                    android:textSize="16sp"
+                    android:textSize="12sp"
                     android:fontFamily="serif"
                     android:layout_marginBottom="8dp"
                     android:layout_marginTop="12dp"
@@ -197,8 +194,9 @@
 
                         <ImageView
                             android:src="@drawable/ic_baseline_contact_phone_24"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"/>
+                            android:layout_width="24dp"
+                            android:layout_gravity="center"
+                            android:layout_height="24dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -206,14 +204,12 @@
                             android:textStyle="bold"
                             android:layout_marginStart="4dp"
                             android:layout_gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:text="@string/contact_us"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_marginTop="8dp"
                         android:layout_width="200dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/colorAccent"
                         android:layout_height="0.4dp"/>
                 </LinearLayout>
@@ -234,22 +230,21 @@
 
                         <ImageView
                             android:src="@drawable/baseline_code_24"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"/>
+                            android:layout_width="24dp"
+                            android:layout_gravity="center"
+                            android:layout_height="24dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/mont"
                             android:textStyle="bold"
                             android:layout_gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:text="@string/about_us"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_marginTop="8dp"
                         android:layout_width="200dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/colorAccent"
                         android:layout_height="0.4dp"/>
                 </LinearLayout>
@@ -271,22 +266,21 @@
 
                         <ImageView
                             android:src="@drawable/ic_baseline_share_white_24"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"/>
+                            android:layout_width="24dp"
+                            android:layout_gravity="center"
+                            android:layout_height="24dp"/>
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/mont"
                             android:textStyle="bold"
                             android:layout_gravity="center"
-                            android:textSize="14sp"
+                            android:textSize="12sp"
                             android:text="@string/share"/>
 
                     </LinearLayout>
                     <View
-                        android:layout_marginTop="8dp"
                         android:layout_width="200dp"
-                        android:layout_marginBottom="8dp"
                         android:background="@color/colorAccent"
                         android:layout_height="0.4dp"/>
                 </LinearLayout>

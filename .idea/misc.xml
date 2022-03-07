@@ -4,24 +4,36 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable-v24/baseline_attach_file_24.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable-v24/baseline_chat_24.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable-v24/baseline_emoji_emotions_24.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable-v24/baseline_gps_fixed_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/baseline_home_20.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/baseline_home_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/baseline_location_on_24.xml" value="0.187" />
         <entry key="app/src/main/res/drawable-v24/baseline_map_24.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable-v24/baseline_mic_24.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable-v24/baseline_more_horiz_18.xml" value="0.1465" />
+        <entry key="app/src/main/res/drawable-v24/baseline_more_vert_24.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable-v24/baseline_more_vert_36.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable-v24/baseline_pin_drop_24.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable-v24/baseline_record_voice_over_24.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable-v24/baseline_verified_20.xml" value="0.187" />
         <entry key="app/src/main/res/drawable-v24/baseline_verified_24.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable-v24/baseline_warning_36.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable-v24/custom_btn2.xml" value="0.187" />
         <entry key="app/src/main/res/drawable-v24/custom_btn_no_radius.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/custom_circle_btn.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable-v24/custom_circle_colorless_btn.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable-v24/custom_no_r_btn.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/custom_white_btn.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_send_24.xml" value="0.1515" />
+        <entry key="app/src/main/res/drawable-v24/ic_baseline_send_blue_24.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable-v24/search_icon_bg.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/text_background.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable-v24/user_bg_others.xml" value="0.1465" />
+        <entry key="app/src/main/res/drawable-v24/user_others_view_bg.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable/baseline_attach_money_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/baseline_code_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/baseline_email_24.xml" value="0.137" />
@@ -47,7 +59,10 @@
         <entry key="app/src/main/res/drawable/ic_baseline_settings_applications_24.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/ic_baseline_share_white_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/menu_foreground.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/popup_background.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/popup_bg.xml" value="0.172" />
+        <entry key="app/src/main/res/drawable/user_bg.xml" value="0.1465" />
+        <entry key="app/src/main/res/drawable/user_view_bg.xml" value="0.1415" />
         <entry key="app/src/main/res/font/.xml" value="0.28125" />
         <entry key="app/src/main/res/layout/activity_about_app.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/activity_detailed.xml" value="0.18828125" />
@@ -56,6 +71,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10263519287109375" />
         <entry key="app/src/main/res/layout/activity_profile_holder.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/chats_card.xml" value="0.18828125" />
         <entry key="app/src/main/res/layout/close_diag.xml" value="0.20598290598290597" />
         <entry key="app/src/main/res/layout/congratulation_diag.xml" value="0.23981481481481481" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.25104166666666666" />
@@ -67,13 +83,13 @@
         <entry key="app/src/main/res/layout/fragment_additional_info.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/fragment_detailed_info.xml" value="0.18051605224609377" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.23697916666666666" />
-        <entry key="app/src/main/res/layout/fragment_landing_screen.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_landing_screen.xml" value="0.1527369181315104" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_map_view.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_maps_view.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_other_info.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.23697916666666666" />
-        <entry key="app/src/main/res/layout/fragment_reviews_view.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/fragment_reviews_view.xml" value="0.1451048951048951" />
         <entry key="app/src/main/res/layout/fragment_select_location_map.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up_donor.xml" value="0.25104166666666666" />
@@ -82,13 +98,18 @@
         <entry key="app/src/main/res/layout/loading_diag.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/loading_orphanage.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/logout_dialog.xml" value="0.1597222222222222" />
-        <entry key="app/src/main/res/layout/navigation_menu.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/navigation_menu.xml" value="0.14286346435546876" />
         <entry key="app/src/main/res/layout/no_result_found.xml" value="0.25104166666666666" />
-        <entry key="app/src/main/res/layout/orphanage_card.xml" value="0.5703422053231939" />
+        <entry key="app/src/main/res/layout/not_logged_in.xml" value="0.176953125" />
+        <entry key="app/src/main/res/layout/orphanage_card.xml" value="0.18209605053803762" />
         <entry key="app/src/main/res/layout/search_toolbar.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/select_coordinates_dialog.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/send_message_card.xml" value="0.173046875" />
+        <entry key="app/src/main/res/layout/send_review_card.xml" value="0.18828125" />
         <entry key="app/src/main/res/layout/upload_image.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/warning_dialog.xml" value="0.17104247104247106" />
         <entry key="app/src/main/res/menu/menu_navigation_view.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/menu/message_menu.xml" value="0.17104247104247106" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.127" />
       </map>
     </option>

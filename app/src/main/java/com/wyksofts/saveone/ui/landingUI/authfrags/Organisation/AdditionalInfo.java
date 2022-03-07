@@ -66,6 +66,7 @@ public class AdditionalInfo extends Fragment {
     FirebaseStorage storage;
     StorageReference storageReference;
 
+    //shared preference
     SharedPreferences.Editor editor;
     SharedPreferences pref;
 
@@ -92,9 +93,11 @@ public class AdditionalInfo extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_additional_info, container, false);
 
+        //shared preference
         pref = getContext().getSharedPreferences("user", 0);
         editor = pref.edit();
 
+        //get ids
         btn = view.findViewById(R.id.register_new_orphanage_info);
         groupPhoto = view.findViewById(R.id.select_organization_image);
 
@@ -114,6 +117,7 @@ public class AdditionalInfo extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        //init firebase
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
         uploadImageDialog = new Dialog(getContext());
@@ -280,6 +284,9 @@ public class AdditionalInfo extends Fragment {
                                     while (!urlTask.isSuccessful());
                                     Uri downloadUrl = urlTask.getResult();
                                     addImageUrl(downloadUrl);
+
+                                    editor.putString("url",downloadUrl.toString());
+                                    editor.commit();
 
                                 }
                             })

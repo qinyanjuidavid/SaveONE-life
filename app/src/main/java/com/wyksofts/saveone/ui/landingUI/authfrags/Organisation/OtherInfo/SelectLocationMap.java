@@ -59,6 +59,7 @@ import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.landingUI.LandingHomePage;
 import com.wyksofts.saveone.ui.landingUI.authfrags.general.LandingScreen;
 import com.wyksofts.saveone.util.AlertPopDiag;
+import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.showAppToast;
 import com.wyksofts.saveone.util.showCongratulationDialog;
 
@@ -208,9 +209,17 @@ public class SelectLocationMap extends Fragment implements
 
         if (curr_position != null) {
 
-            googleMap.addMarker(new MarkerOptions().position(curr_position).title("My Current Location"));
+            googleMap.addMarker(new MarkerOptions()
+                    .position(curr_position)
+                    .title("My Current Location")
+                    .icon(BitmapDescriptorFactory.fromBitmap(new getBitmap()
+                            .getBitmap(String.valueOf(R.drawable.custom_maker),
+                                    120,120, getContext())))
+            );
+
+            googleMap.getUiSettings().setZoomControlsEnabled(true);
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(curr_position, 14.0f));
-            CameraUpdate zoom = CameraUpdateFactory.zoomTo(17);
+            CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
             googleMap.animateCamera(zoom);
 
             if(user.getDisplayName() != null) {
@@ -218,7 +227,9 @@ public class SelectLocationMap extends Fragment implements
                 googleMap.addMarker(new MarkerOptions()
                         .title("Home Orphanage")
                         .snippet("Is this the right location of\t" + user.getDisplayName() + "?")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                        .icon(BitmapDescriptorFactory.fromBitmap(new getBitmap()
+                                .getBitmap(String.valueOf(R.drawable.custom_maker),
+                                        120,120, getContext())))
                         .position(curr_position))
                         .setDraggable(true);
 
@@ -226,7 +237,9 @@ public class SelectLocationMap extends Fragment implements
                 googleMap.addMarker(new MarkerOptions()
                         .title("Home Orphanage")
                         .snippet("Is this the right location of the home orphanage your are registering?")
-                        .icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_ORANGE))
+                        .icon(BitmapDescriptorFactory.fromBitmap(new getBitmap()
+                                .getBitmap(String.valueOf(R.drawable.custom_maker),
+                                        120,120, getContext())))
                         .position(curr_position))
                         .setDraggable(true);
             }

@@ -52,8 +52,16 @@
             android:layout_width="240dp"
             android:layout_height="200dp"
             android:scaleType="fitXY"
-            android:layout_marginBottom="20dp"
+            android:layout_marginBottom="8dp"
             android:src="@drawable/login" />
+
+        <ProgressBar
+            android:id="@+id/loading_bar"
+            android:layout_width="24dp"
+            android:indeterminate="true"
+            android:layout_marginBottom="12dp"
+            android:indeterminateTint="@color/colorAccent"
+            android:layout_height="24dp"/>
 
 
 
@@ -79,8 +87,9 @@
                 android:hint="@string/email_address"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:textColor="#FF5722"
-                android:textColorHint="#353535"
+                android:fontFamily="@font/mont"
+                android:textColor="@color/blue"
+                android:textColorHint="@color/gray2"
                 android:textSize="14sp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -107,8 +116,9 @@
                 android:hint="@string/password"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:textColor="#FF5722"
                 android:password="true"
+                android:fontFamily="@font/mont"
+                android:textColor="@color/blue"
                 android:textColorHint="@color/gray2"
                 android:textSize="14sp"
                 tools:ignore="SmallSp" />

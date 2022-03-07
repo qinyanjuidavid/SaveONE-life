@@ -1,11 +1,14 @@
 package com.wyksofts.saveone.ui.homeUI.MainPage;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
@@ -29,6 +32,8 @@ public class FragmentHolder extends Fragment {
 
     private ViewPager viewPager;
 
+    private CardView tab_bg;
+
     public FragmentHolder() {
         // Required empty public constructor
     }
@@ -42,12 +47,15 @@ public class FragmentHolder extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.frag_home_main, container, false);
+        View view = inflater.inflate(R.layout.frag_home_main, container, false);
 
         viewPager = view.findViewById(R.id.pager);
         setupViewPager(viewPager);
         tabLayout = view.findViewById(R.id.tabview);
         tabLayout.setupWithViewPager(this.viewPager);
+
+        tab_bg = view.findViewById(R.id.tab_bg);
+
         showHeaders();
         return view;
     }
@@ -91,6 +99,8 @@ public class FragmentHolder extends Fragment {
         viewPagerAdapter.addFrag(new MapsView());
         viewPagerAdapter.addFrag(new ReviewsView());
         pager.setAdapter(viewPagerAdapter);
+
+        //pager.setOffscreenPageLimit(2);
     }
 
     private void showHeaders() {
@@ -118,6 +128,16 @@ public class FragmentHolder extends Fragment {
                         .setColorFilter(getResources()
                         .getColor(R.color.colorAccent),
                                 PorterDuff.Mode.SRC_IN);
+
+                //hide tab_layout on chat view
+                if(tab.getPosition()==2){
+                    tabLayout.setVisibility(View.GONE);
+
+                }else{
+                    // Prepare the View for the animation
+                    tabLayout.setVisibility(View.VISIBLE);
+
+                }
             }
             public void onTabUnselected(TabLayout.Tab tab) {
                 viewPager.refreshDrawableState();
@@ -129,15 +149,14 @@ public class FragmentHolder extends Fragment {
             }
         });
 
+        //select active tab
         TabLayout.Tab tab = tabLayout.getTabAt(0);
         tab.select();
     }
 
 
-    public void CloseFragment(int paramInt) {}
 
-    public void OpenFragment(int paramInt) {}
-
+    //get View Pager
     public ViewPager getViewPager() {
         return viewPager;
     }
