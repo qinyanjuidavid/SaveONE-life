@@ -64,6 +64,13 @@
         <entry key="app/src/main/res/drawable/user_bg.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/user_view_bg.xml" value="0.1415" />
         <entry key="app/src/main/res/font/.xml" value="0.28125" />
+        <entry key="app/src/main/res/layout-sw320dp/fragment_landing_screen.xml" value="0.2359375" />
+        <entry key="app/src/main/res/layout-sw320dp/fragment_login.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/layout-sw320dp/fragment_other_info.xml" value="0.176953125" />
+        <entry key="app/src/main/res/layout-sw320dp/fragment_sign_up_organisation.xml" value="0.176953125" />
+        <entry key="app/src/main/res/layout-sw320dp/orphanage_card.xml" value="0.176953125" />
+        <entry key="app/src/main/res/layout-sw480dp/fragment_landing_screen.xml" value="0.17954815695600476" />
+        <entry key="app/src/main/res/layout-sw600dp/fragment_landing_screen.xml" value="0.17954815695600476" />
         <entry key="app/src/main/res/layout/activity_about_app.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/activity_detailed.xml" value="0.18828125" />
         <entry key="app/src/main/res/layout/activity_home_page.xml" value="0.25104166666666666" />
@@ -74,6 +81,7 @@
         <entry key="app/src/main/res/layout/chats_card.xml" value="0.18828125" />
         <entry key="app/src/main/res/layout/close_diag.xml" value="0.20598290598290597" />
         <entry key="app/src/main/res/layout/congratulation_diag.xml" value="0.23981481481481481" />
+        <entry key="app/src/main/res/layout/custom_marker.xml" value="0.2111111111111111" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/detailed_orpanage_card.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/divider_with_or.xml" value="0.25104166666666666" />
@@ -83,17 +91,19 @@
         <entry key="app/src/main/res/layout/fragment_additional_info.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/fragment_detailed_info.xml" value="0.18051605224609377" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.23697916666666666" />
-        <entry key="app/src/main/res/layout/fragment_landing_screen.xml" value="0.1527369181315104" />
-        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/fragment_landing_screen.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1770716349283854" />
         <entry key="app/src/main/res/layout/fragment_map_view.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_maps_view.xml" value="0.25104166666666666" />
-        <entry key="app/src/main/res/layout/fragment_other_info.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/fragment_other_info.xml" value="0.1647181193033854" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/fragment_reviews_view.xml" value="0.1451048951048951" />
         <entry key="app/src/main/res/layout/fragment_select_location_map.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up_donor.xml" value="0.25104166666666666" />
-        <entry key="app/src/main/res/layout/fragment_sign_up_organisation.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/fragment_sign_up_organisation.xml" value="0.18183848063151042" />
+        <entry key="app/src/main/res/layout/fragment_sign_up_organisation2.xml" value="0.1936725096194955" />
+        <entry key="app/src/main/res/layout/freagment_other_info.xml" value="0.1936725096194955" />
         <entry key="app/src/main/res/layout/google_btn.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/loading_diag.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/loading_orphanage.xml" value="0.25104166666666666" />

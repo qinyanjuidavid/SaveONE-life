@@ -1,6 +1,4 @@
-package com.wyksofts.saveone.models.Organisation;
-
-import android.net.Uri;
+package com.wyksofts.saveone.models.Orphanage;
 
 public class OrphanageModel {
 
@@ -17,6 +15,9 @@ public class OrphanageModel {
     String group_image;
     String verified;
     String what_needed;
+
+    public OrphanageModel() {
+    }
 
     public String getWhat_needed() {
         return what_needed;
@@ -152,4 +153,5 @@ public class OrphanageModel {
         this.verified = verified;
         this.what_needed = what_needed;
     }
+
 }

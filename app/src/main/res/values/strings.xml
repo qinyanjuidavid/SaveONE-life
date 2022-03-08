@@ -130,4 +130,6 @@
         But still you can be someone smiles without an account.</string>
     <string name="sign_up_acc">Sign Up?</string>
     <string name="no">No</string>
+    <string name="continue_acc">Continue</string>
+    <string name="sign_in">Sign In</string>
 </resources>

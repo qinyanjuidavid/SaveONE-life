@@ -1,7 +1,5 @@
 package com.wyksofts.saveone.ui.homeUI.MainPage;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
 import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -16,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.util.Constants.Constants;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +22,7 @@ import java.util.List;
 public class FragmentHolder extends Fragment {
 
     private String[] Headers = new String[] { "Home", "Map", "Reviews" };
-    private int[] icons =  new int[]{
-            R.drawable.baseline_home_24,
-            R.drawable.baseline_map_24,
-            R.drawable.baseline_chat_24,};
+    private int[] icons =  new int[]{Constants.home_icon, Constants.map_icon, Constants.chat_icon};
 
     private TabLayout tabLayout;
 
@@ -97,7 +93,7 @@ public class FragmentHolder extends Fragment {
         ViewPagerAdapter viewPagerAdapter = new ViewPagerAdapter(getActivity().getSupportFragmentManager());
         viewPagerAdapter.addFrag(new HomePage());
         viewPagerAdapter.addFrag(new MapsView());
-        viewPagerAdapter.addFrag(new ReviewsView());
+        viewPagerAdapter.addFrag(new ChatsForum());
         pager.setAdapter(viewPagerAdapter);
 
         //pager.setOffscreenPageLimit(2);
@@ -153,7 +149,6 @@ public class FragmentHolder extends Fragment {
         TabLayout.Tab tab = tabLayout.getTabAt(0);
         tab.select();
     }
-
 
 
     //get View Pager

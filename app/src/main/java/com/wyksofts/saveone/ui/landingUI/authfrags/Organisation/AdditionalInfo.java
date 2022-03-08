@@ -150,8 +150,10 @@ public class AdditionalInfo extends Fragment {
 
         if(TextUtils.isEmpty(phone_number)){
             org_phone_number.setError("Enter Phone");
-        }else if (phone_number.length()<13){
+        }else if (phone_number.length()<=10){
             org_phone_number.setError("Please Include Your Country Code (+254)");
+        }else if (phone_number.length()>=14){
+            org_phone_number.setError("Invalid phone number");
         }else if (TextUtils.isEmpty(till_number)){
             org_till_number.setError("Enter Till / Paybill Number");
         }else if (TextUtils.isEmpty(bank_account)){
@@ -182,7 +184,6 @@ public class AdditionalInfo extends Fragment {
         if(user != null) {
             email = user.getEmail();
             org_name = user.getDisplayName();
-            new showAppToast().showSuccess(getContext(),"user is found");
         }else{
             email = pref.getString("email","orphanage@gmail.com");
             org_name = pref.getString("name", "Orphanage");
@@ -205,14 +206,14 @@ public class AdditionalInfo extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "DocumentSnapshot successfully written!");
+
                         uploadImage();
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
+
                         new AlertPopDiag(getContext()).show(
                                 "Oops we have experienced an error while uploading",
                                 "Connection error");
@@ -234,14 +235,12 @@ public class AdditionalInfo extends Fragment {
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
-                        Log.d(TAG, "Image url successfully added!");
 
                         uploadImageDialog.dismiss();
                         new showAppToast().showSuccess(getContext(),"All set...loading next");
 
                         getActivity().getSupportFragmentManager()
                                 .beginTransaction()
-                                .addToBackStack(null)
                                 .setCustomAnimations(R.anim.fade_in,
                                         R.anim.fade_out)
                                 .addSharedElement(btn, "otherInfo")
@@ -252,9 +251,9 @@ public class AdditionalInfo extends Fragment {
                 .addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Log.w(TAG, "Error writing document", e);
+
                         new AlertPopDiag(getContext()).show(
-                                "Oops we have experienced an error while uploading your info.",
+                                "Oops we have experienced an error while uploading your info. Please try again.",
                                 "Connection error");
                     }
                 });
@@ -305,11 +304,13 @@ public class AdditionalInfo extends Fragment {
                                             / taskSnapshot.getTotalByteCount());
                                     TextView progress_text = uploadImageDialog.findViewById(R.id.text_status);
                                     progress_text.setText(
-                                            new StringBuilder().append("Uploading ")
+                                            new StringBuilder().append("Uploading Info")
                                             .append((int) progress).append("%")
                                             .toString());
                                 }
                             });
+        }else{
+            new showAppToast().showFailure(getContext(),"Group photo can not be empty");
         }
     }
 

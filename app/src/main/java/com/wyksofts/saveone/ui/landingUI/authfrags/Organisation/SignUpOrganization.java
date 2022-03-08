@@ -123,13 +123,13 @@ public class SignUpOrganization extends Fragment {
             OrgPassword.setError("Your password is too short, must be atleast 6 characters.");
         }
         else if (!new PasswordChecker().isValidPassword(isValid)){
-            OrgPassword.setError("Must have atleast one upper case and one number.");
+            OrgPassword.setError("Must have at least one upper case and one number.");
         }
         else if (password_confirm.length()<6){
-            OrgPasswordConfirm.setError("Your password is too short, must be atleast 6 characters.");
+            OrgPasswordConfirm.setError("Your password is too short, must be at least 6 characters.");
         }
         else if (!new PasswordChecker().isValidPassword(password_confirm_isInvalid)){
-            OrgPasswordConfirm.setError("Must have atleast one upper case and one number.");
+            OrgPasswordConfirm.setError("Must have at least one upper case and one number.");
         }
         else if(!password.equals(password_confirm)){
             OrgPasswordConfirm.setError("Password are not matching");
@@ -150,7 +150,6 @@ public class SignUpOrganization extends Fragment {
                 getActivity()
                         .getSupportFragmentManager()
                         .beginTransaction()
-                        .addToBackStack(null)
                         .setCustomAnimations(R.anim.fade_in,
                                 R.anim.fade_out)
                         .addSharedElement(register_new_orphanage, "addInfo")

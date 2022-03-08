@@ -15,7 +15,6 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
         android:layout_marginEnd="28dp"
         android:layout_marginBottom="0dp"
         android:orientation="vertical"
@@ -32,7 +31,7 @@
             android:fontFamily="serif"
             android:text="@string/welcome_back"
             android:textColor="@color/colorAccent"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold"/>
 
         <TextView
@@ -42,15 +41,15 @@
             android:fontFamily="serif"
             android:text="@string/login_txt"
             android:textColor="@color/blue"
-            android:textSize="32sp"
+            android:textSize="28sp"
             android:textStyle="bold"
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="96dp" />
 
 
         <ImageView
-            android:layout_width="240dp"
-            android:layout_height="200dp"
+            android:layout_width="200dp"
+            android:layout_height="160dp"
             android:scaleType="fitXY"
             android:layout_marginBottom="8dp"
             android:src="@drawable/login" />

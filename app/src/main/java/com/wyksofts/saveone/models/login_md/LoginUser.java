@@ -56,10 +56,10 @@ public class LoginUser extends View {
                             // if user enters wrong email.
                             // if user enters wrong password.
                             catch (FirebaseAuthInvalidCredentialsException | FirebaseAuthUserCollisionException weakPassword){
-                                showErrorDiag(String.valueOf(weakPassword));
+                                showErrorDiag("Incorrect Password or email");
                             } catch (Exception e) {
                                 Log.d(TAG, "onComplete: " + e.getMessage());
-                                showErrorDiag(String.valueOf(e.getMessage()));
+                                showErrorDiag("error");
                             }
                         }else{
 

@@ -8,19 +8,10 @@ import androidx.fragment.app.FragmentTransaction;
 
 import android.app.Dialog;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
-import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
-
-import com.mikepenz.materialdrawer.Drawer;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.homeUI.MainPage.FragmentHolder;
-import com.wyksofts.saveone.ui.homeUI.MainPage.HomePage;
-import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedInfo;
 
 public class MainActivity extends AppCompatActivity {
 

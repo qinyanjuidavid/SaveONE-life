@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:id="@+id/log_in_linearlayout"
-    android:padding="28.0dip"
     android:layout_width="match_parent"
-    android:background="@color/white"
     android:layout_height="match_parent"
-    android:theme="@style/Theme.MaterialComponents.Bridge"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="28.0dip"
+    android:theme="@style/Theme.MaterialComponents.Bridge">
 
 
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="30dp"
-        android:layout_marginEnd="28dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginBottom="0dp"
+        android:gravity="center"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -30,19 +30,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="4dp"
+            android:fontFamily="@font/mont"
             android:gravity="center"
             android:text="@string/organisation_personal_information"
             android:textColor="@color/blue"
-            android:fontFamily="@font/mont"
-            android:textSize="30.0sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:src="@drawable/personal_information"/>
-
-
+            android:maxHeight="200dp"
+            android:src="@drawable/personal_information" />
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CustomInputStyle"
             android:layout_width="match_parent"
@@ -63,17 +62,18 @@
                 android:id="@+id/organisation_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mont"
                 android:hint="@string/orphanage_children_s_home_name"
                 android:marqueeRepeatLimit="marquee_forever"
                 android:singleLine="true"
-                android:fontFamily="@font/mont"
-                android:textStyle="bold"
                 android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 tools:ignore="SmallSp" />
 
         </com.google.android.material.textfield.TextInputLayout>
+
 
         <com.google.android.material.textfield.TextInputLayout
             style="@style/CustomInputStyle"
@@ -96,13 +96,13 @@
                 android:id="@+id/organisation_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mont"
                 android:hint="@string/orphanage_children_s_home_email_address"
                 android:singleLine="true"
-                android:fontFamily="@font/mont"
-                android:textStyle="bold"
                 android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
                 android:textSize="14sp"
+                android:textStyle="bold"
                 tools:ignore="SmallSp" />
 
         </com.google.android.material.textfield.TextInputLayout>
@@ -114,11 +114,11 @@
             android:layout_height="52dp"
             android:textColorHint="@color/gray2"
             app:boxBackgroundMode="outline"
-            app:boxStrokeWidth=".8dp"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidth=".8dp"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="#FF5722">
 
@@ -126,15 +126,15 @@
                 android:id="@+id/organisation_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mont"
                 android:hint="@string/organisation_password"
                 android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
                 android:password="true"
-                android:fontFamily="@font/mont"
-                android:textStyle="bold"
+                android:singleLine="true"
                 android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -144,11 +144,11 @@
             android:layout_height="52dp"
             android:textColorHint="@color/gray2"
             app:boxBackgroundMode="outline"
-            app:boxStrokeWidth=".8dp"
             app:boxCornerRadiusBottomEnd="8dp"
             app:boxCornerRadiusBottomStart="8dp"
             app:boxCornerRadiusTopEnd="8dp"
             app:boxCornerRadiusTopStart="8dp"
+            app:boxStrokeWidth=".8dp"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="#FF5722">
 
@@ -156,15 +156,15 @@
                 android:id="@+id/confirm_organisation_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/mont"
                 android:hint="@string/confirm_organisation_password"
                 android:marqueeRepeatLimit="marquee_forever"
-                android:singleLine="true"
                 android:password="true"
-                android:fontFamily="@font/mont"
-                android:textStyle="bold"
+                android:singleLine="true"
                 android:textColor="@color/blue"
                 android:textColorHint="@color/blue"
-                android:textSize="14sp"/>
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -195,28 +195,29 @@
                 <CheckBox
                     android:id="@+id/agree_with_terms"
                     android:layout_width="wrap_content"
-                    android:fontFamily="serif"
+                    android:layout_height="wrap_content"
                     android:backgroundTint="@color/colorAccent"
                     android:buttonTint="@color/colorAccent"
+                    android:fontFamily="serif"
                     android:text="@string/i_accept_terms_and_services"
                     android:textColor="@color/blue"
-                    android:textStyle="bold"
                     android:textSize="12sp"
-                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
                     tools:ignore="SmallSp,UnusedAttribute" />
+
                 <TextView
                     android:id="@+id/terms2"
-                    android:fontFamily="serif"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold"
-                    android:layout_marginStart="4dp"
-                    android:textSize="14sp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="@drawable/text_background"
-                    android:text="@string/terms"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:background="@drawable/text_background"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="serif"
+                    android:text="@string/terms"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
                     tools:ignore="SmallSp" />
 
             </LinearLayout>
@@ -229,11 +230,11 @@
                     android:id="@+id/loading_bar"
                     android:layout_width="25dp"
                     android:layout_height="26dp"
-                    android:layout_gravity="center"
-                    android:visibility="gone"
-                    android:indeterminate="true"
                     android:layout_centerInParent="true"
-                    android:indeterminateTint="@color/colorAccent"/>
+                    android:layout_gravity="center"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/colorAccent"
+                    android:visibility="gone" />
 
                 <Button
                     android:id="@+id/register_new_orphanage"

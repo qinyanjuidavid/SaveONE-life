@@ -21,7 +21,7 @@ public class AlertPopDiag extends View {
         Alerter.create((Activity) mcontext)
                 .setTitle(title)
                 .setText(errorMessage)
-                .setBackgroundColorRes(R.color.colorAccent)
+                .setBackgroundColorRes(R.color.red)
                 .enableVibration(true)
                 .setDuration(2000)
                 .show();

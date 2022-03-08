@@ -1,18 +1,10 @@
 package com.wyksofts.saveone.ui.homeUI.MainPage;
 
-import static com.google.firebase.inappmessaging.internal.Logging.TAG;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
-import android.Manifest;
-import android.app.ProgressDialog;
-import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -30,21 +22,22 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
+import com.google.common.reflect.TypeToken;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.gson.Gson;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.LocationModel.LocationModel;
-import com.wyksofts.saveone.models.Organisation.OrphanageModel;
+import com.wyksofts.saveone.models.Orphanage.OrphanageModel;
 import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.showAppToast;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
+import java.util.Set;
 
 
 public class MapsView extends Fragment implements OnMapReadyCallback{
@@ -57,11 +50,16 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
 
     SupportMapFragment mapFragment;
 
+    SharedPreferences.Editor editor;
+    SharedPreferences pref;
 
-    // creating array list for adding all our locations.
-    public ArrayList<LatLng> locationArrayList;//location
-    public List<String> orphanage_names;
+    //coordinates model
+    List<LocationModel> listdata;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Nullable
     @Override
@@ -73,6 +71,7 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
 
         database = FirebaseFirestore.getInstance();
 
+        listdata = new ArrayList<LocationModel>();
 
         return view;
     }
@@ -83,17 +82,14 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
         mapFragment = (SupportMapFragment) getChildFragmentManager().findFragmentById(R.id.map);
 
         //get locations
-        //getLocationsData();
+        getLocationsData();
 
-        //initialize arraylist
-        locationArrayList = new ArrayList<>();
-        orphanage_names = new ArrayList<>();
     }
 
-
+    //get location data
     public void getLocationsData() {
 
-        database.collection("Orphanage")
+        database.collection("Coordinates")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -102,7 +98,6 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
 
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
 
                                 String coordinates = document.getString("coordinates");
 
@@ -110,7 +105,7 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
 
                                 if(!coordinates.isEmpty()){
 
-                                    //create a list of latlong from coordinates string and seperate the string
+                                    //create a list of lat-long from coordinates string and separate coordinates string
                                     List<String> latlong = Arrays.asList(coordinates.split(","));
 
                                     //set latitude and longitude
@@ -119,20 +114,20 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
 
                                     locationList = new LatLng(latitude,longitude);
 
-                                    //init $$ add list
-                                    locationArrayList.add(locationList);
-                                    orphanage_names.add(names);
 
+                                    //add data to model
+                                    listdata.add(new LocationModel(names,locationList));
+
+                                    //show map
                                     showMarkers();
 
-                                    //new showAppToast().showSuccess(getContext(),""+locationList);
-
                                 }else{
-
+                                    new showAppToast().showFailure(getContext(),"Encountered an error while loading...");
                                 }
                             }
                         } else {
-                            //error getting doc
+                            //error getting coordinates
+                            new showAppToast().showFailure(getContext(),"No internet connection");
                         }
                     }
                 })
@@ -144,6 +139,7 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
 
     }
 
+    //show markers and location of the orphanages
     public void showMarkers(){
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
@@ -155,30 +151,25 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        new showAppToast().showSuccess(getContext(),""+orphanage_names);
+        //loop through data
+        for (int i = 0; i < listdata.size(); i++) {
 
-        for (int i = 0; i < orphanage_names.size(); i++) {//for locations
+            //add makers
+            googleMap.addMarker(new MarkerOptions()
+                    .position(listdata.get(i).getLatLng())
+                    .title(listdata.get(i).getTitle())
 
-            for (int k = 0; k < locationArrayList.size(); k++) {//for orphanage names
-
-                //add makers
-                googleMap.addMarker(new MarkerOptions()
-                        .position(locationArrayList.get(k))
-                        //.title(orphanage_names.get(i)));
-                        .icon(BitmapDescriptorFactory
-                                .fromBitmap(new getBitmap()
-                                        .getBitmap(String.valueOf(R.drawable.custom_maker),
-                                                120,120, getContext()))));
-            }
+                    .icon(BitmapDescriptorFactory.fromBitmap(
+                            new getBitmap().getBitmap(String.valueOf(R.drawable.custom_maker),
+                                            120,120, getContext()))));
 
             //show control UI
             googleMap.getUiSettings().setZoomControlsEnabled(true);
             googleMap.getUiSettings().setAllGesturesEnabled(true);
 
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(locationArrayList.get(i), 12.0f));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(listdata.get(i).getLatLng(), 12.0f));
             CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
             googleMap.animateCamera(zoom);
-
         }
     }
 

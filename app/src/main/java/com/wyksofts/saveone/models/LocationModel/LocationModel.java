@@ -7,17 +7,27 @@ import java.util.List;
 
 public class LocationModel {
 
-    public LocationModel(ArrayList<LatLng> locationArrayList) {
-        this.locationArrayList = locationArrayList;
+    String title;
+    LatLng latLng;
+
+    public LocationModel(String title, LatLng latLng) {
+        this.title = title;
+        this.latLng = latLng;
     }
 
-    ArrayList<LatLng> locationArrayList;
-
-    public ArrayList<LatLng> getLocationArrayList() {
-        return locationArrayList;
+    public String getTitle() {
+        return title;
     }
 
-    public void setLocationArrayList(ArrayList<LatLng> locationArrayList) {
-        this.locationArrayList = locationArrayList;
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public LatLng getLatLng() {
+        return latLng;
+    }
+
+    public void setLatLng(LatLng latLng) {
+        this.latLng = latLng;
     }
 }

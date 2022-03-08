@@ -39,15 +39,20 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.inappmessaging.internal.Logging;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.ChatsAdapter.ChatAdapter;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.ChatModel.ChatsModel;
+import com.wyksofts.saveone.notifications.MessageSender;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
 import com.wyksofts.saveone.util.HelperClasses.noAccountFound;
 import com.wyksofts.saveone.util.showAppToast;
@@ -57,6 +62,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -64,7 +70,7 @@ import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class ReviewsView extends Fragment {
+public class ChatsForum extends Fragment {
 
     EditText message;
     ImageView attach_file, open_emoji, record_message, send_message;
@@ -95,7 +101,7 @@ public class ReviewsView extends Fragment {
     //warnig dialog
     Dialog warning_dialog;
 
-    public ReviewsView() {
+    public ChatsForum() {
         // Required empty public constructor
     }
 
@@ -283,6 +289,16 @@ public class ReviewsView extends Fragment {
         getMessages();
     }
 
+    //listen to data change
+    private void getUpdates(){
+
+        FirebaseMessaging firebaseMessaging = FirebaseMessaging.getInstance();
+        firebaseMessaging.subscribeToTopic("New messages forum");
+
+    }
+
+
+
     //get messages
     public void getMessages(){
         database.collection("Chats")
@@ -334,7 +350,7 @@ public class ReviewsView extends Fragment {
     }
 
 
-    //send data to the database
+    //send message to the database
     private void sendMessage(String sms) {
 
         String email = user.getEmail();
@@ -376,14 +392,18 @@ public class ReviewsView extends Fragment {
                         final MediaPlayer mp = MediaPlayer.create(getContext(), R.raw.message_sent);
                         mp.start();
 
-                        message.setText("");
-
                         //clear
                         list_data.clear();
 
                         getMessages();
                         adapter.notifyDataSetChanged();
                         adapter.notifyItemInserted(-1);
+
+                        //send notification
+                        sendNotification(sms,name);
+
+                        message.setText("");
+
 
                     }
                 })
@@ -393,6 +413,16 @@ public class ReviewsView extends Fragment {
 
                     }
                 });
+    }
+
+    private void sendNotification(String message, String name) {
+        FirebaseMessaging.getInstance().subscribeToTopic("Chats");
+
+        MessageSender sender = new MessageSender(
+                "/Chats/all", name, message, getContext(), getActivity()
+                );
+        sender.sendNotification();
+
     }
 
 

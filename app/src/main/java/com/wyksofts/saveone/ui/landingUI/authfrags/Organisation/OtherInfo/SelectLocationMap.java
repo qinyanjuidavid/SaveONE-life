@@ -184,6 +184,37 @@ public class SelectLocationMap extends Fragment implements
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
+                        saveLocationCoordinates(user.getDisplayName(),email);
+                    }
+                })
+
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.w(TAG, "Error writing document", e);
+                        new AlertPopDiag(getContext()).show(
+                                "Oops we have experienced an error while uploading",
+                                "Connection error");
+                    }
+                });
+
+    }
+    //add coordinates to the map coordinates
+    public void saveLocationCoordinates(String name, String email){
+
+        String coordinates = curr_position.latitude+","+curr_position.longitude;
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("coordinates", coordinates);
+        data.put("name", name);
+
+
+        database.collection("Coordinates")
+                .document(email)
+                .set(data, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
 
                         new showAppToast().showSuccess(getContext(),"Done...All set");
                         new showCongratulationDialog().showCongratulationsDialog(getContext(),
@@ -200,7 +231,6 @@ public class SelectLocationMap extends Fragment implements
                                 "Connection error");
                     }
                 });
-
     }
 
     //callback map view with the current location

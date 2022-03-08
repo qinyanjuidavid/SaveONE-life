@@ -43,11 +43,14 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
+import com.google.gson.Gson;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.Orphanages.OrphanageListAdapter;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.Organisation.OrphanageModel;
+import com.wyksofts.saveone.models.LocationModel.LocationModel;
+import com.wyksofts.saveone.models.Orphanage.OrphanageData;
+import com.wyksofts.saveone.models.Orphanage.OrphanageModel;
 import com.wyksofts.saveone.ui.Others.AboutApp;
 import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedActivity;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
@@ -56,7 +59,10 @@ import com.wyksofts.saveone.util.HelperClasses.ShareApp;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class HomePage extends Fragment implements OrphanageViewInterface {
 
@@ -67,11 +73,9 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     private OrphanageListAdapter adapter;
     private EditText search;
     StorageReference storageRef;
-    private LinearLayout no_result_found,loading_orphanages;
+    private LinearLayout no_result_found,loading_orphanage;
     private Button search_again, retry_connecting;
 
-    Uri group_image;
-    LinearLayout loading_orphanage;
     TextView orphanage_name;
     ImageView menu;
 
@@ -80,6 +84,9 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
     SharedPreferences.Editor editor;
     SharedPreferences pref;
+
+    //location coordinates
+    ArrayList<String> locationArrayList;
 
 
     public HomePage() {
@@ -386,6 +393,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
 
     //get orphanage data
+    //get orphanage data
     public void getData(){
 
         loading_orphanage.setVisibility(View.VISIBLE);
@@ -400,7 +408,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
                             loading_orphanage.setVisibility(View.GONE);
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + " => " + document.getData());
+                                Log.d(TAG, document.getId() + "DATA____>"+ document.getData());
 
                                 String name = document.getString("name");
                                 String bank_account = document.getString("bank_account");
@@ -418,11 +426,12 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
                                 String url = document.getString("url");
 
                                 listdata.add(new OrphanageModel(name,location, coordinates,
-                                         country,  description, number_of_children,
-                                         phone_number, bank_account,bank_account_name,
+                                        country,  description, number_of_children,
+                                        phone_number, bank_account,bank_account_name,
                                         till_number, url, email,verified,what_needed));
 
                                 recyclerView.setAdapter(adapter);
+
                             }
                         } else {
                             Log.w(TAG, "Error getting documents.", task.getException());
@@ -434,8 +443,9 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
                     public void onFailure(@NonNull Exception e) {
                     }
                 });
-
     }
+
+
 
     @Override
     public void onOrphanageClicked(String name, String location, String coordinates, String country,
