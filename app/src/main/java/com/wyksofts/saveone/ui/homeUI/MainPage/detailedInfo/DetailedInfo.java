@@ -24,6 +24,8 @@ import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -34,13 +36,22 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
@@ -63,6 +74,10 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     FloatingActionButton donate;
     Dialog donateDialog;
 
+    //firebase
+    FirebaseUser user;
+    FirebaseFirestore database;
+
 
     public DetailedInfo() {
         // Required empty public constructor
@@ -75,6 +90,9 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         Transition transition = TransitionInflater.from(requireContext())
                 .inflateTransition(R.transition.shared_image);
         setSharedElementEnterTransition(transition);
+
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        database = FirebaseFirestore.getInstance();
 
         donateDialog = new Dialog(getActivity(), R.style.DialogAnimation);
     }
@@ -187,9 +205,86 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     private void showDonateDialog() {
         donateDialog.setContentView(R.layout.donate_dialog);
 
+
+        donateDialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                donateDialog.dismiss();
+            }
+        });
+        EditText phone_number = donateDialog.findViewById(R.id.donor_phone_number);
+        EditText location = donateDialog.findViewById(R.id.donor_location);
+
+        String donor_phone_number = phone_number.getText().toString();
+        String donor_location = location.getText().toString();
+
+        CheckBox food_stuffs = donateDialog.findViewById(R.id.food_stuffs);
+        CheckBox clothing = donateDialog.findViewById(R.id.clothings);
+        CheckBox education_materials = donateDialog.findViewById(R.id.education_materials);
+
+        if (food_stuffs.isChecked()){
+            String food = "Food Stuffs";
+        }
+        if (clothing.isChecked()){
+            String clothes = "Clothing's";
+        }
+        if (education_materials.isChecked()){
+            String school = "Educational materials";
+        }
+
+        donateDialog.findViewById(R.id.donate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recordDonation(donor_phone_number,donor_location, food, finalClothes, finalSchool);
+            }
+        });
+
         donateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        donateDialog.setCancelable(true);
+        donateDialog.setCancelable(false);
         donateDialog.show();
+
+    }
+
+    //add donation to database
+    private void recordDonation(String donor_phone_number, String donor_location,
+                                String finalFood, String finalClothes, String finalSchool) {
+
+        String orphanage_email = pref.getString("email",null);
+
+        Map<String, Object> data = new HashMap<>();
+        data.put("phone_number", donor_phone_number);
+        data.put("location", donor_location);
+        data.put("email", user.getEmail());
+        data.put("name", user.getDisplayName());
+        data.put("food", finalFood);
+        data.put("clothes", finalClothes);
+        data.put("educational_materials", finalSchool);
+
+        Map<String, Object> docData = new HashMap<>();
+        docData.put(user.getEmail(), Arrays.asList(data));
+
+        database.collection("Donations")
+                .document(orphanage_email)
+                .set(docData, SetOptions.merge())
+                .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        new showAppToast().showSuccess(getContext(),
+                                "Your donation was recorded successfully\t"+
+                                        pname
+                                        +"\t will contact you for more information");
+                        donateDialog.dismiss();
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                        new AlertPopDiag(getContext()).show(
+                                "Oops we have experienced an error while receiving your donation",
+                                "Connection error");
+                    }
+                });
 
     }
 
