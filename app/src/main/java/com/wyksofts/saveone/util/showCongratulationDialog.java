@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.util.HelperClasses.ContactUs;
+import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.ContactUs;
 
 public class showCongratulationDialog {
 

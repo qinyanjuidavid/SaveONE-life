@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.util.HelperClasses;
+package com.wyksofts.saveone.util;
 
 import android.content.Context;
 import android.content.Intent;

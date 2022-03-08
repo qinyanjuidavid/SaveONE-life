@@ -7,7 +7,6 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
@@ -43,26 +42,21 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.gson.Gson;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.Orphanages.OrphanageListAdapter;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.LocationModel.LocationModel;
-import com.wyksofts.saveone.models.Orphanage.OrphanageData;
 import com.wyksofts.saveone.models.Orphanage.OrphanageModel;
 import com.wyksofts.saveone.ui.Others.AboutApp;
 import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedActivity;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
-import com.wyksofts.saveone.util.HelperClasses.ContactUs;
-import com.wyksofts.saveone.util.HelperClasses.ShareApp;
+import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.ContactUs;
+import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.NoAccountFound;
+import com.wyksofts.saveone.util.ShareApp;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class HomePage extends Fragment implements OrphanageViewInterface {
 
@@ -319,7 +313,11 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         menu_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getContext(), ProfileHolder.class));
+                if (user !=null){
+                    startActivity(new Intent(getContext(), ProfileHolder.class));
+                }else{
+                    new NoAccountFound().showCreateAccountDialog(getContext());
+                }
             }
         });
 
@@ -392,7 +390,6 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     }
 
 
-    //get orphanage data
     //get orphanage data
     public void getData(){
 

@@ -10,6 +10,13 @@
             <solid
                 android:color="@color/colorAccent" />
 
+            <gradient
+                android:gradientRadius="360"
+                android:angle="180"
+                android:startColor="@color/orange"
+                android:centerColor="@color/orange2"
+                android:endColor="@color/orange3"/>
+
             <corners
                 android:radius="100.0dip" />
 

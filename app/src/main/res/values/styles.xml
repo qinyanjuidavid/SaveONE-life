@@ -23,6 +23,16 @@
     </style>
 
 
+    <style name="DialogAnimation" parent="@android:style/Theme.Dialog">
+        <item name="android:windowAnimationStyle">@style/DialogAnim</item>
+    </style>
+
+    <style name="DialogAnim">
+        <item name="android:windowEnterAnimation">@anim/fall_down</item>
+        <item name="android:windowExitAnimation">@anim/fade_in</item>
+    </style>
+
+
     <style name="itemTextStyle.AppTheme" parent="@android:style/TextAppearance.Widget.IconMenu.Item">
         <item name="android:textColor">@color/blue</item>
     </style>

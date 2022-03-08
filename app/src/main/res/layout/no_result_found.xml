@@ -10,9 +10,9 @@
         android:src="@mipmap/ic_launcher_round"
         android:layout_height="50dp"/>
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="240dp"
         android:textSize="14sp"
-        android:textColor="@color/colorAccent"
+        android:textColor="@color/blue"
         android:textStyle="bold"
         android:padding="18dp"
         android:layout_gravity="center"
@@ -21,7 +21,8 @@
         android:layout_height="wrap_content"/>
     <TextView
         android:layout_width="wrap_content"
-        android:textSize="12sp"
+        android:textSize="14sp"
+        android:textColor="@color/blue"
         android:fontFamily="@font/mont"
         android:text="@string/we_did_not_find_result_of_your_search"
         android:layout_marginBottom="12dp"

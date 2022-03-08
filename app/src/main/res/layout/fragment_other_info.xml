@@ -46,7 +46,6 @@
                 android:src="@drawable/other_information"/>
 
 
-
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/CustomInputStyle"
                 android:layout_width="match_parent"
@@ -81,7 +80,6 @@
                     android:textStyle="bold"
                     tools:ignore="SmallSp" />
             </com.google.android.material.textfield.TextInputLayout>
-
 
             <com.google.android.material.textfield.TextInputLayout
                 style="@style/CustomInputStyle"
@@ -179,8 +177,6 @@
                     android:textSize="10sp" />
 
             </com.google.android.material.textfield.TextInputLayout>
-
-
 
 
             <TextView

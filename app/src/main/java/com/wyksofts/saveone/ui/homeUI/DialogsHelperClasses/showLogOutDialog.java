@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.util.HelperClasses;
+package com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,11 +11,11 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.landingUI.LandingHomePage;
 
-public class LogOutDialog extends View {
+public class showLogOutDialog extends View {
     Context mcontext;
     Dialog logoutDialog;
 
-    public LogOutDialog(Context context) {
+    public showLogOutDialog(Context context) {
         super(context);
         this.mcontext = context;
         logoutDialog = new Dialog(mcontext);

@@ -58,16 +58,20 @@
             android:textSize="12sp"
             android:textStyle="bold" />
 
+
         <Button
             android:id="@+id/donate_btn"
             android:layout_width="200dp"
-            android:layout_height="34dp"
+            android:layout_height="42dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
             android:background="@drawable/custom_btn"
-            android:fontFamily="@font/mont"
             android:text="@string/donate"
             android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold" />
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:icon="@drawable/baseline_volunteer_activism_24" />
+
 
         <LinearLayout
             android:layout_width="match_parent"

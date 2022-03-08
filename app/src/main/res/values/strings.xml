@@ -132,4 +132,26 @@
     <string name="no">No</string>
     <string name="continue_acc">Continue</string>
     <string name="sign_in">Sign In</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="wycliffnjenga19_gmail_com">wycliffnjenga19@gmail.com</string>
+    <string name="_254703285070">+254703285070</string>
+    <string name="number_of_children_s">Number of children\'s</string>
+    <string name="our_location">Our Location</string>
+    <string name="in_need_most">In need most</string>
+    <string name="more_information">More Information</string>
+    <string name="update_profile">Update Profile</string>
+    <string name="guide">*If you have changed your account details, please update new ones below.In case you are not using the accounts, Fill those accounts with (000)</string>
+    <string name="update">UPDATE</string>
+    <string name="bank_name">Bank Name</string>
+    <string name="basic_information">Basic Information</string>
+    <string name="account_information">Account Information</string>
+    <string name="not_verified">Not verified</string>
+    <string name="what_are_you_planning_to_donate">What are you planning to Donate?</string>
+    <string name="donation_description">***This are few of the items you can donate, they include; Foodstuffs(Sugar, Rice, Wheat flour, etc), Clothes(anything will help), Educational materials(Books, Pens etc). As little as from whatever you can get.</string>
+    <string name="donate_">DONATE</string>
+    <string name="enter_your_location_mombasa_town">Enter your location (Mombasa Town)</string>
+    <string name="food_stuffs">Food stuffs</string>
+    <string name="clothing_s">Clothing\'s</string>
+    <string name="educational_materials">Educational Materials</string>
+    <string name="donate_following">Donate:</string>
 </resources>

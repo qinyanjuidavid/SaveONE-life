@@ -2,14 +2,14 @@ package com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.graphics.drawable.ColorDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -17,27 +17,24 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
-import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
 import android.transition.Transition;
 import android.transition.TransitionInflater;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.bumptech.glide.load.resource.bitmap.BitmapDrawableResource;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.UiSettings;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.showAppToast;
@@ -60,8 +57,11 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
     //values keys
     String pphone_number,pname,pemail, pbank_account, pbank_account_name;
-
     LatLng curr_location = null;
+
+    //donate
+    FloatingActionButton donate;
+    Dialog donateDialog;
 
 
     public DetailedInfo() {
@@ -75,6 +75,8 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         Transition transition = TransitionInflater.from(requireContext())
                 .inflateTransition(R.transition.shared_image);
         setSharedElementEnterTransition(transition);
+
+        donateDialog = new Dialog(getActivity(), R.style.DialogAnimation);
     }
 
     @Override
@@ -88,6 +90,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         editor = pref.edit();
 
         name = view.findViewById(R.id.orp_name);
+        donate = view.findViewById(R.id.donate);
         description = view.findViewById(R.id.orp_description);
         mpesa = view.findViewById(R.id.orp_mpesa);
         phone_number = view.findViewById(R.id.orp_phone_number);
@@ -170,6 +173,23 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
            }
        });
 
+        donate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //show donate dialog
+                showDonateDialog();
+            }
+        });
+
+    }
+
+    //show donating dialog
+    private void showDonateDialog() {
+        donateDialog.setContentView(R.layout.donate_dialog);
+
+        donateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        donateDialog.setCancelable(true);
+        donateDialog.show();
 
     }
 

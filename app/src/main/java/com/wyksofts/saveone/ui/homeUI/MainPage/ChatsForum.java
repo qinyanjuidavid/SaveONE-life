@@ -20,7 +20,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,7 +27,6 @@ import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -39,10 +37,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -54,7 +49,7 @@ import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.ChatModel.ChatsModel;
 import com.wyksofts.saveone.notifications.MessageSender;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
-import com.wyksofts.saveone.util.HelperClasses.noAccountFound;
+import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.NoAccountFound;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.text.SimpleDateFormat;
@@ -62,7 +57,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.EventListener;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -250,7 +244,7 @@ public class ChatsForum extends Fragment {
                     }
 
                 }else{
-                    new noAccountFound().showCreateAccountDialog(getContext());
+                    new NoAccountFound().showCreateAccountDialog(getContext());
                 }
             }
         });

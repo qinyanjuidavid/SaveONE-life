@@ -2,6 +2,9 @@ package com.wyksofts.saveone.util.Constants;
 
 import static com.wyksofts.saveone.R.drawable.*;
 
+import android.annotation.SuppressLint;
+
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.wyksofts.saveone.R;
 
 public interface Constants {
@@ -16,6 +19,9 @@ public interface Constants {
     int chat_icon = baseline_chat_24;
 
     String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{4,}$";
+
+    @SuppressLint("StaticFieldLeak")
+    FirebaseFirestore DATA_BASE = FirebaseFirestore.getInstance();
 
 
 }

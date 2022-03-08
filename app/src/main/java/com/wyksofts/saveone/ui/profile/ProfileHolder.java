@@ -2,6 +2,7 @@ package com.wyksofts.saveone.ui.profile;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Build;
 import android.os.Bundle;
 
 import com.wyksofts.saveone.R;
@@ -16,6 +17,12 @@ public class ProfileHolder extends AppCompatActivity {
         setContentView(R.layout.activity_profile_holder);
 
         getSupportFragmentManager().beginTransaction().add(R.id.profile_root,
-                new Profile()).commit();
+                new Profile(), "profile").commit();
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1, this.getTheme()));
+        }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1));
+        }
     }
 }

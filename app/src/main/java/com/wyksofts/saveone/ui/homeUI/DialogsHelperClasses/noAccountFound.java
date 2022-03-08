@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.util.HelperClasses;
+package com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -6,11 +6,10 @@ import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 
-import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.landingUI.LandingHomePage;
 
-public class noAccountFound {
+public class NoAccountFound {
 
     Dialog dialog;
 

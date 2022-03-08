@@ -20,9 +20,9 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccent, this.getTheme()));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1, this.getTheme()));
         }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccent));
+            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1));
         }
 
         startActivity();
