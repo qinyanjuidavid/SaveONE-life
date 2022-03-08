@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/delete_message"
+        android:title="@string/delete_message" />
+
+    <item
+        android:id="@+id/reply_message"
+        android:title="@string/reply" />
+
+    <item
+        android:id="@+id/forward_message"
+        android:title="@string/forward" />
+
+
+</menu>
+

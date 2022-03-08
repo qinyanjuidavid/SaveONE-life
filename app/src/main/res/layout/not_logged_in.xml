@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardBackgroundColor="@color/white"
+        app:cardCornerRadius="8.0dip"
+        app:cardElevation="8dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout
+            android:padding="20dp"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:fontFamily="@font/mont"
+                android:textColor="@color/colorAccent"
+                android:text="@string/no_account"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="16sp"
+                android:layout_marginBottom="16sp"
+                android:gravity="center"
+                android:fontFamily="@font/mont"
+                android:textColor="@color/blue"
+                android:text="@string/no_account_found"/>
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="center"
+                    android:id="@+id/yes_create"
+                    android:background="@drawable/custom_colorless_btn"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/mont"
+                    android:textSize="14sp"
+                    android:layout_width="0.0dip"
+                    android:layout_height="36.0dip"
+                    android:text="@string/sign_in"
+                    android:shadowColor="@color/colorAccent"
+                    android:layout_weight="1.0" />
+
+                <View
+                    android:background="@color/colorAccent"
+                    android:layout_width="1.0dip"
+                    android:layout_height="fill_parent" />
+
+                <TextView
+                    android:textStyle="bold"
+                    android:textColor="@color/colorAccent"
+                    android:gravity="center"
+                    android:id="@+id/no"
+                    android:background="@drawable/custom_colorless_btn"
+                    android:focusable="true"
+                    android:clickable="true"
+                    android:fontFamily="@font/mont"
+                    android:layout_width="0.0dip"
+                    android:textSize="14sp"
+                    android:autoSizeMinTextSize="10sp"
+                    android:layout_height="36.0dip"
+                    android:text="@string/continue_acc"
+                    android:shadowColor="@color/colorAccent"
+                    android:layout_weight="1.0"
+                    tools:ignore="UnusedAttribute" />
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
