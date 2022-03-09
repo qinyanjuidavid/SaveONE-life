@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/donation_card"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:gravity="center"
+    android:clickable="true"
+    android:focusable="true"
+    android:background="@drawable/custom_btn3"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:orientation="vertical"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/who_donated"
+                android:layout_width="wrap_content"
+                android:text="@string/who_donated"
+                android:fontFamily="@font/mont"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:textColor="@color/blue"
+                android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/whats_donated"
+                android:layout_width="@dimen/_200sdp"
+                android:layout_height="wrap_content"
+                android:fontFamily="serif"
+                android:lines="2"
+                android:text="@string/what_s_donated"
+                android:textColor="@color/blue"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+
+        <CheckBox
+            android:id="@+id/is_donation_received"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_14sdp"
+            android:buttonTint="@color/colorAccent"
+            android:fontFamily="@font/mont"
+            android:textColor="@color/blue" />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="@dimen/_260sdp"
+        android:layout_height="0.8dp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:background="@color/colorAccent"/>
+
+</LinearLayout>

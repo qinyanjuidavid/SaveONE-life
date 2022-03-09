@@ -180,7 +180,7 @@
                     android:id="@+id/organisation_bank_account_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="@string/bank_account_name"
+                    android:hint="@string/bank_name"
                     android:inputType="text"
                     android:lines="1"
                     android:fontFamily="@font/mont"

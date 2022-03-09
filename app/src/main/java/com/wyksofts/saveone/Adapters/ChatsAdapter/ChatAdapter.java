@@ -8,9 +8,7 @@ import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.PopupMenu;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -19,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.ChatModel.ChatsModel;
+import com.wyksofts.saveone.models.ChatModel.Chats.ChatsModel;
 import com.wyksofts.saveone.models.ChatModel.DeleteMessage.DeleteMessage;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.showAppToast;

@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
+import android.text.TextUtils;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
@@ -44,8 +45,11 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.makeACall;
+import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkCallPermission;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.getBitmap;
+import com.wyksofts.saveone.util.getRandomString;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.Arrays;
@@ -161,8 +165,10 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
        phone_number.setOnClickListener(new View.OnClickListener() {
            @Override
            public void onClick(View view) {
-               if(isCallPermissionGranted()){
-                   callAction();
+               if(new checkCallPermission(getContext(),pphone_number,getActivity()).isCallPermissionGranted()){
+                   new makeACall().callAction(getContext(),pphone_number);
+               }else{
+                   new showAppToast().showFailure(getContext(),"Your device is not supported");
                }
            }
        });
@@ -205,7 +211,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     private void showDonateDialog() {
         donateDialog.setContentView(R.layout.donate_dialog);
 
-
         donateDialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -215,53 +220,80 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         EditText phone_number = donateDialog.findViewById(R.id.donor_phone_number);
         EditText location = donateDialog.findViewById(R.id.donor_location);
 
-        String donor_phone_number = phone_number.getText().toString();
-        String donor_location = location.getText().toString();
+        donateDialog.findViewById(R.id.donate).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                recordDonation(phone_number,location);
+            }
+        });
+        donateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        donateDialog.setCancelable(false);
+        donateDialog.show();
+    }
+
+
+
+    //add donation to database
+    private void recordDonation(EditText phone_number, EditText location) {
+
+        final String donor_phone_number = phone_number.getText().toString();
+        final String donor_location = location.getText().toString();
+        String clothes, school, food;
 
         CheckBox food_stuffs = donateDialog.findViewById(R.id.food_stuffs);
         CheckBox clothing = donateDialog.findViewById(R.id.clothings);
         CheckBox education_materials = donateDialog.findViewById(R.id.education_materials);
 
         if (food_stuffs.isChecked()){
-            String food = "Food Stuffs";
+            food = "Yes";
+        }else{
+            food ="";
         }
         if (clothing.isChecked()){
-            String clothes = "Clothing's";
+            clothes = "Yes";
+        }else{
+            clothes = "";
         }
         if (education_materials.isChecked()){
-            String school = "Educational materials";
+            school = "Yes";
+        }else{
+            school = "";
         }
 
-        donateDialog.findViewById(R.id.donate).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recordDonation(donor_phone_number,donor_location, food, finalClothes, finalSchool);
-            }
-        });
+        if (TextUtils.isEmpty(donor_phone_number)){
+            phone_number.setError("Phone is required");
+        }else if (TextUtils.isEmpty(donor_location)){
+            location.setError("Location is required");
+        }
 
-        donateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        donateDialog.setCancelable(false);
-        donateDialog.show();
-
-    }
-
-    //add donation to database
-    private void recordDonation(String donor_phone_number, String donor_location,
-                                String finalFood, String finalClothes, String finalSchool) {
 
         String orphanage_email = pref.getString("email",null);
 
-        Map<String, Object> data = new HashMap<>();
-        data.put("phone_number", donor_phone_number);
-        data.put("location", donor_location);
-        data.put("email", user.getEmail());
-        data.put("name", user.getDisplayName());
-        data.put("food", finalFood);
-        data.put("clothes", finalClothes);
-        data.put("educational_materials", finalSchool);
-
+        Map<String, Object> data = new HashMap<>();;
         Map<String, Object> docData = new HashMap<>();
-        docData.put(user.getEmail(), Arrays.asList(data));
+
+        if (user !=null) {
+            data.put("clothes", clothes);
+            data.put("educational_materials", school);
+            data.put("email", user.getEmail());
+            data.put("food", food);
+            data.put("location", donor_location);
+            data.put("name", user.getDisplayName());
+            data.put("phone_number", donor_phone_number);
+            docData.put(user.getEmail(), data);
+        }
+        else{
+            data.put("clothes", clothes);
+            data.put("educational_materials", school);
+            data.put("email", "");
+            data.put("food", food);
+            data.put("location", donor_location);
+            data.put("name", "");
+            data.put("phone_number", donor_phone_number);
+
+            String randomName = new getRandomString().getRandomString(10);
+            docData.put(randomName, data);
+        }
 
         database.collection("Donations")
                 .document(orphanage_email)
@@ -288,13 +320,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
     }
 
-
-    //call action
-    private void callAction() {
-        Intent intent = new Intent(Intent.ACTION_CALL,
-                Uri.parse("tel:" +pphone_number ));
-        startActivity(intent);
-    }
 
 
 
@@ -352,45 +377,4 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     }
 
 
-
-
-
-    //check call permission
-    @SuppressLint("ObsoleteSdkInt")
-    public  boolean isCallPermissionGranted() {
-        if (Build.VERSION.SDK_INT >= 23) {
-            if (getActivity().checkSelfPermission(android.Manifest.permission.CALL_PHONE)
-                    == PackageManager.PERMISSION_GRANTED) {
-                //Permission granted
-                return true;
-            } else {
-                //Permission is revoked
-                ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CALL_PHONE}, 1);
-                return false;
-            }
-        }
-        else {
-            //permission is automatically granted
-            return true;
-        }
-    }
-
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
-        switch (requestCode) {
-
-            case 1: {
-
-                if (grantResults.length > 0
-                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    new showAppToast().showSuccess(getContext(), "Permission granted");
-                    callAction();
-                } else {
-                    new showAppToast().showSuccess(getContext(), "Permission denied");
-                }
-                return;
-            }
-        }
-    }
 }

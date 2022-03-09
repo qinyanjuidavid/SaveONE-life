@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.ui.profile.profilefrags;
+package com.wyksofts.saveone.ui.profile.profilefrags.Profile;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -34,6 +34,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
@@ -46,6 +47,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.OtherInfo;
+import com.wyksofts.saveone.ui.profile.profilefrags.Donations.Donations;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.showAppToast;
 
@@ -84,6 +86,8 @@ public class Profile extends Fragment {
 
     LinearLayout hidden_information;
 
+    FloatingActionButton donations;
+
 
     public Profile() {
         // Required empty public constructor
@@ -115,6 +119,7 @@ public class Profile extends Fragment {
         arrow_back = view.findViewById(R.id.arrow_back);
         logout_menu = view.findViewById(R.id.logout_menu);
         profile_image = view.findViewById(R.id.profile_image);
+        donations = view.findViewById(R.id.donations);
 
         //text_views
         profile_phone_number = view.findViewById(R.id.profile_phone_number);
@@ -159,6 +164,17 @@ public class Profile extends Fragment {
                 @Override
                 public void onClick(View view) {
                     UpdateProfile();
+                }
+            });
+
+            donations.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    getActivity().getSupportFragmentManager()
+                            .beginTransaction()
+                            .addToBackStack(null)
+                            .replace(R.id.profile_root, new Donations())
+                            .commit();
                 }
             });
 

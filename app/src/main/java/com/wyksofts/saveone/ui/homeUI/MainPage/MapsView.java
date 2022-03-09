@@ -6,7 +6,6 @@ import androidx.fragment.app.Fragment;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,22 +21,17 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.common.reflect.TypeToken;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.google.gson.Gson;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.LocationModel.LocationModel;
-import com.wyksofts.saveone.models.Orphanage.OrphanageModel;
 import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.showAppToast;
 
-import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Set;
 
 
 public class MapsView extends Fragment implements OnMapReadyCallback{

@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.Adapters.Orphanages;
+package com.wyksofts.saveone.Adapters.Orphanages.Orphanage;
 
 import android.view.View;
 import android.widget.Button;

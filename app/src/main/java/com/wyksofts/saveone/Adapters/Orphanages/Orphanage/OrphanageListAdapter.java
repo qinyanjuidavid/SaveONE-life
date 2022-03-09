@@ -1,9 +1,6 @@
-package com.wyksofts.saveone.Adapters.Orphanages;
-
-import static java.security.AccessController.getContext;
+package com.wyksofts.saveone.Adapters.Orphanages.Orphanage;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,14 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.Orphanage.OrphanageModel;
-import com.wyksofts.saveone.util.showAppToast;
+import com.wyksofts.saveone.models.Orphanage.Orphanage.OrphanageModel;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageViewHolder> {
 
@@ -89,7 +82,6 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageViewHold
 
     }
 
-    //Update new list
     public void upDateList(List<OrphanageModel> listData) {
         ArrayList<OrphanageModel> arrayList = new ArrayList<>();
         list_array = arrayList;

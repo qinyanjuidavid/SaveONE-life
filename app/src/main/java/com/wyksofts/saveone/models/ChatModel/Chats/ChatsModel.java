@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.models.ChatModel;
+package com.wyksofts.saveone.models.ChatModel.Chats;
 
 public class ChatsModel {
 

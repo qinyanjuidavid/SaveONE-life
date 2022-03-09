@@ -5,13 +5,13 @@ import android.content.Intent;
 
 import com.wyksofts.saveone.util.Constants.Constants;
 
-public class ContactUs {
+public class sendMail {
 
-    public void contact_us(Context context){
+    public void contact_us(Context context, String email){
         Intent intent = new Intent("android.intent.action.SEND");
-        intent.putExtra("android.intent.extra.EMAIL", new String[] {Constants.EMAIL});
+        intent.putExtra("android.intent.extra.EMAIL", new String[] {email});
         intent.setType("text/html");
         intent.setPackage(Constants.ANDROID_GM);
-        context.startActivity(Intent.createChooser(intent, "Send mail Wycliff / N"));
+        context.startActivity(Intent.createChooser(intent, "Send mail"));
     }
 }

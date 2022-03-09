@@ -46,7 +46,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.ChatsAdapter.ChatAdapter;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.ChatModel.ChatsModel;
+import com.wyksofts.saveone.models.ChatModel.Chats.ChatsModel;
 import com.wyksofts.saveone.notifications.MessageSender;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
 import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.NoAccountFound;

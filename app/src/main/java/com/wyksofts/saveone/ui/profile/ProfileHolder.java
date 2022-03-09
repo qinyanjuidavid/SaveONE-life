@@ -6,8 +6,7 @@ import android.os.Build;
 import android.os.Bundle;
 
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.ui.homeUI.MainPage.FragmentHolder;
-import com.wyksofts.saveone.ui.profile.profilefrags.Profile;
+import com.wyksofts.saveone.ui.profile.profilefrags.Profile.Profile;
 
 public class ProfileHolder extends AppCompatActivity {
 

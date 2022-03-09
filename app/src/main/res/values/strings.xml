@@ -31,13 +31,13 @@
     <string name="organisation_password">Organisation Password</string>
     <string name="confirm_organisation_password">Confirm Organisation Password</string>
     <string name="next">Next</string>
-    <string name="organisation_personal_information">Organisation Personal Information</string>
-    <string name="organisation_additional_information">Organisation Additional Information</string>
+    <string name="organisation_personal_information">Personal Information</string>
+    <string name="organisation_additional_information">Additional Information</string>
     <string name="phone_number_eg_254703_xxx_xxx">Phone Number eg, +254703 XXX XXX</string>
     <string name="till_number_paybill_number_if_any">Till Number / Paybill Number (if any).</string>
     <string name="bank_account_number">Bank Account Number</string>
     <string name="country_eg_usa">Country eg, (USA)</string>
-    <string name="organisation_other_information">Organisation Other Information</string>
+    <string name="organisation_other_information">Other Information</string>
     <string name="brief_describe_about_the_orphanage">Brief describe more about the orphanage.</string>
     <string name="number_of_children_in_the_orphanage">Number of children in the orphanage.</string>
     <string name="town">County, Sub County, Town, Village</string>
@@ -57,7 +57,7 @@
     <string name="congratulations">Congratulations</string>
     <string name="sms">
         for registering with us, lets fight POVERTY, HUNGER and improve the
-        <u>LEVEL OF EDUCATION</u> together.
+        LEVEL OF EDUCATION together.
         We will contact you within the next 72 hrs to verify the information you have just provided.
         Thanks for sharing with us. In case of any questions,
         please feel free to drop us a line by clicking the button below.
@@ -154,4 +154,11 @@
     <string name="clothing_s">Clothing\'s</string>
     <string name="educational_materials">Educational Materials</string>
     <string name="donate_following">Donate:</string>
+    <string name="what_s_donated">What\'s donated?</string>
+    <string name="see_donation">See Donation</string>
+    <string name="who_donated">Who donated?</string>
+    <string name="search_for_a_donation">Search for a donation</string>
+    <string name="donations">Donations</string>
+    <string name="below_is_a_list_donations_you_have_so_far">Donations list</string>
+    <string name="donation_descriptions_txt">***If you have received either of the donations please check the checkbox. You can click on any list to call the donor if you have not received the donation.</string>
 </resources>

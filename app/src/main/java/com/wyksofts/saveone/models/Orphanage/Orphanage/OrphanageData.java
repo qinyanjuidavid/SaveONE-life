@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.models.Orphanage;
+package com.wyksofts.saveone.models.Orphanage.Orphanage;
 
 import static com.google.firebase.inappmessaging.internal.Logging.TAG;
 
@@ -8,7 +8,6 @@ import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -16,10 +15,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
-import com.wyksofts.saveone.Adapters.Orphanages.OrphanageListAdapter;
-import com.wyksofts.saveone.ui.homeUI.MainPage.HomePage;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrphanageData extends ViewModel {

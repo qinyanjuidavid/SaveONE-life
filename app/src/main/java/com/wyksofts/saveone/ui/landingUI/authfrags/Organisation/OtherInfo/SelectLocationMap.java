@@ -56,6 +56,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkLocationPermission;
 import com.wyksofts.saveone.ui.landingUI.LandingHomePage;
 import com.wyksofts.saveone.ui.landingUI.authfrags.general.LandingScreen;
 import com.wyksofts.saveone.util.AlertPopDiag;
@@ -324,72 +325,10 @@ public class SelectLocationMap extends Fragment implements
 
     //get location
     public void getLocation() {
-
-        if (ActivityCompat.checkSelfPermission(getContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-
-            showPermissionAlert();
-
-            return;
-        }
-
-        fusedLocationClient.getLastLocation()
-                .addOnSuccessListener(getActivity(), new OnSuccessListener<Location>() {
-                    @Override
-                    public void onSuccess(Location location) {
-
-                        // Got last known location. In some rare situations this can be null.
-                        if (location != null) {
-
-                            // Logic to handle location object
-                            Log.e("LAST LOCATION: ", location.toString());
-                            new showAppToast().showSuccess(getContext(),""+location.toString());
-
-                            current_lat = location.getLatitude();
-                            current_long = location.getLongitude();
-
-                            curr_position = new LatLng(current_lat, current_long);
-                        }
-                    }
-                });
+        new checkLocationPermission(getContext(), getActivity()).getLocation();
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case 123: {
 
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
-
-                    // permission was denied, show alert to explain permission
-                    showPermissionAlert();
-
-                }else{
-                    //permission is granted now start a background service
-                    if (ActivityCompat.checkSelfPermission(getActivity(),
-                            Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
-                            && ActivityCompat.checkSelfPermission(getActivity(),
-                            Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-                        getLocation();
-                    }
-                }
-            }
-        }
-    }
-    //show location request
-    private void showPermissionAlert(){
-        if (ActivityCompat.checkSelfPermission(getContext(),
-                Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
-                && ActivityCompat.checkSelfPermission(getContext(),
-                Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(getActivity(),
-                    new String[]{Manifest.permission.ACCESS_COARSE_LOCATION,
-                            Manifest.permission.ACCESS_FINE_LOCATION}, 123);
-        }
-    }
     //open gps
     private void OnGPS() {
 

@@ -29,7 +29,7 @@
 
     <style name="DialogAnim">
         <item name="android:windowEnterAnimation">@anim/fall_down</item>
-        <item name="android:windowExitAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fadeout</item>
     </style>
 
 

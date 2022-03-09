@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.models.Orphanage;
+package com.wyksofts.saveone.models.Orphanage.Orphanage;
 
 public class OrphanageModel {
 

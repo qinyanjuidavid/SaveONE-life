@@ -5,7 +5,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.profile.profilefrags.Profile">
+    tools:context=".ui.profile.profilefrags.Profile.Profile">
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/donations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="30dp"
+        android:layout_marginBottom="40dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/baseline_volunteer_activism_white_24"
+        android:contentDescription="@string/see_donation" />
+
 
     <ImageView
         android:layout_width="match_parent"

@@ -35,6 +35,7 @@
         <entry key="app/src/main/res/drawable-v24/custom_circle_colorless_btn.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable-v24/custom_no_r_btn.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/custom_white_btn.xml" value="0.1425" />
+        <entry key="app/src/main/res/drawable-v24/donations_bg.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_search_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_send_24.xml" value="0.1515" />
         <entry key="app/src/main/res/drawable-v24/ic_baseline_send_blue_24.xml" value="0.1415" />
@@ -82,6 +83,7 @@
         <entry key="app/src/main/res/layout-sw320dp/orphanage_card.xml" value="0.176953125" />
         <entry key="app/src/main/res/layout-sw320dp/update_profile.xml" value="0.15" />
         <entry key="app/src/main/res/layout-sw480dp/fragment_landing_screen.xml" value="0.17954815695600476" />
+        <entry key="app/src/main/res/layout-sw480dp/search_toolbar_donation.xml" value="0.11875" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_landing_screen.xml" value="0.17954815695600476" />
         <entry key="app/src/main/res/layout/activity_about_app.xml" value="0.23697916666666666" />
         <entry key="app/src/main/res/layout/activity_detailed.xml" value="0.18828125" />
@@ -101,8 +103,9 @@
         <entry key="app/src/main/res/layout/enable_location_diag.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/forgot_password_dialog.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/frag_home_main.xml" value="0.25104166666666666" />
-        <entry key="app/src/main/res/layout/fragment_additional_info.xml" value="0.23697916666666666" />
+        <entry key="app/src/main/res/layout/fragment_additional_info.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_detailed_info.xml" value="0.18051605224609377" />
+        <entry key="app/src/main/res/layout/fragment_donations.xml" value="0.15" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.165" />
         <entry key="app/src/main/res/layout/fragment_landing_screen.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1770716349283854" />
@@ -125,7 +128,10 @@
         <entry key="app/src/main/res/layout/no_result_found.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/not_logged_in.xml" value="0.176953125" />
         <entry key="app/src/main/res/layout/orphanage_card.xml" value="0.18209605053803762" />
+        <entry key="app/src/main/res/layout/orphanage_donations_card.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/orphanage_donations_layout.xml" value="0.15" />
         <entry key="app/src/main/res/layout/search_toolbar.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/search_toolbar_donation.xml" value="0.15" />
         <entry key="app/src/main/res/layout/select_coordinates_dialog.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/send_message_card.xml" value="0.173046875" />
         <entry key="app/src/main/res/layout/send_review_card.xml" value="0.18828125" />

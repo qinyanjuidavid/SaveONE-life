@@ -43,15 +43,16 @@ import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
-import com.wyksofts.saveone.Adapters.Orphanages.OrphanageListAdapter;
+import com.wyksofts.saveone.Adapters.Orphanages.Orphanage.OrphanageListAdapter;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.Orphanage.OrphanageModel;
+import com.wyksofts.saveone.models.Orphanage.Orphanage.OrphanageModel;
 import com.wyksofts.saveone.ui.Others.AboutApp;
 import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedActivity;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.ContactUs;
+import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.sendMail;
 import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.NoAccountFound;
+import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.ShareApp;
 import com.wyksofts.saveone.util.showAppToast;
 
@@ -67,6 +68,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     private OrphanageListAdapter adapter;
     private EditText search;
     StorageReference storageRef;
+
     private LinearLayout no_result_found,loading_orphanage;
     private Button search_again, retry_connecting;
 
@@ -79,8 +81,6 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     SharedPreferences.Editor editor;
     SharedPreferences pref;
 
-    //location coordinates
-    ArrayList<String> locationArrayList;
 
 
     public HomePage() {
@@ -176,6 +176,8 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         storageRef = FirebaseStorage.getInstance().getReference();
 
         getData();//getdata method from firebase
+
+        initSearch();
     }
 
 
@@ -291,7 +293,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         menu_contact.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new ContactUs().contact_us(getContext());
+                new sendMail().contact_us(getContext(), Constants.EMAIL);
             }
         });
 

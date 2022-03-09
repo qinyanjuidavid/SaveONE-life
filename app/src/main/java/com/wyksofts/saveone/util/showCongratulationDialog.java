@@ -11,7 +11,8 @@ import android.widget.TextView;
 
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.ContactUs;
+import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.sendMail;
+import com.wyksofts.saveone.util.Constants.Constants;
 
 public class showCongratulationDialog {
 
@@ -43,7 +44,7 @@ public class showCongratulationDialog {
             @Override
             public void onClick(View view) {
 
-                new ContactUs().contact_us(context);
+                new sendMail().contact_us(context, Constants.EMAIL);
 
             }
         });
