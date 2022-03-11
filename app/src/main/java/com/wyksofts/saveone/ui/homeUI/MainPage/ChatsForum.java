@@ -416,12 +416,13 @@ public class ChatsForum extends Fragment {
         String receive_notifications = pref.getString("receive_notifications", null);
 
         if (receive_notifications == null){
-
+            //request for permission
             new rMessagesNotifications(getContext()).show();
 
         }else if(receive_notifications.equals("false")){
-            new showAppToast().showFailure(getContext(),"You will not be receiving notifications");
+            //do nothing
         }else{
+            //subscribe
             new rMessagesNotifications(getContext()).subscribeToTopic();
         }
     }

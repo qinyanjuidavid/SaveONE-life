@@ -43,28 +43,16 @@ public class rMessagesNotifications extends View {
             public void onClick(View view) {
                 notificationDialog.dismiss();
 
-                //save to shared preference
-                editor.putString("receive_notifications","true");
-                editor.commit();
-
                 //subscribe
                 subscribeToTopic();
-
-                new showAppToast().showSuccess(mcontext,"You will receive notifications");
             }
         });
         notificationDialog.findViewById(R.id.no).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 notificationDialog.dismiss();
-
                 //unsubscribe
                 unsubscribeToTopic();
-
-                //save to shared preference
-                editor.putString("receive_notifications","false");
-                editor.commit();
-                new showAppToast().showFailure(mcontext,"You will not receive notifications");
             }
         });
 
@@ -79,15 +67,27 @@ public class rMessagesNotifications extends View {
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
-                        String msg = "You have subscribe to chats";
+
                         if (!task.isSuccessful()) {
-                            msg = "You are not subscribed";
+                            new showAppToast().showSuccess(mcontext,"We encountered an error");
+                        }else{
+                            new showAppToast().showSuccess(mcontext,"You will receive notifications");
+
+                            //save to shared preference
+                            editor.putString("receive_notifications","true");
+                            editor.commit();
                         }
+
                     }
                 });
     }
 
     public void unsubscribeToTopic(){
         FirebaseMessaging.getInstance().unsubscribeFromTopic("chats");
+        new showAppToast().showFailure(mcontext,"You will not receive notifications");
+
+        //save to shared preference
+        editor.putString("receive_notifications","false");
+        editor.commit();
     }
 }
