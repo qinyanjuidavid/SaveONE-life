@@ -49,7 +49,7 @@
             android:layout_marginTop="@dimen/_2sdp"
             android:fontFamily="serif"
             android:textColor="@color/white"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:fontFamily="serif"
             android:text="@string/donations"
             android:textColor="@color/white"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
 

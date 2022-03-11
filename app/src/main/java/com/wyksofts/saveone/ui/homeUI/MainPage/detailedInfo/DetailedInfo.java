@@ -1,6 +1,5 @@
 package com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ClipData;
@@ -8,15 +7,11 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
 import androidx.fragment.app.Fragment;
 
 import android.text.TextUtils;
@@ -45,7 +40,7 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.makeACall;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.makeACall;
 import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkCallPermission;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.getBitmap;
@@ -283,15 +278,15 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
             docData.put(user.getEmail(), data);
         }
         else{
+
+            String randomName = new getRandomString().getRandomString(10);
             data.put("clothes", clothes);
             data.put("educational_materials", school);
-            data.put("email", "");
+            data.put("email", randomName);
             data.put("food", food);
             data.put("location", donor_location);
             data.put("name", "");
             data.put("phone_number", donor_phone_number);
-
-            String randomName = new getRandomString().getRandomString(10);
             docData.put(randomName, data);
         }
 
@@ -317,7 +312,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                                 "Connection error");
                     }
                 });
-
     }
 
 

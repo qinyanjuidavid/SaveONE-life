@@ -72,6 +72,12 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
             holder.who_donated.setText(phone_number);
         }
 
+        if (!email.isEmpty()){
+            holder.is_donation_received.setVisibility(View.VISIBLE);
+        }else{
+            holder.is_donation_received.setVisibility(View.GONE);
+        }
+
         //label donation what offered
         String location = data.getLocation();
         String food = data.getFood_stuffs();
@@ -81,17 +87,17 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
         String f,e, c;//data holders
 
         if (food.equals("Yes")){
-            f = "food stuffs,\t";
+            f = "\tfood stuffs\t";
         }else{
             f = "";
         }
         if(education_materials.equals("Yes")){
-            e = "educational materials,\t";
+            e = "\teducational materials\t";
         }else{
             e ="";
         }
         if(clothing.equals("Yes")){
-            c = "and clothings\t";
+            c = "\tand clothings\t";
         }else{
             c = "";
         }
@@ -100,7 +106,7 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
             holder.whats_donated.setText("Donated nothing");
         }
 
-        String donations = "From"+location+"\tdonated\t"+f+e+c;
+        String donations = "From\t"+location+"\tdonated\t"+f+e+c;
 
         holder.whats_donated.setText(donations);
 
@@ -122,19 +128,16 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
             public void onCheckedChanged(CompoundButton compoundButton, boolean b) {
                 if(b){
                     //send data to the database
-                    addInfoToDataBase("true");
+                    addInfoToDataBase("true",email);
                 }else{
-                    addInfoToDataBase("false");
+                    addInfoToDataBase("false",email);
                 }
             }
         });
-
-
-
     }
 
 
-    public void addInfoToDataBase(String condition){
+    public void addInfoToDataBase(String condition, String donerUID){
 
         Dialog loadingDialog = new Dialog(context);
 
@@ -150,10 +153,9 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
 
         String email = user.getEmail();
 
-        new showAppToast().showSuccess(context, "T"+email);
 
         data.put("isDonationReceived", condition);
-        docData.put(user.getEmail(), data);
+        docData.put(donerUID, data);
 
         database.collection("Donations")
                 .document(email)

@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.sendMail;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.sendMail;
 import com.wyksofts.saveone.util.Constants.Constants;
 
 public class showCongratulationDialog {

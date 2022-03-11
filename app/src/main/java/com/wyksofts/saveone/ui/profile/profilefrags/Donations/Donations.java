@@ -4,10 +4,8 @@ import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -17,46 +15,34 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.Orphanages.Donations.DonationsListAdapter;
 import com.wyksofts.saveone.Interface.DonationViewInterface;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Orphanage.Donations.DonationsModel;
-import com.wyksofts.saveone.models.Orphanage.Orphanage.OrphanageModel;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.makeACall;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.sendMail;
-import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedInfo;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.makeACall;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.sendMail;
 import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkCallPermission;
-import com.wyksofts.saveone.util.AlertPopDiag;
-import com.wyksofts.saveone.util.getRandomString;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -183,7 +169,7 @@ public class Donations extends Fragment implements DonationViewInterface {
                 arrayList.add(model);
             } else {
                 if (arrayList.isEmpty()) {
-                    new showAppToast().showFailure(getContext(),"No donation found");
+                    //new showAppToast().showFailure(getContext(),"No donation found");
                     recyclerView.setVisibility(View.GONE);
                 } else {
                     recyclerView.setVisibility(View.VISIBLE);
@@ -191,7 +177,7 @@ public class Donations extends Fragment implements DonationViewInterface {
             }
             if (phone_number.isEmpty()) {
                 recyclerView.setVisibility(View.VISIBLE);
-                new showAppToast().showFailure(getContext(),"No donation found");
+                //new showAppToast().showFailure(getContext(),"No donation found");
             }
             adapter.upDateList(arrayList);
         }

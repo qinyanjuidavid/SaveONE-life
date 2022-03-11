@@ -47,9 +47,9 @@ import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.ChatsAdapter.ChatAdapter;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.ChatModel.Chats.ChatsModel;
-import com.wyksofts.saveone.notifications.MessageSender;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.rMessagesNotifications;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.NoAccountFound;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.NoAccountFound;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.text.SimpleDateFormat;
@@ -92,7 +92,7 @@ public class ChatsForum extends Fragment {
     SharedPreferences.Editor editor;
     SharedPreferences pref;
 
-    //warnig dialog
+    //warning dialog
     Dialog warning_dialog;
 
     public ChatsForum() {
@@ -287,7 +287,7 @@ public class ChatsForum extends Fragment {
     private void getUpdates(){
 
         FirebaseMessaging firebaseMessaging = FirebaseMessaging.getInstance();
-        firebaseMessaging.subscribeToTopic("New messages forum");
+        firebaseMessaging.subscribeToTopic("Chats");
 
     }
 
@@ -394,7 +394,7 @@ public class ChatsForum extends Fragment {
                         adapter.notifyItemInserted(-1);
 
                         //send notification
-                        sendNotification(sms,name);
+                        sendNotification();
 
                         message.setText("");
 
@@ -409,14 +409,21 @@ public class ChatsForum extends Fragment {
                 });
     }
 
-    private void sendNotification(String message, String name) {
-        FirebaseMessaging.getInstance().subscribeToTopic("Chats");
+    //send notification to all devices a new message was sent
+    private void sendNotification() {
 
-        MessageSender sender = new MessageSender(
-                "/Chats/all", name, message, getContext(), getActivity()
-                );
-        sender.sendNotification();
+        //check whether notification was allowed
+        String receive_notifications = pref.getString("receive_notifications", null);
 
+        if (receive_notifications == null){
+
+            new rMessagesNotifications(getContext()).show();
+
+        }else if(receive_notifications.equals("false")){
+            new showAppToast().showFailure(getContext(),"You will not be receiving notifications");
+        }else{
+            new rMessagesNotifications(getContext()).subscribeToTopic();
+        }
     }
 
 

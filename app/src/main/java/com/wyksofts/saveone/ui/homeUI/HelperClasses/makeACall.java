@@ -1,4 +1,4 @@
-package com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses;
+package com.wyksofts.saveone.ui.homeUI.HelperClasses;
 
 import android.content.Context;
 import android.content.Intent;

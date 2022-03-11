@@ -24,6 +24,7 @@ public interface Constants {
     FirebaseFirestore DATA_BASE = FirebaseFirestore.getInstance();
 
     String ALLOWED_CHARACTERS ="qwertyuiopasdfghjklzxcvbnm0123456789";
+    int NOTIFICATION_ID = 1;
 
 
 }

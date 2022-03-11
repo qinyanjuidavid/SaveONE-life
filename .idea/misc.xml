@@ -83,6 +83,7 @@
         <entry key="app/src/main/res/layout-sw320dp/orphanage_card.xml" value="0.176953125" />
         <entry key="app/src/main/res/layout-sw320dp/update_profile.xml" value="0.15" />
         <entry key="app/src/main/res/layout-sw480dp/fragment_landing_screen.xml" value="0.17954815695600476" />
+        <entry key="app/src/main/res/layout-sw480dp/receive_notification.xml" value="0.10208333333333333" />
         <entry key="app/src/main/res/layout-sw480dp/search_toolbar_donation.xml" value="0.11875" />
         <entry key="app/src/main/res/layout-sw600dp/fragment_landing_screen.xml" value="0.17954815695600476" />
         <entry key="app/src/main/res/layout/activity_about_app.xml" value="0.23697916666666666" />
@@ -91,6 +92,7 @@
         <entry key="app/src/main/res/layout/activity_landing_screen.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.10263519287109375" />
         <entry key="app/src/main/res/layout/activity_profile_holder.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/activity_setings.xml" value="0.13651315789473684" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.11548868815104166" />
         <entry key="app/src/main/res/layout/chats_card.xml" value="0.18828125" />
         <entry key="app/src/main/res/layout/close_diag.xml" value="0.20598290598290597" />
@@ -130,6 +132,7 @@
         <entry key="app/src/main/res/layout/orphanage_card.xml" value="0.18209605053803762" />
         <entry key="app/src/main/res/layout/orphanage_donations_card.xml" value="0.165" />
         <entry key="app/src/main/res/layout/orphanage_donations_layout.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/receive_notification.xml" value="0.14539473684210527" />
         <entry key="app/src/main/res/layout/search_toolbar.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/search_toolbar_donation.xml" value="0.15" />
         <entry key="app/src/main/res/layout/select_coordinates_dialog.xml" value="0.25104166666666666" />

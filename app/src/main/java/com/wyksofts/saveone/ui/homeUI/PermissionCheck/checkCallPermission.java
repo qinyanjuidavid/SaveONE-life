@@ -1,7 +1,6 @@
 package com.wyksofts.saveone.ui.homeUI.PermissionCheck;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -9,7 +8,7 @@ import android.os.Build;
 
 import androidx.core.app.ActivityCompat;
 
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.makeACall;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.makeACall;
 import com.wyksofts.saveone.util.showAppToast;
 
 public class checkCallPermission extends Activity {

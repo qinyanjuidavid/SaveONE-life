@@ -49,9 +49,10 @@ import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Orphanage.Orphanage.OrphanageModel;
 import com.wyksofts.saveone.ui.Others.AboutApp;
 import com.wyksofts.saveone.ui.homeUI.MainPage.detailedInfo.DetailedActivity;
+import com.wyksofts.saveone.ui.homeUI.Settings;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.sendMail;
-import com.wyksofts.saveone.ui.homeUI.DialogsHelperClasses.NoAccountFound;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.sendMail;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.NoAccountFound;
 import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.ShareApp;
 import com.wyksofts.saveone.util.showAppToast;
@@ -181,6 +182,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     }
 
 
+    //init search
     private void initSearch() {
         search.setEnabled(true);
         search.addTextChangedListener(new TextWatcher() {
@@ -201,6 +203,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         });
     }
 
+    //init filter
     public void filter(String orphanage) {
         ArrayList<OrphanageModel> arrayList = new ArrayList<>();
         for (OrphanageModel model : listdata) {
@@ -251,18 +254,18 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         });
 
 
-        //Specify the length and width
+        //length and width
         int width = LinearLayout.LayoutParams.MATCH_PARENT;
         int height = LinearLayout.LayoutParams.MATCH_PARENT;
 
-        //Make Inactive Items Outside Of PopupWindow
+        //Inactive Items Outside Of PopupWindow
         boolean focusable = true;
 
-        //Create a window with our parameters
+        //Create a window
         popupWindow = new PopupWindow(popupView, width, height, focusable);
 
         //Set the location of the window on the screen
-        popupWindow.showAtLocation(view, Gravity.CENTER, 0, 0);
+        popupWindow.showAtLocation(view, Gravity.TOP | Gravity.RIGHT, 0, 0);
 
 
         //Initialize the elements of the menu
@@ -307,8 +310,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         menu_settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new showAppToast().showSuccess(getContext(),"Hey friend," +
-                        " App is still under development thanks");
+                startActivity(new Intent(getContext(), Settings.class));
             }
         });
 
@@ -337,33 +339,33 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
     //show menu nav
     private void showMenuNav(View popupView) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            int cx = popupView.getWidth() / 2;
-            int cy = popupView.getHeight() / 2;
 
-            // get the final radius for the clipping circle
-            float finalRadius = (float) Math.hypot(cx, cy);
+        int cx = menu.getWidth();
+        int cy = menu.getHeight();
 
-            // create the animator for this view (the start radius is zero)
-            Animator anim = ViewAnimationUtils.createCircularReveal(popupView,
-                    cx, cy, 0f, finalRadius);
+        // get the final radius for the clipping circle
+        float finalRadius = (float) Math.hypot(cx, cy);
 
-            // make the view visible and start the animation
-            popupView.setVisibility(View.VISIBLE);
-            anim.start();
-        } else {
-            // set the view to invisible without a circular reveal animation below Lollipop
-            popupView.setVisibility(View.GONE);
-        }
+
+        // create the animator for this view (the start radius is zero)
+        Animator anim = ViewAnimationUtils.createCircularReveal(popupView,
+                cx, cy, 1, finalRadius);
+
+        // make the view visible and start the animation
+        popupView.setVisibility(View.VISIBLE);
+        anim.start();
     }
 
     //dismiss menu nav
+    @SuppressLint("ObsoleteSdkInt")
     public void dismissMenuNav(View popupView) {
-        // Check if the runtime version is at least Lollipop
+        // Check if the runtime version is at least Lollipop and above
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+
             // get the center for the clipping circle
-            int cx = popupView.getWidth() / 2;
-            int cy = popupView.getHeight() / 2;
+            int cx = menu.getWidth();
+            int cy = menu.getHeight();
+
 
             // get the initial radius for the clipping circle
             float initialRadius = (float) Math.hypot(cx, cy);

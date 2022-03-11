@@ -121,7 +121,7 @@
                             android:textStyle="bold"
                             android:layout_gravity="center"
                             android:textSize="12sp"
-                            android:text="@string/settings"/>
+                            android:text="@string/setting"/>
 
                     </LinearLayout>
                     <View
