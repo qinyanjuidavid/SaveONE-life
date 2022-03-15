@@ -518,10 +518,10 @@ public class Profile extends Fragment {
             filePath = data.getData();
             try {
                 // Setting image on image view using Bitmap
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
-                        getActivity().getContentResolver(),
-                        filePath);
-                groupPhoto.setImageBitmap(bitmap);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+                Glide.with(getContext())
+                        .load(bitmap)
+                        .into(groupPhoto);
             }catch (IOException e) {
                 e.printStackTrace();
             }

@@ -152,6 +152,7 @@ public class SignUpOrganization extends Fragment {
                         .beginTransaction()
                         .setCustomAnimations(R.anim.fade_in,
                                 R.anim.fade_out)
+                        .addToBackStack(null)
                         .addSharedElement(register_new_orphanage, "addInfo")
                         .replace(R.id.root_layout, new AdditionalInfo())
                         .commit();

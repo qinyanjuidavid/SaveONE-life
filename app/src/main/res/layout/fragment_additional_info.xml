@@ -63,11 +63,11 @@
 
                 <ImageView
                     android:id="@+id/select_organization_image"
-                    android:layout_width="100dp"
+                    android:layout_width="120dp"
                     android:layout_height="100dp"
                     android:layout_centerInParent="true"
                     android:layout_gravity="center"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/add_image" />
             </RelativeLayout>
 

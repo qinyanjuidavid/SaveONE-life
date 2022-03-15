@@ -1,5 +1,7 @@
 package com.wyksofts.saveone.Adapters.ChatsAdapter;
 
+import static java.security.AccessController.getContext;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.Resources;
@@ -129,7 +131,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatsViewHolder> {
                 holder.chat_time.setTextColor(context.getResources().getColor(R.color.black));
 
                 //get screen size
-                int screenWidth = getScreenWidth()/2;
+                int screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
 
                 //set margin
                 setCardMargins(screenWidth,0, holder.chats_bg);
@@ -140,7 +142,8 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatsViewHolder> {
                 setOtherUserCard(holder.chats_bg);
 
                 //get screen size
-                int screenWidth = getScreenWidth()/2;
+                int screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
+
 
                 //set margin
                 setCardMargins(0,screenWidth, holder.chats_bg);
@@ -150,7 +153,7 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatsViewHolder> {
             setOtherUserCard(holder.chats_bg);
 
             //get screen size
-            int screenWidth = getScreenWidth()/2;
+            int screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
 
             //set margin
             setCardMargins(0,screenWidth, holder.chats_bg);

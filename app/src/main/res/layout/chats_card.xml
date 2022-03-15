@@ -46,7 +46,6 @@
                             android:layout_alignParentStart="true"
                             android:layout_centerHorizontal="true"
                             android:fontFamily="serif"
-                            android:textStyle="bold"
                             android:text="@string/name"
                             android:textColor="@color/blue"
                             android:textSize="14sp" />

@@ -29,6 +29,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -45,6 +46,7 @@ import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.OtherI
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.showAppToast;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -243,6 +245,7 @@ public class AdditionalInfo extends Fragment {
                                 .beginTransaction()
                                 .setCustomAnimations(R.anim.fade_in,
                                         R.anim.fade_out)
+                                .addToBackStack(null)
                                 .addSharedElement(btn, "otherInfo")
                                 .replace(R.id.root_layout, new OtherInfo())
                                 .commit();
@@ -262,6 +265,7 @@ public class AdditionalInfo extends Fragment {
 
     private void uploadImage() {
         if (filePath != null) {
+
 
             uploadImageDialog.setContentView(R.layout.upload_image);
             uploadImageDialog.setCancelable(false);
@@ -298,8 +302,8 @@ public class AdditionalInfo extends Fragment {
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
                                 @Override
-                                public void onProgress(
-                                        UploadTask.TaskSnapshot taskSnapshot){
+                                public void onProgress(UploadTask.TaskSnapshot taskSnapshot){
+
                                     double progress = (100.0 * taskSnapshot.getBytesTransferred()
                                             / taskSnapshot.getTotalByteCount());
                                     TextView progress_text = uploadImageDialog.findViewById(R.id.text_status);
@@ -337,10 +341,12 @@ public class AdditionalInfo extends Fragment {
             filePath = data.getData();
             try {
                 // Setting image on image view using Bitmap
-                Bitmap bitmap = MediaStore.Images.Media.getBitmap(
-                        getActivity().getContentResolver(),
-                        filePath);
-                groupPhoto.setImageBitmap(bitmap);
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+                Glide.with(getContext())
+                        .load(bitmap)
+                        .into(groupPhoto);
+                //groupPhoto.setImageBitmap(bitmap);
+
             }catch (IOException e) {
                 e.printStackTrace();
             }

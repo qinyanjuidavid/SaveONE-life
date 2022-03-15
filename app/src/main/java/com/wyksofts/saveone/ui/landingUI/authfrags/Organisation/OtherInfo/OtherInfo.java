@@ -132,7 +132,7 @@ public class OtherInfo extends Fragment{
         if(TextUtils.isEmpty(description)){
             org_description.setError("Please tell us more about the orphanage");
         }else if (description.length()<20){
-            org_children.setError("Description is too short");
+            org_description.setError("Description is too short");
         }else if (TextUtils.isEmpty(number_of_children)){
             org_children.setError("Number is required");
         }else if (TextUtils.isEmpty(what_needed)){
@@ -178,6 +178,7 @@ public class OtherInfo extends Fragment{
                                 .beginTransaction()
                                 .setCustomAnimations(R.anim.fade_in,
                                         R.anim.fade_out)
+                                .addToBackStack(null)
                                 .addSharedElement(finish_btn, "addInfo")
                                 .replace(R.id.root_layout, new SelectLocationMap())
                                 .commit();
