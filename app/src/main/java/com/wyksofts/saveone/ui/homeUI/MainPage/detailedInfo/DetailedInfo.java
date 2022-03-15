@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdate;
@@ -32,13 +33,17 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.Continuation;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.google.firebase.functions.FirebaseFunctions;
+import com.google.firebase.functions.HttpsCallableResult;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.makeACall;
 import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkCallPermission;
@@ -71,11 +76,13 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
     //donate
     FloatingActionButton donate;
-    Dialog donateDialog;
+    Dialog donateDialog, mpesa_dialog;
 
     //firebase
     FirebaseUser user;
     FirebaseFirestore database;
+
+    private  FirebaseFunctions mFunctions;
 
 
     public DetailedInfo() {
@@ -92,6 +99,8 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
         user = FirebaseAuth.getInstance().getCurrentUser();
         database = FirebaseFirestore.getInstance();
+
+        mpesa_dialog = new Dialog(getContext());
 
         donateDialog = new Dialog(getActivity(), R.style.DialogAnimation);
     }
@@ -200,6 +209,92 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
             }
         });
 
+        mpesa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showMpesaDialog();
+            }
+        });
+
+    }
+
+    private void showMpesaDialog() {
+        mpesa_dialog.setContentView(R.layout.mpesa_dialog);
+
+        EditText phone = mpesa_dialog.findViewById(R.id.donor_phone_number);
+        EditText amount = mpesa_dialog.findViewById(R.id.donor_amount);
+        ProgressBar loading_bar = mpesa_dialog.findViewById(R.id.loading_bar);
+
+        mpesa_dialog.findViewById(R.id.donate_na_mpesa).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendMoney(phone,amount,loading_bar);
+            }
+        });
+
+        mpesa_dialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mpesa_dialog.dismiss();
+            }
+        });
+        mpesa_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        mpesa_dialog.setCancelable(false);
+        mpesa_dialog.show();
+    }
+
+    private void sendMoney(EditText phone, EditText amount, ProgressBar loading_bar) {
+
+        String phoneNumber = phone.getText().toString();
+        String Amount = amount.getText().toString();
+
+
+        loading_bar.setVisibility(View.VISIBLE);
+
+        //check validity of a number
+        if (phoneNumber.length() != 10) {
+            phone.setError("Invalid number");
+            return;
+        }
+        //check validity of a number
+        else if (Amount.isEmpty()) {
+            amount.setError("Amount should be more than 0");
+            return;
+        }
+
+
+        onSendMoney(phoneNumber,Amount);
+
+    }
+
+
+    //Call Mpesa API
+    private Task<String> onSendMoney(String phone_number, String amount) {
+        // Create the arguments to the callable function.
+        Map<String, Object> data = new HashMap<>();
+        data.put("phoneNumber", phone_number);
+        data.put("businessShortCode", "174379");
+        data.put("amount", amount);
+
+
+        mFunctions = FirebaseFunctions.getInstance();
+
+        return mFunctions
+                .getHttpsCallable("callMpesaAPI")
+                .call(data)
+                .continueWith(new Continuation<HttpsCallableResult, String>() {
+                    @Override
+                    public String then(@NonNull Task<HttpsCallableResult> task) throws Exception {
+                        // This continuation runs on either success or failure, but if the task
+                        // has failed then getResult() will throw an Exception which will be
+                        // propagated down.
+                        String result = (String) task.getResult().getData();
+
+                        new showAppToast().showSuccess(getContext(),""+result);
+
+                        return result;
+                    }
+                });
     }
 
     //show donating dialog

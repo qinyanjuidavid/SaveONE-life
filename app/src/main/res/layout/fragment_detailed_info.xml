@@ -464,7 +464,7 @@
                                 android:layout_marginStart="4dp"
                                 android:fontFamily="@font/mont"
                                 android:layout_gravity="center"
-                                android:text="@string/donate_na_mpesa"
+                                android:text="@string/donatena_mpesa"
                                 android:textColor="@color/blue"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />

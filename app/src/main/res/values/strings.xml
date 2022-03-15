@@ -99,7 +99,7 @@
     <string name="phone_number">Phone Number</string>
     <string name="bank_bank_number">Bank / Bank number</string>
     <string name="donate_with_mpesa">Donate na mpesa</string>
-    <string name="donate_na_mpesa">Donate na mpesa</string>
+    <string name="donatena_mpesa">Donate na mpesa</string>
     <string name="orphanage_verified">*Please before donating using the accounts listed below. Please make sure orphanage is verified to avoid any inconveniences and the service of the app.</string>
     <string name="orphanage_information">Orphanage Information</string>
     <string name="are_you_sure_you_want_to_exit">Are you sure you want to exit?</string>
@@ -177,4 +177,10 @@
     <string name="privacy_policy">Privacy Policy</string>
     <string name="about_saveone_life">About SaveONE life</string>
     <string name="made_with_love">Made with love❤️ by GDSC Taita Taveta University</string>
+    <string name="close_app">Close App</string>
+    <string name="landing_page">Landing Page</string>
+    <string name="do_want_to_navigate_back_to_landing_screen">Do you want to navigate back to landing screen</string>
+    <string name="donate_mpesa">Donate na mpesa</string>
+    <string name="mpesa_description">Donate na mpesa has beeen made easy with two steps. You can donate from as low as ksh 5 na mpesa to change someones life</string>
+    <string name="amount_to_donate_eg_50_bob">Amount to donate eg, 50 bob</string>
 </resources>

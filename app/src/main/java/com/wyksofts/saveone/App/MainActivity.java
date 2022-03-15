@@ -12,6 +12,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.LandingPageDialog;
 import com.wyksofts.saveone.ui.homeUI.MainPage.FragmentHolder;
 import com.wyksofts.saveone.ui.landingUI.LandingHomePage;
 
@@ -67,6 +68,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        startActivity(new Intent(this, LandingHomePage.class));
+        new LandingPageDialog(this).show();
     }
 }

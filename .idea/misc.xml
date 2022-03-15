@@ -122,10 +122,12 @@
         <entry key="app/src/main/res/layout/fragment_sign_up_organisation.xml" value="0.18183848063151042" />
         <entry key="app/src/main/res/layout/fragment_sign_up_organisation2.xml" value="0.1936725096194955" />
         <entry key="app/src/main/res/layout/freagment_other_info.xml" value="0.1936725096194955" />
+        <entry key="app/src/main/res/layout/go_back_landing_page.xml" value="0.1" />
         <entry key="app/src/main/res/layout/google_btn.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/loading_diag.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/loading_orphanage.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/logout_dialog.xml" value="0.1597222222222222" />
+        <entry key="app/src/main/res/layout/mpesa_dialog.xml" value="0.22552083333333334" />
         <entry key="app/src/main/res/layout/navigation_menu.xml" value="0.14286346435546876" />
         <entry key="app/src/main/res/layout/no_result_found.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/not_logged_in.xml" value="0.176953125" />
