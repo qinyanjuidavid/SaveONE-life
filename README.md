@@ -39,8 +39,12 @@ age Masters to track the well being of their childrens.
 SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA.
 
 ## Google technology
-> ### Firebase 
-> #### Landing Page
+## Firebase
+- for the backened
+## Java
+- for the frontened 
+
+> ### Landing Page
 > <img src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
        width="240" height="450" />
@@ -58,9 +62,30 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 > ### Orphange / Children's Home Authentication 
 - To authenticate an orphanage, Orphan Keeper is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
-- ### 1. Basic Information 
-- On this page Orphanage keeper is supposed to fill in name, email and password of the orphange as shown
-- <img src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
+
+### 1. Basic Information 
+- On this page Orphanage keeper is supposed to fill in name, email and password of the orphange as shown.
+- The following dependencies were used.
+
+```
+implementation 'com.google.firebase:firebase-storage:20.0.0'
+implementation 'com.google.firebase:firebase-database:20.0.3'
+implementation 'com.google.firebase:firebase-firestore:24.0.1'
+implementation 'com.google.firebase:firebase-auth:21.0.1'
+```
+- We used firestore database with a collection name Orphanage to store orphanage data.
+- Orphange data is stored as a HashMap on the firestore database.
+
+       
+### 2. Additional Information
+-  On this page Orphanage keeper is supposed to fill in Orphanage Group Photo, Phone number, Till number, Bank account number, Bank Name and country where the orphange is located.
+- On this page we used firebase storage dependecy and storage reference class so as to enable user to upload group photo to firebase storage database.
+- On this fragment we will create a sharable link of the image uploaded.
+
+### 3. Other Information
+- On this page Orphanage keeper is supposed to fill in Brief description about the orphanage, number of children in the orphanage, what they need most (include food, water, clothings, money for school fees) and the location address of the orphanage. 
+
+<img src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158608189-5a1560c6-0f69-4b70-9d99-5fb20b8a9731.png"
@@ -69,18 +94,6 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        <img src="https://user-images.githubusercontent.com/46722362/158609052-5ab9ab48-04a3-4dc2-baa0-e05c88a33f39.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158609052-5ab9ab48-04a3-4dc2-baa0-e05c88a33f39.png"
        width="220" height="450" />
-       
-- ### 2. Additional Information
--  On this page Orphanage keeper is supposed to fill in Orphanage Group Photo, Phone number, Till number, Bank account number, Bank Name and country where the orphange is located.
-- On this page we used firebase storage dependecy and storage reference class so as to enable user to upload group photo to firebase storage database.
-- On this fragment we will create a sharable link of the image uploaded.
-```
-implementation 'com.google.firebase:firebase-storage:20.0.0'
-```
-
-
-- ### 3. Other Information
-- On this page Orphanage keeper is supposed to fill in Brief description about the orphanage, number of children in the orphanage, what they need most (include food, water, clothings, money for school fees) and the location address of the orphanage. 
 
        
 - ### 4. Orphanage location
