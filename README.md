@@ -51,6 +51,8 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 
 - On landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
 
+##Authentication
+
 > ### Donor Authentication 
 -  Donor - To authenticate donor we used firebase auth dependecy (firebase-auth). 
 ```
@@ -123,14 +125,49 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
  //This legacy name (com.google.android.geo.API_KEY)  allows authentication to the Android Maps API
  ```
  
-
- 
 <img src="https://user-images.githubusercontent.com/46722362/158611030-d17d2023-3971-4d5c-9331-f1b152c09775.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158611030-d17d2023-3971-4d5c-9331-f1b152c09775.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158611060-44edd280-e8ad-45b8-8aa5-6116edbcb019.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158611060-44edd280-e8ad-45b8-8aa5-6116edbcb019.png"
        width="220" height="450" />
+       
+```
+NB: When an orphange is registered is not verified and in future we are planing to create an admin app for the orphanage verification, for the moment we are verfying orphanages from the backened. The process of verification may take 2 to 3 days. 
+```
+
+## Home Page
+- On home page we have 3 fragments.
+- We used tablayout to show the 3 pages, which are;
+
+> ## 1. Home
+> On home page we are fetching orphanages data from firestore database, and presenting them at the frontened as cardviews in the recyclerview view.
+> Each cardview is showing some and importance details about the orphange which include name, location address, number of children's in the orphanage and a donate button at the bottom.
+> When donate here button is clicked it shows the detailed fragment about the orphanage and a donate floating action button at the bottom.
+> On this detailed fragment page it shows map view with a marker showing the exact location of the orphanage home whereby if you click on marker it shows direction to the orphanage location on Google map (but in future we are planing to show it on the map).
+> Detailed fragment shows more about the the orphanage, contacts and donations medium which are bank, phone number (can be used to call the orphanage when clicked) and donate na mpesa.
+> The above methods are used for the liquid donation (eg money etc), while the donation floating action button at the bottom open a dialog for the solid donations which include *(clothings, beddings, food stuffs and educational materials )*
+> When donor donates the above items, Data is recorded to the firestore dabase with the name **Donations** and a document name of the orphanage email.
+> Below screenshots shows the whole process.
+
+<img src="https://user-images.githubusercontent.com/46722362/158621972-77ce0bd3-b684-4fcb-84e8-fa190adf9c8c.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158621972-77ce0bd3-b684-4fcb-84e8-fa190adf9c8c.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158622027-fecd7fb3-4e1d-4310-9917-50fb2a2f0f32.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158622027-fecd7fb3-4e1d-4310-9917-50fb2a2f0f32.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158622040-181805e4-c144-4d81-a027-7f28cc4322b4.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158622040-181805e4-c144-4d81-a027-7f28cc4322b4.png"
+       width="220" height="450" />
+
+
+> # 2. MapView
+> # 3. Forum
+
+
+
+
+
 
 
 
