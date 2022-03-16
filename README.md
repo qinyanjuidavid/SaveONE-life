@@ -31,8 +31,8 @@ SaveOne-Life is an android mobile application that helps solve three United Nati
 
 ## App Testing.
 > We tested SaveONE-life App with two childrens home as shown on the screenshoots below. They were very excited because they will be able to express their needs throught SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
-> https://github.com/wykeenjenga/SaveONE-life/blob/master/home.png
 > ![Screenshot](home.png)
+> ![alt text](https://github.com/wykeenjenga/SaveONE-life/blob/master/home.png)
 
 ## TECHNOLOGY
 SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA.
