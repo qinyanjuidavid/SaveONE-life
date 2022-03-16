@@ -12,7 +12,7 @@
 
 ## Impact
 SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG). These goals are;
-> ####No-Poverty
+> #### No-Poverty
 > According to the United Nations, one out of five children live in extreme poverty, and the negative effects of poverty and deprivation in the early years have ramifications that can last a lifetime. With SaveOne-Life, donors can be able to explore and donate to orphanages that are facing extreme poverty. Some of the items that can be donated to reduce poverty include; clothings, better housing, beddings, etc.
 
 > ### Quality Education
@@ -21,7 +21,7 @@ SaveOne-Life is an android mobile application that helps solve three United Nati
 > ### Zero-Hunger
 > Zero hunger is one of the United Nations SDGS. To enhance and maintain zero hunger among the young generation, SaveONE life provides a platform whereby donors can donate food stuffs to the affected orphanages.
 
-##Scalability of the project.
+## Scalability of the project.
 > SaveONE Life project is scalable,
 > If we were to continue, we were to implement addition feature regarding the health of the childrens, whereby Orphan keeper will have to add and Indicate the number of childrens who are not in good health, this also will lead to additional integration with good willing health Sectors. Health Sector will be able to login to the app and locate those poor childrens that are in need.
 
