@@ -140,15 +140,15 @@ NB: When an orphange is registered is not verified and in future we are planing 
 - On home page we have 3 fragments.
 - We used tablayout to show the 3 pages, which are;
 
-> ## 1. Home
-> On home page we are fetching orphanages data from firestore database, and presenting them at the frontened as cardviews in the recyclerview view.
-> Each cardview is showing some and importance details about the orphange which include name, location address, number of children's in the orphanage and a donate button at the bottom.
-> When donate here button is clicked it shows the detailed fragment about the orphanage and a donate floating action button at the bottom.
-> On this detailed fragment page it shows map view with a marker showing the exact location of the orphanage home whereby if you click on marker it shows direction to the orphanage location on Google map (but in future we are planing to show it on the map).
-> Detailed fragment shows more about the the orphanage, contacts and donations medium which are bank, phone number (can be used to call the orphanage when clicked) and donate na mpesa.
-> The above methods are used for the liquid donation (eg money etc), while the donation floating action button at the bottom open a dialog for the solid donations which include *(clothings, beddings, food stuffs and educational materials )*
-> When donor donates the above items, Data is recorded to the firestore dabase with the name **Donations** and a document name of the orphanage email.
-> Below screenshots shows the whole process.
+> ### 1. Home
+> - On home page we are fetching orphanages data from firestore database, and presenting them at the frontened as cardviews in the recyclerview view.
+> - Each cardview is showing some and importance details about the orphange which include name, location address, number of children's in the orphanage and a donate button at the bottom.
+> - When donate here button is clicked it shows the detailed fragment about the orphanage and a donate floating action button at the bottom.
+> -  On this detailed fragment page it shows map view with a marker showing the exact location of the orphanage home whereby if you click on marker it shows direction to the orphanage location on Google map (but in future we are planing to show it on the map).
+> - Detailed fragment shows more about the the orphanage, contacts and donations medium which are bank, phone number (can be used to call the orphanage when clicked) and donate na mpesa.
+> - The above methods are used for the liquid donation (eg money etc), while the floating action button at the bottom opens a dialog for the solid donations which include *(clothings, beddings, food stuffs and educational materials )* as shown in screenshot (3).
+> - When donor donates the above items, Data is recorded to the firestore dabase with the name **Donations** and a document name of the orphanage email.
+> - Below screenshots shows the whole process.
 
 <img src="https://user-images.githubusercontent.com/46722362/158621972-77ce0bd3-b684-4fcb-84e8-fa190adf9c8c.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158621972-77ce0bd3-b684-4fcb-84e8-fa190adf9c8c.png"
@@ -161,8 +161,75 @@ NB: When an orphange is registered is not verified and in future we are planing 
        width="220" height="450" />
 
 
-> # 2. MapView
-> # 3. Forum
+> ### 2. MapView
+> - SaveONE life mapview shows the different location of the orphanages across east Africa.
+> - Orphanages are being represented by a custom marker as shown in the screenshots
+> - On this fragment we used a Google map whereby data (Location Coordinates) are fetched from firestore database which include coordinates and name of the orphnage.
+> - We used a model view to store fetched data as a List 
+> 
+```
+List<LocationModel> listdata;
+
+...get data from firestore...
+
+for (QueryDocumentSnapshot document : task.getResult()) {
+
+        String coordinates = document.getString("coordinates"); //get coordinates from the firestore
+
+        String names = document.getString("name"); // get name 
+
+        if(!coordinates.isEmpty()){
+
+            //create a list of lat-long from coordinates string and separate coordinates string
+            List<String> latlong = Arrays.asList(coordinates.split(","));
+
+            //set latitude and longitude
+            latitude = Double.valueOf(latlong.get(0));
+            longitude = Double.valueOf(latlong.get(1));
+
+            locationList = new LatLng(latitude,longitude);
+
+
+            //add data to model
+            listdata.add(new LocationModel(names,locationList));
+
+            //show map
+            showMarkers();
+
+        }else{
+            //no data was found
+        }
+    }
+    
+    ...show markers using model data on the map...
+    
+    //loop through data
+        for (int i = 0; i < listdata.size(); i++) {
+
+            //add makers
+            googleMap.addMarker(new MarkerOptions()
+                    .position(listdata.get(i).getLatLng())
+                    .title(listdata.get(i).getTitle())
+
+                    .icon(BitmapDescriptorFactory.fromBitmap(
+                            new getBitmap().getBitmap(String.valueOf(R.drawable.custom_maker),
+                                            120,120, getContext()))));
+                                            
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(listdata.get(i).getLatLng(), 12.0f));
+            CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
+            googleMap.animateCamera(zoom);
+        }
+
+```
+> - Here is a screenshot showing orphanages from different locations.
+<img src="https://user-images.githubusercontent.com/46722362/158626144-72ac9e98-2256-40f8-b54f-547f62a29d34.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158626144-72ac9e98-2256-40f8-b54f-547f62a29d34.png"
+       width="220" height="450" />
+
+
+
+
+> ### 3. Forum
 
 
 
