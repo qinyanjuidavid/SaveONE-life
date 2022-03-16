@@ -29,7 +29,11 @@ SaveOne-Life is an android mobile application that helps solve three United Nati
 
 > M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
 
-##TECHNOLOGY
+## App Testing.
+> We tested SaveONE-life App with two childrens home as shown on the screenshoots below. They were very excited because they will be able to express their needs throught SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
+> https://github.com/wykeenjenga/SaveONE-life/blob/master/home.png
+
+## TECHNOLOGY
 SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA.
 
 >### 
