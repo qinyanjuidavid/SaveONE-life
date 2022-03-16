@@ -39,11 +39,9 @@ age Masters to track the well being of their childrens.
 SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA.
 
 ### Java - for the frontened 
-
-## Google technology - for the backened
-
-### > - Firebase (Firebase Auth, firestore, cloud messaging, functions, storage)
-### > - Google cloud fucntions
+### Google technology - for the backened
+> ##### - Firebase (Firebase Auth, firestore, cloud messaging, functions, storage)
+> ##### - Google cloud fucntions
 
 
 > ### Landing Page
