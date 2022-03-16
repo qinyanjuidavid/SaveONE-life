@@ -179,13 +179,8 @@ for (QueryDocumentSnapshot document : task.getResult()) {
         String names = document.getString("name"); // get name 
 
         if(!coordinates.isEmpty()){
-
-            //create a list of lat-long from coordinates string and separate coordinates string
-            List<String> latlong = Arrays.asList(coordinates.split(","));
-
-            //set latitude and longitude
-            latitude = Double.valueOf(latlong.get(0));
-            longitude = Double.valueOf(latlong.get(1));
+       
+       ....>
 
             locationList = new LatLng(latitude,longitude);
 
@@ -215,18 +210,15 @@ for (QueryDocumentSnapshot document : task.getResult()) {
                             new getBitmap().getBitmap(String.valueOf(R.drawable.custom_maker),
                                             120,120, getContext()))));
                                             
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(listdata.get(i).getLatLng(), 12.0f));
-            CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
-            googleMap.animateCamera(zoom);
+         ....
+         
         }
 
 ```
 > - Here is a screenshot showing orphanages from different locations.
-<img src="https://user-images.githubusercontent.com/46722362/158626144-72ac9e98-2256-40f8-b54f-547f62a29d34.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158626144-72ac9e98-2256-40f8-b54f-547f62a29d34.png"
+> <img src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
        width="220" height="450" />
-
-
 
 
 > ### 3. Forum
