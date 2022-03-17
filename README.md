@@ -172,21 +172,14 @@ List<LocationModel> listdata;//model
 
 ...get data from firestore...
 for (int i = 0; i < listdata.size(); i++) {
-
             //add makers
             googleMap.addMarker(new MarkerOptions()
                     .position(listdata.get(i).getLatLng())
                     .title(listdata.get(i).getTitle())
-
                     .icon(BitmapDescriptorFactory.fromBitmap(
                             new getBitmap().getBitmap(String.valueOf(R.drawable.custom_maker),
                                             120,120, getContext()))));
-                                            
-         ....
-         
-        }
-        
-
+                                            }
 ```
 > - Here is a screenshot showing orphanages from different locations.
 
