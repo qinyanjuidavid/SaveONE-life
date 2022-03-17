@@ -189,7 +189,8 @@ for (int i = 0; i < listdata.size(); i++) {
 
 ```
 > - Here is a screenshot showing orphanages from different locations.
-> <img src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
+
+<img src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
        width="220" height="450" />
 
@@ -243,8 +244,33 @@ for (int i = 0; i < listdata.size(); i++) {
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
        width="220" height="450" />
 
+## Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](#https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
 
 ## Licences
+```
+MIT License
 
-## Thanks <span style="color: #fb8100;">&hearts;</span>
+Copyright (c) 2022 GDSC Taita Taveta University.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+```
+
+## Thanks Note
 Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
