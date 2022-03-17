@@ -244,9 +244,9 @@ for (int i = 0; i < listdata.size(); i++) {
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
        width="220" height="450" />
 
-## Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](#https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
+### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
 
-## Licences
+## License
 ```
 MIT License
 
