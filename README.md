@@ -200,7 +200,7 @@ for (int i = 0; i < listdata.size(); i++) {
 > #### Firestore database for storing messages
 > - With a collection name (Chats), time+date as the document path.
 > - Messages are saved as hashmap inside an array, which include (message, email, name, time and data).
-> - To send a message you can either type or use android speech recognizer.
+> - To send a message you can either type or use Google Speech Recognizer.
  ```
  ArrayList result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
  message.setText(result.get(0).toString().toLowerCase());
@@ -213,7 +213,8 @@ for (int i = 0; i < listdata.size(); i++) {
 > #### Firebase Cloud Messaging
 > - To send push notifications to the user's we used ``` implementation 'com.google.firebase:firebase-messaging' ``` dependecy and a Chat notification class that extend FirebaseMessagingService and overrided onMessageReceived to handle everything.
 > ##Screenshots
-<img src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
+>
+> <img src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
@@ -222,8 +223,25 @@ for (int i = 0; i < listdata.size(); i++) {
        <img src="https://user-images.githubusercontent.com/46722362/158769975-8b7b6753-261b-4645-8b0f-9822546bc6ab.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158769975-8b7b6753-261b-4645-8b0f-9822546bc6ab.png"
        width="220" height="450" />
-       
 
+
+## Orphanage Profile Page
+> - *On orphanage profile page,* Orphan Keeper/ Admin will be able to update profile and other information which include ( group photo, number of childrens, phone number and other account information)
+> - Also orphanage will be able to query through and see the donations they have received, this data is restored from firebase firestore.
+> - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
+
+<img src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
+       width="220" height="450" />
 
 
 ## Licences
