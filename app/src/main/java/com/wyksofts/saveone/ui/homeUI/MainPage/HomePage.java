@@ -204,13 +204,18 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     }
 
     //init filter
-    public void filter(String orphanage) {
+    public void filter(String search_data) {
         ArrayList<OrphanageModel> arrayList = new ArrayList<>();
         for (OrphanageModel model : listdata) {
-            if (model.getName().toLowerCase().contains(orphanage)) {
+
+            if (model.getName().toLowerCase().contains(search_data)
+                    || model.getWhat_needed().toLowerCase().contains(search_data)
+            ||model.getLocation().toLowerCase().contains(search_data)) {
+
                 recyclerView.setVisibility(View.VISIBLE);
                 no_result_found.setVisibility(View.GONE);
                 arrayList.add(model);
+
             } else {
                 if (arrayList.isEmpty()) {
                     no_result_found.setVisibility(View.VISIBLE);
@@ -220,7 +225,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
                     no_result_found.setVisibility(View.GONE);
                 }
             }
-            if (orphanage.isEmpty()) {
+            if (search_data.isEmpty()) {
                 recyclerView.setVisibility(View.VISIBLE);
                 no_result_found.setVisibility(View.GONE);
             }
@@ -340,8 +345,8 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     //show menu nav
     private void showMenuNav(View popupView) {
 
-        int cx = menu.getWidth();
-        int cy = menu.getHeight();
+        int cx = popupView.getWidth();
+        int cy = popupView.getHeight();
 
         // get the final radius for the clipping circle
         float finalRadius = (float) Math.hypot(cx, cy);
@@ -363,8 +368,8 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
 
             // get the center for the clipping circle
-            int cx = menu.getWidth();
-            int cy = menu.getHeight();
+            int cx = popupView.getWidth();
+            int cy = popupView.getHeight();
 
 
             // get the initial radius for the clipping circle

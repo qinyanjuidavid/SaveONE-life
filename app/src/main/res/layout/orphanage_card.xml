@@ -29,7 +29,6 @@
                     android:id="@+id/org_image"
                     android:layout_width="180dp"
                     android:layout_height="140dp"
-                    android:alpha="0.8"
                     android:scaleType="centerCrop" />
 
                 <ImageView
@@ -37,6 +36,7 @@
                     android:layout_alignParentEnd="true"
                     android:layout_width="wrap_content"
                     android:padding="12dp"
+                    android:elevation="8dp"
                     android:visibility="gone"
                     android:src="@drawable/baseline_verified_24"
                     android:layout_height="wrap_content"/>

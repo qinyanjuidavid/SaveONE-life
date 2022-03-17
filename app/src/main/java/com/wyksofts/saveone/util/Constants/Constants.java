@@ -23,7 +23,7 @@ public interface Constants {
     @SuppressLint("StaticFieldLeak")
     FirebaseFirestore DATA_BASE = FirebaseFirestore.getInstance();
 
-    String ALLOWED_CHARACTERS ="qwertyuiopasdfghjklzxcvbnm0123456789";
+    String ALLOWED_CHARACTERS ="yuiopqwertasdfghjklzxcvbnm0123456789";
     int NOTIFICATION_ID = 1;
 
 

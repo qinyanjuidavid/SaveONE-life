@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import androidx.viewpager.widget.ViewPager;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -35,16 +36,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // remove title
-//        requestWindowFeature(Window.FEATURE_NO_TITLE);
-//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1, this.getTheme()));
-        }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1));
-        }
+        getWindow().setStatusBarColor(getResources().getColor(R.color.orange1, this.getTheme()));
 
         setContentView(R.layout.activity_main);
 
@@ -58,16 +51,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void showHomePage() {
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.home_layout, new FragmentHolder())
                 .commit();
-
     }
 
     @Override
     public void onBackPressed() {
-        new LandingPageDialog(this).show();
+
+        ViewPager viewPager = findViewById(R.id.pager);
+        if (viewPager.getCurrentItem() == 2){
+            viewPager.setCurrentItem(0);
+        }else if (viewPager.getCurrentItem() == 1){
+            viewPager.setCurrentItem(0);
+        }
+        else{
+            new LandingPageDialog(this).show();
+        }
     }
 }

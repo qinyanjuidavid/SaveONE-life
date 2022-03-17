@@ -160,6 +160,8 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
             //show control UI
             googleMap.getUiSettings().setZoomControlsEnabled(true);
             googleMap.getUiSettings().setAllGesturesEnabled(true);
+            googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+
 
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(listdata.get(i).getLatLng(), 12.0f));
             CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);

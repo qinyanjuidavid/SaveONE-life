@@ -266,7 +266,6 @@ public class AdditionalInfo extends Fragment {
     private void uploadImage() {
         if (filePath != null) {
 
-
             uploadImageDialog.setContentView(R.layout.upload_image);
             uploadImageDialog.setCancelable(false);
             uploadImageDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
