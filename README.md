@@ -168,38 +168,10 @@ NB: When an orphange is registered is not verified and in future we are planing 
 > - We used a model view to store fetched data as a List 
 > 
 ```
-List<LocationModel> listdata;
+List<LocationModel> listdata;//model
 
 ...get data from firestore...
-
-for (QueryDocumentSnapshot document : task.getResult()) {
-
-        String coordinates = document.getString("coordinates"); //get coordinates from the firestore
-
-        String names = document.getString("name"); // get name 
-
-        if(!coordinates.isEmpty()){
-       
-       ....>
-
-            locationList = new LatLng(latitude,longitude);
-
-
-            //add data to model
-            listdata.add(new LocationModel(names,locationList));
-
-            //show map
-            showMarkers();
-
-        }else{
-            //no data was found
-        }
-    }
-    
-    ...show markers using model data on the map...
-    
-    //loop through data
-        for (int i = 0; i < listdata.size(); i++) {
+for (int i = 0; i < listdata.size(); i++) {
 
             //add makers
             googleMap.addMarker(new MarkerOptions()
@@ -213,6 +185,7 @@ for (QueryDocumentSnapshot document : task.getResult()) {
          ....
          
         }
+        
 
 ```
 > - Here is a screenshot showing orphanages from different locations.
@@ -221,7 +194,34 @@ for (QueryDocumentSnapshot document : task.getResult()) {
        width="220" height="450" />
 
 
-> ### 3. Forum (SaveONE life)
+> ### 3. Public Forum (SaveONE life)
+> Is a plaform whereby public and all community can chat and give reviews or comments about orphanage homes.
+> On this fragment we used;
+> #### Firestore database for storing messages
+> - With a collection name (Chats), time+date as the document path.
+> - Messages are saved as hashmap inside an array, which include (message, email, name, time and data).
+> - To send a message you can either type or use android speech recognizer.
+ ```
+ ArrayList result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+ message.setText(result.get(0).toString().toLowerCase());
+```
+> - Only logged users are allowed to send a message.
+> - At first onCreateView we retrive messages from firestore, we used an adapter and recycler view to hold data.
+> #### Google Cloud Function
+> - We used a google cloud function to listen to any changes on Chats collection, when a message is written or deleted.
+> - This function will triggger firebase a push notification to those users that are subscribed to the topic.
+> #### Firebase Cloud Messaging
+> - To send push notifications to the user's we used ``` implementation 'com.google.firebase:firebase-messaging' ``` dependecy and a Chat notification class that extend FirebaseMessagingService and overrided onMessageReceived to handle everything.
+> ##Screenshots
+> <img src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158769975-8b7b6753-261b-4645-8b0f-9822546bc6ab.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769975-8b7b6753-261b-4645-8b0f-9822546bc6ab.png"
+       width="220" height="450" />
 
 
 
