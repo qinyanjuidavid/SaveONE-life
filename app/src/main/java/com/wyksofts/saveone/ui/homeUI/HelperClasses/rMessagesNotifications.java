@@ -71,7 +71,7 @@ public class rMessagesNotifications extends View {
                         if (!task.isSuccessful()) {
                             new showAppToast().showSuccess(mcontext,"We encountered an error");
                         }else{
-                            new showAppToast().showSuccess(mcontext,"You will receive notifications");
+                            //new showAppToast().showSuccess(mcontext,"You will receive notifications");
 
                             //save to shared preference
                             editor.putString("receive_notifications","true");

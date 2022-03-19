@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
@@ -162,8 +163,12 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
             googleMap.getUiSettings().setAllGesturesEnabled(true);
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
+            GoogleMapOptions options = new GoogleMapOptions()
+                    .liteMode(true);
 
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(listdata.get(i).getLatLng(), 12.0f));
+
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(listdata.get(i).getLatLng(),
+                    8.0f));
             CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
             googleMap.animateCamera(zoom);
         }
