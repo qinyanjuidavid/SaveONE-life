@@ -32,7 +32,8 @@ age Masters to track the well being of their childrens.
 
 ## App Testing.
 > We tested SaveONE-life App with two childrens home as shown on the screenshoots below. Orpan keeper were very excited because they will be able to express their needs via SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
-> <img src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" data-canonical-src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" width="200" height="400" />
+
+<img src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" data-canonical-src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" width="200" height="400" />
 
 
 ## Technology
@@ -168,71 +169,102 @@ NB: When an orphange is registered is not verified and in future we are planing 
 > - We used a model view to store fetched data as a List 
 > 
 ```
-List<LocationModel> listdata;
+List<LocationModel> listdata;//model
 
 ...get data from firestore...
-
-for (QueryDocumentSnapshot document : task.getResult()) {
-
-        String coordinates = document.getString("coordinates"); //get coordinates from the firestore
-
-        String names = document.getString("name"); // get name 
-
-        if(!coordinates.isEmpty()){
-       
-       ....>
-
-            locationList = new LatLng(latitude,longitude);
-
-
-            //add data to model
-            listdata.add(new LocationModel(names,locationList));
-
-            //show map
-            showMarkers();
-
-        }else{
-            //no data was found
-        }
-    }
-    
-    ...show markers using model data on the map...
-    
-    //loop through data
-        for (int i = 0; i < listdata.size(); i++) {
-
+for (int i = 0; i < listdata.size(); i++) {
             //add makers
             googleMap.addMarker(new MarkerOptions()
                     .position(listdata.get(i).getLatLng())
                     .title(listdata.get(i).getTitle())
-
                     .icon(BitmapDescriptorFactory.fromBitmap(
                             new getBitmap().getBitmap(String.valueOf(R.drawable.custom_maker),
                                             120,120, getContext()))));
-                                            
-         ....
-         
-        }
-
+                                            }
 ```
 > - Here is a screenshot showing orphanages from different locations.
-> <img src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
+
+<img src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
        width="220" height="450" />
 
 
-> ### 3. Forum (SaveONE life)
+> ### 3. Public Forum (SaveONE life)
+> Is a plaform whereby public and all community can chat and give reviews or comments about orphanage homes.
+> On this fragment we used;
+> #### Firestore database for storing messages
+> - With a collection name (Chats), time+date as the document path.
+> - Messages are saved as hashmap inside an array, which include (message, email, name, time and data).
+> - To send a message you can either type or use Google Speech Recognizer.
+ ```
+ ArrayList result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
+ message.setText(result.get(0).toString().toLowerCase());
+```
+> - Only logged users are allowed to send a message.
+> - At first onCreateView we retrive messages from firestore, we used an adapter and recycler view to hold data.
+> #### Google Cloud Function
+> - We used a google cloud function to listen to any changes on Chats collection, when a message is written or deleted.
+> - This function will triggger firebase a push notification to those users that are subscribed to the topic.
+> #### Firebase Cloud Messaging
+> - To send push notifications to the user's we used ``` implementation 'com.google.firebase:firebase-messaging' ``` dependecy and a Chat notification class that extend FirebaseMessagingService and overrided onMessageReceived to handle everything.
+> ##Screenshots
+>
+> <img src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158769975-8b7b6753-261b-4645-8b0f-9822546bc6ab.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769975-8b7b6753-261b-4645-8b0f-9822546bc6ab.png"
+       width="220" height="450" />
 
 
+## Orphanage Profile Page
+> - *On orphanage profile page,* Orphan Keeper/ Admin will be able to update profile and other information which include ( group photo, number of childrens, phone number and other account information)
+> - Also orphanage will be able to query through and see the donations they have received, this data is restored from firebase firestore.
+> - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
 
+<img src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
+       width="220" height="450" />
 
+### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
 
+## License
+```
+MIT License
 
+Copyright (c) 2022 GDSC Taita Taveta University.
 
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
-## Licences
+```
 
-## Thanks <span style="color: #fb8100;">&hearts;</span>
+## Thanks Note
 Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
