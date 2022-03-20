@@ -80,9 +80,9 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 
 # App functionality and Google technology application
 > ### Landing Page
-> <img src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
-       width="240" height="450" />
+> <img src="https://user-images.githubusercontent.com/46722362/159177572-b96ff294-b3c4-4495-9884-ffdf931cffbb.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159177572-b96ff294-b3c4-4495-9884-ffdf931cffbb.png"
+       width="240" height="460" />
 
 - On landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
 
@@ -197,12 +197,12 @@ NB: When an orphange is registered it should be verified and in future we are pl
 <img src="https://user-images.githubusercontent.com/46722362/158621972-77ce0bd3-b684-4fcb-84e8-fa190adf9c8c.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158621972-77ce0bd3-b684-4fcb-84e8-fa190adf9c8c.png"
        width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/158622027-fecd7fb3-4e1d-4310-9917-50fb2a2f0f32.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158622027-fecd7fb3-4e1d-4310-9917-50fb2a2f0f32.png"
+       <img src="https://user-images.githubusercontent.com/46722362/159177583-4c26811e-eb00-4ac3-b23c-f3c2cc3de287.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159177583-4c26811e-eb00-4ac3-b23c-f3c2cc3de287.png"
        width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/158622040-181805e4-c144-4d81-a027-7f28cc4322b4.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158622040-181805e4-c144-4d81-a027-7f28cc4322b4.png"
-       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/159177585-059e2723-b8d6-4fae-a8ff-50b026d4391e.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159177585-059e2723-b8d6-4fae-a8ff-50b026d4391e.png"
+       width="220" height="460" />
 
 
 > ### 2. MapView
