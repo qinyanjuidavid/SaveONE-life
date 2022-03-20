@@ -26,6 +26,7 @@ SaveOne-Life is an android mobile application that helps solve three United Nati
 > If we were to continue, we were to implement addition feature regarding the health of the childrens, whereby Orphan keeper will have to add and Indicate the number of childrens who are not in good health, this also will lead to additional integration with good willing health Sectors. Health Sector will be able to login to the app and locate those poor childrens that are in need.
 
 > M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
+
 > In future we are planing to extend the app from being used inside the country to whole Africa and the whole world as well.
 
 ## App Testing.
