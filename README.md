@@ -32,8 +32,8 @@ children they are hosting
 
 ## Scalability of the project.
 > SaveONE Life project is scalable,
-> We are planning to implement an additional feature regarding the health of the children, whereby Orphanage managers can add and indicate the number of children who are not in good health, thus also being able to integrate the good will health organizations.
->  This good will health organizations will also be able to login to the app and locate those orphaned childfen that are in need.
+> We are planning to implement an additional feature regarding the health of the children, whereby Orphanage managers can add and indicate the number of children who are not in good health, thus also being able to integrate the good will health organizations to offer free medical services and even hold medical camps.
+>  This good will health organizations will also be able to log into the app and locate those orphaned childfen that are in need.
 
 > M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. 
 > In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
