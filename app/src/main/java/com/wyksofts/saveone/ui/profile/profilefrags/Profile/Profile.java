@@ -4,6 +4,8 @@ import static android.app.Activity.RESULT_OK;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
+import android.content.ClipData;
+import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -46,6 +48,7 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.showLogOutDialog;
 import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.OtherInfo;
 import com.wyksofts.saveone.ui.profile.profilefrags.Donations.Donations;
 import com.wyksofts.saveone.util.AlertPopDiag;
@@ -60,10 +63,11 @@ public class Profile extends Fragment {
 
     ImageView arrow_back, logout_menu, profile_image;
     TextView profile_name, profile_phone_number, profile_email,profile_verified;
-    CardView profile_location_card,profile_number_ch_card, profile_in_need_card;
+    CardView profile_location_card,profile_number_ch_card, profile_in_need_card, not_verified_card;
     TextView prof_location,prof_number_ch, prof_in_need;
-    TextView profile_description, profile_country;
-    Button updateProfileBtn;
+    TextView profile_description, profile_country, profile_title;
+    Button updateProfileBtn, copyNumber;
+    LinearLayout subscribe_na_mpesa;
 
     //update profile dialog
     Dialog  LogOutDialog, uploadImageDialog,updateProfileDialog;
@@ -120,6 +124,7 @@ public class Profile extends Fragment {
         logout_menu = view.findViewById(R.id.logout_menu);
         profile_image = view.findViewById(R.id.profile_image);
         donations = view.findViewById(R.id.donations);
+        copyNumber = view.findViewById(R.id.copy_number);
 
         //text_views
         profile_phone_number = view.findViewById(R.id.profile_phone_number);
@@ -128,11 +133,14 @@ public class Profile extends Fragment {
         profile_description = view.findViewById(R.id.profile_description);
         profile_country = view.findViewById(R.id.profile_country);
         profile_verified = view.findViewById(R.id.profile_verified);
+        profile_title = view.findViewById(R.id.profile_title);
+        subscribe_na_mpesa = view.findViewById(R.id.subscribe_na_mpesa);
 
         //card_views
         profile_location_card = view.findViewById(R.id.profile_location);
         profile_number_ch_card = view.findViewById(R.id.profile_number_ch);
         profile_in_need_card = view.findViewById(R.id.profile_in_need);
+        not_verified_card = view.findViewById(R.id.not_verified_card);
 
         //txt
         prof_location = view.findViewById(R.id.prof_location);
@@ -149,9 +157,9 @@ public class Profile extends Fragment {
 
 
         if (user != null) {
-
             profile_name.setText(user.getDisplayName());
             profile_email.setText(user.getEmail());
+
             profile_verified.setText("Not Verified");
             Glide.with(getContext())
                     .load(user.getPhotoUrl())
@@ -202,7 +210,26 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View view) {
                 //show logout dialog
-                //new showLogOutDialog().show();
+                new showLogOutDialog(getContext()).show();
+            }
+        });
+
+        copyNumber.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                //copy number to the clipboard
+                ClipboardManager clipboard = (ClipboardManager) getActivity()
+                        .getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("Phone Copied", "+254703285070");
+                clipboard.setPrimaryClip(clip);
+                new showAppToast().showSuccess(getContext(),"Copied number");
+            }
+        });
+
+        subscribe_na_mpesa.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new showAppToast().showFailure(getContext(),"Service is not available at the moment");
             }
         });
 
@@ -265,8 +292,12 @@ public class Profile extends Fragment {
 
                         if (verified !=null){
                             profile_verified.setText("Verified");
+                            //hide the card
+                            not_verified_card.setVisibility(View.GONE);
                         }else{
                             profile_verified.setText("Not Verified");
+                            profile_title.setText("Hello,"+user.getDisplayName()+"\tyour orphanage is not verified");
+                            not_verified_card.setVisibility(View.VISIBLE);
                         }
 
                         Glide.with(getContext())

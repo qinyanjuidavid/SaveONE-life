@@ -23,7 +23,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="240dp"
+        android:layout_height="140dp"
         android:src="@drawable/profile_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -70,7 +70,6 @@
             android:fontFamily="serif"
             android:textSize="18sp"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
             android:textColor="@color/blue"
             android:textStyle="bold"
             android:layout_height="wrap_content"/>
@@ -78,18 +77,17 @@
         <LinearLayout
             android:orientation="vertical"
             android:gravity="center"
-            android:layout_marginTop="@dimen/_28sdp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
                 android:id="@+id/profile_image"
-                android:layout_width="@dimen/_100sdp"
+                android:layout_width="@dimen/_80sdp"
                 android:elevation="6dp"
                 app:civ_border_color="@color/blue"
                 app:civ_border_width="@dimen/_1sdp"
                 android:src="@drawable/imgg"
-                android:layout_height="@dimen/_100sdp"/>
+                android:layout_height="@dimen/_80sdp"/>
 
             <LinearLayout
                 android:layout_marginTop="@dimen/_2sdp"
@@ -150,260 +148,351 @@
         </LinearLayout>
 
 
-        <LinearLayout
-            android:id="@+id/hidden_information"
-            android:orientation="vertical"
-            android:visibility="gone"
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
-                android:padding="12dp"
-                android:orientation="horizontal"
+                android:id="@+id/hidden_information"
+                android:orientation="vertical"
+                android:visibility="visible"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+
                 <androidx.cardview.widget.CardView
-                    android:id="@+id/profile_location"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="8.0dip"
-                    app:cardElevation="8dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_marginBottom="@dimen/_12sdp"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:src="@drawable/baseline_location_on_24"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/prof_location"
-                            android:layout_width="wrap_content"
-                            android:fontFamily="@font/mont"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            android:textColor="@color/blue"
-                            android:text="@string/our_location"
-                            android:lines="3"
-                            android:layout_marginBottom="@dimen/_12sdp"
-                            android:layout_height="wrap_content"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/profile_number_ch"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="8.0dip"
-                    app:cardElevation="8dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_marginBottom="@dimen/_12sdp"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:src="@drawable/baseline_groups_white_24"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/prof_number_ch"
-                            android:layout_width="wrap_content"
-                            android:fontFamily="@font/mont"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:gravity="center"
-                            android:lines="3"
-                            android:textColor="@color/blue"
-                            android:text="@string/number_of_children_s"
-                            android:layout_marginBottom="@dimen/_12sdp"
-                            android:layout_height="wrap_content"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/profile_in_need"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_height="wrap_content"
-                    app:cardBackgroundColor="@color/white"
-                    app:cardCornerRadius="8.0dip"
-                    app:cardElevation="8dp"
-                    app:cardUseCompatPadding="true">
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:gravity="center"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:layout_marginBottom="@dimen/_12sdp"
-                            android:layout_marginTop="@dimen/_12sdp"
-                            android:src="@drawable/baseline_volunteer_activism_24"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"/>
-
-                        <TextView
-                            android:id="@+id/prof_in_need"
-                            android:layout_width="wrap_content"
-                            android:fontFamily="@font/mont"
-                            android:textSize="12sp"
-                            android:textStyle="bold"
-                            android:lines="3"
-                            android:gravity="center"
-                            android:textColor="@color/blue"
-                            android:text="@string/in_need_most"
-                            android:layout_marginBottom="@dimen/_12sdp"
-                            android:layout_height="wrap_content"/>
-
-                    </LinearLayout>
-
-                </androidx.cardview.widget.CardView>
-
-            </LinearLayout>
-
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:fontFamily="serif"
-                android:textSize="16sp"
-                android:layout_marginTop="@dimen/_30sdp"
-                android:textColor="@color/blue"
-                android:textStyle="bold"
-                android:text="@string/more_information"
-                android:layout_height="wrap_content"/>
-
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="8.0dip"
-                app:cardElevation="8dp"
-                app:cardUseCompatPadding="true">
-
-                <LinearLayout
-                    android:padding="12dp"
-                    android:orientation="vertical"
+                    android:id="@+id/not_verified_card"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8.0dip"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
                     <LinearLayout
                         android:orientation="vertical"
+                        android:padding="8dp"
+                        android:gravity="center"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
 
+                        <TextView
+                            android:id="@+id/profile_title"
+                            android:fontFamily="serif"
+                            android:textSize="14sp"
+                            android:text="@string/hello_your_orphanage_is_not_verified"
+                            android:textColor="@color/blue"
+                            android:textStyle="bold"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:id="@+id/our_acc"
+                            android:fontFamily="serif"
+                            android:textSize="12sp"
+                            android:textColor="@color/blue"
+                            android:text="@string/get_verified"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <TextView
+                            android:fontFamily="serif"
+                            android:textSize="12sp"
+                            android:textColor="@color/red"
+                            android:text="@string/thanks_verfied_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"/>
+
+                        <Button
+                            android:id="@+id/copy_number"
+                            android:layout_width="200dp"
+                            android:layout_height="34dp"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginBottom="8dp"
+                            android:background="@drawable/custom_btn"
+                            android:text="@string/copy_number"
+                            android:textColor="@color/white"
+                            android:textSize="14sp"
+                            android:textStyle="bold"/>
 
                         <LinearLayout
+                            android:id="@+id/subscribe_na_mpesa"
                             android:clickable="true"
                             android:focusable="true"
-                            android:background="@drawable/custom_btn3"
+                            android:background="@drawable/custom_btn5"
                             android:orientation="horizontal"
-                            android:layout_width="match_parent"
+                            android:gravity="center"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content">
 
                             <ImageView
                                 android:layout_gravity="center"
-                                android:src="@drawable/baseline_workspaces_24"
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"/>
-
+                                android:src="@drawable/mpesa"
+                                android:layout_width="54dp"
+                                android:layout_height="32dp"/>
                             <TextView
-                                android:id="@+id/profile_description"
+                                android:id="@+id/orp_mpesa"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"
                                 android:fontFamily="@font/mont"
-                                android:text="@string/name"
                                 android:layout_gravity="center"
-                                android:textColor="@color/blue"
-                                android:textSize="12sp"
-                                android:textStyle="bold" />
-
-                        </LinearLayout>
-                        <View
-                            android:layout_marginTop="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_marginBottom="8dp"
-                            android:background="@color/colorAccent"
-                            android:layout_height="0.4dp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:orientation="vertical"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-                        <LinearLayout
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:background="@drawable/custom_btn3"
-                            android:orientation="horizontal"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content">
-
-                            <ImageView
-                                android:layout_gravity="center"
-                                android:src="@drawable/baseline_flag_circle_24"
-                                android:layout_width="24dp"
-                                android:layout_height="24dp"/>
-                            <TextView
-                                android:id="@+id/profile_country"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="4dp"
-                                android:fontFamily="@font/mont"
-                                android:layout_gravity="center"
-                                android:text="@string/country_eg_usa"
+                                android:text="@string/subscribe_na_mpesa"
                                 android:textColor="@color/blue"
                                 android:textSize="14sp"
                                 android:textStyle="bold" />
 
                         </LinearLayout>
-                        <View
-                            android:layout_marginTop="8dp"
-                            android:layout_width="match_parent"
-                            android:layout_marginBottom="8dp"
-                            android:layout_height="0.4dp"/>
+
                     </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <LinearLayout
+                    android:padding="2dp"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profile_location"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8.0dip"
+                        app:cardElevation="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_marginBottom="@dimen/_12sdp"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:src="@drawable/baseline_location_on_24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/prof_location"
+                                android:layout_width="wrap_content"
+                                android:fontFamily="@font/mont"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:textColor="@color/blue"
+                                android:text="@string/our_location"
+                                android:lines="3"
+                                android:layout_marginBottom="@dimen/_12sdp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profile_number_ch"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8.0dip"
+                        app:cardElevation="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_marginBottom="@dimen/_12sdp"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:src="@drawable/baseline_groups_white_24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/prof_number_ch"
+                                android:layout_width="wrap_content"
+                                android:fontFamily="@font/mont"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:gravity="center"
+                                android:lines="3"
+                                android:textColor="@color/blue"
+                                android:text="@string/number_of_children_s"
+                                android:layout_marginBottom="@dimen/_12sdp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profile_in_need"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="@color/white"
+                        app:cardCornerRadius="8.0dip"
+                        app:cardElevation="8dp"
+                        app:cardUseCompatPadding="true">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:gravity="center"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+                            <ImageView
+                                android:layout_marginBottom="@dimen/_12sdp"
+                                android:layout_marginTop="@dimen/_12sdp"
+                                android:src="@drawable/baseline_volunteer_activism_24"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"/>
+
+                            <TextView
+                                android:id="@+id/prof_in_need"
+                                android:layout_width="wrap_content"
+                                android:fontFamily="@font/mont"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:lines="3"
+                                android:gravity="center"
+                                android:textColor="@color/blue"
+                                android:text="@string/in_need_most"
+                                android:layout_marginBottom="@dimen/_12sdp"
+                                android:layout_height="wrap_content"/>
+
+                        </LinearLayout>
+
+                    </androidx.cardview.widget.CardView>
 
                 </LinearLayout>
-            </androidx.cardview.widget.CardView>
 
-            <Button
-                android:id="@+id/Update_Profile"
-                android:layout_width="200dp"
-                android:layout_height="42dp"
-                android:layout_gravity="center"
-                android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/custom_btn"
-                android:text="@string/update_profile"
-                android:textColor="@color/white"
-                android:textSize="14sp"
-                android:textStyle="bold"
-                app:icon="@drawable/baseline_volunteer_activism_24" />
 
-        </LinearLayout>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:fontFamily="serif"
+                    android:textSize="16sp"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    android:text="@string/more_information"
+                    android:layout_height="wrap_content"/>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="8.0dip"
+                    app:cardElevation="8dp"
+                    app:cardUseCompatPadding="true">
+
+                    <LinearLayout
+                        android:padding="12dp"
+                        android:orientation="vertical"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+
+
+                            <LinearLayout
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:background="@drawable/custom_btn3"
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/baseline_workspaces_24"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"/>
+
+                                <TextView
+                                    android:id="@+id/profile_description"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:fontFamily="@font/mont"
+                                    android:text="@string/name"
+                                    android:layout_gravity="center"
+                                    android:textColor="@color/blue"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                            <View
+                                android:layout_marginTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:background="@color/colorAccent"
+                                android:layout_height="0.4dp"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content">
+                            <LinearLayout
+                                android:clickable="true"
+                                android:focusable="true"
+                                android:background="@drawable/custom_btn3"
+                                android:orientation="horizontal"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_gravity="center"
+                                    android:src="@drawable/baseline_flag_circle_24"
+                                    android:layout_width="24dp"
+                                    android:layout_height="24dp"/>
+                                <TextView
+                                    android:id="@+id/profile_country"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="4dp"
+                                    android:fontFamily="@font/mont"
+                                    android:layout_gravity="center"
+                                    android:text="@string/country_eg_usa"
+                                    android:textColor="@color/blue"
+                                    android:textSize="14sp"
+                                    android:textStyle="bold" />
+
+                            </LinearLayout>
+                            <View
+                                android:layout_marginTop="8dp"
+                                android:layout_width="match_parent"
+                                android:layout_marginBottom="8dp"
+                                android:layout_height="0.4dp"/>
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <Button
+                    android:id="@+id/Update_Profile"
+                    android:layout_width="200dp"
+                    android:layout_height="42dp"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/custom_btn"
+                    android:text="@string/update_profile"
+                    android:textColor="@color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:icon="@drawable/baseline_volunteer_activism_24" />
+
+            </LinearLayout>
+        </ScrollView>
 
 
     </LinearLayout>

@@ -184,4 +184,9 @@
     <string name="mpesa_description">Donate na mpesa has beeen made easy with two steps. You can donate from as low as ksh 5 na mpesa to change someones life</string>
     <string name="amount_to_donate_eg_50_bob">Amount to donate eg, 50 bob</string>
     <string name="orphanage_album">Orphanage Album</string>
+    <string name="hello_your_orphanage_is_not_verified">Hello, your orphanage is not verified</string>
+    <string name="get_verified">To verify please channel your subscription of $5 (Annually) via mpesa to get verified.</string>
+    <string name="thanks_verfied_note">*Please note the above money will help us (Google Developer Student Club) for maintenance of SaveONE-life app for the best of our children future.</string>
+    <string name="copy_number">Copy Number</string>
+    <string name="subscribe_na_mpesa">Subscribe na mpesa</string>
 </resources>
