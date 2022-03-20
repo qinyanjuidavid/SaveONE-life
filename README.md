@@ -9,17 +9,37 @@
 - Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
 - Run the android app on Android Studio
 
+## Introduction
+> - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
+> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the bread winners, most children find themselves without sufficient financial, social and emotional support and these children's futures become quite uncertain.
+> - They end up straining to access basic needs such as food, clothing, course books, writing materials and even shelter that are essential for normal living. In addition to that, orphans who have been traumatized by the death of their parents can become antisocial. The fact that society appears to have become oblivious to their predicament hasn't helped matters.
+> - Those who have found themselves in children’s homes have been a little bit lucky to have some access to shelter, food and clothing but in limited quantities compared to other children 
+> - Most of the registered 800 children’s homes in Kenya depend on donors to provide these basic needs of these children and the finances are mostly very limited to providing food for all those 
+children they are hosting
 
-## Impact
-SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG). These goals are;
-> #### No-Poverty
-> According to the United Nations, one out of five children live in extreme poverty, and the negative effects of poverty and deprivation in the early years have ramifications that can last a lifetime. With SaveOne-Life, donors can be able to explore and donate to orphanages that are facing extreme poverty. Some of the items that can be donated to reduce poverty include; clothings, better housing, beddings, etc.
 
-> #### Quality Education
-> To protect the well-being of children and ensure they have access to continued learning, the SaveOne-Life android application enables donors to search for orphanages and donate learning materials such as books, pens, and many more.
+## Problem
+> - The major problem gotten from the user requirement gathering phase, has been the donors trying to locate the orphanages in the country especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing and writing materials to donate. They shared on their difficulty of accessing the locations of the orphanages in the areas around. 
 
-> #### Zero-Hunger
-> Zero hunger is one of the United Nations SDGS. To enhance and maintain zero hunger among the young generation, SaveONE life provides a platform whereby donors can donate food stuffs to the affected orphanages.
+## Solution
+> - That’s where the Save ONE-life android app comes in. -it’s an app built with java and google technology that helps donors to locate home orphanages all across the country and make their donations.
+> - Knowing which child requires help, when they require this help, and where they actually are to be accorded this help is major step in alleviating the conditions of these orphaned children.
+> - We desire that orphaned children will experience a normal life just as children who have found themselves in their families.
+
+
+
+
+## SDGs and their Targets
+> SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG). These goals are;
+> #### SDG 1: No poverty
+> - Target 1.2: By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions.
+
+> #### SDG 2: Zero Hunger
+> - Target 2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round. 
+
+> #### SDG 4: Quality Education
+> - Target 4.1: By 2030, ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes.
+
 
 ## Scalability of the project.
 > SaveONE Life project is scalable,
@@ -36,12 +56,58 @@ SaveOne-Life is an android mobile application that helps solve three United Nati
 
 
 ## Technology
-SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA.
+SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA and at the backend we use Google Technology.
 
 ### Java - for the frontened 
-### Google technology - for the backened
-> ##### - Firebase (Firebase Auth, firestore, cloud messaging, functions, storage)
-> ##### - Google cloud fucntions
+## Google technology - for the backened
+> ##### - Firebase (Firebase Auth, firestore, , , storage)
+> ##### - 
+
+> ### Firebase Auth.
+> - We used *firebase auth* to register and login user to the app. Where by donors can opt to register with or continue with google as shown in the screenshot below.
+> <img src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
+       width="240" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/159161005-e108a376-1e2e-4fda-b45f-d068dffff38e.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159161005-e108a376-1e2e-4fda-b45f-d068dffff38e.png"
+       width="240" height="450" />
+
+> ### Firebase firestore.
+> - We used firebase firestore to store orphanages, users / donors, location and chats message from the forum data so as we can access data from the backend with ease. 
+
+> ### Firebase functions and Google cloud.
+> - We used firebase functions to listen to any changes on Chats collection from firestore that is when a new message is added or sent the function is supposed to triger a push notification to the users subscribed to the topic on SaveONE life forum.
+> - We used Google cloud to write and deploy the function.
+> - The following function was used;
+```
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+
+admin.initializeApp(functions.config().firebase);
+
+exports.androidPushNotification = functions.firestore.document('Chats/{uid}').onWrite( async (event) => {
+  
+  let t = "You have a new message";
+  let c = "Hello there you have a new message from SaveONE life Forum";
+
+  var message = {
+    notification: {
+      title: t,
+      body: c,
+    },
+
+    topic: 'chats',
+    
+    };
+
+});
+```
+
+> ### Firebase cloud messaging.
+> - We used firebase cloud messaging to send push notifications when there is a new message in SaveONE life forum.
+
+> ### Google cloud.
+> - Google cloud was used to create google map api that helped us to implement Google maps on our project.
 
 
 > ### Landing Page
@@ -51,7 +117,7 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 
 - On landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
 
-##Authentication
+## Authentication
 
 > ### Donor Authentication 
 -  Donor - To authenticate donor we used firebase auth dependecy (firebase-auth). 
