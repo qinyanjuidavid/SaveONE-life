@@ -104,10 +104,10 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 > - Below are the profile pages for the verified and not verified orphanage.
 > - <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
-       width="240" height="450" />
+       width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
-       width="240" height="450" />
+       width="220" height="450" />
 
 ### 1. Basic Information 
 - On this page Orphanage keeper is supposed to fill in name, email and password of the orphange as shown.
