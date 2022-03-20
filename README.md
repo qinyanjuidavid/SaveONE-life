@@ -93,7 +93,7 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 ```
-- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#Public Forum (SaveONE life)).
+- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#Home Page).
 > - If donor wish to participate on SaveONE life forum, he/she must have an account.
 
 > ## Orphange / Children's Home Authentication 
