@@ -1,34 +1,45 @@
 # SaveOne-Life
 
-## Running the project
-### Installation by Downloading the APK
-- To download the apk click the link [SaveOne-Life]()
-- Install the apk on your android mobile phone
-### Installation by Cloning to Android Studio
-- Download Android Studio
-- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
-- Run the android app on Android Studio
+## Introduction
+> - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
+> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the bread winners, most children find themselves without sufficient financial, social and emotional support and these children's futures become quite uncertain.
+> - They end up straining to access basic needs such as food, clothing, course books, writing materials and even shelter that are essential for normal living. In addition to that, orphans who have been traumatized by the death of their parents can become antisocial. The fact that society appears to have become oblivious to their predicament hasn't helped matters.
+> - Those who have found themselves in children’s homes have been a little bit lucky to have some access to shelter, food and clothing but in limited quantities compared to other children 
+> - Most of the registered 800 children’s homes in Kenya depend on donors to provide these basic needs of these children and the finances are mostly very limited to providing food for all those 
+children they are hosting
 
 
-## Impact
-SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG). These goals are;
-> #### No-Poverty
-> According to the United Nations, one out of five children live in extreme poverty, and the negative effects of poverty and deprivation in the early years have ramifications that can last a lifetime. With SaveOne-Life, donors can be able to explore and donate to orphanages that are facing extreme poverty. Some of the items that can be donated to reduce poverty include; clothings, better housing, beddings, etc.
+## Problem
+> - The major problem gotten from the user requirement gathering phase, has been the donors trying to locate the orphanages in the country especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing and writing materials to donate. They shared on their difficulty of accessing the locations of the orphanages in the areas around. 
 
-> #### Quality Education
-> To protect the well-being of children and ensure they have access to continued learning, the SaveOne-Life android application enables donors to search for orphanages and donate learning materials such as books, pens, and many more.
+## Solution
+> - That’s where the Save ONE-life android app comes in. -it’s an app built with java and google technology that helps donors to locate home orphanages all across the country and make their donations.
+> - Knowing which child requires help, when they require this help, and where they actually are to be accorded this help is major step in alleviating the conditions of these orphaned children.
+> - We desire that orphaned children will experience a normal life just as children who have found themselves in their families.
 
-> #### Zero-Hunger
-> Zero hunger is one of the United Nations SDGS. To enhance and maintain zero hunger among the young generation, SaveONE life provides a platform whereby donors can donate food stuffs to the affected orphanages.
+
+## SDGs and their Targets
+> SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG). These goals are;
+> #### SDG 1: No poverty
+> - Target 1.2: By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions.
+
+> #### SDG 2: Zero Hunger
+> - Target 2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round. 
+
+> #### SDG 4: Quality Education
+> - Target 4.1: By 2030, ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes.
+
 
 ## Scalability of the project.
 > SaveONE Life project is scalable,
-> If we were to continue, we were to implement addition feature regarding the health of the childrens, whereby Orphan keeper will have to add and Indicate the number of childrens who are not in good health, this also will lead to additional integration with good willing health Sectors. Health Sector will be able to login to the app and locate those poor childrens that are in need.
+> If we were to continue, we were to implement addition feature regarding the health of the childrens, whereby Orphan keeper will have to add and Indicate the number of childrens who are not in good health, this also will lead to additional integration with good willing health Sectors.
+>  Health Sector will be able to login to the app and locate those poor childrens that are in need.
 
-> Most orphanages in Kenya are founded and run by individuals, not the government. and most wealthiest families have a tendance of adopting 1 or 2 childrens from the orphanage and help them either by educating them and many more. But some families they do adopt the childrens and mistreate them. In future we are planning to add more features whereby the app will be tracking the progress and the number of childrens whom are adopted, including the location and lifestyle of the childrens. This feature will help 
-age Masters to track the well being of their childrens.
+> M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. 
+> In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
+> We are also plaining to add more methods / medium of donations like stripe, paypal and many other.
 
-> M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
+> We are also planing to extend the app from being used inside the country to whole Africa and the whole world as well.
 
 ## App Testing.
 > We tested SaveONE-life App with two childrens home as shown on the screenshoots below. Orpan keeper were very excited because they will be able to express their needs via SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
@@ -37,14 +48,37 @@ age Masters to track the well being of their childrens.
 
 
 ## Technology
-SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA.
+SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA and at the backend we use Google Technology.
 
-### Java - for the frontened 
-### Google technology - for the backened
-> ##### - Firebase (Firebase Auth, firestore, cloud messaging, functions, storage)
-> ##### - Google cloud fucntions
+## Google Technology Overview
+> ### Firebase Auth.
+> - We used *firebase auth* to register and login user to the app. Where by donors can opt to register with or continue with google as shown in the screenshot below.
+> - <img src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
+       width="240" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/159161005-e108a376-1e2e-4fda-b45f-d068dffff38e.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159161005-e108a376-1e2e-4fda-b45f-d068dffff38e.png"
+       width="240" height="450" />
+
+> ### Firebase firestore.
+> - We used firebase firestore to store orphanages, users / donors, location and chats message from the forum data so as we can access data from the backend with ease. 
+
+> ### Firebase functions and Google cloud.
+> - We used firebase functions to listen to any changes on Chats collection from firestore that is when a new message is added or sent the function is supposed to triger a push notification to the users subscribed to the topic on SaveONE life forum.
+> - We used Google cloud to write and deploy the function.
+
+> ### Firebase cloud messaging.
+> - We used firebase cloud messaging dependecy to send push notifications when there is a new message in SaveONE life forum.
+
+> ### Google cloud.
+> - Google cloud was used to create google map api that helped us to implement Google maps on our project.
+
+> ### Firebase Storage.
+> - This dependecy helped us to store user profile images when opehanage upload their group photo.
 
 
+
+# App functionality and Google technology application
 > ### Landing Page
 > <img src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
@@ -52,19 +86,28 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 
 - On landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
 
-##Authentication
-
-> ### Donor Authentication 
--  Donor - To authenticate donor we used firebase auth dependecy (firebase-auth). 
+## Authentication
+> ## Donor Authentication 
+> -  Donor - To authenticate donor we used firebase auth dependecy (firebase-auth). 
 ```
 implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 ```
-- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#SaveOne-Life).
-- If donor wish to participate on SaveONE life forum, he/she must have an account.
+- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#Home Page).
+> - If donor wish to participate on SaveONE life forum, he/she must have an account.
 
-> ### Orphange / Children's Home Authentication 
-- To authenticate an orphanage, Orphan Keeper is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
+> ## Orphange / Children's Home Authentication 
+> - To authenticate an orphanage, Orphan Keeper is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
+> - An oprhanage is required to be verified to get more donations, Verification process requires an orphanage to channel $5 (annually) and exact location of the orphanage if it was not provided.
+> - Verification process will help donors to be more conviced that the orphanage exists.
+> - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE life. Money can be channeled using mpesa at the moment.
+> - Below are the profile pages for the verified and not verified orphanage.
+> - <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+       width="240" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
+       width="240" height="450" />
 
 ### 1. Basic Information 
 - On this page Orphanage keeper is supposed to fill in name, email and password of the orphange as shown.
@@ -101,7 +144,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        
 - ### 4. Orphanage location
 - Orphanage location fragment shows a google map showing the current location of the user.
-- Orphan keeper is supposed to drag and drop the pin to the actual position of the orphanage.
+- Orphan keeper is supposed to drag and drop the pin to the actual position of the orphanage and get the current coordinates, on button click, coordinates are recorded to the firestore database.
 - We used google map API, the following dependecies were used  
 - We created Google Map Api from google clouds
  ```
@@ -202,9 +245,35 @@ for (int i = 0; i < listdata.size(); i++) {
 ```
 > - Only logged users are allowed to send a message.
 > - At first onCreateView we retrive messages from firestore, we used an adapter and recycler view to hold data.
+
 > #### Google Cloud Function
 > - We used a google cloud function to listen to any changes on Chats collection, when a message is written or deleted.
 > - This function will triggger firebase a push notification to those users that are subscribed to the topic.
+> - We used the code below for push notifications
+```
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+
+admin.initializeApp(functions.config().firebase);
+
+exports.androidPushNotification = functions.firestore.document('Chats/{uid}').onWrite( async (event) => {
+  
+  let t = "You have a new message";
+  let c = "Hello there you have a new message from SaveONE life Forum";
+
+  var message = {
+    notification: {
+      title: t,
+      body: c,
+    },
+
+    topic: 'chats',
+    
+    };
+
+});
+```
+
 > #### Firebase Cloud Messaging
 > - To send push notifications to the user's we used ``` implementation 'com.google.firebase:firebase-messaging' ``` dependecy and a Chat notification class that extend FirebaseMessagingService and overrided onMessageReceived to handle everything.
 > ##Screenshots
@@ -225,8 +294,8 @@ for (int i = 0; i < listdata.size(); i++) {
 > - Also orphanage will be able to query through and see the donations they have received, this data is restored from firebase firestore.
 > - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
 
-<img src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
+<img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
@@ -238,7 +307,15 @@ for (int i = 0; i < listdata.size(); i++) {
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
        width="220" height="450" />
 
-### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
+
+# Running the project
+## Installation by Downloading the APK
+- To download the apk click the link [SaveOne-Life]()
+- Install the apk on your android mobile phone
+## Installation by Cloning to Android Studio
+- Download Android Studio
+- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
+- Run the android app on Android Studio
 
 ## License
 ```
@@ -268,3 +345,5 @@ SOFTWARE.
 
 ## Thanks Note
 Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
+
+### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
