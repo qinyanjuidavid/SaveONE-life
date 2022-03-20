@@ -307,14 +307,12 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
        width="220" height="450" />
 
-### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
 
-
-## Running the project
-### Installation by Downloading the APK
+# Running the project
+## Installation by Downloading the APK
 - To download the apk click the link [SaveOne-Life]()
 - Install the apk on your android mobile phone
-### Installation by Cloning to Android Studio
+## Installation by Cloning to Android Studio
 - Download Android Studio
 - Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
 - Run the android app on Android Studio
@@ -347,3 +345,5 @@ SOFTWARE.
 
 ## Thanks Note
 Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
+
+### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
