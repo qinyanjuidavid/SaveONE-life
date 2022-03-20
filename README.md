@@ -58,10 +58,10 @@ children they are hosting
 ## Technology
 SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA and at the backend we use Google Technology.
 
-## Google technology - for the backened
+## Google Technology Overview
 > ### Firebase Auth.
 > - We used *firebase auth* to register and login user to the app. Where by donors can opt to register with or continue with google as shown in the screenshot below.
-  <img src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
+> - <img src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
        width="240" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/159161005-e108a376-1e2e-4fda-b45f-d068dffff38e.png"
@@ -74,30 +74,6 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 > ### Firebase functions and Google cloud.
 > - We used firebase functions to listen to any changes on Chats collection from firestore that is when a new message is added or sent the function is supposed to triger a push notification to the users subscribed to the topic on SaveONE life forum.
 > - We used Google cloud to write and deploy the function.
-> - The following function was used;
-```
-const functions = require('firebase-functions');
-const admin = require('firebase-admin');
-
-admin.initializeApp(functions.config().firebase);
-
-exports.androidPushNotification = functions.firestore.document('Chats/{uid}').onWrite( async (event) => {
-  
-  let t = "You have a new message";
-  let c = "Hello there you have a new message from SaveONE life Forum";
-
-  var message = {
-    notification: {
-      title: t,
-      body: c,
-    },
-
-    topic: 'chats',
-    
-    };
-
-});
-```
 
 > ### Firebase cloud messaging.
 > - We used firebase cloud messaging dependecy to send push notifications when there is a new message in SaveONE life forum.
@@ -108,7 +84,9 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 > ### Firebase Storage.
 > - This dependecy helped us to store user profile images when opehanage upload their group photo.
 
-## App Functionality
+
+
+# App functionality and Google technology application
 > ### Landing Page
 > <img src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
@@ -117,14 +95,13 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 - On landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
 
 ## Authentication
-
 > ### Donor Authentication 
 -  Donor - To authenticate donor we used firebase auth dependecy (firebase-auth). 
 ```
 implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 ```
-- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#SaveOne-Life).
+- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](### 3. Public Forum (SaveONE life)).
 - If donor wish to participate on SaveONE life forum, he/she must have an account.
 
 > ### Orphange / Children's Home Authentication 
@@ -165,7 +142,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        
 - ### 4. Orphanage location
 - Orphanage location fragment shows a google map showing the current location of the user.
-- Orphan keeper is supposed to drag and drop the pin to the actual position of the orphanage.
+- Orphan keeper is supposed to drag and drop the pin to the actual position of the orphanage and get the current coordinates, on button click, coordinates are recorded to the firestore database.
 - We used google map API, the following dependecies were used  
 - We created Google Map Api from google clouds
  ```
@@ -266,9 +243,35 @@ for (int i = 0; i < listdata.size(); i++) {
 ```
 > - Only logged users are allowed to send a message.
 > - At first onCreateView we retrive messages from firestore, we used an adapter and recycler view to hold data.
+
 > #### Google Cloud Function
 > - We used a google cloud function to listen to any changes on Chats collection, when a message is written or deleted.
 > - This function will triggger firebase a push notification to those users that are subscribed to the topic.
+> - We used the code below for push notifications
+```
+const functions = require('firebase-functions');
+const admin = require('firebase-admin');
+
+admin.initializeApp(functions.config().firebase);
+
+exports.androidPushNotification = functions.firestore.document('Chats/{uid}').onWrite( async (event) => {
+  
+  let t = "You have a new message";
+  let c = "Hello there you have a new message from SaveONE life Forum";
+
+  var message = {
+    notification: {
+      title: t,
+      body: c,
+    },
+
+    topic: 'chats',
+    
+    };
+
+});
+```
+
 > #### Firebase Cloud Messaging
 > - To send push notifications to the user's we used ``` implementation 'com.google.firebase:firebase-messaging' ``` dependecy and a Chat notification class that extend FirebaseMessagingService and overrided onMessageReceived to handle everything.
 > ##Screenshots
