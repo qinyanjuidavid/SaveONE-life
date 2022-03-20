@@ -32,8 +32,8 @@ children they are hosting
 
 ## Scalability of the project.
 > SaveONE Life project is scalable,
-> If we were to continue, we were to implement addition feature regarding the health of the childrens, whereby Orphan keeper will have to add and Indicate the number of childrens who are not in good health, this also will lead to additional integration with good willing health Sectors.
->  Health Sector will be able to login to the app and locate those poor childrens that are in need.
+> We are planning to implement an additional feature regarding the health of the children, whereby Orphanage managers can add and indicate the number of children who are not in good health, thus also being able to integrate the good will health organizations.
+>  This good will health organizations will also be able to login to the app and locate those orphaned childfen that are in need.
 
 > M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. 
 > In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
@@ -42,7 +42,7 @@ children they are hosting
 > We are also planing to extend the app from being used inside the country to whole Africa and the whole world as well.
 
 ## App Testing.
-> We tested SaveONE-life App with two childrens home as shown on the screenshoots below. Orpan keeper were very excited because they will be able to express their needs via SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
+> We tested SaveONE-life App with two children's homes as shown on the screenshoots below. The orphanage managers were very excited because they will be able to share their needs via SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
 
 <img src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" data-canonical-src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" width="200" height="400" />
 
@@ -97,7 +97,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 > - If donor wish to participate on SaveONE life forum, he/she must have an account.
 
 > ## Orphange / Children's Home Authentication 
-> - To authenticate an orphanage, Orphan Keeper is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
+> - To authenticate an orphanage, Orphanage manager is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
 > - An oprhanage is required to be verified to get more donations, Verification process requires an orphanage to channel $5 (annually) and exact location of the orphanage if it was not provided.
 > - Verification process will help donors to be more conviced that the orphanage exists.
 > - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE life. Money can be channeled using mpesa at the moment.
@@ -124,12 +124,12 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 
        
 ### 2. Additional Information
--  On this page Orphanage keeper is supposed to fill in Orphanage Group Photo, Phone number, Till number, Bank account number, Bank Name and country where the orphange is located.
+-  On this page Orphanage manager is supposed to fill in Orphanage Group Photo, Phone number, Till number, Bank account number, Bank Name and country where the orphange is located.
 - On this page we used firebase storage dependecy and storage reference class so as to enable user to upload group photo to firebase storage database.
 - On this fragment we will create a sharable link of the image uploaded.
 
 ### 3. Other Information
-- On this page Orphanage keeper is supposed to fill in Brief description about the orphanage, number of children in the orphanage, what they need most (include food, water, clothings, money for school fees) and the location address of the orphanage. 
+- On this page Orphanage manager is supposed to fill in Brief description about the orphanage, number of children in the orphanage, what they need most (include food, water, clothings, money for school fees) and the location address of the orphanage. 
 
 <img src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
@@ -144,7 +144,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        
 - ### 4. Orphanage location
 - Orphanage location fragment shows a google map showing the current location of the user.
-- Orphan keeper is supposed to drag and drop the pin to the actual position of the orphanage and get the current coordinates, on button click, coordinates are recorded to the firestore database.
+- Orphanage manager is supposed to drag and drop the pin to the actual position of the orphanage and get the current coordinates, on button click, coordinates are recorded to the firestore database.
 - We used google map API, the following dependecies were used  
 - We created Google Map Api from google clouds
  ```
@@ -177,7 +177,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        width="220" height="450" />
        
 ```
-NB: When an orphange is registered is not verified and in future we are planing to create an admin app for the orphanage verification, for the moment we are verfying orphanages from the backened. The process of verification may take 2 to 3 days. 
+NB: When an orphange is registered it should be verified and in future we are planing to create an admin app for the orphanage verification, for the moment we are verfying orphanages from the backened. The process of verification may take 2 to 3 days. 
 ```
 
 ## Home Page
@@ -290,7 +290,7 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 
 
 ## Orphanage Profile Page
-> - *On orphanage profile page,* Orphan Keeper/ Admin will be able to update profile and other information which include ( group photo, number of childrens, phone number and other account information)
+> - *On orphanage profile page,* Orphanage manager/ Admin will be able to update profile and other information which include ( group photo, number of childrens, phone number and other account information)
 > - Also orphanage will be able to query through and see the donations they have received, this data is restored from firebase firestore.
 > - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
 
