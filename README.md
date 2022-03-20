@@ -58,14 +58,10 @@ children they are hosting
 ## Technology
 SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA and at the backend we use Google Technology.
 
-### Java - for the frontened 
 ## Google technology - for the backened
-> ##### - Firebase (Firebase Auth, firestore, , , storage)
-> ##### - 
-
 > ### Firebase Auth.
 > - We used *firebase auth* to register and login user to the app. Where by donors can opt to register with or continue with google as shown in the screenshot below.
-> <img src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
+  <img src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159160999-a2f9614c-be49-4ee3-ba54-da694318dfdf.png"
        width="240" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/159161005-e108a376-1e2e-4fda-b45f-d068dffff38e.png"
@@ -104,12 +100,15 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 ```
 
 > ### Firebase cloud messaging.
-> - We used firebase cloud messaging to send push notifications when there is a new message in SaveONE life forum.
+> - We used firebase cloud messaging dependecy to send push notifications when there is a new message in SaveONE life forum.
 
 > ### Google cloud.
 > - Google cloud was used to create google map api that helped us to implement Google maps on our project.
 
+> ### Firebase Storage.
+> - This dependecy helped us to store user profile images when opehanage upload their group photo.
 
+## App Functionality
 > ### Landing Page
 > <img src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158593532-1b32df9c-acb9-42c5-8312-c106a144b34a.png"
