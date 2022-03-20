@@ -18,8 +18,6 @@ children they are hosting
 > - We desire that orphaned children will experience a normal life just as children who have found themselves in their families.
 
 
-
-
 ## SDGs and their Targets
 > SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG). These goals are;
 > #### SDG 1: No poverty
@@ -86,17 +84,27 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 - On landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
 
 ## Authentication
-> ### Donor Authentication 
--  Donor - To authenticate donor we used firebase auth dependecy (firebase-auth). 
+> ## Donor Authentication 
+> -  Donor - To authenticate donor we used firebase auth dependecy (firebase-auth). 
 ```
 implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 ```
-- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](### 3. Public Forum (SaveONE life)).
-- If donor wish to participate on SaveONE life forum, he/she must have an account.
+- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#Public Forum (SaveONE life)).
+> - If donor wish to participate on SaveONE life forum, he/she must have an account.
 
-> ### Orphange / Children's Home Authentication 
-- To authenticate an orphanage, Orphan Keeper is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
+> ## Orphange / Children's Home Authentication 
+> - To authenticate an orphanage, Orphan Keeper is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
+> - An oprhanage is required to be verified to get more donations, Verification process requires an orphanage to channel $5 (annually) and exact location of the orphanage if it was not provided.
+> - Verification process will help donors to be more conviced that the orphanage exists.
+> - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE life. Money can be channeled using mpesa at the moment.
+> - Below are the profile pages for the verified and not verified orphanage.
+> - <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+       width="240" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
+       width="240" height="450" />
 
 ### 1. Basic Information 
 - On this page Orphanage keeper is supposed to fill in name, email and password of the orphange as shown.
@@ -283,8 +291,8 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 > - Also orphanage will be able to query through and see the donations they have received, this data is restored from firebase firestore.
 > - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
 
-<img src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773582-eb526ee5-b817-4c9d-92af-272c612306d2.png"
+<img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
