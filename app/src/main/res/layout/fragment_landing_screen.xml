@@ -109,7 +109,7 @@
                         android:layout_marginBottom="8dp"
                         android:background="@drawable/custom_ring_btn"
                         android:fontFamily="@font/mont"
-                        android:text="@string/register"
+                        android:text="@string/register_an_orphanage"
                         android:textColor="@color/blue"
                         android:textSize="12sp"
                         android:textStyle="bold" />

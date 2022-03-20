@@ -112,6 +112,47 @@
                         android:buttonTint="@color/colorAccent"
                         android:layout_height="wrap_content"/>
 
+                    <CheckBox
+                        android:id="@+id/health_services"
+                        android:layout_width="wrap_content"
+                        android:text="@string/health_services"
+                        android:textColor="@color/blue"
+                        android:fontFamily="@font/mont"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        android:buttonTint="@color/colorAccent"
+                        android:layout_height="wrap_content"/>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/CustomInputStyle"
+                        android:layout_width="200dp"
+                        android:layout_height="52dp"
+                        android:layout_marginBottom="8dp"
+                        android:textColorHint="@color/gray2"
+                        app:boxBackgroundMode="outline"
+                        app:boxCornerRadiusTopStart="2dp"
+                        app:boxStrokeWidth=".8dp"
+                        app:errorTextColor="@color/colorAccent"
+                        app:hintTextColor="@color/blue"
+                        app:passwordToggleEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/others"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="@font/mont"
+                            android:hint="@string/not_mentioned_above"
+                            android:inputType="text"
+                            android:marqueeRepeatLimit="marquee_forever"
+                            android:singleLine="true"
+                            android:textColor="@color/blue"
+                            android:textColorHint="@color/blue"
+                            android:textSize="14sp" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
                 </LinearLayout>
 
 
