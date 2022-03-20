@@ -25,10 +25,8 @@ SaveOne-Life is an android mobile application that helps solve three United Nati
 > SaveONE Life project is scalable,
 > If we were to continue, we were to implement addition feature regarding the health of the childrens, whereby Orphan keeper will have to add and Indicate the number of childrens who are not in good health, this also will lead to additional integration with good willing health Sectors. Health Sector will be able to login to the app and locate those poor childrens that are in need.
 
-> Most orphanages in Kenya are founded and run by individuals, not the government. and most wealthiest families have a tendance of adopting 1 or 2 childrens from the orphanage and help them either by educating them and many more. But some families they do adopt the childrens and mistreate them. In future we are planning to add more features whereby the app will be tracking the progress and the number of childrens whom are adopted, including the location and lifestyle of the childrens. This feature will help 
-age Masters to track the well being of their childrens.
-
 > M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
+> In future we are planing to extend the app from being used inside the country to whole Africa and the whole world as well.
 
 ## App Testing.
 > We tested SaveONE-life App with two childrens home as shown on the screenshoots below. Orpan keeper were very excited because they will be able to express their needs via SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
