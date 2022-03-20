@@ -1,14 +1,5 @@
 # SaveOne-Life
 
-## Running the project
-### Installation by Downloading the APK
-- To download the apk click the link [SaveOne-Life]()
-- Install the apk on your android mobile phone
-### Installation by Cloning to Android Studio
-- Download Android Studio
-- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
-- Run the android app on Android Studio
-
 ## Introduction
 > - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
 > - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the bread winners, most children find themselves without sufficient financial, social and emotional support and these children's futures become quite uncertain.
@@ -306,6 +297,16 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
        width="220" height="450" />
 
 ### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
+
+
+## Running the project
+### Installation by Downloading the APK
+- To download the apk click the link [SaveOne-Life]()
+- Install the apk on your android mobile phone
+### Installation by Cloning to Android Studio
+- Download Android Studio
+- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
+- Run the android app on Android Studio
 
 ## License
 ```
