@@ -309,11 +309,12 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         });
         EditText phone_number = donateDialog.findViewById(R.id.donor_phone_number);
         EditText location = donateDialog.findViewById(R.id.donor_location);
+        EditText others = donateDialog.findViewById(R.id.others);
 
         donateDialog.findViewById(R.id.donate).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                recordDonation(phone_number,location);
+                recordDonation(phone_number,location,others);
             }
         });
         donateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
@@ -324,11 +325,12 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
 
     //add donation to database
-    private void recordDonation(EditText phone_number, EditText location) {
+    private void recordDonation(EditText phone_number, EditText location, EditText others) {
 
         final String donor_phone_number = phone_number.getText().toString();
         final String donor_location = location.getText().toString();
-        String clothes, school, food;
+        final String other_donation = others.getText().toString();
+        String clothes, school, food, health;
 
         CheckBox food_stuffs = donateDialog.findViewById(R.id.food_stuffs);
         CheckBox clothing = donateDialog.findViewById(R.id.clothings);
@@ -349,6 +351,11 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         }else{
             school = "";
         }
+        if (education_materials.isChecked()){
+            health = "Yes";
+        }else{
+            health = "";
+        }
 
         if (TextUtils.isEmpty(donor_phone_number)){
             phone_number.setError("Phone is required");
@@ -367,8 +374,10 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
             data.put("educational_materials", school);
             data.put("email", user.getEmail());
             data.put("food", food);
+            data.put("health", health);
             data.put("location", donor_location);
             data.put("name", user.getDisplayName());
+            data.put("other", other_donation);
             data.put("phone_number", donor_phone_number);
             docData.put(user.getEmail(), data);
         }
@@ -379,8 +388,10 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
             data.put("educational_materials", school);
             data.put("email", randomName);
             data.put("food", food);
+            data.put("health", health);
             data.put("location", donor_location);
             data.put("name", "");
+            data.put("other", other_donation);
             data.put("phone_number", donor_phone_number);
             docData.put(randomName, data);
         }

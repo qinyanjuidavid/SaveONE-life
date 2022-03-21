@@ -83,8 +83,10 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
         String food = data.getFood_stuffs();
         String education_materials = data.getEducation_materials();
         String clothing = data.getClothing();
+        String other = data.getOther();
+        String health = data.getHealth();
 
-        String f,e, c;//data holders
+        String f,e, c, h, others;//data holders
 
         if (food.equals("Yes")){
             f = "\tfood stuffs\t";
@@ -97,16 +99,27 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
             e ="";
         }
         if(clothing.equals("Yes")){
-            c = "\tand clothings\t";
+            c = "\tclothings\t";
         }else{
             c = "";
         }
-
-        if (f.isEmpty() && c.isEmpty() && e.isEmpty()){
-            holder.whats_donated.setText("Donated nothing");
+        if(health.equals("Yes")){
+            h = "\thealth services.\t";
+        }else{
+            h = "";
         }
 
-        String donations = "From\t"+location+"\tdonated\t"+f+e+c;
+        if (!other.equals(null)){
+            others = data.getOther();
+        }else{
+            others = "";
+        }
+
+        if (f.isEmpty() && c.isEmpty() && e.isEmpty() && h.isEmpty()){
+            holder.whats_donated.setText("Donated other items.");
+        }
+
+        String donations = "From\t"+location+"\tdonated\t"+f+e+c+h+others;
 
         holder.whats_donated.setText(donations);
 

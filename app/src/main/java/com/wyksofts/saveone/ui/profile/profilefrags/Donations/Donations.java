@@ -242,9 +242,11 @@ public class Donations extends Fragment implements DonationViewInterface {
                             String phone_number = String.valueOf(value.get("phone_number"));
                             String food_stuffs = String.valueOf(value.get("food"));
                             String isDonationReceived = String.valueOf(value.get("isDonationReceived"));
+                            String other = String.valueOf(value.get("other"));
+                            String health = String.valueOf(value.get("health"));
 
                             listdata.add(new DonationsModel(name, food_stuffs, clothing,
-                                    education_materials, location, phone_number,email,isDonationReceived));
+                                    education_materials, location, phone_number,email,isDonationReceived, other, health));
 
                             recyclerView.setAdapter(adapter);
 

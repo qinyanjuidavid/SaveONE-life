@@ -8,12 +8,13 @@ public class DonationsModel {
     String location;
     String phone_number;
     String email;
-
+    String other;
+    String health;
     String isDonationReceived;
 
     public DonationsModel(String name, String food_stuffs, String clothing,
                           String education_materials, String location, String phone_number,
-                          String email, String isDonationReceived) {
+                          String email, String isDonationReceived, String other, String health) {
         this.name = name;
         this.food_stuffs = food_stuffs;
         this.clothing = clothing;
@@ -22,7 +23,10 @@ public class DonationsModel {
         this.phone_number = phone_number;
         this.email = email;
         this.isDonationReceived = isDonationReceived;
+        this.other = other;
+        this.health = health;
     }
+
 
     public String getIsDonationReceived() {
         return isDonationReceived;
@@ -30,6 +34,21 @@ public class DonationsModel {
 
     public void setIsDonationReceived(String isDonationReceived) {
         this.isDonationReceived = isDonationReceived;
+    }
+    public String getOther() {
+        return other;
+    }
+
+    public void setOther(String other) {
+        this.other = other;
+    }
+
+    public String getHealth() {
+        return health;
+    }
+
+    public void setHealth(String health) {
+        this.health = health;
     }
 
     public String getEmail() {
