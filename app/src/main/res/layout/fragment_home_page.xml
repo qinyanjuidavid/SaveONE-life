@@ -10,7 +10,7 @@
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="160dp"
+        android:layout_height="120dp"
         android:src="@drawable/header_bg"
         android:scaleType="fitXY"
         android:alpha="8"
@@ -75,7 +75,12 @@
         </RelativeLayout>
 
 
-        <include layout="@layout/search_toolbar" />
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <include layout="@layout/search_toolbar" />
+        </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"

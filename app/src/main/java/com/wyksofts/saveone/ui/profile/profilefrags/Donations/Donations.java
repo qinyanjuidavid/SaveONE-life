@@ -10,12 +10,15 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.Transition;
+import android.transition.TransitionInflater;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -55,7 +58,7 @@ public class Donations extends Fragment implements DonationViewInterface {
     private DonationsListAdapter adapter;
     private EditText search;
 
-    ImageView groupPhoto;
+    ImageView groupPhoto, closePage;
     TextView profile_name,donations_list;
 
     Dialog loading_dialog;
@@ -73,6 +76,10 @@ public class Donations extends Fragment implements DonationViewInterface {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         loading_dialog = new Dialog(getContext());
+
+        Transition transition = TransitionInflater.from(requireContext())
+                .inflateTransition(R.transition.shared_image);
+        setSharedElementEnterTransition(transition);
     }
 
     @Override
@@ -88,6 +95,7 @@ public class Donations extends Fragment implements DonationViewInterface {
         groupPhoto = view.findViewById(R.id.profile_image);
         profile_name = view.findViewById(R.id.name);
         donations_list = view.findViewById(R.id.donations_list);
+        closePage = view.findViewById(R.id.arrow_back);
 
         search = view.findViewById(R.id.search_donation);
 
@@ -103,6 +111,8 @@ public class Donations extends Fragment implements DonationViewInterface {
         //shared preference
         pref = getContext().getSharedPreferences("user", 0);
         editor = pref.edit();
+
+        ViewCompat.setTransitionName(closePage, "arrow_back");
 
         return view;
     }
@@ -132,6 +142,14 @@ public class Donations extends Fragment implements DonationViewInterface {
         }else{
 
         }
+
+
+        closePage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
+            }
+        });
 
         initSearch();
     }

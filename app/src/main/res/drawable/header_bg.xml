@@ -14,8 +14,8 @@
                 android:endColor="@color/orange3"/>
 
             <corners
-                android:bottomRightRadius="100dp"
-                android:bottomLeftRadius="100dp"/>
+                android:bottomRightRadius="80dp"
+                android:bottomLeftRadius="80dp"/>
 
 
         </shape>

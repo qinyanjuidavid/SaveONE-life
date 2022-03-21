@@ -109,7 +109,7 @@ public class DonationsListAdapter extends RecyclerView.Adapter<DonationViewHolde
             h = "";
         }
 
-        if (!other.equals(null)){
+        if (other != null){
             others = data.getOther();
         }else{
             others = "";

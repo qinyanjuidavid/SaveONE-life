@@ -192,4 +192,15 @@
     <string name="register_an_orphanage">Register an Orphanage</string>
     <string name="health_services">Health Services</string>
     <string name="not_mentioned_above">Other</string>
+    <string name="about">About</string>
+    <string name="saveone_life_app">SaveONE-life App</string>
+    <string name="version">Version</string>
+    <string name="_3_26_0_11">3.26.0.11</string>
+    <string name="last_update">Last Update</string>
+    <string name="march_2022">March, 2022</string>
+    <string name="mission">Mission</string>
+    <string name="no_poverty">No Poverty</string>
+    <string name="zero_hunger">Zero Hunger</string>
+    <string name="quality_education">Quality Education</string>
+    <string name="term_of_services"><u>Term of services</u></string>
 </resources>

@@ -17,6 +17,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.cardview.widget.CardView;
+import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -155,6 +156,8 @@ public class Profile extends Fragment {
         pref = getContext().getSharedPreferences("user", 0);
         editor = pref.edit();
 
+        ViewCompat.setTransitionName(arrow_back, "landing");
+
 
         if (user != null) {
             profile_name.setText(user.getDisplayName());
@@ -181,6 +184,10 @@ public class Profile extends Fragment {
                     getActivity().getSupportFragmentManager()
                             .beginTransaction()
                             .addToBackStack(null)
+                            .setCustomAnimations(R.anim.fade_in,
+                                    R.anim.fade_out)
+                            .addToBackStack(null)
+                            .addSharedElement(arrow_back, "arrow_back")
                             .replace(R.id.profile_root, new Donations())
                             .commit();
                 }

@@ -13,7 +13,7 @@ public class ShareApp {
         intent.putExtra("android.intent.extra.SUBJECT",
                 "Download:-\t" + context.getString(R.string.app_name));
         intent.putExtra("android.intent.extra.TEXT",
-                "https://wyksoftsinc.web.app");
+                "https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09");
         context.startActivity(Intent.createChooser(intent, "Share via"));
     }
 }
