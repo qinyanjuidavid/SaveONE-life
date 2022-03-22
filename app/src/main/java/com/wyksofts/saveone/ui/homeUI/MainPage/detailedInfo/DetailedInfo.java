@@ -25,6 +25,12 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.bdhobare.mpesa.Mode;
+import com.bdhobare.mpesa.Mpesa;
+import com.bdhobare.mpesa.interfaces.AuthListener;
+import com.bdhobare.mpesa.interfaces.MpesaListener;
+import com.bdhobare.mpesa.models.STKPush;
+import com.bdhobare.mpesa.utils.Pair;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -48,6 +54,7 @@ import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.makeACall;
 import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkCallPermission;
 import com.wyksofts.saveone.util.AlertPopDiag;
+import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.getRandomString;
 import com.wyksofts.saveone.util.showAppToast;
@@ -110,6 +117,8 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_detailed_info, container, false);
+
+
 
         //shared preference
         pref = getContext().getSharedPreferences("OrphanageDetailedData", 0);
@@ -243,10 +252,10 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         mpesa_dialog.show();
     }
 
-    private void sendMoney(EditText phone, EditText amount, ProgressBar loading_bar) {
+    private void sendMoney(EditText phone, EditText Amount, ProgressBar loading_bar) {
 
         String phoneNumber = phone.getText().toString();
-        String Amount = amount.getText().toString();
+        String amount = Amount.getText().toString();
 
 
         loading_bar.setVisibility(View.VISIBLE);
@@ -257,15 +266,19 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
             return;
         }
         //check validity of a number
-        else if (Amount.isEmpty()) {
-            amount.setError("Amount should be more than 0");
+        else if (amount.isEmpty()) {
+            Amount.setError("Amount should be more than 0");
             return;
         }
 
 
-        onSendMoney(phoneNumber,Amount);
+        //onSendMoney(phoneNumber,Amount);
+
+        ((DetailedActivity)getActivity()).sendMoney(Integer.parseInt(amount),phoneNumber);
 
     }
+
+
 
 
     //Call Mpesa API
@@ -321,7 +334,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         donateDialog.setCancelable(false);
         donateDialog.show();
     }
-
 
 
     //add donation to database
@@ -421,8 +433,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     }
 
 
-
-
     @SuppressLint("SetTextI18n")
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
@@ -445,8 +455,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         CameraUpdate zoom = CameraUpdateFactory.zoomTo(16);
         googleMap.animateCamera(zoom);
     }
-
-
 
     //get detailed data for the orphanage
     @SuppressLint("SetTextI18n")
