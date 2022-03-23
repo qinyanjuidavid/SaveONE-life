@@ -7,31 +7,20 @@ import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import android.text.TextUtils;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.LinearLayout;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.bdhobare.mpesa.Mode;
-import com.bdhobare.mpesa.Mpesa;
-import com.bdhobare.mpesa.interfaces.AuthListener;
-import com.bdhobare.mpesa.interfaces.MpesaListener;
-import com.bdhobare.mpesa.models.STKPush;
-import com.bdhobare.mpesa.utils.Pair;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -40,33 +29,24 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.tasks.Continuation;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.functions.FirebaseFunctions;
-import com.google.firebase.functions.HttpsCallableResult;
+import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
+import com.smarteist.autoimageslider.SliderAnimations;
+import com.smarteist.autoimageslider.SliderView;
+import com.wyksofts.saveone.Adapters.AlbumAdapter.AlbumsAdapter;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.models.Orphanage.Donations.recordDonation;
+import com.wyksofts.saveone.models.Albums.AlbumModels;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.makeACall;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.showDonateDialog;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.showMpesaDialog;
 import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkCallPermission;
-import com.wyksofts.saveone.util.AlertPopDiag;
-import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.getBitmap;
-import com.wyksofts.saveone.util.getRandomString;
 import com.wyksofts.saveone.util.showAppToast;
 
+import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
@@ -90,6 +70,11 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     //donate
     FloatingActionButton donate;
     Dialog donateDialog, mpesa_dialog;
+
+    //album images variables
+    List<AlbumModels> listdata;
+    AlbumsAdapter adapter;
+    SliderView recyclerAlbumView;
 
 
     private  FirebaseFunctions mFunctions;
@@ -121,6 +106,8 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         pref = getContext().getSharedPreferences("OrphanageDetailedData", 0);
         editor = pref.edit();
 
+        listdata = new ArrayList<>();
+
         name = view.findViewById(R.id.orp_name);
         donate = view.findViewById(R.id.donate);
         description = view.findViewById(R.id.orp_description);
@@ -132,6 +119,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         email = view.findViewById(R.id.orp_email);
         country = view.findViewById(R.id.orp_country);
         mpesa_txt = view.findViewById(R.id.mpesa_txt);
+        recyclerAlbumView = view.findViewById(R.id.slider_view);
 
         //ViewCompat.setTransitionName(name, "name");
 
@@ -224,9 +212,26 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                 new showMpesaDialog(getContext()).mpesaDialog(ptill_number,false);
             }
         });
+
+        showAlbumImages();
     }
 
+    private void showAlbumImages() {
 
+
+        int[] images = {R.drawable.imggg, R.drawable.imgg};
+
+        for (int i = 0; i < images.length; i++) {
+            listdata.add(new AlbumModels(images[i]));
+        }
+
+        recyclerAlbumView.setIndicatorAnimation(IndicatorAnimationType.WORM);
+        recyclerAlbumView.setSliderTransformAnimation(SliderAnimations.CUBEINSCALINGTRANSFORMATION);
+        recyclerAlbumView.setScrollTimeInSec(4);
+        recyclerAlbumView.startAutoCycle();
+
+        recyclerAlbumView.setSliderAdapter(new AlbumsAdapter(getContext(),listdata));
+    }
 
 
     @SuppressLint("SetTextI18n")
