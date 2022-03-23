@@ -1,17 +1,12 @@
 package com.wyksofts.saveone.ui.landingUI.authfrags.general;
 
-import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.graphics.drawable.ColorDrawable;
-import android.location.Location;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
@@ -21,18 +16,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.ui.homeUI.MainPage.FragmentHolder;
-import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.SelectLocationMap;
-import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.SignUpOrganization;
+import com.wyksofts.saveone.ui.landingUI.authfrags.Orphanage.SignUpOrganization;
 import com.wyksofts.saveone.ui.landingUI.authfrags.others.SignUpDonor;
-import com.wyksofts.saveone.util.showAppToast;
 
 
 public class LandingScreen extends Fragment {

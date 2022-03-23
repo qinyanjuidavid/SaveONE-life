@@ -1,7 +1,6 @@
-package com.wyksofts.saveone.ui.landingUI.authfrags.Organisation;
+package com.wyksofts.saveone.ui.landingUI.authfrags.Orphanage;
 
 import static android.app.Activity.RESULT_OK;
-import static android.content.ContentValues.TAG;
 
 import android.app.Dialog;
 import android.content.Intent;
@@ -20,7 +19,6 @@ import android.provider.MediaStore;
 import android.text.TextUtils;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -42,11 +40,10 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.wyksofts.saveone.R;
-import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.OtherInfo;
+import com.wyksofts.saveone.ui.landingUI.authfrags.Orphanage.OtherInfo.OtherInfo;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.showAppToast;
 
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;

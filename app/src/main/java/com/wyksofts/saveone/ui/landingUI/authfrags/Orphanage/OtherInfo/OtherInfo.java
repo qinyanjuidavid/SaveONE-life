@@ -1,64 +1,31 @@
-package com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo;
+package com.wyksofts.saveone.ui.landingUI.authfrags.Orphanage.OtherInfo;
 
-import static android.content.ContentValues.TAG;
-
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
-import android.content.Context;
-import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.location.Location;
-import android.location.LocationListener;
-import android.location.LocationManager;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.fragment.app.Fragment;
 
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.transition.Transition;
 import android.transition.TransitionInflater;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
-import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.MapView;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.Marker;
-import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
-import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.util.AlertPopDiag;
-import com.wyksofts.saveone.util.showAppToast;
 
 import java.util.HashMap;
 import java.util.Map;

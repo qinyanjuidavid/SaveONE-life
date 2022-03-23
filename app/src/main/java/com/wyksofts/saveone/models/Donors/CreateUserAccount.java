@@ -22,7 +22,6 @@ import com.google.firebase.auth.FirebaseAuthWeakPasswordException;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
 import com.wyksofts.saveone.App.MainActivity;
-import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.SignUpOrganization;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.LoadingDialog;
 import com.wyksofts.saveone.util.showAppToast;
