@@ -92,7 +92,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                 .inflateTransition(R.transition.shared_image);
         setSharedElementEnterTransition(transition);
 
-
         donateDialog = new Dialog(getActivity(), R.style.DialogAnimation);
     }
 

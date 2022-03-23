@@ -39,6 +39,7 @@ import com.google.firebase.auth.GoogleAuthProvider;
 import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Donors.CreateUserAccount;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.showTermsDiag;
 import com.wyksofts.saveone.util.AgreeWithTerms;
 import com.wyksofts.saveone.util.PasswordChecker;
 import com.wyksofts.saveone.util.showAppToast;
@@ -87,6 +88,7 @@ public class SignUpDonor extends Fragment {
         UserPassword =view.findViewById(R.id.donor_password);
         UserEmail = view.findViewById(R.id.donor_email);
         agree_with_terms = view.findViewById(R.id.donor_agree_with_terms);
+        terms = view.findViewById(R.id.terms);
 
         google_loading = view.findViewById(R.id.loading_bar);
 
@@ -113,6 +115,13 @@ public class SignUpDonor extends Fragment {
             @Override
             public void onClick(View view) {
                 signIn();
+            }
+        });
+
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new showTermsDiag(getContext()).showTCDialog();
             }
         });
     }

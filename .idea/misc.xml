@@ -144,6 +144,7 @@
         <entry key="app/src/main/res/layout/select_coordinates_dialog.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/send_message_card.xml" value="0.173046875" />
         <entry key="app/src/main/res/layout/send_review_card.xml" value="0.18828125" />
+        <entry key="app/src/main/res/layout/tmc_layout.xml" value="0.22923076923076924" />
         <entry key="app/src/main/res/layout/update_profile_dialog.xml" value="0.15" />
         <entry key="app/src/main/res/layout/upload_image.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/warning_dialog.xml" value="0.17104247104247106" />

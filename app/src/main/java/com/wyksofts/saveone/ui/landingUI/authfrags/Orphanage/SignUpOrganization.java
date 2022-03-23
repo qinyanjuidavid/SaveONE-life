@@ -19,10 +19,12 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Donors.CreateUserAccount;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.showTermsDiag;
 import com.wyksofts.saveone.util.AgreeWithTerms;
 import com.wyksofts.saveone.util.PasswordChecker;
 import com.wyksofts.saveone.util.showAppToast;
@@ -32,6 +34,7 @@ public class SignUpOrganization extends Fragment {
 
     Button register_new_orphanage;
     FragmentManager fragmentmanager;
+    TextView terms;
 
     CheckBox agree_with_terms;
     EditText OrgEmail, OrgName, OrgPassword, OrgPasswordConfirm;
@@ -74,6 +77,7 @@ public class SignUpOrganization extends Fragment {
         OrgEmail = view.findViewById(R.id.organisation_email);
         agree_with_terms = view.findViewById(R.id.agree_with_terms);
         loading_bar = view.findViewById(R.id.loading_bar);
+        terms = view.findViewById(R.id.terms);
 
         ViewCompat.setTransitionName(register_new_orphanage, "orphanage");
 
@@ -90,6 +94,13 @@ public class SignUpOrganization extends Fragment {
             public void onClick(View view) {
 
                 verifyFields();
+            }
+        });
+
+        terms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new showTermsDiag(getContext()).showTCDialog();
             }
         });
     }

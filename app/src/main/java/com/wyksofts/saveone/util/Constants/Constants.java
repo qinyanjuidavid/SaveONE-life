@@ -40,4 +40,6 @@ public interface Constants {
     String TILL_NUMBER =  "9447591";
 
     String STORE_NUMBER  = "7642026";
+
+    String TC_URL = "https://www.websitepolicies.com/policies/view/8u7vih8n";
 }
