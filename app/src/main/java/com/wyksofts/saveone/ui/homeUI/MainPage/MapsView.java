@@ -4,29 +4,37 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.app.Dialog;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.Polyline;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.LocationModel.LocationModel;
+import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.getBitmap;
 import com.wyksofts.saveone.util.showAppToast;
 
@@ -35,9 +43,8 @@ import java.util.Arrays;
 import java.util.List;
 
 
-public class MapsView extends Fragment implements OnMapReadyCallback{
+public class MapsView extends Fragment implements OnMapReadyCallback {
 
-    private FirebaseFirestore database;
 
     Double latitude, longitude;
 
@@ -48,8 +55,19 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
     SharedPreferences.Editor editor;
     SharedPreferences pref;
 
+    FloatingActionButton show_polyline;
+
+    EditText search;
+
+    GoogleMap map;
+
     //coordinates model
     List<LocationModel> listdata;
+
+    private LatLng mOrigin;
+    private LatLng mDestination;
+    private Polyline mPolyline;
+    List<LatLng> mMarkerPoints;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,12 +79,23 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_maps_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_map_view, container, false);
 
+        pref = getContext().getSharedPreferences("location", 0);
+        editor = pref.edit();
 
-        database = FirebaseFirestore.getInstance();
+        String curr_lat = pref.getString("latitude", null);
+        String curr_long = pref.getString("longitude", null);
+
+        mOrigin = new LatLng(Double.parseDouble(curr_lat), Double.parseDouble(curr_long));
 
         listdata = new ArrayList<LocationModel>();
+        mMarkerPoints = new ArrayList<>();
+
+        search = view.findViewById(R.id.search_orphanage);
+        show_polyline = view.findViewById(R.id.show_polyline);
+
+        show_polyline.setVisibility(View.GONE);
 
         return view;
     }
@@ -84,7 +113,7 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
     //get location data
     public void getLocationsData() {
 
-        database.collection("Coordinates")
+        Constants.database.collection("Coordinates")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -139,14 +168,64 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
         if (mapFragment != null) {
             mapFragment.getMapAsync(this);
         }
+
+        //search filter for the orphanages
+        search.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
+
     }
 
+
+    //search an orphanage in the map
+    private void filter(String orphanage_name) {
+        ArrayList<LocationModel> list_array = new ArrayList<>();
+
+
+        //if orphanage is empty
+        if (orphanage_name.isEmpty()){
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(mOrigin, 6));
+            CameraUpdate zoom = CameraUpdateFactory.zoomTo(6);
+            map.animateCamera(zoom);
+        }else{
+
+            //orphanage is not empty
+            for (LocationModel model : listdata){
+                if (model.getTitle().toLowerCase().contains(orphanage_name)){
+
+                    map.moveCamera(CameraUpdateFactory.newLatLngZoom(model.getLatLng(), 17));
+                    CameraUpdate zoom = CameraUpdateFactory.zoomTo(17);
+                    map.animateCamera(zoom);
+
+                    list_array.add(model);
+
+                }else{
+                    //no result found
+                }
+            }
+        }
+    }
 
     //show map
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
 
-        //loop through data
+        map = googleMap;
+
+        //loop through coordinates data
         for (int i = 0; i < listdata.size(); i++) {
 
             //add makers
@@ -156,19 +235,16 @@ public class MapsView extends Fragment implements OnMapReadyCallback{
 
                     .icon(BitmapDescriptorFactory.fromBitmap(
                             new getBitmap().getBitmap(String.valueOf(R.drawable.custom_maker),
-                                            120,120, getContext()))));
+                                    120,120, getContext()))));
 
             //show control UI
             googleMap.getUiSettings().setZoomControlsEnabled(true);
             googleMap.getUiSettings().setAllGesturesEnabled(true);
+            googleMap.getUiSettings().setMyLocationButtonEnabled(true);
+            googleMap.getUiSettings().setMapToolbarEnabled(true);
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
-            GoogleMapOptions options = new GoogleMapOptions()
-                    .liteMode(true);
-
-
-            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(listdata.get(i).getLatLng(),
-                    8.0f));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mOrigin, 8.0f));
             CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
             googleMap.animateCamera(zoom);
         }

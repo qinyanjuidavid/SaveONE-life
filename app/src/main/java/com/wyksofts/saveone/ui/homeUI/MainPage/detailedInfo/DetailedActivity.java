@@ -21,7 +21,7 @@ import com.wyksofts.saveone.ui.homeUI.MainPage.FragmentHolder;
 import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.showAppToast;
 
-public class DetailedActivity extends AppCompatActivity implements AuthListener, MpesaListener {
+public class DetailedActivity extends AppCompatActivity{
 
     ProgressBar progressBar;
     Dialog mpesa_dialog;
@@ -34,7 +34,7 @@ public class DetailedActivity extends AppCompatActivity implements AuthListener,
 
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccent, this.getTheme()));
 
-        Mpesa.with(this, Constants.CONSUMER_KEY, Constants.CONSUMER_SECRET);
+
 
         getSupportFragmentManager()
                 .beginTransaction()
@@ -42,44 +42,6 @@ public class DetailedActivity extends AppCompatActivity implements AuthListener,
                 .commit();
     }
 
-    //send money na mpesa
-    public void sendMoney(int amount, String phone, ProgressBar loading_bar, Dialog dialog){
 
-        this.progressBar = loading_bar;
-        this.mpesa_dialog = dialog;
-
-        progressBar.setVisibility(View.VISIBLE);
-
-        STKPush.Builder builder = new STKPush.Builder("174379", Constants.PASS_KEY,
-                amount,"174379", phone);
-
-        STKPush push = builder.build();
-
-        Mpesa.getInstance().pay(this, push);
-    }
-
-    @Override
-    public void onAuthError(Pair<Integer, String> result) {
-        new showAppToast().showFailure(this, "auth"+result.message);
-    }
-
-    @Override
-    public void onAuthSuccess() {
-
-    }
-
-    @Override
-    public void onMpesaError(Pair<Integer, String> result) {
-        new showAppToast().showFailure(this, "mpesa"+result.message);
-        progressBar.setVisibility(View.GONE);
-        mpesa_dialog.dismiss();
-    }
-
-    @Override
-    public void onMpesaSuccess(String MerchantRequestID, String CheckoutRequestID, String CustomerMessage) {
-        new showAppToast().showSuccess(this, "Success");
-        progressBar.setVisibility(View.GONE);
-        mpesa_dialog.dismiss();
-    }
 
 }

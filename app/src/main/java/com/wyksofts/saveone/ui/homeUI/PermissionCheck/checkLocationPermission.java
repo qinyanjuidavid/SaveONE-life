@@ -55,8 +55,6 @@ public class checkLocationPermission extends Activity{
                         // Got last known location. In some rare situations activity can be null.
                         if (location != null) {
 
-                            // Logic to handle location object
-                            Log.e("LAST LOCATION: ", location.toString());
                             //new showAppToast().showSuccess(getApplicationContext(),""+location.toString());
 
                             double latitude = location.getLatitude();

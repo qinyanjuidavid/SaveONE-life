@@ -50,11 +50,12 @@
                     android:layout_alignParentStart="true"
                     android:layout_centerInParent="true"
                     android:layout_marginStart="12dp"
+                    android:textStyle="bold"
                     android:background="@null"
                     android:fontFamily="serif"
                     android:hint="@string/search_orphanage_around_you"
-                    android:textColor="@color/blue"
-                    android:textSize="12sp" />
+                    android:textColor="@color/black"
+                    android:textSize="14sp" />
 
 
             </RelativeLayout>

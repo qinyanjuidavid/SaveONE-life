@@ -35,5 +35,9 @@ public interface Constants {
     @SuppressLint("StaticFieldLeak")
     FirebaseFirestore database = FirebaseFirestore.getInstance();
 
+    String SubscriptionAmount = "500";
 
+    String TILL_NUMBER =  "9447591";
+
+    String STORE_NUMBER  = "7642026";
 }

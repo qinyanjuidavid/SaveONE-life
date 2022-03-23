@@ -50,9 +50,10 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.showLogOutDialog;
-import com.wyksofts.saveone.ui.landingUI.authfrags.Organisation.OtherInfo.OtherInfo;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.showMpesaDialog;
 import com.wyksofts.saveone.ui.profile.profilefrags.Donations.Donations;
 import com.wyksofts.saveone.util.AlertPopDiag;
+import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.io.IOException;
@@ -236,7 +237,8 @@ public class Profile extends Fragment {
         subscribe_na_mpesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new showAppToast().showFailure(getContext(),"Service is not available at the moment");
+                //new showAppToast().showFailure(getContext(),"Service is not available at the moment");
+                new showMpesaDialog(getContext()).mpesaDialog(Constants.TILL_NUMBER,true);
             }
         });
 

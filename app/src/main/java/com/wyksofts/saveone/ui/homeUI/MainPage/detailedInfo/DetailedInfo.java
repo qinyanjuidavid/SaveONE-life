@@ -73,6 +73,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     TextView name, description,mpesa_txt, phone_number, country,
             bank_account_name, location, number_of_children, email;
     LinearLayout mpesa;
+    String ptill_number;
 
     SupportMapFragment mapFragment;
 
@@ -106,7 +107,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                 .inflateTransition(R.transition.shared_image);
         setSharedElementEnterTransition(transition);
 
-        mpesa_dialog = new Dialog(getContext());
+
         donateDialog = new Dialog(getActivity(), R.style.DialogAnimation);
     }
 
@@ -220,10 +221,9 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         mpesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new showMpesaDialog(getContext()).mpesaDialog();
+                new showMpesaDialog(getContext()).mpesaDialog(ptill_number,false);
             }
         });
-
     }
 
 
@@ -264,7 +264,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         pphone_number = pref.getString("phone_number",null);
         pbank_account = pref.getString("bank_account", null);
         pbank_account_name = pref.getString("bank_account_name",null);
-        String ptill_number = pref.getString("till_number",null);
+        ptill_number = pref.getString("till_number",null);
         pemail = pref.getString("email",null);
         String pwhat_needed = pref.getString("what_needed",null);
         String pverified = pref.getString("verified",null);
