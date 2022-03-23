@@ -50,6 +50,7 @@ import com.wyksofts.saveone.models.ChatModel.Chats.ChatsModel;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.rMessagesNotifications;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.NoAccountFound;
+import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.text.SimpleDateFormat;
@@ -76,9 +77,6 @@ public class ChatsForum extends Fragment {
     //request code for voice recognation
     private final int REQ_CODE = 100;
 
-    //firebase
-    FirebaseUser user;
-    FirebaseFirestore database;
 
     //view and chat data
     private List<ChatsModel> list_data;
@@ -103,7 +101,6 @@ public class ChatsForum extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
@@ -113,8 +110,6 @@ public class ChatsForum extends Fragment {
         View view = inflater.inflate(R.layout.fragment_reviews_view, container, false);
 
         recyclerView = view.findViewById(R.id.chat_recyclerView);
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        database = FirebaseFirestore.getInstance();
 
         message = view.findViewById(R.id.write_message);
         attach_file = view.findViewById(R.id.attach_file);
@@ -147,19 +142,19 @@ public class ChatsForum extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //set values
-        if (user != null) {
+        if (Constants.user != null) {
             user_layout.setVisibility(View.VISIBLE);
 
             //set email and name
-            user_email.setText(user.getEmail());
-            user_name.setText(user.getDisplayName());
+            user_email.setText(Constants.user.getEmail());
+            user_name.setText(Constants.user.getDisplayName());
 
             //get image url from
             String url = pref.getString("url",null);
 
-            if (user.getPhotoUrl() !=null){
+            if (Constants.user.getPhotoUrl() !=null){
                 //set google url
-                loadImage(user.getPhotoUrl().toString());
+                loadImage(Constants.user.getPhotoUrl().toString());
 
             }else if(url !=null){
                 //set share preference url
@@ -226,7 +221,7 @@ public class ChatsForum extends Fragment {
                 String sms = message.getText().toString().trim();
 
                 //check if user is logged in
-                if(user != null){
+                if(Constants.user != null){
 
                     //check if message is empty
                     if(!sms.isEmpty()){
@@ -265,7 +260,7 @@ public class ChatsForum extends Fragment {
 
         TextView text_status = warning_dialog.findViewById(R.id.warning_txt);
         String s = getContext().getString(R.string.warning);
-        text_status.setText("Hey,\t"+user.getDisplayName()+"\t"+s);
+        text_status.setText("Hey,\t"+Constants.user.getDisplayName()+"\t"+s);
 
         warning_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         warning_dialog.setCancelable(false);
@@ -283,19 +278,12 @@ public class ChatsForum extends Fragment {
         getMessages();
     }
 
-    //listen to data change
-    private void getUpdates(){
-
-        FirebaseMessaging firebaseMessaging = FirebaseMessaging.getInstance();
-        firebaseMessaging.subscribeToTopic("Chats");
-
-    }
 
 
 
     //get messages
     public void getMessages(){
-        database.collection("Chats")
+        Constants.database.collection("Chats")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -347,11 +335,10 @@ public class ChatsForum extends Fragment {
     //send message to the database
     private void sendMessage(String sms) {
 
-        String email = user.getEmail();
-        String name = user.getDisplayName();
+        String email = Constants.user.getEmail();
+        String name = Constants.user.getDisplayName();
 
         //get current time
-
         SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date time = new Date();
         String currentTime = dateFormat.format(time);
@@ -375,7 +362,7 @@ public class ChatsForum extends Fragment {
         Map<String, Object> docData = new HashMap<>();
         docData.put("messages", Arrays.asList(data));
 
-        database.collection("Chats")
+        Constants.database.collection("Chats")
                 .document(path)
                 .set(docData, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {

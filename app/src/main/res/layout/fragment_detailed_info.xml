@@ -491,6 +491,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content">
                         <LinearLayout
+                            android:id="@+id/orp_mpesa"
                             android:clickable="true"
                             android:focusable="true"
                             android:background="@drawable/custom_btn3"
@@ -504,7 +505,7 @@
                                 android:layout_width="60dp"
                                 android:layout_height="38dp"/>
                             <TextView
-                                android:id="@+id/orp_mpesa"
+                                android:id="@+id/mpesa_txt"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginStart="4dp"

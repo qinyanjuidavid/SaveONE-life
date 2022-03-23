@@ -44,6 +44,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.Orphanages.Orphanage.OrphanageListAdapter;
+import com.wyksofts.saveone.BuildConfig;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Orphanage.Orphanage.OrphanageModel;
@@ -283,6 +284,8 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
         TextView app_version = popupView.findViewById(R.id.app_version);
 
+        app_version.setText("V"+BuildConfig.VERSION_NAME);
+
         //set on touch listeners
         home_menu.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -414,7 +417,6 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
                             loading_orphanage.setVisibility(View.GONE);
 
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(TAG, document.getId() + "DATA____>"+ document.getData());
 
                                 String name = document.getString("name");
                                 String bank_account = document.getString("bank_account");

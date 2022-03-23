@@ -22,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -51,7 +52,10 @@ import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.functions.FirebaseFunctions;
 import com.google.firebase.functions.HttpsCallableResult;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.models.Orphanage.Donations.recordDonation;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.makeACall;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.showDonateDialog;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.showMpesaDialog;
 import com.wyksofts.saveone.ui.homeUI.PermissionCheck.checkCallPermission;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.Constants.Constants;
@@ -66,8 +70,9 @@ import java.util.Map;
 
 public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
-    TextView name, description, mpesa, phone_number, country,
+    TextView name, description,mpesa_txt, phone_number, country,
             bank_account_name, location, number_of_children, email;
+    LinearLayout mpesa;
 
     SupportMapFragment mapFragment;
 
@@ -85,9 +90,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
     FloatingActionButton donate;
     Dialog donateDialog, mpesa_dialog;
 
-    //firebase
-    FirebaseUser user;
-    FirebaseFirestore database;
 
     private  FirebaseFunctions mFunctions;
 
@@ -104,11 +106,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                 .inflateTransition(R.transition.shared_image);
         setSharedElementEnterTransition(transition);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-        database = FirebaseFirestore.getInstance();
-
         mpesa_dialog = new Dialog(getContext());
-
         donateDialog = new Dialog(getActivity(), R.style.DialogAnimation);
     }
 
@@ -117,8 +115,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_detailed_info, container, false);
-
-
 
         //shared preference
         pref = getContext().getSharedPreferences("OrphanageDetailedData", 0);
@@ -134,6 +130,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         number_of_children = view.findViewById(R.id.orp_number_message);
         email = view.findViewById(R.id.orp_email);
         country = view.findViewById(R.id.orp_country);
+        mpesa_txt = view.findViewById(R.id.mpesa_txt);
 
         //ViewCompat.setTransitionName(name, "name");
 
@@ -214,223 +211,22 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
             @Override
             public void onClick(View view) {
                 //show donate dialog
-                showDonateDialog();
+                String orphanage_email = pref.getString("email",null);
+                new showDonateDialog(getContext())
+                        .showDonateDialog(pname,orphanage_email);
             }
         });
 
         mpesa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showMpesaDialog();
+                new showMpesaDialog(getContext()).mpesaDialog();
             }
         });
 
     }
 
-    private void showMpesaDialog() {
-        mpesa_dialog.setContentView(R.layout.mpesa_dialog);
 
-        EditText phone = mpesa_dialog.findViewById(R.id.donor_phone_number);
-        EditText amount = mpesa_dialog.findViewById(R.id.donor_amount);
-        ProgressBar loading_bar = mpesa_dialog.findViewById(R.id.loading_bar);
-
-        mpesa_dialog.findViewById(R.id.donate_na_mpesa).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sendMoney(phone,amount,loading_bar);
-            }
-        });
-
-        mpesa_dialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mpesa_dialog.dismiss();
-            }
-        });
-        mpesa_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        mpesa_dialog.setCancelable(false);
-        mpesa_dialog.show();
-    }
-
-    private void sendMoney(EditText phone, EditText Amount, ProgressBar loading_bar) {
-
-        String phoneNumber = phone.getText().toString();
-        String amount = Amount.getText().toString();
-
-
-        loading_bar.setVisibility(View.VISIBLE);
-
-        //check validity of a number
-        if (phoneNumber.length() != 10) {
-            phone.setError("Invalid number");
-            return;
-        }
-        //check validity of a number
-        else if (amount.isEmpty()) {
-            Amount.setError("Amount should be more than 0");
-            return;
-        }
-
-
-        //onSendMoney(phoneNumber,Amount);
-
-        ((DetailedActivity)getActivity()).sendMoney(Integer.parseInt(amount),phoneNumber);
-
-    }
-
-
-
-
-    //Call Mpesa API
-    private Task<String> onSendMoney(String phone_number, String amount) {
-        // Create the arguments to the callable function.
-        Map<String, Object> data = new HashMap<>();
-        data.put("phoneNumber", phone_number);
-        data.put("businessShortCode", "174379");
-        data.put("amount", amount);
-
-
-        mFunctions = FirebaseFunctions.getInstance();
-
-        return mFunctions
-                .getHttpsCallable("callMpesaAPI")
-                .call(data)
-                .continueWith(new Continuation<HttpsCallableResult, String>() {
-                    @Override
-                    public String then(@NonNull Task<HttpsCallableResult> task) throws Exception {
-                        // This continuation runs on either success or failure, but if the task
-                        // has failed then getResult() will throw an Exception which will be
-                        // propagated down.
-                        String result = (String) task.getResult().getData();
-
-                        new showAppToast().showSuccess(getContext(),""+result);
-
-                        return result;
-                    }
-                });
-    }
-
-    //show donating dialog
-    private void showDonateDialog() {
-        donateDialog.setContentView(R.layout.donate_dialog);
-
-        donateDialog.findViewById(R.id.close).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                donateDialog.dismiss();
-            }
-        });
-        EditText phone_number = donateDialog.findViewById(R.id.donor_phone_number);
-        EditText location = donateDialog.findViewById(R.id.donor_location);
-        EditText others = donateDialog.findViewById(R.id.others);
-
-        donateDialog.findViewById(R.id.donate).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                recordDonation(phone_number,location,others);
-            }
-        });
-        donateDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        donateDialog.setCancelable(false);
-        donateDialog.show();
-    }
-
-
-    //add donation to database
-    private void recordDonation(EditText phone_number, EditText location, EditText others) {
-
-        final String donor_phone_number = phone_number.getText().toString();
-        final String donor_location = location.getText().toString();
-        final String other_donation = others.getText().toString();
-        String clothes, school, food, health;
-
-        CheckBox food_stuffs = donateDialog.findViewById(R.id.food_stuffs);
-        CheckBox clothing = donateDialog.findViewById(R.id.clothings);
-        CheckBox education_materials = donateDialog.findViewById(R.id.education_materials);
-
-        if (food_stuffs.isChecked()){
-            food = "Yes";
-        }else{
-            food ="";
-        }
-        if (clothing.isChecked()){
-            clothes = "Yes";
-        }else{
-            clothes = "";
-        }
-        if (education_materials.isChecked()){
-            school = "Yes";
-        }else{
-            school = "";
-        }
-        if (education_materials.isChecked()){
-            health = "Yes";
-        }else{
-            health = "";
-        }
-
-        if (TextUtils.isEmpty(donor_phone_number)){
-            phone_number.setError("Phone is required");
-        }else if (TextUtils.isEmpty(donor_location)){
-            location.setError("Location is required");
-        }
-
-
-        String orphanage_email = pref.getString("email",null);
-
-        Map<String, Object> data = new HashMap<>();;
-        Map<String, Object> docData = new HashMap<>();
-
-        if (user !=null) {
-            data.put("clothes", clothes);
-            data.put("educational_materials", school);
-            data.put("email", user.getEmail());
-            data.put("food", food);
-            data.put("health", health);
-            data.put("location", donor_location);
-            data.put("name", user.getDisplayName());
-            data.put("other", other_donation);
-            data.put("phone_number", donor_phone_number);
-            docData.put(user.getEmail(), data);
-        }
-        else{
-
-            String randomName = new getRandomString().getRandomString(10);
-            data.put("clothes", clothes);
-            data.put("educational_materials", school);
-            data.put("email", randomName);
-            data.put("food", food);
-            data.put("health", health);
-            data.put("location", donor_location);
-            data.put("name", "");
-            data.put("other", other_donation);
-            data.put("phone_number", donor_phone_number);
-            docData.put(randomName, data);
-        }
-
-        database.collection("Donations")
-                .document(orphanage_email)
-                .set(docData, SetOptions.merge())
-                .addOnSuccessListener(new OnSuccessListener<Void>() {
-                    @Override
-                    public void onSuccess(Void aVoid) {
-                        new showAppToast().showSuccess(getContext(),
-                                "Your donation was recorded successfully\t"+
-                                        pname
-                                        +"\t will contact you for more information");
-                        donateDialog.dismiss();
-                    }
-                })
-                .addOnFailureListener(new OnFailureListener() {
-                    @Override
-                    public void onFailure(@NonNull Exception e) {
-
-                        new AlertPopDiag(getContext()).show(
-                                "Oops we have experienced an error while receiving your donation",
-                                "Connection error");
-                    }
-                });
-    }
 
 
     @SuppressLint("SetTextI18n")
@@ -447,7 +243,6 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
                 .icon(BitmapDescriptorFactory.fromBitmap(new getBitmap()
                         .getBitmap(String.valueOf(R.drawable.custom_maker),
                                 120,120,getContext())))
-                //.icon(BitmapDescriptorFactory.fromResource(R.drawable.custom_maker))
         );
 
         googleMap.getUiSettings().setZoomControlsEnabled(true);
@@ -480,7 +275,7 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         number_of_children.setText("We have\t"+pnoc+"\tchildren's in need of\t"+pwhat_needed);
         phone_number.setText(pphone_number);
         bank_account_name.setText("Bank Account:\t"+pbank_account+"\tBank Name:\t"+pbank_account_name);
-        mpesa.setText("Donate na mpesa ("+ptill_number+")");
+        mpesa_txt.setText("Donate na mpesa ("+ptill_number+")");
         email.setText(pemail);
     }
 

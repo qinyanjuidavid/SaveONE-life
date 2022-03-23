@@ -109,10 +109,11 @@
                                 android:layout_height="wrap_content"
                                 android:hint="@string/phone_number_eg_254703_xxx_xxx"
                                 android:inputType="phone"
+                                android:textStyle="bold"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
                                 android:fontFamily="@font/mont"
-                                android:textColor="@color/green"
+                                android:textColor="@color/black"
                                 android:textColorHint="@color/green"
                                 android:textSize="14sp" />
 
@@ -139,9 +140,10 @@
                                 android:hint="@string/amount_to_donate_eg_50_bob"
                                 android:inputType="number"
                                 android:lines="1"
+                                android:textStyle="bold"
                                 android:marqueeRepeatLimit="marquee_forever"
                                 android:singleLine="true"
-                                android:textColor="@color/green"
+                                android:textColor="@color/black"
                                 android:textColorHint="@color/green"
                                 android:textSize="14sp" />
 
