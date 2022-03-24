@@ -10,7 +10,8 @@ children they are hosting
 
 
 ## Problem
-> - The major problem gotten from the user requirement gathering phase, has been the donors trying to locate the orphanages in the country especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing and writing materials to donate. They shared on their difficulty of accessing the locations of the orphanages in the areas around. 
+> - The major problem gotten from the user requirement gathering phase, has been the donors trying to locate the orphanages in the country especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing and education materials to donate. They shared on their difficulty of accessing the locations of the orphanages in the areas around. 
+> - Also we were curious on how and when those young souls, they are in need of various basic needs items.
 
 ## Solution
 > - That’s where the Save ONE-life android app comes in. -it’s an app built with java and google technology that helps donors to locate home orphanages all across the country and make their donations.
