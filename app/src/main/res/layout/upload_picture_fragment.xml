@@ -1,59 +1,140 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.sothree.slidinguppanel.SlidingUpPanelLayout android:id="@+id/sliding_layout"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/sliding_layout"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent"
-    android:gravity="bottom"
-    sothree:umanoPanelHeight="8dp"
-    sothree:umanoShadowHeight="4dp"
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:sothree="http://schemas.android.com/apk/res-auto">
+    android:gravity="bottom">
 
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:layout_marginTop="@dimen/_24sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_baseline_close_white" />
+
+        <ImageView
+            android:id="@+id/crop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_60sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_transform_24" />
+
+        <ImageView
+            android:id="@+id/edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:layout_marginEnd="@dimen/_30sdp"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_edit_24" />
+
+        <ImageView
+            android:id="@+id/menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/baseline_more_vert_white_24" />
+    </RelativeLayout>
 
 
     <LinearLayout
-        android:orientation="vertical"
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:id="@+id/relativeLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorAccent"
-            android:padding="12dp">
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
-                android:text="@string/do_you_want_to_upload_this_picture"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/logout_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:clickable="true"
-                android:focusable="true"
-                android:src="@drawable/baseline_more_vert_white_24" />
-        </RelativeLayout>
         <ImageView
             android:id="@+id/image_to_post"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="300dp"
             android:scaleType="centerCrop"
             android:src="@drawable/imggg" />
 
-        <include layout="@layout/send_message_card" />
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/motivation_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="100dip">
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="wrap_content"
+                android:padding="@dimen/_12sdp"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/message2"
+                    android:layout_width="240.0dip"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:fontFamily="serif"
+                    android:hint="@string/message"
+                    android:inputType="textMultiLine"
+                    android:maxLines="4"
+                    android:singleLine="true"
+                    android:textColor="@color/blue"
+                    android:textColorHint="@color/placeholder"
+                    android:textSize="14.0sp" />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
 
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/send_message_img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:foregroundTint="@color/colorAccent"
+            android:clickable="true"
+            app:srcCompat="@drawable/ic_baseline_send_white_24"
+            android:focusable="true"
+            android:contentDescription="@string/send_message" />
 
-</com.sothree.slidinguppanel.SlidingUpPanelLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

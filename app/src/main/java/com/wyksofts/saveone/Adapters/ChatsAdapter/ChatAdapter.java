@@ -155,8 +155,14 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatsViewHolder> {
                 holder.chat_txt.setTextColor(context.getResources().getColor(R.color.black));
                 holder.chat_time.setTextColor(context.getResources().getColor(R.color.black));
 
-                //get screen size
-                int screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
+                int screenWidth;
+                if (holder.chat_txt.length()==0){
+                    //get screen size
+                    screenWidth = ((getScreenWidth()) / 3)+(getScreenWidth()/4);
+                }else{
+                    //get screen size
+                    screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
+                }
 
                 //set margin
                 setCardMargins(screenWidth,0, holder.chats_bg);
@@ -166,8 +172,16 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatsViewHolder> {
                 //set background color for other users message
                 setOtherUserCard(holder.chats_bg);
 
-                //get screen size
-                int screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
+
+                int screenWidth;
+                if (holder.chat_txt.length()==0){
+                    //get screen size
+                    screenWidth = ((getScreenWidth()) / 3)+(getScreenWidth()/4);
+                }else{
+                    //get screen size
+                    screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
+                }
+
 
 
                 //set margin
@@ -177,8 +191,15 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatsViewHolder> {
 
             setOtherUserCard(holder.chats_bg);
 
-            //get screen size
-            int screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
+            int screenWidth;
+            if (holder.chat_txt.length()==0){
+                //get screen size
+                screenWidth = ((getScreenWidth()) / 3)+(getScreenWidth()/4);
+            }else{
+                //get screen size
+                screenWidth = ((getScreenWidth()) / holder.chat_txt.length())+(getScreenWidth()/4);
+            }
+
 
             //set margin
             setCardMargins(0,screenWidth, holder.chats_bg);

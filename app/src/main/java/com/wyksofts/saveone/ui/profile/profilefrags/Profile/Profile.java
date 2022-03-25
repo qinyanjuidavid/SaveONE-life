@@ -273,6 +273,7 @@ public class Profile extends Fragment {
                     if(document.exists()) {
 
                         hidden_information.setVisibility(View.VISIBLE);
+
                         uploadImageDialog.dismiss();
 
                         String name = document.getString("name");
@@ -318,6 +319,7 @@ public class Profile extends Fragment {
                         //user is a doner
                         hidden_information.setVisibility(View.GONE);
                         uploadImageDialog.dismiss();
+                        donations.setVisibility(View.GONE);
 
                         //show message to doner user here
                     }

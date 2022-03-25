@@ -28,6 +28,6 @@
     <color name="user_color_others_bg">#B3FFFFFF</color>
     <color name="placeholder">#818181</color>
     <color name="other_users_color">#70CACACA</color>
-    <color name="txt_bg">#6F000000</color>
+    <color name="txt_bg">#95000000</color>
 
 </resources>

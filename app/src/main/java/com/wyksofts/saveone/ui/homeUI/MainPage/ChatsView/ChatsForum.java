@@ -5,11 +5,9 @@ import static android.app.Activity.RESULT_OK;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -22,13 +20,11 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.os.Environment;
 import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.transition.TransitionManager;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -46,15 +42,14 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
-import com.google.firebase.inappmessaging.internal.Logging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
-import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.ChatsAdapter.ChatAdapter;
 import com.wyksofts.saveone.R;
@@ -63,17 +58,12 @@ import com.wyksofts.saveone.ui.homeUI.HelperClasses.rMessagesNotifications;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.NoAccountFound;
 import com.wyksofts.saveone.util.Constants.Constants;
-import com.wyksofts.saveone.util.ImageCompressor;
+import com.wyksofts.saveone.util.CurrentDay;
 import com.wyksofts.saveone.util.showAppToast;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.IOException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -84,7 +74,7 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class ChatsForum extends Fragment {
 
     EditText message;
-    ImageView attach_file, open_emoji, record_message, send_message;
+    ImageView attach_file, add_image, open_emoji, record_message, send_message;
 
     //toolbar
     CircleImageView user_image;
@@ -95,6 +85,10 @@ public class ChatsForum extends Fragment {
     private final int PICK_IMAGE_REQUEST = 111;
     private Uri filePath;
     private Bitmap bitmap;
+    private View view;
+
+    PopupWindow popupWindow;
+    FloatingActionButton send_message_img;
 
 
 
@@ -115,7 +109,7 @@ public class ChatsForum extends Fragment {
 
     //image post
     LinearLayout image_post_layout;
-    ImageView image_to_post;
+    ImageView image_to_post, close;
     CardView card;
     Dialog uploadImageDialog;
 
@@ -141,6 +135,7 @@ public class ChatsForum extends Fragment {
         //init firebase
         storage = FirebaseStorage.getInstance();
         storageReference = storage.getReference();
+
     }
 
     @Override
@@ -149,10 +144,13 @@ public class ChatsForum extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_reviews, container, false);
 
+        this.view = view;
+
         recyclerView = view.findViewById(R.id.chat_recyclerView);
 
         message = view.findViewById(R.id.write_message);
         attach_file = view.findViewById(R.id.attach_file);
+        add_image = view.findViewById(R.id.add_image);
         open_emoji = view.findViewById(R.id.open_emoji);
         record_message = view.findViewById(R.id.record_message);
         send_message = view.findViewById(R.id.send_message);
@@ -164,7 +162,6 @@ public class ChatsForum extends Fragment {
 
         //add image post and other variables
         image_post_layout = view.findViewById(R.id.image_post_layout);
-        image_to_post = view.findViewById(R.id.image_to_post);
         card = view.findViewById(R.id.card);
 
         //shared preference
@@ -174,7 +171,12 @@ public class ChatsForum extends Fragment {
         warning_dialog = new Dialog(getContext());
 
         //initUI
-        initUI();
+        LinearLayoutManager layout = new LinearLayoutManager(getContext());
+        recyclerView.setLayoutManager(layout);
+        recyclerView.addItemDecoration(new LayoutMarginDecoration(2, 2));
+        list_data = new ArrayList<>();
+
+        getMessages();
 
         //adapter
         adapter = new ChatAdapter(list_data,getContext());
@@ -201,12 +203,14 @@ public class ChatsForum extends Fragment {
                 //set google url
                 loadImage(Constants.user.getPhotoUrl().toString());
 
-            }else if(url !=null){
+            }else if(url != null){
                 //set share preference url
                 loadImage(url);
             }else{
+
                 //set placeholder
-                String image_url = String.valueOf(getContext().getResources().getDrawable(R.drawable.imgg));
+                @SuppressLint("UseCompatLoadingForDrawables") String image_url = String.valueOf(getContext()
+                        .getResources().getDrawable(R.drawable.imgg));
                 loadImage(image_url);
             }
 
@@ -276,9 +280,8 @@ public class ChatsForum extends Fragment {
                             showWarningDialog();
                         }else {
                             //send message
-                            uploadImage(sms);
+                            sendMessage(sms,"");
                         }
-
                     }else{
                         new showAppToast().showFailure(getContext(),"You can not send void message");
                     }
@@ -301,62 +304,33 @@ public class ChatsForum extends Fragment {
                     image_post_layout.setVisibility(View.GONE);
                 }
                 TransitionManager.beginDelayedTransition(card);
+            }
+        });
 
-                image_to_post.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        //select image
-                        getImageFile();
-                    }
-                });
+        add_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                //get Image file
+                getImageFile();
             }
         });
     }
 
-    @SuppressLint("SetTextI18n")
-    private void showWarningDialog() {
-        warning_dialog.setContentView(R.layout.warning_dialog);
-
-        warning_dialog.findViewById(R.id.close)
-                .setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        warning_dialog.dismiss();
-                        message.setText("");
-                    }
-                });
-
-        TextView text_status = warning_dialog.findViewById(R.id.warning_txt);
-        String s = getContext().getString(R.string.warning);
-        text_status.setText("Hey,\t"+Constants.user.getDisplayName()+"\t"+s);
-
-        warning_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        warning_dialog.setCancelable(false);
-        warning_dialog.show();
-    }
 
 
-    //user data
-    private void initUI() {
-        LinearLayoutManager layout = new LinearLayoutManager(getContext());
-        recyclerView.setLayoutManager(layout);
-        recyclerView.addItemDecoration(new LayoutMarginDecoration(2, 2));
-        list_data = new ArrayList<ChatsModel>();
-
-        getMessages();
-    }
-
-
-    //upload image
+    //upload image and message
     private void uploadImage(String sms) {
         if (filePath != null) {
 
+            popupWindow.dismiss();
             uploadImageDialog.show();
 
             // Defining the child of storageReference using user email
             String name = Constants.user.getEmail();
+            String date = new CurrentDay().getCurrentDate();
 
-            StorageReference ref = storageReference.child("images/" + name);
+            StorageReference ref = storageReference.child("images/" + name+date);
 
             ByteArrayOutputStream bytes = new ByteArrayOutputStream();
             bitmap.compress(Bitmap.CompressFormat.PNG, 20, bytes);
@@ -388,20 +362,19 @@ public class ChatsForum extends Fragment {
                         public void onFailure(@NonNull Exception e){
                             new showAppToast().showFailure(getContext(),"Oops your message image is too large in size");
                             uploadImageDialog.dismiss();
-                            sendMessage(sms, null);
+                            sendMessage(sms, "");
                         }
                     })
                     .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @SuppressLint("SetTextI18n")
                         @Override
                         public void onProgress(
-                                UploadTask.TaskSnapshot taskSnapshot){
-                            double progress = (100.0 * taskSnapshot.getBytesTransferred()
-                                    / taskSnapshot.getTotalByteCount());
+                                @NonNull UploadTask.TaskSnapshot taskSnapshot){
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() /
+                                    taskSnapshot.getTotalByteCount());
                             TextView progress_text = uploadImageDialog.findViewById(R.id.text_status);
-                            progress_text.setText(
-                                    new StringBuilder().append("Sending message in\t")
-                                            .append((int) progress).append("%")
-                                            .toString());
+                            progress_text.setText("Sending message in\t" +
+                                            (int) progress + "%");
                         }
                     });
         }else{
@@ -410,6 +383,7 @@ public class ChatsForum extends Fragment {
     }
 
 
+    //get image file from device
     private void getImageFile(){
         //get mobile gallery intent
         Intent intent = new Intent();
@@ -450,36 +424,28 @@ public class ChatsForum extends Fragment {
                             }
                         }
                         else {
-                            Log.w(Logging.TAG, "Error getting documents.", task.getException());
-                            new showAppToast().showFailure(getContext(),"Failed to get chats");
+                            new showAppToast().showFailure(getContext(),"Failed to get forum data");
                         }
                     }
                 }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e){
-                new showAppToast().showFailure(getContext(),"Failed to get chats");
+                new showAppToast().showFailure(getContext(),"Failed to get forum data");
             }
         });
 
     }
 
 
-    //send message to the database
-    private void sendMessage(String sms, String url) {
+
+    //send message
+    public void sendMessage(String sms, String url) {
 
         String email = Constants.user.getEmail();
         String name = Constants.user.getDisplayName();
 
-        //get current time
-        SimpleDateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
-        Date time = new Date();
-        String currentTime = dateFormat.format(time);
-
-        //get current date
-        Date c = Calendar.getInstance().getTime();
-        SimpleDateFormat df = new SimpleDateFormat("dd-MMM-yyyy", Locale.getDefault());
-        String date = df.format(c);
-
+        String date = new CurrentDay().getCurrentDate();
+        String currentTime = new CurrentDay().getCurrentTime();
 
         Map<String, Object> data = new HashMap<>();
         data.put("date", date);
@@ -526,39 +492,9 @@ public class ChatsForum extends Fragment {
                 });
     }
 
-    //send notification to all devices a new message was sent
-    private void sendNotification() {
-
-        //check whether notification was allowed
-        String receive_notifications = pref.getString("receive_notifications", null);
-
-        if (receive_notifications == null){
-            //request for permission
-            new rMessagesNotifications(getContext()).show();
-
-        }else if(receive_notifications.equals("false")){
-            //do nothing
-        }else{
-            //subscribe
-            new rMessagesNotifications(getContext()).subscribeToTopic();
-        }
-    }
 
 
-    //check if the field has messages and animate icons
-    public void checkMessage(String message){
-        if (!message.equals("")){
-            //show send
-            send_message.setVisibility(View.VISIBLE);
-            record_message.setVisibility(View.GONE);
 
-        }else{
-            //show mic
-            send_message.setVisibility(View.GONE);
-            record_message.setVisibility(View.VISIBLE);
-            record_message.startAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.rotate_anticlockwise));
-        }
-    }
 
     //get text from speech recognizer...
     @Override
@@ -581,22 +517,140 @@ public class ChatsForum extends Fragment {
 
                     try {
 
+                        //open pop up view
+
+                        //Create a View object yourself through inflater
+                        LayoutInflater inflater = (LayoutInflater) view.getContext()
+                                .getSystemService(view.getContext().LAYOUT_INFLATER_SERVICE);
+                        View popupView = inflater.inflate(R.layout.upload_picture_fragment, null);
+
+                        //length and width
+                        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+                        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+
+                        //Inactive Items Outside Of PopupWindow
+                        boolean focusable = true;
+
+                        //Create a window
+                        popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+                        //Set the location of the window on the screen
+                        popupWindow.showAtLocation(view, Gravity.TOP | Gravity.RIGHT, 0, 0);
+
+                        //get varibles
+
+                        close = popupView.findViewById(R.id.close);
+                        close.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                //close view
+                                popupWindow.dismiss();
+                            }
+                        });
+
+                        image_to_post = popupView.findViewById(R.id.image_to_post);
+                        image_to_post.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                popupWindow.dismiss();
+                                filePath.equals("");
+                                //select image
+                                getImageFile();
+                            }
+                        });
+
+                        //send message
+                        send_message_img = popupView.findViewById(R.id.send_message_img);
+
+                        send_message_img.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+
+                                //edit text
+                                EditText write_message = popupView.findViewById(R.id.message2);
+                                String message = write_message.getText().toString().trim();
+
+                                new showAppToast().showSuccess(getContext(),message);
+
+                                //send message with attached image
+                                uploadImage(message);
+                            }
+                        });
+
+
                         // Setting image on image view using Bitmap
                         bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
                         Glide.with(getContext())
                                 .load(bitmap)
                                 .into(image_to_post);
+
                     }catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
                 break;
-
             }
-
             default:
                 break;
         }
+    }
+
+
+
+    //send notification to all devices a new message was sent
+    private void sendNotification() {
+
+        //check whether notification was allowed
+        String receive_notifications = pref.getString("receive_notifications", null);
+
+        if (receive_notifications == null){
+            //request for permission
+            new rMessagesNotifications(getContext()).show();
+
+        }else if(receive_notifications.equals("false")){
+            //do nothing
+        }else{
+            //subscribe
+            new rMessagesNotifications(getContext()).subscribeToTopic();
+        }
+    }
+
+    //check if the field has messages and animate icons
+    public void checkMessage(String message){
+        if (!message.equals("")){
+            //show send
+            send_message.setVisibility(View.VISIBLE);
+            record_message.setVisibility(View.GONE);
+
+        }else{
+            //show mic
+            send_message.setVisibility(View.GONE);
+            record_message.setVisibility(View.VISIBLE);
+            record_message.startAnimation(AnimationUtils.loadAnimation(getContext(),R.anim.rotate_anticlockwise));
+        }
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void showWarningDialog() {
+        warning_dialog.setContentView(R.layout.warning_dialog);
+
+        warning_dialog.findViewById(R.id.close)
+                .setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        warning_dialog.dismiss();
+                        message.setText("");
+                    }
+                });
+
+        TextView text_status = warning_dialog.findViewById(R.id.warning_txt);
+        String s = getContext().getString(R.string.warning);
+        assert Constants.user != null;
+        text_status.setText("Hey,\t"+Constants.user.getDisplayName()+"\t"+s);
+
+        warning_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+        warning_dialog.setCancelable(false);
+        warning_dialog.show();
     }
 
     public void loadImage(String url){

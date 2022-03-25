@@ -205,4 +205,6 @@
     <string name="term_of_services"><u>Term of services</u></string>
     <string name="isSubscribed_tex">Please enter your number below, to subscribe, NB; Account verification can take up to 72hrs.</string>
     <string name="do_you_want_to_upload_this_picture">Do you want to upload this picture?</string>
+    <string name="send_message">Send Message</string>
+    <string name="message">Message</string>
 </resources>
