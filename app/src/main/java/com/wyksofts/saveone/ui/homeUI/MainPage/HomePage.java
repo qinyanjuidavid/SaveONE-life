@@ -244,6 +244,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
 
     //PopupWindow display method
+    @SuppressLint("SetTextI18n")
     public void showMenuLayout(View view) {
 
         //Create a View object yourself through inflater

@@ -1,32 +1,43 @@
-package com.wyksofts.saveone.ui.homeUI.MainPage;
+package com.wyksofts.saveone.ui.homeUI.MainPage.ChatsView;
 
 import static android.app.Activity.RESULT_OK;
 
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.os.Environment;
+import android.provider.MediaStore;
 import android.speech.RecognizerIntent;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.transition.TransitionManager;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -35,14 +46,15 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
 import com.google.firebase.inappmessaging.internal.Logging;
-import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.ChatsAdapter.ChatAdapter;
 import com.wyksofts.saveone.R;
@@ -51,8 +63,12 @@ import com.wyksofts.saveone.ui.homeUI.HelperClasses.rMessagesNotifications;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.NoAccountFound;
 import com.wyksofts.saveone.util.Constants.Constants;
+import com.wyksofts.saveone.util.ImageCompressor;
 import com.wyksofts.saveone.util.showAppToast;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -76,6 +92,10 @@ public class ChatsForum extends Fragment {
 
     //request code for voice recognation
     private final int REQ_CODE = 100;
+    private final int PICK_IMAGE_REQUEST = 111;
+    private Uri filePath;
+    private Bitmap bitmap;
+
 
 
     //view and chat data
@@ -93,6 +113,16 @@ public class ChatsForum extends Fragment {
     //warning dialog
     Dialog warning_dialog;
 
+    //image post
+    LinearLayout image_post_layout;
+    ImageView image_to_post;
+    CardView card;
+    Dialog uploadImageDialog;
+
+    //firebase
+    FirebaseStorage storage;
+    StorageReference storageReference;
+
     public ChatsForum() {
         // Required empty public constructor
     }
@@ -101,13 +131,23 @@ public class ChatsForum extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        uploadImageDialog = new Dialog(getContext());
+
+        uploadImageDialog.setContentView(R.layout.upload_image);
+        uploadImageDialog.setCancelable(false);
+        uploadImageDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+
+        //init firebase
+        storage = FirebaseStorage.getInstance();
+        storageReference = storage.getReference();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_reviews_view, container, false);
+        View view = inflater.inflate(R.layout.fragment_reviews, container, false);
 
         recyclerView = view.findViewById(R.id.chat_recyclerView);
 
@@ -121,6 +161,11 @@ public class ChatsForum extends Fragment {
         user_email = view.findViewById(R.id.user_email);
         user_name = view.findViewById(R.id.user_name);
         user_layout = view.findViewById(R.id.user_layout);
+
+        //add image post and other variables
+        image_post_layout = view.findViewById(R.id.image_post_layout);
+        image_to_post = view.findViewById(R.id.image_to_post);
+        card = view.findViewById(R.id.card);
 
         //shared preference
         pref = getContext().getSharedPreferences("user", 0);
@@ -231,7 +276,7 @@ public class ChatsForum extends Fragment {
                             showWarningDialog();
                         }else {
                             //send message
-                            sendMessage(sms);
+                            uploadImage(sms);
                         }
 
                     }else{
@@ -243,6 +288,29 @@ public class ChatsForum extends Fragment {
                 }
             }
         });
+
+        image_post_layout.setVisibility(View.GONE);
+
+        attach_file.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //open images
+                if (image_post_layout.getVisibility() != View.VISIBLE){
+                    image_post_layout.setVisibility(View.VISIBLE);
+                }else{
+                    image_post_layout.setVisibility(View.GONE);
+                }
+                TransitionManager.beginDelayedTransition(card);
+
+                image_to_post.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        //select image
+                        getImageFile();
+                    }
+                });
+            }
+        });
     }
 
     @SuppressLint("SetTextI18n")
@@ -251,12 +319,12 @@ public class ChatsForum extends Fragment {
 
         warning_dialog.findViewById(R.id.close)
                 .setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                warning_dialog.dismiss();
-                message.setText("");
-            }
-        });
+                    @Override
+                    public void onClick(View view) {
+                        warning_dialog.dismiss();
+                        message.setText("");
+                    }
+                });
 
         TextView text_status = warning_dialog.findViewById(R.id.warning_txt);
         String s = getContext().getString(R.string.warning);
@@ -279,6 +347,77 @@ public class ChatsForum extends Fragment {
     }
 
 
+    //upload image
+    private void uploadImage(String sms) {
+        if (filePath != null) {
+
+            uploadImageDialog.show();
+
+            // Defining the child of storageReference using user email
+            String name = Constants.user.getEmail();
+
+            StorageReference ref = storageReference.child("images/" + name);
+
+            ByteArrayOutputStream bytes = new ByteArrayOutputStream();
+            bitmap.compress(Bitmap.CompressFormat.PNG, 20, bytes);
+            String path = MediaStore.Images.Media.insertImage(getActivity().getContentResolver(),
+                    bitmap,name,null);
+
+            Uri uri = Uri.parse(path);
+
+            // adding listeners on upload
+            ref.putFile(uri)
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot){
+                            uploadImageDialog.dismiss();
+                            Task<Uri> urlTask = taskSnapshot.getStorage().getDownloadUrl();
+                            while (!urlTask.isSuccessful());
+                            Uri downloadUrl = urlTask.getResult();
+
+                            //add image url to the database if image exists
+                            sendMessage(sms, downloadUrl.toString());
+
+                            editor.putString("url",downloadUrl.toString());
+                            editor.commit();
+
+                        }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e){
+                            new showAppToast().showFailure(getContext(),"Oops your message image is too large in size");
+                            uploadImageDialog.dismiss();
+                            sendMessage(sms, null);
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(
+                                UploadTask.TaskSnapshot taskSnapshot){
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred()
+                                    / taskSnapshot.getTotalByteCount());
+                            TextView progress_text = uploadImageDialog.findViewById(R.id.text_status);
+                            progress_text.setText(
+                                    new StringBuilder().append("Sending message in\t")
+                                            .append((int) progress).append("%")
+                                            .toString());
+                        }
+                    });
+        }else{
+            sendMessage(sms, "");
+        }
+    }
+
+
+    private void getImageFile(){
+        //get mobile gallery intent
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Attach your file from here..."), PICK_IMAGE_REQUEST);
+    }
+
 
 
     //get messages
@@ -286,35 +425,28 @@ public class ChatsForum extends Fragment {
         Constants.database.collection("Chats")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
 
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                Log.d(Logging.TAG, document.getId() + " ===>>>=> " + document.getData());
 
-                                ArrayList< HashMap<String,String>> arrayList =
-                                        (ArrayList<HashMap<String,String>>)document.get("messages");
-                                for (HashMap<String, String> map : arrayList){
-                                    List<String> list = new ArrayList<String>(map.values());
+                                String date = document.getString("date");
+                                String name = document.getString("name");
+                                String time = document.getString("time");
+                                String image = document.getString("image");
+                                String message = document.getString("message");
+                                String email = document.getString("email");
 
-                                    String date = list.get(0);
-                                    String name = list.get(1);
-                                    String time = list.get(2);
-                                    String message = list.get(3);
-                                    String email = list.get(4);
+                                //add data to the model
+                                list_data.add(new ChatsModel(date,name,email,message,time,image));
+                                recyclerView.setAdapter(adapter);
 
-                                    //add data to the model
-                                    list_data.add(new ChatsModel(date,name,email,message,time));
-                                    recyclerView.setAdapter(adapter);
+                                adapter.notifyDataSetChanged();
 
-                                    adapter.notifyDataSetChanged();
-
-                                    //scroll to last conversation
-                                    recyclerView.scrollToPosition(list_data.size() - 1);
-
-                                }
-
+                                //scroll to last conversation
+                                recyclerView.scrollToPosition(list_data.size() - 1);
                             }
                         }
                         else {
@@ -333,7 +465,7 @@ public class ChatsForum extends Fragment {
 
 
     //send message to the database
-    private void sendMessage(String sms) {
+    private void sendMessage(String sms, String url) {
 
         String email = Constants.user.getEmail();
         String name = Constants.user.getDisplayName();
@@ -352,6 +484,7 @@ public class ChatsForum extends Fragment {
         Map<String, Object> data = new HashMap<>();
         data.put("date", date);
         data.put("email", email);
+        data.put("image", url.toString());
         data.put("message", sms);
         data.put("name", name);
         data.put("time", currentTime);
@@ -359,12 +492,9 @@ public class ChatsForum extends Fragment {
         //path
         String path = date+currentTime;
 
-        Map<String, Object> docData = new HashMap<>();
-        docData.put("messages", Arrays.asList(data));
-
         Constants.database.collection("Chats")
                 .document(path)
-                .set(docData, SetOptions.merge())
+                .set(data, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
                     @Override
                     public void onSuccess(Void aVoid) {
@@ -442,6 +572,30 @@ public class ChatsForum extends Fragment {
                 }
                 break;
             }
+
+            case PICK_IMAGE_REQUEST: {
+                if (resultCode == RESULT_OK && data != null && data.getData() != null) {
+
+                    // Get the Uri of data
+                    filePath = data.getData();
+
+                    try {
+
+                        // Setting image on image view using Bitmap
+                        bitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), filePath);
+                        Glide.with(getContext())
+                                .load(bitmap)
+                                .into(image_to_post);
+                    }catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+                break;
+
+            }
+
+            default:
+                break;
         }
     }
 

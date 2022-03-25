@@ -23,10 +23,11 @@
     <color name="blue2">#0E85E3</color>
     <color name="transparent">#33000000</color>
     <color name="tabMode">#66CA1C3D</color>
-    <color name="user_color_bg">#B3FB8100</color>
+    <color name="user_color_bg">#FFCD98</color>
     <color name="user_color">#B3333333</color>
     <color name="user_color_others_bg">#B3FFFFFF</color>
     <color name="placeholder">#818181</color>
     <color name="other_users_color">#70CACACA</color>
+    <color name="txt_bg">#6F000000</color>
 
 </resources>

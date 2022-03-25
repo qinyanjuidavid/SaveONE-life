@@ -7,7 +7,15 @@ public class ChatsModel {
     String user_email;
     String user_text;
     String time;
+    String image;
 
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     public String getTime() {
         return time;
@@ -51,11 +59,12 @@ public class ChatsModel {
 
     public ChatsModel(String data, String user_name,
                       String user_email, String user_text,
-                      String time) {
+                      String time, String image) {
         this.date = data;
         this.time = time;
         this.user_name = user_name;
         this.user_email = user_email;
         this.user_text = user_text;
+        this.image = image;
     }
 }

@@ -255,6 +255,8 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
         googleMap.animateCamera(zoom);
     }
 
+
+
     //get detailed data for the orphanage
     @SuppressLint("SetTextI18n")
     private void getValues() {

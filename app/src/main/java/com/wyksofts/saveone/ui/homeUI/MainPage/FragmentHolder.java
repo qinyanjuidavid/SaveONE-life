@@ -14,6 +14,7 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.google.android.material.tabs.TabLayout;
 import com.wyksofts.saveone.R;
+import com.wyksofts.saveone.ui.homeUI.MainPage.ChatsView.ChatsForum;
 import com.wyksofts.saveone.util.Constants.Constants;
 
 import java.util.ArrayList;

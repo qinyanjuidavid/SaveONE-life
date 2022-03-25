@@ -43,10 +43,13 @@
         <entry key="app/src/main/res/drawable-v24/text_background.xml" value="0.1425" />
         <entry key="app/src/main/res/drawable-v24/user_bg_others.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable-v24/user_others_view_bg.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable/baseline_add_a_photo_24.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/baseline_attach_money_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/baseline_check_24.xml" value="0.151" />
         <entry key="app/src/main/res/drawable/baseline_code_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/baseline_email_24.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/baseline_expand_less_24.xml" value="0.1455" />
+        <entry key="app/src/main/res/drawable/baseline_expand_more_24.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/baseline_flag_circle_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/baseline_groups_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/baseline_menu_book_24.xml" value="0.137" />
@@ -71,6 +74,7 @@
         <entry key="app/src/main/res/drawable/ic_baseline_contact_phone_24.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/ic_baseline_settings_applications_24.xml" value="0.162" />
         <entry key="app/src/main/res/drawable/ic_baseline_share_white_24.xml" value="0.137" />
+        <entry key="app/src/main/res/drawable/image_bg.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable/menu_foreground.xml" value="0.137" />
         <entry key="app/src/main/res/drawable/popup_background.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/popup_bg.xml" value="0.172" />
@@ -103,6 +107,8 @@
         <entry key="app/src/main/res/layout/congratulation_diag.xml" value="0.23981481481481481" />
         <entry key="app/src/main/res/layout/custom_marker.xml" value="0.2111111111111111" />
         <entry key="app/src/main/res/layout/custom_tab.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/detailed_image.xml" value="0.22870370370370371" />
+        <entry key="app/src/main/res/layout/detailed_image_dialog.xml" value="0.22870370370370371" />
         <entry key="app/src/main/res/layout/detailed_orpanage_card.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/divider_with_or.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/donate_dialog.xml" value="0.2304518065700641" />
@@ -119,6 +125,7 @@
         <entry key="app/src/main/res/layout/fragment_maps_view.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_other_info.xml" value="0.1647181193033854" />
         <entry key="app/src/main/res/layout/fragment_profile.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_reviews.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/fragment_reviews_view.xml" value="0.1451048951048951" />
         <entry key="app/src/main/res/layout/fragment_select_location_map.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/fragment_sign_up.xml" value="0.25104166666666666" />
@@ -142,11 +149,13 @@
         <entry key="app/src/main/res/layout/search_toolbar.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/layout/search_toolbar_donation.xml" value="0.15" />
         <entry key="app/src/main/res/layout/select_coordinates_dialog.xml" value="0.25104166666666666" />
-        <entry key="app/src/main/res/layout/send_message_card.xml" value="0.173046875" />
+        <entry key="app/src/main/res/layout/send_message_card.xml" value="0.26156707763671877" />
         <entry key="app/src/main/res/layout/send_review_card.xml" value="0.18828125" />
         <entry key="app/src/main/res/layout/tmc_layout.xml" value="0.22923076923076924" />
         <entry key="app/src/main/res/layout/update_profile_dialog.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/upload__picture_fragment.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/upload_image.xml" value="0.25104166666666666" />
+        <entry key="app/src/main/res/layout/upload_picture_fragment.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/warning_dialog.xml" value="0.17104247104247106" />
         <entry key="app/src/main/res/menu/menu_navigation_view.xml" value="0.25104166666666666" />
         <entry key="app/src/main/res/menu/message_menu.xml" value="0.17104247104247106" />

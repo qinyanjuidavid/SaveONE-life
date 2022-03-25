@@ -2,6 +2,7 @@ package com.wyksofts.saveone.Adapters.ChatsAdapter;
 
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,7 +15,8 @@ public class ChatsViewHolder extends RecyclerView.ViewHolder {
 
     CardView chats_bg;
     TextView chat_name, chat_txt, chat_time;
-    ImageView more;
+    ImageView more, attached_image;
+    LinearLayout image_layout;
 
     public ChatsViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -24,5 +26,7 @@ public class ChatsViewHolder extends RecyclerView.ViewHolder {
         chat_txt = itemView.findViewById(R.id.chat_txt);
         chat_time = itemView.findViewById(R.id.chat_time);
         more = itemView.findViewById(R.id.chat_menu);
+        attached_image = itemView.findViewById(R.id.attached_image);
+        image_layout = itemView.findViewById(R.id.image_layout);
     }
 }

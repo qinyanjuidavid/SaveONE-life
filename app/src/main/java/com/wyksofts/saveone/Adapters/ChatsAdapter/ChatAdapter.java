@@ -16,11 +16,13 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.ChatModel.Chats.ChatsModel;
 import com.wyksofts.saveone.models.ChatModel.DeleteMessage.DeleteMessage;
+import com.wyksofts.saveone.ui.homeUI.HelperClasses.showImageDialog;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.showAppToast;
 
@@ -59,12 +61,35 @@ public class ChatAdapter extends RecyclerView.Adapter<ChatsViewHolder> {
         //message
         holder.chat_txt.setText(data.getUser_text());
 
+        //attached image
+        String attached_image = data.getImage();
+        String txt = data.getUser_text();
+
+        if (!attached_image.equals("")){
+            holder.image_layout.setVisibility(View.VISIBLE);
+            Glide.with(context)
+                    .load(attached_image)
+                    .skipMemoryCache(true)
+                    .into(holder.attached_image);
+        }else{
+            holder.image_layout.setVisibility(View.GONE);
+        }
+
+        //set on image click listener
+        holder.attached_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //show dialog
+                new showImageDialog(context).showDialog(attached_image,txt);
+            }
+        });
+
         //delete message
         holder.more.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // Initializing the popup menu
-                PopupMenu popupMenu = new PopupMenu(new ContextThemeWrapper(context, R.style.PopupMenu), holder.more);
+                // Initializing the popup menu new ContextThemeWrapper(context, R.style.PopupMenu)
+                PopupMenu popupMenu = new PopupMenu(context, holder.more);
 
                 popupMenu.getMenuInflater().inflate(R.menu.message_menu, popupMenu.getMenu());
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {

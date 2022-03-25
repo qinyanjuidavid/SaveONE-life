@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/motivation_card"
+        android:id="@+id/card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
@@ -17,92 +17,138 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:padding="4.0dip"
+            android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/attach_file"
-                android:src="@drawable/baseline_attach_file_24"
-                android:layout_width="30.0dip"
-                android:layout_height="30.0dip"
-                android:clickable="true"
-                android:elevation="2dp"
-                android:focusable="true"
-                android:background="@drawable/custom_circle_btn2"/>
-
             <LinearLayout
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:orientation="horizontal"
-                android:padding="8.0dip"
-                android:layout_width="wrap_content"
+                android:id="@+id/image_post_layout"
+                android:padding="@dimen/_6sdp"
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:visibility="gone"
                 android:layout_height="wrap_content">
 
-                <EditText
-                    android:id="@+id/write_message"
-                    style="@style/Widget.AppCompat.AutoCompleteTextView"
-                    android:layout_width="240.0dip"
+                <RelativeLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@null"
-                    android:clickable="true"
-                    android:drawablePadding="5.0dip"
-                    android:focusable="true"
-                    android:maxLines="3"
-                    android:hint="@string/leave_a_message"
-                    android:inputType="textMultiLine"
-                    android:singleLine="true"
-                    android:textColor="@color/blue"
-                    android:textColorHint="@color/placeholder"
-                    android:textSize="14.0sp"/>
+                    android:layout_marginBottom="8dp">
+
+                    <ImageView
+                        android:id="@+id/expand"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerInParent="true"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:src="@drawable/baseline_expand_less_24" />
+
+                </RelativeLayout>
 
                 <ImageView
-                    android:id="@+id/open_emoji"
-                    android:layout_marginStart="8dp"
-                    android:src="@drawable/baseline_emoji_emotions_24"
-                    android:layout_width="32.0dip"
-                    android:layout_height="32.0dip"
+                    android:id="@+id/image_to_post"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_gravity="center"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/baseline_add_a_photo_24" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="4.0dip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/attach_file"
+                    android:src="@drawable/baseline_attach_file_24"
+                    android:layout_width="30.0dip"
+                    android:layout_height="30.0dip"
                     android:clickable="true"
+                    android:elevation="2dp"
                     android:focusable="true"
                     android:background="@drawable/custom_circle_btn2"/>
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_marginStart="8dp"
+                <LinearLayout
+                    android:gravity="center"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8.0dip"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/send_message"
+                    <EditText
+                        android:id="@+id/write_message"
+                        style="@style/Widget.AppCompat.AutoCompleteTextView"
+                        android:layout_width="240.0dip"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
                         android:clickable="true"
+                        android:drawablePadding="5.0dip"
                         android:focusable="true"
-                        android:background="@drawable/custom_circle_btn2"
-                        android:visibility="gone"
-                        android:layout_width="30.0dip"
-                        android:layout_height="30.0dip"
-                        android:src="@drawable/ic_baseline_send_blue_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-                    <ImageView
-                        android:id="@+id/record_message"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:background="@drawable/custom_circle_btn2"
-                        android:layout_width="30.0dip"
-                        android:layout_height="30.0dip"
-                        android:src="@drawable/baseline_mic_24"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:maxLines="4"
+                        android:hint="@string/leave_a_message"
+                        android:inputType="textMultiLine"
+                        android:singleLine="true"
+                        android:textColor="@color/blue"
+                        android:fontFamily="serif"
+                        android:textColorHint="@color/placeholder"
+                        android:textSize="14.0sp"/>
 
-                </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/open_emoji"
+                        android:layout_marginStart="8dp"
+                        android:src="@drawable/baseline_emoji_emotions_24"
+                        android:layout_width="32.0dip"
+                        android:layout_height="32.0dip"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:background="@drawable/custom_circle_btn2"/>
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_marginStart="8dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/send_message"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="@drawable/custom_circle_btn2"
+                            android:visibility="gone"
+                            android:layout_width="30.0dip"
+                            android:layout_height="30.0dip"
+                            android:src="@drawable/ic_baseline_send_blue_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+                        <ImageView
+                            android:id="@+id/record_message"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:background="@drawable/custom_circle_btn2"
+                            android:layout_width="30.0dip"
+                            android:layout_height="30.0dip"
+                            android:src="@drawable/baseline_mic_24"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </LinearLayout>
+
             </LinearLayout>
 
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>
