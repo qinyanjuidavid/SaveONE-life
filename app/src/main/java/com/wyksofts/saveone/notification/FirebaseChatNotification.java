@@ -1,6 +1,4 @@
-package com.wyksofts.saveone.notifications;
-
-import static android.content.ContentValues.TAG;
+package com.wyksofts.saveone.notification;
 
 import static com.wyksofts.saveone.util.Constants.Constants.NOTIFICATION_ID;
 
@@ -8,12 +6,9 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
 
-import androidx.annotation.NonNull;
 import androidx.core.app.NotificationManagerCompat;
 import androidx.core.splashscreen.SplashScreen;
 

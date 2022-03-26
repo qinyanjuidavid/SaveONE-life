@@ -570,8 +570,6 @@ public class ChatsForum extends Fragment {
                                 EditText write_message = popupView.findViewById(R.id.message2);
                                 String message = write_message.getText().toString().trim();
 
-                                new showAppToast().showSuccess(getContext(),message);
-
                                 //send message with attached image
                                 uploadImage(message);
                             }
