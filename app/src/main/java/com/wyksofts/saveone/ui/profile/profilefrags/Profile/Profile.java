@@ -389,7 +389,7 @@ public class Profile extends Fragment {
         updateProfileDialog.findViewById(R.id.update_profile).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //open update fuction
+                //open update function
                 String p_description = profile_description.getText().toString();
                 String p_number_of_children = profile_number_of_children.getText().toString();
                 String p_what_needed = profile_what_needed.getText().toString();
@@ -398,19 +398,10 @@ public class Profile extends Fragment {
                 String p_bank_account = profile_bank_account.getText().toString();
                 String p_bank_name = profile_bank_name.getText().toString();
 
-                //check if field are empty
-                if (TextUtils.isEmpty(p_description) && TextUtils.isEmpty(p_number_of_children) &&
-                        TextUtils.isEmpty(p_what_needed) && TextUtils.isEmpty(p_phone_number) &&
-                        TextUtils.isEmpty(p_till_number) && TextUtils.isEmpty(p_bank_account) &&
-                        TextUtils.isEmpty(p_bank_name)){
-                    new showAppToast().showFailure(getContext(), "***Please each field must filled***");
-                }else{
-                    //if not update profile
-                    sendUpdatedData(p_description, p_number_of_children,p_what_needed,
-                            p_phone_number, p_till_number, p_bank_account,
-                            p_bank_name );
 
-                }
+                sendUpdatedData(p_description, p_number_of_children,p_what_needed,
+                        p_phone_number, p_till_number, p_bank_account,
+                        p_bank_name );
             }
         });
 
@@ -425,26 +416,38 @@ public class Profile extends Fragment {
                                  String p_bank_name ) {
 
         String email = user.getEmail();
-        String org_name = user.getDisplayName();
 
-        if (user != null) {
+        if (user != null){
 
             Map<String, Object> data = new HashMap<>();
-            data.put("phone_number", p_phone_number);
-            data.put("till_number", p_till_number);
-            data.put("bank_account", p_bank_account);
-            data.put("bank_name", p_bank_name);
-            data.put("description", p_description);
-            data.put("number_of_children", p_number_of_children);
-            data.put("in_need_of",p_what_needed);
 
+            if (!p_phone_number.equals("")){
+                data.put("phone_number", p_phone_number);
+            }
+            if (!p_till_number.equals("")){
+                data.put("till_number", p_till_number);
+            }
+            if (!p_bank_account.equals("")){
+                data.put("bank_account", p_bank_account);
+            }
+            if(!p_bank_name.equals("")){
+                data.put("bank_name", p_bank_name);
+            }
+            if(!p_description.equals("")){
+                data.put("description", p_description);
+            }
+            if(!p_number_of_children.equals("")){
+                data.put("number_of_children", p_number_of_children);
+            }
+            if (!p_what_needed.equals("")){
+                data.put("in_need_of",p_what_needed);
+            }
             database.collection("Orphanage")
                     .document(email)
                     .set(data, SetOptions.merge())
                     .addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void aVoid) {
-
                             uploadImage();
                         }
                     })
@@ -513,7 +516,8 @@ public class Profile extends Fragment {
                         }
                     });
         }else{
-            new showAppToast().showFailure(getContext(),"Group photo can not be empty");
+            new showAppToast().showSuccess(getContext(),"Profile updated successfully");
+            updateProfileDialog.dismiss();
         }
     }
 

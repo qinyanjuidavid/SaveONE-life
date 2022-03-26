@@ -155,7 +155,7 @@ public class Donations extends Fragment implements DonationViewInterface {
     }
 
     private void initSearch() {
-        search.setEnabled(true);
+
         search.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {

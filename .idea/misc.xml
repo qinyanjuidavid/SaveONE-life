@@ -84,6 +84,7 @@
         <entry key="app/src/main/res/drawable/popup_bg.xml" value="0.172" />
         <entry key="app/src/main/res/drawable/profile_bg.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable/splash_bg.xml" value="0.1375" />
+        <entry key="app/src/main/res/drawable/subscription_card.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/user_bg.xml" value="0.1465" />
         <entry key="app/src/main/res/drawable/user_view_bg.xml" value="0.1415" />
         <entry key="app/src/main/res/font/.xml" value="0.28125" />

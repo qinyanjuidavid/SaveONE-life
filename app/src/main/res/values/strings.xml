@@ -140,7 +140,7 @@
     <string name="in_need_most">In need most</string>
     <string name="more_information">More Information</string>
     <string name="update_profile">Update Profile</string>
-    <string name="guide">*If you have changed your account details, please update new ones below.In case you are not using the accounts, Fill those accounts with (000)</string>
+    <string name="guide">*If you have changed your account, name, number of children details, please update below. Please fill the fields that you want to update</string>
     <string name="update">UPDATE</string>
     <string name="bank_name">Bank Name</string>
     <string name="basic_information">Basic Information</string>
@@ -208,4 +208,5 @@
     <string name="send_message">Send Message</string>
     <string name="message">Message</string>
     <string name="update_location">Update Location</string>
+    <string name="group_photo">Group Photo</string>
 </resources>

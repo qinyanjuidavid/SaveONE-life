@@ -21,11 +21,4 @@ public class ProfileHolder extends AppCompatActivity {
         getWindow().setStatusBarColor(getResources().getColor(R.color.orange1, this.getTheme()));
     }
 
-    @Override
-    public void onBackPressed() {
-        if(getSupportFragmentManager().getBackStackEntryCount()>0){
-            getSupportFragmentManager().popBackStack();
-        }else {
-        }
-    }
 }
