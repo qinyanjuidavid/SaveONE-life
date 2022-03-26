@@ -18,10 +18,14 @@ public class ProfileHolder extends AppCompatActivity {
         getSupportFragmentManager().beginTransaction().add(R.id.profile_root,
                 new Profile(), "profile").commit();
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1, this.getTheme()));
-        }else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(getResources().getColor(R.color.orange1));
+        getWindow().setStatusBarColor(getResources().getColor(R.color.orange1, this.getTheme()));
+    }
+
+    @Override
+    public void onBackPressed() {
+        if(getSupportFragmentManager().getBackStackEntryCount()>0){
+            getSupportFragmentManager().popBackStack();
+        }else {
         }
     }
 }

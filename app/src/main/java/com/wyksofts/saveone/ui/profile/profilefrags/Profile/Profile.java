@@ -160,6 +160,7 @@ public class Profile extends Fragment {
         editor = pref.edit();
 
         ViewCompat.setTransitionName(arrow_back, "landing");
+        ViewCompat.setTransitionName(Update_LocationBtn, "landing2");
 
 
         if (user != null) {
@@ -226,6 +227,7 @@ public class Profile extends Fragment {
                         .setCustomAnimations(R.anim.fade_in,
                                 R.anim.fade_out)
                         .addToBackStack(null)
+                        .addSharedElement(Update_LocationBtn, "addInfo")
                         .replace(R.id.profile_root, new SelectLocationMap())
                         .commit();
 

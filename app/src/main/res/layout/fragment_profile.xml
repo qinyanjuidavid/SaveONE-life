@@ -480,7 +480,7 @@
                 <Button
                     android:id="@+id/Update_Profile"
                     android:layout_width="200dp"
-                    android:layout_height="42dp"
+                    android:layout_height="34dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
@@ -496,16 +496,15 @@
                 <Button
                     android:id="@+id/Update_Location"
                     android:layout_width="200dp"
-                    android:layout_height="42dp"
+                    android:layout_height="34dp"
                     android:layout_gravity="center"
                     android:layout_marginTop="8dp"
                     android:fontFamily="serif"
                     android:layout_marginBottom="8dp"
-                    android:background="@drawable/custom_btn"
+                    android:background="@drawable/custom_no_r_btn"
                     android:text="@string/update_location"
                     android:textColor="@color/white"
                     android:textSize="14sp"
-                    android:textStyle="bold"
                     app:icon="@drawable/baseline_volunteer_activism_24" />
 
             </LinearLayout>
