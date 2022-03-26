@@ -57,10 +57,21 @@ public class MainActivity extends AppCompatActivity {
                 .commit();
     }
 
+    public ViewPager getViewPager() {
+        return viewPager;
+    }
+
+    public void setViewPager(ViewPager viewPager) {
+        this.viewPager = viewPager;
+    }
+
+    ViewPager viewPager;
+
+
+
     @Override
     public void onBackPressed() {
-
-        ViewPager viewPager = findViewById(R.id.pager);
+        viewPager = findViewById(R.id.pager);
         if (viewPager.getCurrentItem() == 2){
             viewPager.setCurrentItem(0);
         }else if (viewPager.getCurrentItem() == 1){

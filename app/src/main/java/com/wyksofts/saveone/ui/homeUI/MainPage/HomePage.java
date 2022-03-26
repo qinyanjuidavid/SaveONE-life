@@ -15,6 +15,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -44,6 +45,7 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.thekhaeng.recyclerviewmargin.LayoutMarginDecoration;
 import com.wyksofts.saveone.Adapters.Orphanages.Orphanage.OrphanageListAdapter;
+import com.wyksofts.saveone.App.MainActivity;
 import com.wyksofts.saveone.BuildConfig;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
 import com.wyksofts.saveone.R;
@@ -83,6 +85,8 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     SharedPreferences.Editor editor;
     SharedPreferences pref;
 
+    //view
+    View view;
 
 
     public HomePage() {
@@ -102,6 +106,8 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home_page, container, false);
+
+        this.view = view;
 
         database = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
@@ -480,6 +486,13 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
         //open detailed fragment here and pass this values
         startActivity(new Intent(getContext(), DetailedActivity.class));
+    }
+
+    @Override
+    public void onNavigationItemSelected(String name) {
+        //open map
+        ViewPager viewPager = getActivity().findViewById(R.id.pager);
+        viewPager.setCurrentItem(1);
     }
 
 }

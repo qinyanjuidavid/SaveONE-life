@@ -55,7 +55,6 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
     SharedPreferences.Editor editor;
     SharedPreferences pref;
 
-    FloatingActionButton show_polyline;
 
     EditText search;
 
@@ -65,9 +64,6 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
     List<LocationModel> listdata;
 
     private LatLng mOrigin;
-    private LatLng mDestination;
-    private Polyline mPolyline;
-    List<LatLng> mMarkerPoints;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -84,18 +80,9 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
         pref = getContext().getSharedPreferences("location", 0);
         editor = pref.edit();
 
-        String curr_lat = pref.getString("latitude", null);
-        String curr_long = pref.getString("longitude", null);
-
-        mOrigin = new LatLng(Double.parseDouble(curr_lat), Double.parseDouble(curr_long));
-
         listdata = new ArrayList<LocationModel>();
-        mMarkerPoints = new ArrayList<>();
 
         search = view.findViewById(R.id.search_orphanage);
-        show_polyline = view.findViewById(R.id.show_polyline);
-
-        show_polyline.setVisibility(View.GONE);
 
         return view;
     }
@@ -191,9 +178,8 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
 
 
     //search an orphanage in the map
-    private void filter(String orphanage_name) {
+    public void filter(String orphanage_name) {
         ArrayList<LocationModel> list_array = new ArrayList<>();
-
 
         //if orphanage is empty
         if (orphanage_name.isEmpty()){
@@ -244,10 +230,16 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
             googleMap.getUiSettings().setMapToolbarEnabled(true);
             googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
 
+            String curr_lat = pref.getString("latitude", null);
+            String curr_long = pref.getString("longitude", null);
+
+            mOrigin = new LatLng(Double.parseDouble(curr_lat), Double.parseDouble(curr_long));
+
             googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mOrigin, 8.0f));
             CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
             googleMap.animateCamera(zoom);
         }
     }
+
 
 }

@@ -11,9 +11,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.wyksofts.saveone.R;
 
 public class OrphanageViewHolder extends RecyclerView.ViewHolder {
-    ImageView group_image, verified;
+    ImageView group_image, verified, navigate;
     TextView name, location, number_of_c;
     Button show_more;
+
 
     public OrphanageViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -23,5 +24,6 @@ public class OrphanageViewHolder extends RecyclerView.ViewHolder {
         number_of_c = itemView.findViewById(R.id.org_number);
         verified = itemView.findViewById(R.id.verified_home);
         show_more = itemView.findViewById(R.id.detailed_view_btn);
+        navigate = itemView.findViewById(R.id.navigate);
     }
 }

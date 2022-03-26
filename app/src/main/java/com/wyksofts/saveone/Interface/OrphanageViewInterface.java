@@ -11,4 +11,5 @@ public interface OrphanageViewInterface {
                             String till_number, String email,
                             String verified, String what_needed, TextView text);
 
+    void onNavigationItemSelected(String name);
 }

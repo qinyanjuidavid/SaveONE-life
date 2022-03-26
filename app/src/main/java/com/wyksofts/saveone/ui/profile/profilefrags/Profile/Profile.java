@@ -51,6 +51,7 @@ import com.google.firebase.storage.UploadTask;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.showLogOutDialog;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.showMpesaDialog;
+import com.wyksofts.saveone.ui.landingUI.authfrags.Orphanage.OtherInfo.SelectLocationMap;
 import com.wyksofts.saveone.ui.profile.profilefrags.Donations.Donations;
 import com.wyksofts.saveone.util.AlertPopDiag;
 import com.wyksofts.saveone.util.Constants.Constants;
@@ -68,7 +69,7 @@ public class Profile extends Fragment {
     CardView profile_location_card,profile_number_ch_card, profile_in_need_card, not_verified_card;
     TextView prof_location,prof_number_ch, prof_in_need;
     TextView profile_description, profile_country, profile_title;
-    Button updateProfileBtn, copyNumber;
+    Button updateProfileBtn, copyNumber, Update_LocationBtn;
     LinearLayout subscribe_na_mpesa;
 
     //update profile dialog
@@ -150,6 +151,7 @@ public class Profile extends Fragment {
         prof_in_need = view.findViewById(R.id.prof_in_need);
 
         updateProfileBtn = view.findViewById(R.id.Update_Profile);
+        Update_LocationBtn = view.findViewById(R.id.Update_Location);
 
         user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -211,6 +213,22 @@ public class Profile extends Fragment {
             @Override
             public void onClick(View view) {
                 getActivity().finish();//go back
+            }
+        });
+
+        Update_LocationBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //show update map
+                getActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .addToBackStack(null)
+                        .setCustomAnimations(R.anim.fade_in,
+                                R.anim.fade_out)
+                        .addToBackStack(null)
+                        .replace(R.id.profile_root, new SelectLocationMap())
+                        .commit();
+
             }
         });
 

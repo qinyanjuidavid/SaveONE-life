@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.wyksofts.saveone.Interface.OrphanageViewInterface;
@@ -77,6 +78,14 @@ public class OrphanageListAdapter extends RecyclerView.Adapter<OrphanageViewHold
                         data.getEmail(), data.getVerified(),
                         data.getWhat_needed(), holder.name
                 );
+            }
+        });
+
+        //on navigate button clicked
+        holder.navigate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                viewInterface.onNavigationItemSelected(data.getName());
             }
         });
 
