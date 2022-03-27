@@ -102,9 +102,10 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 > ## Orphanage / Children's Home Authentication 
 > - To authenticate an orphanage, the Orphanage manager is supposed to register the orphanage by clicking the Register button, he will pass through 4 different fragments sections as shown below.
-> - An orphanage is required to be verified to get more donations, Verification process requires an orphanage to channel $5 (annually) and the exact location of the orphanage if it was not provided.
+> - An orphanage is required to be verified to start receiving donations.
+> - Verification process requires an orphanage to channel $5 (annually) and the exact location of the orphanage if it was not provided.
 > - The verification process will help donors to be more convinced that the orphanage exists.
-> - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE's life. Money can be channeled using M-Pesa at the moment.
+> - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE's life App by improving the service of the app. Money can be channeled using M-Pesa at the moment.
 > - Below are the profile pages for the verified and not verified orphanage.
 > - <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
