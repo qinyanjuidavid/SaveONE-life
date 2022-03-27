@@ -43,7 +43,10 @@ children they are hosting
 > We are also planing to extend the app from being used inside the country to whole Africa and the whole world as well.
 
 ## App Testing.
-> We tested SaveONE-life App with two children's homes as shown on the screenshoots below. The orphanage managers were very excited because they will be able to share their needs via SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
+> We tested SaveONE-life App with two children's homes as shown on the screenshoots below.
+> Tumaini Children's home - is an orphange located along Nairobi Mombasa road voi, the orphanage has a capacity of 55 orphans. Contact +254724723901.
+> GRACE MWATATE CHILDRENS'S HOME - Is an orphanage located along voi - mwatate road that was initiated way back in 2008, they orphanage holds 41 children's, Contact +254710153812.
+>  The orphanage managers were very excited because they will be able to share their needs via SaveONE life to the community. Their wish is for the project to succed for the benefit of the young generation, for real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
 
 <img src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" data-canonical-src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" width="200" height="400" />
 
