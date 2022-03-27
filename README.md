@@ -2,54 +2,57 @@
 
 ## Introduction
 > - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
-> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the bread winners, most children find themselves without sufficient financial, social and emotional support and these children's futures become quite uncertain.
-> - They end up straining to access basic needs such as food, clothing, course books, writing materials and even shelter that are essential for normal living. In addition to that, orphans who have been traumatized by the death of their parents can become antisocial. The fact that society appears to have become oblivious to their predicament hasn't helped matters.
-> - Those who have found themselves in children’s homes have been a little bit lucky to have some access to shelter, food and clothing but in limited quantities compared to other children 
+> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the breadwinners, most children find themselves without sufficient financial, social, and emotional support and these children's futures become quite uncertain.
+> - They end up straining to access basic needs such as food, clothing, course books, writing materials, and even shelter that are essential for normal living. In addition to that, orphans who have been traumatized by the death of their parents can become antisocial. The fact that society appears to have become oblivious to their predicament hasn't helped matters.
+> - Those who have found themselves in children’s homes have been a little bit lucky to have some access to shelter, food, and clothing but in limited quantities compared to other children 
 > - Most of the registered 800 children’s homes in Kenya depend on donors to provide these basic needs of these children and the finances are mostly very limited to providing food for all those 
 children they are hosting
 
 
 ## Problem
-> - The major problem gotten from the user requirement gathering phase, has been the donors trying to locate the orphanages in the country especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing and education materials to donate. They shared on their difficulty of accessing the locations of the orphanages in the areas around. 
-> - Also we were curious on how and when those young souls, they are in need of various basic needs items.
+> - The major problem gotten from the user requirement gathering phase, has been the donors trying to locate the orphanages in the country, especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing, and education materials to donate. They shared their difficulty of accessing the locations of the orphanages in the areas around. 
+> - Also we were curious about how and when those young souls, are in need of various basic needs items.
 
 ## Solution
 > - That’s where the Save ONE-life android app comes in. -it’s an app built with java and google technology that helps donors to locate home orphanages all across the country and make their donations.
-> - Knowing which child requires help, when they require this help, and where they actually are to be accorded this help is major step in alleviating the conditions of these orphaned children.
+> - Knowing which child requires help, when they require this help, and where they actually are to be accorded this help is a major step in alleviating the conditions of these orphaned children.
 > - We desire that orphaned children will experience a normal life just as children who have found themselves in their families.
 
 
 ## SDGs and their Targets
 > SaveOne-Life is an android mobile application that helps solve three United Nations  Sustainable Development Goals(SDG). These goals are;
 > #### SDG 1: No poverty
-> - Target 1.2: By 2030, reduce at least by half the proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions.
+> - Target 1.2: By 2030, reduce at least by half the proportion of men, women, and children of all ages living in poverty in all its dimensions according to national definitions.
 
 > #### SDG 2: Zero Hunger
-> - Target 2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious and sufficient food all year round. 
+> - Target 2.1: By 2030, end hunger and ensure access by all people, in particular the poor and people in vulnerable situations, including infants, to safe, nutritious, and sufficient food all year round. 
 
 > #### SDG 4: Quality Education
-> - Target 4.1: By 2030, ensure that all girls and boys complete free, equitable and quality primary and secondary education leading to relevant and effective learning outcomes.
+> - Target 4.1: By 2030, ensure that all girls and boys complete free, equitable, and quality primary and secondary education leading to relevant and effective learning outcomes.
 
 
 ## Scalability of the project.
 > SaveONE Life project is scalable,
-> We are planning to implement an additional feature regarding the health of the children, whereby Orphanage managers can add and indicate the number of children who are not in good health, thus also being able to integrate the good will health organizations to offer free medical services and even hold medical camps.
->  This good will health organizations will also be able to log into the app and locate those orphaned childfen that are in need.
+> We are planning to implement an additional feature regarding the health of the children, whereby Orphanage managers can add and indicate the number of children who are not in good health, thus also being able to integrate the goodwill health organizations to offer free medical services and even hold medical camps.
+>  This goodwill health organizations will also be able to log into the app and locate those orphaned children that are in need.
 
 > M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. 
-> In future we are planning to integrate mpesa APIs with our app, so that it can be easy for donors to donate with mpesa with a single touch from the app.
-> We are also plaining to add more methods / medium of donations like stripe, paypal and many other.
+> In the future we are planning to integrate M-Pesa APIs with our app so that it can be easy for donors to donate with M-Pesa with a single touch from the app.
+> We are also planning to add more methods/mediums of donations like stripe, PayPal, and many others.
 
-> We are also planing to extend the app from being used inside the country to whole Africa and the whole world as well.
+> We are also planning to extend the app from being used inside the country to the whole of Africa and the whole world as well.
 
 ## App Testing.
-> We tested SaveONE-life App with two children's homes as shown on the screenshoots below. The orphanage managers were very excited because they will be able to share their needs via SaveONE life, for the real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
+> - We tested SaveONE-life App with two children's homes as shown on the screenshots below.
+> - Tumaini Children's home - is an orphanage located along Nairobi Mombasa road Voi, the orphanage has a capacity of 55 orphaned children. Contact +254724723901.
+> - GRACE MWATATE CHILDREN'S HOME - Is an orphanage located along Voi - Mwatate road that was initiated way back in 2008, the orphanage holds 41 orphaned children, Contact +254710153812.
+> - The orphanage managers were very excited because they will be able to share their needs via SaveOne-life with the community. Their wish is for the project to succeed for the benefit of the young generation, for a real experience you can download SaveONE life from [Set Up](#SaveOne-Life)
 
-<img src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" data-canonical-src="https://user-images.githubusercontent.com/46722362/158591591-e0b1c6b8-d784-4a36-bebb-6a393d21424a.png" width="200" height="400" />
+<img src="https://user-images.githubusercontent.com/46722362/160270804-d985e630-880e-47dd-9f8b-11243acf9797.png" data-canonical-src="https://user-images.githubusercontent.com/46722362/160270804-d985e630-880e-47dd-9f8b-11243acf9797.png" width="200" height="400" />
 
 
 ## Technology
-SaveOne-Life is an android mobile application developed using Android Studio, Programming language used is JAVA and at the backend we use Google Technology.
+SaveOne-Life is an android mobile application developed using Android Studio, the Programming language used is JAVA and at the backend, we use Google Technology.
 
 ## Google Technology Overview
 > ### Firebase Auth.
@@ -61,21 +64,21 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159161005-e108a376-1e2e-4fda-b45f-d068dffff38e.png"
        width="240" height="450" />
 
-> ### Firebase firestore.
-> - We used firebase firestore to store orphanages, users / donors, location and chats message from the forum data so as we can access data from the backend with ease. 
+> ### Firebase Firestore.
+> - We used firebase Firestore to store orphanages, users/donors, location, and chats message from the forum data so as we can access data from the backend with ease. 
 
 > ### Firebase functions and Google cloud.
-> - We used firebase functions to listen to any changes on Chats collection from firestore that is when a new message is added or sent the function is supposed to triger a push notification to the users subscribed to the topic on SaveONE life forum.
+> - We used firebase functions to listen to any changes on Chats collection from Firestore that is when a new message is added or sent the function is supposed to trigger a push notification to the users subscribed to the topic on the SaveONE life forum.
 > - We used Google cloud to write and deploy the function.
 
 > ### Firebase cloud messaging.
-> - We used firebase cloud messaging dependecy to send push notifications when there is a new message in SaveONE life forum.
+> - We used firebase cloud messaging dependency to send push notifications when there is a new message in the SaveONE life forum.
 
 > ### Google cloud.
-> - Google cloud was used to create google map api that helped us to implement Google maps on our project.
+> - Google cloud was used to create Google Maps API which helped us to implement Google maps on our project.
 
 > ### Firebase Storage.
-> - This dependecy helped us to store user profile images when opehanage upload their group photo.
+> - This dependency helped us to store user profile images when the orphanage uploads their group photo.
 
 
 
@@ -85,7 +88,7 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159177572-b96ff294-b3c4-4495-9884-ffdf931cffbb.png"
        width="240" height="460" />
 
-- On landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
+- On the landing page we have 4 buttons which include Donate Now, Register an Orphanage, Register as a donor, and Login button.
 
 ## Authentication
 > ## Donor Authentication 
@@ -94,14 +97,15 @@ SaveOne-Life is an android mobile application developed using Android Studio, Pr
 implementation 'com.google.firebase:firebase-auth:21.0.1'
 
 ```
-- Donor can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#Home Page).
-> - If donor wish to participate on SaveONE life forum, he/she must have an account.
+- Donors can opt to Donate without an account, but this has limitations for example he/she(Donor) will not be able to participate on [SaveONE -life forum](#Home Page).
+> - If donors wish to participate on the SaveONE life forum, he/she must have an account.
 
-> ## Orphange / Children's Home Authentication 
-> - To authenticate an orphanage, Orphanage manager is supposed to register the orphange by clicking Register button, he will pass through 4 different fragments sections as shown below.
-> - An oprhanage is required to be verified to get more donations, Verification process requires an orphanage to channel $5 (annually) and exact location of the orphanage if it was not provided.
-> - Verification process will help donors to be more conviced that the orphanage exists.
-> - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE life. Money can be channeled using mpesa at the moment.
+> ## Orphanage / Children's Home Authentication 
+> - To authenticate an orphanage, the Orphanage manager is supposed to register the orphanage by clicking the Register button, he will pass through 4 different sections as shown below.
+> - An orphanage is required to be verified to start receiving donations.
+> - Verification process requires an orphanage to channel $5 (annually) and the exact location of the orphanage if it was not provided.
+> - The verification process will help donors to be more convinced that the orphanage exists.
+> - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE's life App by improving the service of the app. Money can be channeled using M-Pesa at the moment.
 > - Below are the profile pages for the verified and not verified orphanage.
 > - <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
@@ -111,7 +115,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        width="220" height="450" />
 
 ### 1. Basic Information 
-- On this page Orphanage keeper is supposed to fill in name, email and password of the orphange as shown.
+- On this page Orphanage manager is supposed to fill in the name, email, and password of the orphanage as shown.
 - The following dependencies were used.
 
 ```
@@ -120,17 +124,17 @@ implementation 'com.google.firebase:firebase-database:20.0.3'
 implementation 'com.google.firebase:firebase-firestore:24.0.1'
 implementation 'com.google.firebase:firebase-auth:21.0.1'
 ```
-- We used firestore database with a collection name Orphanage to store orphanage data.
-- Orphange data is stored as a HashMap on the firestore database.
+- We used the Firestore database with a collection name Orphanage to store orphanage data.
+- Orphanage data is stored as a HashMap on the Firestore database.
 
        
 ### 2. Additional Information
--  On this page Orphanage manager is supposed to fill in Orphanage Group Photo, Phone number, Till number, Bank account number, Bank Name and country where the orphange is located.
-- On this page we used firebase storage dependecy and storage reference class so as to enable user to upload group photo to firebase storage database.
-- On this fragment we will create a sharable link of the image uploaded.
+-  On this page the Orphanage manager is supposed to upload an Orphanage Group Photo, fill in the Phone number, Till number, Bank account number, Bank Name, and country where the orphanage is located.
+- On this page, we used firebase storage dependency and storage reference class so as to enable users to upload group photos to the firebase storage database.
+- On this fragment, we will create a sharable link of the image uploaded.
 
 ### 3. Other Information
-- On this page Orphanage manager is supposed to fill in Brief description about the orphanage, number of children in the orphanage, what they need most (include food, water, clothings, money for school fees) and the location address of the orphanage. 
+- On this page Orphanage manager is supposed to fill in a brief description of the orphanage, the number of children in the orphanage, what they need most (include food, water, clothes, money for school fees etc.), and the location address of the orphanage. 
 
 <img src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
@@ -145,9 +149,9 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        
 - ### 4. Orphanage location
 - Orphanage location fragment shows a google map showing the current location of the user.
-- Orphanage manager is supposed to drag and drop the pin to the actual position of the orphanage and get the current coordinates, on button click, coordinates are recorded to the firestore database.
-- We used google map API, the following dependecies were used  
-- We created Google Map Api from google clouds
+- Orphanage manager is supposed to drag and drop the pin to the actual position of the orphanage and get the current coordinates, on button click, coordinates are recorded to the Firestore database.
+- We used google map API, the following dependencies were used  
+- We created Google Map Api from Google clouds
  ```
  build.grandle(:app)
  
@@ -178,21 +182,21 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        width="210" height="450" />
        
 ```
-NB: When an orphange is registered it should be verified and in future we are planing to create an admin app for the orphanage verification, for the moment we are verfying orphanages from the backened. The process of verification may take 2 to 3 days. 
+NB: When an orphanage is registered it should be verified and in the future we are planning to create an admin app for the orphanage verification, for the moment we are verifying orphanages from the backend. The process of verification may take 2 to 3 days. 
 ```
 
 ## Home Page
-- On home page we have 3 fragments.
-- We used tablayout to show the 3 pages, which are;
+- On the home page, we have 3 fragments.
+- We used tab layout to show the 3 pages, which are;
 
 > ### 1. Home
-> - On home page we are fetching orphanages data from firestore database, and presenting them at the frontened as cardviews in the recyclerview view.
-> - Each cardview is showing some and importance details about the orphange which include name, location address, number of children's in the orphanage and a donate button at the bottom.
-> - When donate here button is clicked it shows the detailed fragment about the orphanage and a donate floating action button at the bottom.
-> -  On this detailed fragment page it shows map view with a marker showing the exact location of the orphanage home whereby if you click on marker it shows direction to the orphanage location on Google map (but in future we are planing to show it on the map).
-> - Detailed fragment shows more about the the orphanage, contacts and donations medium which are bank, phone number (can be used to call the orphanage when clicked) and donate na mpesa.
-> - The above methods are used for the liquid donation (eg money etc), while the floating action button at the bottom opens a dialog for the solid donations which include *(clothings, beddings, food stuffs and educational materials )* as shown in screenshot (3).
-> - When donor donates the above items, Data is recorded to the firestore dabase with the name **Donations** and a document name of the orphanage email.
+> - On the home page, we are fetching orphanages data from the Firestore database, and presenting them at the frontend as card view in the recycler view.
+> - Each card view is showing some important details about the orphanage which include name, location address, number of children in the orphanage, and a donate button at the bottom.
+> - When donating here button is clicked it shows the detailed fragment about the orphanage and a donate floating action button at the bottom.
+> -  On this detailed fragment page it shows a map view with a marker showing the exact location of the orphanage home whereby if you click on marker it shows the direction to the orphanage location on Google map (but in future, we are planning to show it on the map).
+> - Detailed fragment shows more about the orphanage, contacts, and donations medium which are a bank, phone number (can be used to call the orphanage when clicked) and donate na M-Pesa.
+> - The above methods are used for the liquid donation (eg money etc), while the floating action button at the bottom opens a dialog for the solid donations which include *(clothing, beddings, foodstuffs, health services, and educational materials )* as shown in the screenshot (3).
+> - When the donor donates the above items, Data is recorded to the Firestore database with the name **Donations** and a document name of the orphanage email.
 > - Below screenshots shows the whole process.
 
 <img src="https://user-images.githubusercontent.com/46722362/158621972-77ce0bd3-b684-4fcb-84e8-fa190adf9c8c.png"
@@ -207,9 +211,11 @@ NB: When an orphange is registered it should be verified and in future we are pl
 
 
 > ### 2. MapView
-> - SaveONE life mapview shows the different location of the orphanages across east Africa.
+> - SaveONE life map view shows the different locations of the orphanages across east Africa.
 > - Orphanages are being represented by a custom marker as shown in the screenshots
-> - On this fragment we used a Google map whereby data (Location Coordinates) are fetched from firestore database which include coordinates and name of the orphnage.
+> - On this fragment, we used a Google Map SDK whereby data (Location Coordinates) are fetched from the Firestore database which includes coordinates and the name of the orphanage.
+> - On this Fragment user or donor is able to search for the orphanage by name and navigate to the location using Google Maps.
+> - We created a map API from Google cloud.
 > - We used a model view to store fetched data as a List 
 > 
 ```
@@ -228,28 +234,36 @@ for (int i = 0; i < listdata.size(); i++) {
 ```
 > - Here is a screenshot showing orphanages from different locations.
 
-<img src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
+<img src="https://user-images.githubusercontent.com/46722362/160268874-3bf1a123-0be8-4eb3-ab16-6bc73d0f60f3.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160268874-3bf1a123-0be8-4eb3-ab16-6bc73d0f60f3.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160268952-582a6c76-4716-4776-b98f-99fdd4938e53.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160268952-582a6c76-4716-4776-b98f-99fdd4938e53.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160269034-b670c35c-5509-4b4f-b3a9-cf487f644caf.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269034-b670c35c-5509-4b4f-b3a9-cf487f644caf.png"
        width="220" height="450" />
 
 
 > ### 3. Public Forum (SaveONE life)
-> Is a plaform whereby public and all community can chat and give reviews or comments about orphanage homes.
+> Is a platform whereby the public and all communities can chat and give reviews or comments about orphanage homes.
 > On this fragment we used;
 > #### Firestore database for storing messages
 > - With a collection name (Chats), time+date as the document path.
-> - Messages are saved as hashmap inside an array, which include (message, email, name, time and data).
+> - Messages are saved as a document, which includes (message, email, name, time, and data).
 > - To send a message you can either type or use Google Speech Recognizer.
+> - Also users can opt to share images and documents to the community forum. 
+> - Images are stored in firebase storage.
  ```
  ArrayList result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
  message.setText(result.get(0).toString().toLowerCase());
 ```
 > - Only logged users are allowed to send a message.
-> - At first onCreateView we retrive messages from firestore, we used an adapter and recycler view to hold data.
+> - At first onCreateView, we retrieve messages from Firestore, we used an adapter and recycler view to hold data.
 
 > #### Google Cloud Function
-> - We used a google cloud function to listen to any changes on Chats collection, when a message is written or deleted.
-> - This function will triggger firebase a push notification to those users that are subscribed to the topic.
+> - We used a google cloud function to listen to any changes on Chats collection when a message is written or deleted.
+> - This function will trigger a firebase push notifications to those users that are subscribed to the topic.
 > - We used the code below for push notifications
 ```
 const functions = require('firebase-functions');
@@ -279,8 +293,17 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 > - To send push notifications to the user's we used ``` implementation 'com.google.firebase:firebase-messaging' ``` dependecy and a Chat notification class that extend FirebaseMessagingService and overrided onMessageReceived to handle everything.
 > ##Screenshots
 >
-> <img src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
+> <img src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160269807-b26b0409-21c9-42f6-b8f2-98100aecd1aa.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269807-b26b0409-21c9-42f6-b8f2-98100aecd1aa.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160269675-f64b4e01-c77a-450e-bb37-78e285602b01.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269675-f64b4e01-c77a-450e-bb37-78e285602b01.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
@@ -291,8 +314,8 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 
 
 ## Orphanage Profile Page
-> - *On orphanage profile page,* Orphanage manager/ Admin will be able to update profile and other information which include ( group photo, number of childrens, phone number and other account information)
-> - Also orphanage will be able to query through and see the donations they have received, this data is restored from firebase firestore.
+> - *On the orphanage profile page,* Orphanage manager/ Admin will be able to update the profile and other information which include ( group photo, number of children, phone number, and other account information)
+> - Also orphanages will be able to query through and see the donations they have received, this data is restored from the firebase Firestore.
 > - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
 
 <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
@@ -310,13 +333,20 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 
 
 # Running the project
+> ### App testing
+> - We tested the app using;
+> - compileSdkVersion 31,
+> -  buildToolsVersion "30.0.3",
+> - minSdk 23,
+> - targetSdk 31
+
 ## Installation by Downloading the APK
-- To download the apk click the link [SaveOne-Life]()
-- Install the apk on your android mobile phone
+- To download the .apk click the link [SaveOne-Life]()
+- Install the .apk on your android mobile phone
 ## Installation by Cloning to Android Studio
 - Download Android Studio
 - Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
-- Run the android app on Android Studio
+- Run the android app from Android Studio after cloning.
 
 ## License
 ```
