@@ -346,7 +346,7 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 ## Installation by Cloning to Android Studio
 - Download Android Studio
 - Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
-- Run the android app on Android Studio
+- Run the android app from Android Studio after cloning.
 
 ## License
 ```
