@@ -249,8 +249,10 @@ for (int i = 0; i < listdata.size(); i++) {
 > On this fragment we used;
 > #### Firestore database for storing messages
 > - With a collection name (Chats), time+date as the document path.
-> - Messages are saved as hashmap inside an array, which include (message, email, name, time and data).
+> - Messages are saved as a document, which include (message, email, name, time and data).
 > - To send a message you can either type or use Google Speech Recognizer.
+> - Also users can opt to share images and documents to the community forum. 
+> - Images are store in firebase storage.
  ```
  ArrayList result = data.getStringArrayListExtra(RecognizerIntent.EXTRA_RESULTS);
  message.setText(result.get(0).toString().toLowerCase());
@@ -293,8 +295,8 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 > <img src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
        width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/160269587-27f2b45d-7179-4266-809f-97af97c3fa34.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269587-27f2b45d-7179-4266-809f-97af97c3fa34.png"
+       <img src="https://user-images.githubusercontent.com/46722362/160269807-b26b0409-21c9-42f6-b8f2-98100aecd1aa.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269807-b26b0409-21c9-42f6-b8f2-98100aecd1aa.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
