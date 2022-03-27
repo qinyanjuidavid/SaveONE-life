@@ -35,6 +35,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.wyksofts.saveone.R;
@@ -71,6 +74,9 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
 
     private LatLng mOrigin;
 
+    FirebaseFirestore database;
+    FirebaseUser user;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,6 +91,9 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
 
         pref = getContext().getSharedPreferences("location", 0);
         editor = pref.edit();
+
+        database = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
 
         listdata = new ArrayList<LocationModel>();
 
@@ -114,7 +123,7 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
     //get location data
     public void getLocationsData() {
 
-        Constants.database.collection("Coordinates")
+        database.collection("Coordinates")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -272,10 +281,12 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
         int height = LinearLayout.LayoutParams.MATCH_PARENT;
         boolean focusable = true;
 
-        //window
+        //window height and width
         popupWindow = new PopupWindow(popupView, width, height, focusable);
-
         popupWindow.showAtLocation(view, Gravity.CENTER | Gravity.BOTTOM, 0, 0);
+
+        //set animation
+        popupWindow.setAnimationStyle(R.style.PopupWindowAnimation);
 
         normal = popupView.findViewById(R.id.normal);
         satellite = popupView.findViewById(R.id.satellite);

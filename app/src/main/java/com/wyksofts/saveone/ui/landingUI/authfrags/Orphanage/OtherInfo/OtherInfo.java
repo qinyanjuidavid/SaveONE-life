@@ -39,7 +39,6 @@ public class OtherInfo extends Fragment{
     FirebaseFirestore database;
     EditText org_description,org_children, location_address, org_in_need;
 
-    Dialog congratulationsDialog;
 
 
     public OtherInfo() {

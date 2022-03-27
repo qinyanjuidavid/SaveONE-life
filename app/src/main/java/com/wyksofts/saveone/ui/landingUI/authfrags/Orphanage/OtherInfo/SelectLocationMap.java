@@ -69,7 +69,6 @@ public class SelectLocationMap extends Fragment implements
 
     //enable location dialog
     Dialog enable_locationDialog;
-    Location location;
     LocationManager lm;
     boolean isGPS = false;
     boolean isNetwork = false;

@@ -174,6 +174,10 @@ public class SignUpDonor extends Fragment {
     }
 
     private void signIn() {
+
+        //logout any logged in user
+        FirebaseAuth.getInstance().signOut();
+
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
         google_loading.setVisibility(View.VISIBLE);
@@ -183,7 +187,6 @@ public class SignUpDonor extends Fragment {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        //Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             try {

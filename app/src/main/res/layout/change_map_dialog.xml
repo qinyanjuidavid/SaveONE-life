@@ -5,12 +5,14 @@
     android:layout_height="fill_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
     <androidx.cardview.widget.CardView
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/white"
         app:cardCornerRadius="12.0dip"
         app:cardElevation="12.0dip">
+
         <LinearLayout
             android:orientation="vertical"
             android:padding="8.0dip"
@@ -108,7 +110,10 @@
                         android:layout_height="wrap_content"/>
 
                 </LinearLayout>
+
             </LinearLayout>
+
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

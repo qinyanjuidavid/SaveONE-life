@@ -69,15 +69,13 @@ public class DetailedInfo extends Fragment implements OnMapReadyCallback {
 
     //donate
     FloatingActionButton donate;
-    Dialog donateDialog, mpesa_dialog;
+    Dialog donateDialog;
 
     //album images variables
     List<AlbumModels> listdata;
     AlbumsAdapter adapter;
     SliderView recyclerAlbumView;
 
-
-    private  FirebaseFunctions mFunctions;
 
 
     public DetailedInfo() {

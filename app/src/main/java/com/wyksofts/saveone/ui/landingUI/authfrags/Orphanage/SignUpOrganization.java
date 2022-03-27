@@ -40,7 +40,6 @@ public class SignUpOrganization extends Fragment {
     EditText OrgEmail, OrgName, OrgPassword, OrgPasswordConfirm;
 
     ProgressBar loading_bar;
-    FirebaseAuth mAuth;
 
     SharedPreferences.Editor editor;
     SharedPreferences pref;

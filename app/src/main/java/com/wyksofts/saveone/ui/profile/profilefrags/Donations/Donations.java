@@ -90,6 +90,7 @@ public class Donations extends Fragment implements DonationViewInterface {
 
         database = FirebaseFirestore.getInstance();
         user = FirebaseAuth.getInstance().getCurrentUser();
+
         recyclerView = view.findViewById(R.id.donations_recyclerView);;
         search = view.findViewById(R.id.search_orphanage);
         groupPhoto = view.findViewById(R.id.profile_image);
@@ -99,14 +100,11 @@ public class Donations extends Fragment implements DonationViewInterface {
 
         search = view.findViewById(R.id.search_donation);
 
-        user = FirebaseAuth.getInstance().getCurrentUser();
-
         //init UI
         initUI();
 
         //adapter
         adapter = new DonationsListAdapter(listdata,getContext(), this);
-        database = FirebaseFirestore.getInstance();
 
         //shared preference
         pref = getContext().getSharedPreferences("user", 0);

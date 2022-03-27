@@ -81,7 +81,7 @@ public class ResetPasswordDialog extends View{
                     sendBtn.setVisibility(View.VISIBLE);
                     progressBar.setVisibility(View.GONE);
                     if (!param1Task.isSuccessful()) {
-                        new showAppToast().showSuccess(getContext(),
+                        new showAppToast().showFailure(getContext(),
                                 "Invalid Email!");
                     } else {
                         new showAppToast().showSuccess(getContext(),

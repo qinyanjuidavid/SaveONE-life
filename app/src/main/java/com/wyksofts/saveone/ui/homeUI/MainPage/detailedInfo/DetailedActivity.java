@@ -35,7 +35,6 @@ public class DetailedActivity extends AppCompatActivity{
         getWindow().setStatusBarColor(getResources().getColor(R.color.colorAccent, this.getTheme()));
 
 
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.detailed_layout, new DetailedInfo())

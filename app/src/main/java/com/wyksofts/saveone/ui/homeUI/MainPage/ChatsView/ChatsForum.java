@@ -43,6 +43,10 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -57,7 +61,6 @@ import com.wyksofts.saveone.models.ChatModel.Chats.ChatsModel;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.rMessagesNotifications;
 import com.wyksofts.saveone.ui.profile.ProfileHolder;
 import com.wyksofts.saveone.ui.homeUI.HelperClasses.NoAccountFound;
-import com.wyksofts.saveone.util.Constants.Constants;
 import com.wyksofts.saveone.util.CurrentDay;
 import com.wyksofts.saveone.util.showAppToast;
 
@@ -79,6 +82,8 @@ public class ChatsForum extends Fragment {
     //toolbar
     CircleImageView user_image;
     TextView user_name, user_email;
+    FirebaseUser user;
+    FirebaseFirestore database;
 
     //request code for voice recognation
     private final int REQ_CODE = 100;
@@ -146,6 +151,9 @@ public class ChatsForum extends Fragment {
 
         this.view = view;
 
+        database = FirebaseFirestore.getInstance();
+        user = FirebaseAuth.getInstance().getCurrentUser();
+
         recyclerView = view.findViewById(R.id.chat_recyclerView);
 
         message = view.findViewById(R.id.write_message);
@@ -180,7 +188,6 @@ public class ChatsForum extends Fragment {
 
         //adapter
         adapter = new ChatAdapter(list_data,getContext());
-
         return view;
     }
 
@@ -189,19 +196,19 @@ public class ChatsForum extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         //set values
-        if (Constants.user != null) {
+        if (user != null) {
             user_layout.setVisibility(View.VISIBLE);
 
             //set email and name
-            user_email.setText(Constants.user.getEmail());
-            user_name.setText(Constants.user.getDisplayName());
+            user_email.setText(user.getEmail());
+            user_name.setText(user.getDisplayName());
 
             //get image url from
             String url = pref.getString("url",null);
 
-            if (Constants.user.getPhotoUrl() !=null){
+            if (user.getPhotoUrl() !=null){
                 //set google url
-                loadImage(Constants.user.getPhotoUrl().toString());
+                loadImage(user.getPhotoUrl().toString());
 
             }else if(url != null){
                 //set share preference url
@@ -213,6 +220,22 @@ public class ChatsForum extends Fragment {
                         .getResources().getDrawable(R.drawable.imgg));
                 loadImage(image_url);
             }
+
+
+            image_post_layout.setVisibility(View.GONE);
+
+            attach_file.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    //open images
+                    if (image_post_layout.getVisibility() != View.VISIBLE){
+                        image_post_layout.setVisibility(View.VISIBLE);
+                    }else{
+                        image_post_layout.setVisibility(View.GONE);
+                    }
+                    TransitionManager.beginDelayedTransition(card);
+                }
+            });
 
 
         }else{
@@ -270,7 +293,7 @@ public class ChatsForum extends Fragment {
                 String sms = message.getText().toString().trim();
 
                 //check if user is logged in
-                if(Constants.user != null){
+                if(user != null){
 
                     //check if message is empty
                     if(!sms.isEmpty()){
@@ -292,20 +315,6 @@ public class ChatsForum extends Fragment {
             }
         });
 
-        image_post_layout.setVisibility(View.GONE);
-
-        attach_file.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                //open images
-                if (image_post_layout.getVisibility() != View.VISIBLE){
-                    image_post_layout.setVisibility(View.VISIBLE);
-                }else{
-                    image_post_layout.setVisibility(View.GONE);
-                }
-                TransitionManager.beginDelayedTransition(card);
-            }
-        });
 
         add_image.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -327,7 +336,7 @@ public class ChatsForum extends Fragment {
             uploadImageDialog.show();
 
             // Defining the child of storageReference using user email
-            String name = Constants.user.getEmail();
+            String name = user.getEmail();
             String date = new CurrentDay().getCurrentDate();
 
             StorageReference ref = storageReference.child("images/" + name+date);
@@ -396,7 +405,7 @@ public class ChatsForum extends Fragment {
 
     //get messages
     public void getMessages(){
-        Constants.database.collection("Chats")
+        database.collection("Chats")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @SuppressLint("NotifyDataSetChanged")
@@ -441,8 +450,8 @@ public class ChatsForum extends Fragment {
     //send message
     public void sendMessage(String sms, String url) {
 
-        String email = Constants.user.getEmail();
-        String name = Constants.user.getDisplayName();
+        String email = user.getEmail();
+        String name = user.getDisplayName();
 
         String date = new CurrentDay().getCurrentDate();
         String currentTime = new CurrentDay().getCurrentTime();
@@ -458,7 +467,7 @@ public class ChatsForum extends Fragment {
         //path
         String path = date+currentTime;
 
-        Constants.database.collection("Chats")
+        database.collection("Chats")
                 .document(path)
                 .set(data, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
@@ -642,8 +651,8 @@ public class ChatsForum extends Fragment {
 
         TextView text_status = warning_dialog.findViewById(R.id.warning_txt);
         String s = getContext().getString(R.string.warning);
-        assert Constants.user != null;
-        text_status.setText("Hey,\t"+Constants.user.getDisplayName()+"\t"+s);
+        assert user != null;
+        text_status.setText("Hey,\t"+user.getDisplayName()+"\t"+s);
 
         warning_dialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
         warning_dialog.setCancelable(false);

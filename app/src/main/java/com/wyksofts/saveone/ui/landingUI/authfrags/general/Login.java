@@ -19,6 +19,7 @@ import android.widget.ProgressBar;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.login_md.LoginUser;
 import com.wyksofts.saveone.ui.landingUI.authfrags.ResetPassword.ResetPasswordDialog;
@@ -104,6 +105,7 @@ public class Login extends Fragment {
             UserPassword.setError("Must have atleast one upper case and one number.");
         }
         else{
+            FirebaseAuth.getInstance().signOut();
             new LoginUser(getContext()).authUser(email,password,loading_bar);
         }
     }

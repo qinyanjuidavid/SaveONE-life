@@ -6,20 +6,25 @@ import android.graphics.drawable.ColorDrawable;
 import android.view.View;
 import android.widget.EditText;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.wyksofts.saveone.R;
 import com.wyksofts.saveone.models.Orphanage.Donations.recordDonation;
-import com.wyksofts.saveone.util.Constants.Constants;
 
 public class showDonateDialog {
 
     Context context;
     Dialog donateDialog;
 
+    FirebaseUser user;
+    FirebaseFirestore database;
+
     public showDonateDialog(Context context) {
         this.context = context;
         donateDialog = new Dialog(context);
+        user = FirebaseAuth.getInstance().getCurrentUser();
+        database = FirebaseFirestore.getInstance();
     }
 
 
@@ -41,7 +46,7 @@ public class showDonateDialog {
             @Override
             public void onClick(View view) {
 
-                new recordDonation(context,Constants.user, Constants.database,pname)
+                new recordDonation(context,user, database,pname)
                         .recordDonation(phone_number,location,others,donateDialog,orphanage_email);
             }
         });
