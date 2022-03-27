@@ -101,7 +101,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 > - If donors wish to participate on the SaveONE life forum, he/she must have an account.
 
 > ## Orphanage / Children's Home Authentication 
-> - To authenticate an orphanage, the Orphanage manager is supposed to register the orphanage by clicking the Register button, he will pass through 4 different fragments sections as shown below.
+> - To authenticate an orphanage, the Orphanage manager is supposed to register the orphanage by clicking the Register button, he will pass through 4 different sections as shown below.
 > - An orphanage is required to be verified to start receiving donations.
 > - Verification process requires an orphanage to channel $5 (annually) and the exact location of the orphanage if it was not provided.
 > - The verification process will help donors to be more convinced that the orphanage exists.
@@ -115,7 +115,7 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
        width="220" height="450" />
 
 ### 1. Basic Information 
-- On this page Orphanage keeper is supposed to fill in the name, email, and password of the orphanage as shown.
+- On this page Orphanage manager is supposed to fill in the name, email, and password of the orphanage as shown.
 - The following dependencies were used.
 
 ```
@@ -129,12 +129,12 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 
        
 ### 2. Additional Information
--  On this page Orphanage manager is supposed to fill in Orphanage Group Photo, Phone number, Till number, Bank account number, Bank Name, and country where the orphanage is located.
+-  On this page the Orphanage manager is supposed to upload an Orphanage Group Photo, fill in the Phone number, Till number, Bank account number, Bank Name, and country where the orphanage is located.
 - On this page, we used firebase storage dependency and storage reference class so as to enable users to upload group photos to the firebase storage database.
 - On this fragment, we will create a sharable link of the image uploaded.
 
 ### 3. Other Information
-- On this page Orphanage manager is supposed to fill in a brief description of the orphanage, the number of children in the orphanage, what they need most (include food, water, clothes, money for school fees), and the location address of the orphanage. 
+- On this page Orphanage manager is supposed to fill in a brief description of the orphanage, the number of children in the orphanage, what they need most (include food, water, clothes, money for school fees etc.), and the location address of the orphanage. 
 
 <img src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158599594-b612623f-3de1-447e-b65a-1d48805fcc24.png"
