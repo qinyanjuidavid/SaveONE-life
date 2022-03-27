@@ -212,7 +212,8 @@ NB: When an orphange is registered it should be verified and in future we are pl
 > ### 2. MapView
 > - SaveONE life mapview shows the different location of the orphanages across east Africa.
 > - Orphanages are being represented by a custom marker as shown in the screenshots
-> - On this fragment we used a Google map whereby data (Location Coordinates) are fetched from firestore database which include coordinates and name of the orphnage.
+> - On this fragment we used a Google Map SDK whereby data (Location Coordinates) are fetched from firestore database which include coordinates and name of the orphnage.
+> - We created a map api from Google cloud.
 > - We used a model view to store fetched data as a List 
 > 
 ```
@@ -231,8 +232,8 @@ for (int i = 0; i < listdata.size(); i++) {
 ```
 > - Here is a screenshot showing orphanages from different locations.
 
-<img src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158626612-4231b919-8da9-430e-bb96-8a5280b46c94.png"
+<img src="https://user-images.githubusercontent.com/46722362/160268874-3bf1a123-0be8-4eb3-ab16-6bc73d0f60f3.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160268874-3bf1a123-0be8-4eb3-ab16-6bc73d0f60f3.png"
        width="220" height="450" />
 
 
