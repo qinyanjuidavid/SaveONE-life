@@ -290,8 +290,11 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 > - To send push notifications to the user's we used ``` implementation 'com.google.firebase:firebase-messaging' ``` dependecy and a Chat notification class that extend FirebaseMessagingService and overrided onMessageReceived to handle everything.
 > ##Screenshots
 >
-> <img src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158769950-ba3377b7-ef8e-46ec-ae5a-cb231f1b26c9.png"
+> <img src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160269419-ae3f9482-4c84-4bf0-ac91-c7df2f9b75cd.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269419-ae3f9482-4c84-4bf0-ac91-c7df2f9b75cd.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
