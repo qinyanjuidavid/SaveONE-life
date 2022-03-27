@@ -293,8 +293,14 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 > <img src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/160269397-dabe47e5-e454-4050-95e4-630b44ccbe77.png"
        width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/160269419-ae3f9482-4c84-4bf0-ac91-c7df2f9b75cd.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269419-ae3f9482-4c84-4bf0-ac91-c7df2f9b75cd.png"
+       <img src="https://user-images.githubusercontent.com/46722362/160269587-27f2b45d-7179-4266-809f-97af97c3fa34.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269587-27f2b45d-7179-4266-809f-97af97c3fa34.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160269675-f64b4e01-c77a-450e-bb37-78e285602b01.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269675-f64b4e01-c77a-450e-bb37-78e285602b01.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158769919-a05a1bcc-79cd-44c3-8676-0b4ac8175cc7.png"
@@ -314,15 +320,6 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
-       width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/160269587-27f2b45d-7179-4266-809f-97af97c3fa34.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269587-27f2b45d-7179-4266-809f-97af97c3fa34.png"
-       width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269648-7b518f29-5f4e-48c0-9ab9-781d89e0fae4.png"
-       width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/160269675-f64b4e01-c77a-450e-bb37-78e285602b01.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/160269675-f64b4e01-c77a-450e-bb37-78e285602b01.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
