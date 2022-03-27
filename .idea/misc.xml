@@ -6,6 +6,7 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.1" />
         <entry key="app/src/main/res/drawable-v24/baseline_add_photo_alternate_24.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable-v24/baseline_attach_file_24.xml" value="0.1415" />
+        <entry key="app/src/main/res/drawable-v24/baseline_change_circle_24.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable-v24/baseline_chat_24.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/baseline_close_24.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable-v24/baseline_emoji_emotions_24.xml" value="0.1415" />
@@ -13,8 +14,10 @@
         <entry key="app/src/main/res/drawable-v24/baseline_groups_white_24.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable-v24/baseline_home_20.xml" value="0.146" />
         <entry key="app/src/main/res/drawable-v24/baseline_home_24.xml" value="0.146" />
+        <entry key="app/src/main/res/drawable-v24/baseline_layers_24.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable-v24/baseline_local_phone_24.xml" value="0.1375" />
         <entry key="app/src/main/res/drawable-v24/baseline_location_on_24.xml" value="0.187" />
+        <entry key="app/src/main/res/drawable-v24/baseline_logout_24.xml" value="0.1455" />
         <entry key="app/src/main/res/drawable-v24/baseline_map_24.xml" value="0.187" />
         <entry key="app/src/main/res/drawable-v24/baseline_mic_24.xml" value="0.1415" />
         <entry key="app/src/main/res/drawable-v24/baseline_more_horiz_18.xml" value="0.1465" />
@@ -107,6 +110,7 @@
         <entry key="app/src/main/res/layout/activity_setings.xml" value="0.13651315789473684" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.11548868815104166" />
         <entry key="app/src/main/res/layout/albums_image.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout/change_map_dialog.xml" value="0.24635416666666668" />
         <entry key="app/src/main/res/layout/chats_card.xml" value="0.29540100097656263" />
         <entry key="app/src/main/res/layout/close_diag.xml" value="0.20598290598290597" />
         <entry key="app/src/main/res/layout/congratulation_diag.xml" value="0.23981481481481481" />

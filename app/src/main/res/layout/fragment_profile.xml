@@ -61,7 +61,7 @@
                 android:layout_centerInParent="true"
                 android:clickable="true"
                 android:focusable="true"
-                android:src="@drawable/baseline_more_vert_white_24" />
+                android:src="@drawable/baseline_logout_24" />
         </RelativeLayout>
 
         <TextView

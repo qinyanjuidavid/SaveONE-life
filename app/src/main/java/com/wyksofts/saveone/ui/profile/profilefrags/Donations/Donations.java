@@ -174,13 +174,13 @@ public class Donations extends Fragment implements DonationViewInterface {
         });
     }
 
-    public void filter(String phone_number) {
+    public void filter(String name) {
         //new list
         ArrayList<DonationsModel> arrayList = new ArrayList<>();
 
         //loop through
         for (DonationsModel model : listdata) {
-            if (model.getName().toLowerCase().contains(phone_number)) {
+            if (model.getName().toLowerCase().contains(name)) {
                 recyclerView.setVisibility(View.VISIBLE);
                 new showAppToast().showSuccess(getContext(),"Donation(s) found");
 
@@ -193,7 +193,7 @@ public class Donations extends Fragment implements DonationViewInterface {
                     recyclerView.setVisibility(View.VISIBLE);
                 }
             }
-            if (phone_number.isEmpty()) {
+            if (name.isEmpty()) {
                 recyclerView.setVisibility(View.VISIBLE);
                 //new showAppToast().showFailure(getContext(),"No donation found");
             }

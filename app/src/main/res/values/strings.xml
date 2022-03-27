@@ -209,4 +209,9 @@
     <string name="message">Message</string>
     <string name="update_location">Update Location</string>
     <string name="group_photo">Group Photo</string>
+    <string name="map_type">Map type</string>
+    <string name="satellite">Satellite</string>
+    <string name="default_map">Default</string>
+    <string name="terrain">Terrain</string>
+    <string name="hyb_rid">Hyb rid</string>
 </resources>

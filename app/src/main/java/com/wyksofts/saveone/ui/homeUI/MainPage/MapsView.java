@@ -5,16 +5,21 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -59,6 +64,7 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
     EditText search;
 
     GoogleMap map;
+    FloatingActionButton change_map;
 
     //coordinates model
     List<LocationModel> listdata;
@@ -83,6 +89,14 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
         listdata = new ArrayList<LocationModel>();
 
         search = view.findViewById(R.id.search_orphanage);
+        change_map = view.findViewById(R.id.change_map);
+
+        change_map.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                showChangeMapDialog(view);
+            }
+        });
 
         return view;
     }
@@ -239,6 +253,90 @@ public class MapsView extends Fragment implements OnMapReadyCallback {
             CameraUpdate zoom = CameraUpdateFactory.zoomTo(8);
             googleMap.animateCamera(zoom);
         }
+    }
+
+
+    PopupWindow popupWindow;
+    LinearLayout normal, satellite, terrain, hybrid;
+
+    //show choose map type popup
+    private void showChangeMapDialog(View view) {
+
+        //Create a View object yourself through inflater
+        LayoutInflater inflater = (LayoutInflater) view.getContext()
+                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View popupView = inflater.inflate(R.layout.change_map_dialog, null);
+
+        //length and width
+        int width = LinearLayout.LayoutParams.MATCH_PARENT;
+        int height = LinearLayout.LayoutParams.MATCH_PARENT;
+        boolean focusable = true;
+
+        //window
+        popupWindow = new PopupWindow(popupView, width, height, focusable);
+
+        popupWindow.showAtLocation(view, Gravity.CENTER | Gravity.BOTTOM, 0, 0);
+
+        normal = popupView.findViewById(R.id.normal);
+        satellite = popupView.findViewById(R.id.satellite);
+        terrain = popupView.findViewById(R.id.terrain);
+        hybrid = popupView.findViewById(R.id.hybrid);
+
+        normal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onNormalMap(view);
+            }
+        });
+
+        satellite.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onSatelliteMap(view);
+            }
+        });
+
+        terrain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onTerrainMap(view);
+            }
+        });
+
+        hybrid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onHybridMap(view);
+            }
+        });
+
+        //close if other parts of the window are touched
+        popupView.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+
+                popupWindow.dismiss();
+                return true;
+            }
+        });
+    }
+
+
+    public void onNormalMap(View view) {
+        map.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+    }
+
+    public void onSatelliteMap(View view) {
+        map.setMapType(GoogleMap.MAP_TYPE_SATELLITE);
+    }
+
+    public void onTerrainMap(View view) {
+        map.setMapType(GoogleMap.MAP_TYPE_TERRAIN);
+    }
+
+
+    public void onHybridMap(View view) {
+        map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
     }
 
 

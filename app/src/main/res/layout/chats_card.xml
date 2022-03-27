@@ -48,7 +48,7 @@
                     <ImageView
                         android:id="@+id/chat_menu"
                         android:layout_width="20dp"
-                        android:layout_height="20dp"
+                        android:layout_height="12dp"
                         android:layout_alignParentEnd="true"
                         android:layout_centerInParent="true"
                         android:layout_marginEnd="@dimen/_12sdp"
@@ -73,7 +73,7 @@
                             android:id="@+id/attached_image"
                             android:layout_width="match_parent"
                             android:layout_height="150dp"
-                            android:scaleType="fitXY" />
+                            android:scaleType="centerCrop" />
 
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
