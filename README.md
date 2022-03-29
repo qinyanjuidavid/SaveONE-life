@@ -8,10 +8,10 @@
 > - minSdk 23,
 > - targetSdk 31
 
-## Installation by Downloading the APK
-- To download the .apk click the link [SaveOne-Life]()
+## Installation by Downloading the APK file.
+- To download the .apk click the link [SaveOne-Life](https://drive.google.com/file/d/1g1FYZzDRIGC-IxRjcsMFp3qduoH6_eYo/view?usp=sharing)
 - Install the .apk on your android mobile phone
-## Installation by Cloning to Android Studio
+## Installation by Cloning to Android Studio.
 - Download Android Studio
 - Clonning the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
 - Run the android app from Android Studio after cloning.
