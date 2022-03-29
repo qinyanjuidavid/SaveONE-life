@@ -1,5 +1,21 @@
 # SaveOne-Life
 
+## Running the project
+> ### App testing
+> - We tested the app using;
+> - compileSdkVersion 31,
+> -  buildToolsVersion "30.0.3",
+> - minSdk 23,
+> - targetSdk 31
+
+## Installation by Downloading the APK
+- To download the .apk click the link [SaveOne-Life]()
+- Install the .apk on your android mobile phone
+## Installation by Cloning to Android Studio
+- Download Android Studio
+- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
+- Run the android app from Android Studio after cloning.
+
 ## Introduction
 > - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
 > - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the breadwinners, most children find themselves without sufficient financial, social, and emotional support and these children's futures become quite uncertain.
@@ -315,8 +331,11 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 
 ## Orphanage Profile Page
 > - *On the orphanage profile page,* Orphanage manager/ Admin will be able to update the profile and other information which include ( group photo, number of children, phone number, and other account information)
+> - On this page Orphanage manager will also update location of the orphanage.
 > - Also orphanages will be able to query through and see the donations they have received, this data is restored from the firebase Firestore.
-> - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
+> - He/She will be able to check and call donors on this fragment (Screenshot no. 5). And if orphanage have not received donations orphanage manager will be able to check in the donations they have received.
+> - User / Orphanage manager can log out on this page.
+> - 
 
 <img src="https://user-images.githubusercontent.com/46722362/160561055-52bedf4e-3764-4b0f-a829-3edeb1a44c20.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/160561055-52bedf4e-3764-4b0f-a829-3edeb1a44c20.png"
@@ -337,21 +356,7 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
       data-canonical-src="https://user-images.githubusercontent.com/46722362/160561095-9b7de3f4-9d46-4553-ba00-37f06c81bb7b.png"
        width="220" height="450" />
 
-# Running the project
-> ### App testing
-> - We tested the app using;
-> - compileSdkVersion 31,
-> -  buildToolsVersion "30.0.3",
-> - minSdk 23,
-> - targetSdk 31
 
-## Installation by Downloading the APK
-- To download the .apk click the link [SaveOne-Life]()
-- Install the .apk on your android mobile phone
-## Installation by Cloning to Android Studio
-- Download Android Studio
-- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
-- Run the android app from Android Studio after cloning.
 
 ## License
 ```
