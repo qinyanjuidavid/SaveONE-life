@@ -123,8 +123,8 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 > - The verification process will help donors to be more convinced that the orphanage exists.
 > - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE's life App by improving the service of the app. Money can be channeled using M-Pesa at the moment.
 > - Below are the profile pages for the verified and not verified orphanage.
-> - <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+> - <img src="https://user-images.githubusercontent.com/46722362/160561081-1329e1c0-faf2-4ec1-887e-c34ae77e823b.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561081-1329e1c0-faf2-4ec1-887e-c34ae77e823b.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
