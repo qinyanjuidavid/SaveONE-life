@@ -13,7 +13,7 @@
 - Install the .apk on your android mobile phone
 ## Installation by Cloning to Android Studio
 - Download Android Studio
-- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
+- Clonning the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
 - Run the android app from Android Studio after cloning.
 
 ## Introduction
@@ -170,7 +170,6 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 - We created Google Map Api from Google clouds
  ```
  build.grandle(:app)
- 
  dependencies{
  implementation 'com.google.android.gms:play-services-maps:18.0.2'
  implementation 'com.google.android.gms:play-services-location:19.0.1'
