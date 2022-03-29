@@ -176,11 +176,6 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
  implementation 'com.google.android.gms:play-services-location:19.0.1'
  }
  
- dependencies{
- classpath 'com.google.gms:google-services:4.3.10'
- classpath 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1'
- 
- }
  
  //on the manifest file  we added a meta data with a string of API key value 
  <meta-data
