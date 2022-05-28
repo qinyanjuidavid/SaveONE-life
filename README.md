@@ -1,5 +1,21 @@
 # SaveOne-Life
 
+## Running the project
+> ### App testing
+> - We tested the app using;
+> - compileSdkVersion 31,
+> -  buildToolsVersion "30.0.3",
+> - minSdk 23,
+> - targetSdk 31
+
+## Installation by Downloading the APK file.
+- To download the .apk click the link [SaveOne-Life](https://drive.google.com/file/d/1g1FYZzDRIGC-IxRjcsMFp3qduoH6_eYo/view?usp=sharing)
+- Install the .apk on your android mobile phone
+## Installation by Cloning to Android Studio.
+- Download Android Studio
+- Clonning the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
+- Run the android app from Android Studio after cloning.
+
 ## Introduction
 > - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
 > - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the breadwinners, most children find themselves without sufficient financial, social, and emotional support and these children's futures become quite uncertain.
@@ -107,8 +123,8 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 > - The verification process will help donors to be more convinced that the orphanage exists.
 > - Channeled ($5) money is used by TTU GDSC for the maintenance of SaveONE's life App by improving the service of the app. Money can be channeled using M-Pesa at the moment.
 > - Below are the profile pages for the verified and not verified orphanage.
-> - <img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+> - <img src="https://user-images.githubusercontent.com/46722362/160561081-1329e1c0-faf2-4ec1-887e-c34ae77e823b.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561081-1329e1c0-faf2-4ec1-887e-c34ae77e823b.png"
        width="220" height="450" />
        <img src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/159165000-a3131ab2-6075-47a6-955c-452b38654155.png"
@@ -154,17 +170,11 @@ implementation 'com.google.firebase:firebase-auth:21.0.1'
 - We created Google Map Api from Google clouds
  ```
  build.grandle(:app)
- 
  dependencies{
  implementation 'com.google.android.gms:play-services-maps:18.0.2'
  implementation 'com.google.android.gms:play-services-location:19.0.1'
  }
  
- dependencies{
- classpath 'com.google.gms:google-services:4.3.10'
- classpath 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin:secrets-gradle-plugin:2.0.1'
- 
- }
  
  //on the manifest file  we added a meta data with a string of API key value 
  <meta-data
@@ -315,38 +325,32 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
 
 ## Orphanage Profile Page
 > - *On the orphanage profile page,* Orphanage manager/ Admin will be able to update the profile and other information which include ( group photo, number of children, phone number, and other account information)
+> - On this page Orphanage manager will also update location of the orphanage.
 > - Also orphanages will be able to query through and see the donations they have received, this data is restored from the firebase Firestore.
-> - He/She will be able to check and call donors on this fragment (Screenshot no. 3) if they have not received donations and manage all other things from this fragment.
+> - He/She will be able to check and call donors on this fragment (Screenshot no. 5). And if orphanage have not received donations orphanage manager will be able to check in the donations they have received.
+> - User / Orphanage manager can log out on this page.
+> - 
 
-<img src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/159164989-359ddf2f-0797-41f4-9e1a-56eea52454fa.png"
+<img src="https://user-images.githubusercontent.com/46722362/160561055-52bedf4e-3764-4b0f-a829-3edeb1a44c20.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561055-52bedf4e-3764-4b0f-a829-3edeb1a44c20.png"
        width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773627-628c9b36-bb68-4f4e-9b83-219d12416876.png"
+       <img src="https://user-images.githubusercontent.com/46722362/160561081-1329e1c0-faf2-4ec1-887e-c34ae77e823b.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561081-1329e1c0-faf2-4ec1-887e-c34ae77e823b.png"
        width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773637-8923cd30-d2f3-46f5-be1b-b9f779dde6ff.png"
+       <img src="https://user-images.githubusercontent.com/46722362/160561085-4d51de8b-c7ec-49b2-b809-6bad4a658cff.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561085-4d51de8b-c7ec-49b2-b809-6bad4a658cff.png"
        width="220" height="450" />
-       <img src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
-      data-canonical-src="https://user-images.githubusercontent.com/46722362/158773650-dbaabe5a-c6d8-4dc4-b6ee-fbed1bc1e6cb.png"
+       <img src="https://user-images.githubusercontent.com/46722362/160561089-eb2921b5-121f-4017-933a-51b0dc17e39d.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561089-eb2921b5-121f-4017-933a-51b0dc17e39d.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160561092-8d6a21f0-1eab-4e14-85b0-757faa30890e.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561092-8d6a21f0-1eab-4e14-85b0-757faa30890e.png"
+       width="220" height="450" />
+       <img src="https://user-images.githubusercontent.com/46722362/160561095-9b7de3f4-9d46-4553-ba00-37f06c81bb7b.png"
+      data-canonical-src="https://user-images.githubusercontent.com/46722362/160561095-9b7de3f4-9d46-4553-ba00-37f06c81bb7b.png"
        width="220" height="450" />
 
 
-# Running the project
-> ### App testing
-> - We tested the app using;
-> - compileSdkVersion 31,
-> -  buildToolsVersion "30.0.3",
-> - minSdk 23,
-> - targetSdk 31
-
-## Installation by Downloading the APK
-- To download the .apk click the link [SaveOne-Life]()
-- Install the .apk on your android mobile phone
-## Installation by Cloning to Android Studio
-- Download Android Studio
-- Clown the repo using the command ``` git clone https://github.com/wykeenjenga/SaveONE-life.git```
-- Run the android app from Android Studio after cloning.
 
 ## License
 ```
@@ -373,8 +377,3 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 ```
-
-## Thanks Note
-Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
-
-### Developed with <span style="color: #fb8100;">&hearts;</span> by [GDSC TAITA TAVETA UNIVERSITY](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
