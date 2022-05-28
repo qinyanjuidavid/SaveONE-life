@@ -89,5 +89,6 @@ dependencies {
 
     implementation 'com.bdhobare:mpesa:0.0.6'
     implementation 'com.sothree.slidinguppanel:library:3.4.0'
+    implementation 'com.stripe:stripe-android:20.4.0'
     
 }

@@ -29,6 +29,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -45,8 +46,9 @@ import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.firebase.firestore.SetOptions;
@@ -221,8 +223,9 @@ public class ChatsForum extends Fragment {
                 loadImage(image_url);
             }
 
-
             image_post_layout.setVisibility(View.GONE);
+
+            Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.fall_down);
 
             attach_file.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -236,8 +239,6 @@ public class ChatsForum extends Fragment {
                     TransitionManager.beginDelayedTransition(card);
                 }
             });
-
-
         }else{
             user_layout.setVisibility(View.GONE);
         }
@@ -282,7 +283,6 @@ public class ChatsForum extends Fragment {
                     new showAppToast().showSuccess(getContext(),"Sorry your device is not supported");
                     return;
                 }
-
             }
         });
 
@@ -398,7 +398,7 @@ public class ChatsForum extends Fragment {
         Intent intent = new Intent();
         intent.setType("image/*");
         intent.setAction(Intent.ACTION_GET_CONTENT);
-        startActivityForResult(Intent.createChooser(intent, "Attach your file from here..."), PICK_IMAGE_REQUEST);
+        startActivityForResult(Intent.createChooser(intent, "Attach your picture from here..."), PICK_IMAGE_REQUEST);
     }
 
 
@@ -406,6 +406,7 @@ public class ChatsForum extends Fragment {
     //get messages
     public void getMessages(){
         database.collection("Chats")
+                .orderBy("timeStamp")
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @SuppressLint("NotifyDataSetChanged")
@@ -442,7 +443,6 @@ public class ChatsForum extends Fragment {
                 new showAppToast().showFailure(getContext(),"Failed to get forum data");
             }
         });
-
     }
 
 
@@ -455,6 +455,7 @@ public class ChatsForum extends Fragment {
 
         String date = new CurrentDay().getCurrentDate();
         String currentTime = new CurrentDay().getCurrentTime();
+        FieldValue timeStamp = FieldValue.serverTimestamp();
 
         Map<String, Object> data = new HashMap<>();
         data.put("date", date);
@@ -463,6 +464,7 @@ public class ChatsForum extends Fragment {
         data.put("message", sms);
         data.put("name", name);
         data.put("time", currentTime);
+        data.put("timeStamp", timeStamp);
 
         //path
         String path = date+currentTime;
@@ -471,6 +473,7 @@ public class ChatsForum extends Fragment {
                 .document(path)
                 .set(data, SetOptions.merge())
                 .addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onSuccess(Void aVoid) {
 
@@ -490,7 +493,6 @@ public class ChatsForum extends Fragment {
 
                         message.setText("");
 
-
                     }
                 })
                 .addOnFailureListener(new OnFailureListener() {
@@ -500,8 +502,6 @@ public class ChatsForum extends Fragment {
                     }
                 });
     }
-
-
 
 
 

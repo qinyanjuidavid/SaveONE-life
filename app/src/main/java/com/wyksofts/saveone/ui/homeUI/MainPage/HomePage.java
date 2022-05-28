@@ -77,7 +77,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
     private Button search_again, retry_connecting;
 
     TextView orphanage_name;
-    ImageView menu;
+    ImageView menu, info;
 
     LinearLayout home_menu, menu_settings, menu_profile, menu_contact, menu_share,menu_about;
     PopupWindow popupWindow;
@@ -123,6 +123,7 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
         search_again = view.findViewById(R.id.search_again);
         orphanage_name = view.findViewById(R.id.welcome_text);
         menu = view.findViewById(R.id.menu);
+        info = view.findViewById(R.id.info);
 
         //init UI
         initUI();
@@ -148,6 +149,13 @@ public class HomePage extends Fragment implements OrphanageViewInterface {
 
                 showMenuLayout(view);
 
+            }
+        });
+
+        info.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getContext(), AboutApp.class));
             }
         });
 

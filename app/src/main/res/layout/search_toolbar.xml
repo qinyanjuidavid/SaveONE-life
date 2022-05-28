@@ -55,7 +55,7 @@
                     android:fontFamily="serif"
                     android:hint="@string/search_orphanage_around_you"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="12sp" />
 
 
             </RelativeLayout>
