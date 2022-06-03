@@ -18,7 +18,7 @@
 
 ## Introduction
 > - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
-> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the breadwinners, most children find themselves without sufficient financial, social, and emotional support and these children's futures become quite uncertain.
+> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million in about 830 orphanages. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the breadwinners, most children find themselves without sufficient financial, social, and emotional support and these children's futures become quite uncertain.
 > - They end up straining to access basic needs such as food, clothing, course books, writing materials, and even shelter that are essential for normal living. In addition to that, orphans who have been traumatized by the death of their parents can become antisocial. The fact that society appears to have become oblivious to their predicament hasn't helped matters.
 > - Those who have found themselves in children’s homes have been a little bit lucky to have some access to shelter, food, and clothing but in limited quantities compared to other children 
 > - Most of the registered 800 children’s homes in Kenya depend on donors to provide these basic needs of these children and the finances are mostly very limited to providing food for all those 
@@ -26,13 +26,13 @@ children they are hosting
 
 
 ## Problem
-> - The major problem gotten from the user requirement gathering phase, has been the donors trying to locate the orphanages in the country, especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing, and education materials to donate. They shared their difficulty of accessing the locations of the orphanages in the areas around. 
-> - Also we were curious about how and when those young souls, are in need of various basic needs items.
+> - The major problem gotten from the user requirement gathering phase, has been the donors having a hard time trying to locate the orphanages in the country, especially those that are really in interior areas. We got respondents, who were students, from our own campus who sometimes have food, clothing, and education materials to donate and they shared their difficulty of accessing the locations of the orphanages in the areas around. 
+> - Also, the orphanages shared how it was difficult for them to find donors to support them and share the needs of various basic needs items of the children.
 
 ## Solution
-> - That’s where the Save ONE-life android app comes in. -it’s an app built with java and google technology that helps donors to locate home orphanages all across the country and make their donations.
-> - Knowing which child requires help, when they require this help, and where they actually are to be accorded this help is a major step in alleviating the conditions of these orphaned children.
-> - We desire that orphaned children will experience a normal life just as children who have found themselves in their families.
+> - That’s where the Save ONE-life android app comes in. -it’s an app built with java and google technology that helps donors to locate home orphanages all across the country and easen making of their donations from the comfort of their homes.Also, it makes easier for orphanages to share their needs on the platform in order to get support from donors.
+> - Knowing which child requires help, when they require this help, and where they actually are in order to be accorded this help is a major step in alleviating the conditions of these orphaned children.
+> - Our biggest desire is that orphaned children will experience a normal life just as children who have found themselves in their families.
 
 
 ## SDGs and their Targets
@@ -53,8 +53,8 @@ children they are hosting
 >  This goodwill health organizations will also be able to log into the app and locate those orphaned children that are in need.
 
 > M-Pesa is a virtual banking system that provides transaction services through a SIM card. Once the SIM has been inserted into the card slot of the mobile device, users can make payments and transfer money to vendors and family members with SMS messages. 
-> In the future we are planning to integrate M-Pesa APIs with our app so that it can be easy for donors to donate with M-Pesa with a single touch from the app.
-> We are also planning to add more methods/mediums of donations like stripe, PayPal, and many others.
+> We are planning to integrate M-Pesa APIs with our app so that it can be easy for donors to donate with M-Pesa with a single touch from the app.
+> We are also planning to add more methods/mediums of donations like stripe, PayPal, and many others. 
 
 > We are also planning to extend the app from being used inside the country to the whole of Africa and the whole world as well.
 
