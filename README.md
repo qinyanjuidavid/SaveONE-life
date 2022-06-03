@@ -17,8 +17,8 @@
 - Run the android app from Android Studio after cloning.
 
 ## Introduction
-> - Did you know about 9.2% of the world, or 689 million people, live in extreme poverty on less than $1.90 a day. And there are about 153 million orphans worldwide.
-> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million in about 830 orphanages. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the breadwinners, most children find themselves without sufficient financial, social, and emotional support and these children's futures become quite uncertain.
+> - Did you know, there are about 153 million orphans worldwide.
+> - According to Light Up Hope Organization, the population of orphaned children in Kenya is estimated to be at three million in about 800 orphanages. Every day, 700 children are orphaned (one every two minutes), with HIV/AIDS contributing to 1/3 of these orphans. As a result, the number of orphans is expected to increase. With the death of their parents who were the breadwinners, most children find themselves without sufficient financial, social, and emotional support and these children's futures become quite uncertain.
 > - They end up straining to access basic needs such as food, clothing, course books, writing materials, and even shelter that are essential for normal living. In addition to that, orphans who have been traumatized by the death of their parents can become antisocial. The fact that society appears to have become oblivious to their predicament hasn't helped matters.
 > - Those who have found themselves in children’s homes have been a little bit lucky to have some access to shelter, food, and clothing but in limited quantities compared to other children 
 > - Most of the registered 800 children’s homes in Kenya depend on donors to provide these basic needs of these children and the finances are mostly very limited to providing food for all those 
