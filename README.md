@@ -357,7 +357,8 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
       </p>
        
 ## Thanks <span style="color: #e25555;">&hearts;</span>
-Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).       
+Thanks to Google Developer Students Club for contributing towards the growth of [@DSCTTU](https://twitter.com/DscTtu?t=nLFp2oGleW6Tpu3XpzbugQ&s=09).
+
 
 
 ## License
