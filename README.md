@@ -349,10 +349,12 @@ exports.androidPushNotification = functions.firestore.document('Chats/{uid}').on
        <img src="https://user-images.githubusercontent.com/46722362/160561095-9b7de3f4-9d46-4553-ba00-37f06c81bb7b.png"
       data-canonical-src="https://user-images.githubusercontent.com/46722362/160561095-9b7de3f4-9d46-4553-ba00-37f06c81bb7b.png"
        width="220" height="450" />
- ## Orphanage Images
-      <img src="https://user-images.githubusercontent.com/49823575/172049694-21391f1a-95fd-4e7b-adaf-c8ffc00fc6a8.jpg" data-canonical-src="https://user-images.githubusercontent.com/49823575/172049694-21391f1a-95fd-4e7b-adaf-c8ffc00fc6a8.jpg" width="400" height="450">
-       <img src="https://user-images.githubusercontent.com/49823575/172049851-742fcd93-42ff-4143-835d-f63409fe8977.jpg" data-canonical-src="https://user-images.githubusercontent.com/49823575/172049851-742fcd93-42ff-4143-835d-f63409fe8977.jpg" width="400" height="450">
-       <img src="https://user-images.githubusercontent.com/49823575/172050107-45fbc438-28f9-4931-a724-a1b5c63cf777.jpg" data-canonical-src="https://user-images.githubusercontent.com/49823575/172050107-45fbc438-28f9-4931-a724-a1b5c63cf777.jpg" width="400" height="450">
+## Orphanage Images
+<p float="left">
+<img src="https://user-images.githubusercontent.com/49823575/172049694-21391f1a-95fd-4e7b-adaf-c8ffc00fc6a8.jpg" data-canonical-src="https://user-images.githubusercontent.com/49823575/172049694-21391f1a-95fd-4e7b-adaf-c8ffc00fc6a8.jpg" width="330" height="450">
+<img src="https://user-images.githubusercontent.com/49823575/172049851-742fcd93-42ff-4143-835d-f63409fe8977.jpg" data-canonical-src="https://user-images.githubusercontent.com/49823575/172049851-742fcd93-42ff-4143-835d-f63409fe8977.jpg" width="330" height="450">
+<img src="https://user-images.githubusercontent.com/49823575/172050107-45fbc438-28f9-4931-a724-a1b5c63cf777.jpg" data-canonical-src="https://user-images.githubusercontent.com/49823575/172050107-45fbc438-28f9-4931-a724-a1b5c63cf777.jpg" width="330" height="450">
+      </p>
        
        
 
